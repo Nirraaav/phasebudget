@@ -1,0 +1,100 @@
+K2 and K3 (development, docs/design/k2-k3-error-causes.md): 30x runs of 1 platforms (k3_hg005), whatshap and LongPhase as stored; consecutive phased pairs both of whose variants the platform's primary truth phases; cause window 10 variants per side, WhatsHap selection port at cap 15, exact CoverageDP boundary costs; groups indel first, then GIAB v3.6 stratum; K2 gate: data share >= 0.6 for both phasers in each of segdup, lowmap, tandem, indel with >= 20 wrong pairs, on w4_grch38, cal_v5; K3 gate: k3_hg005, share of wrong pairs outside HG005_GRCh38_1_22_v4.2.1_benchmark.bed >= 0.3 for both phasers; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22
+rows ready in 469 s
+
+1. Causes of wrong pairs per platform, phaser and group: none = no read calls both variants; data = spanning majority backs the wrong relation or ties, window optimum not right; search = window optimum strictly right; other = majority right, optimum wrong or tied
+  k3_hg005         whatshap  all       pairs  2496084 wrong  25962: none 94 (0.004), data 17106 (0.659), search 5707 (0.220), other 3055 (0.118)
+  k3_hg005         whatshap  indel     pairs   775031 wrong  18414: none 46 (0.002), data 11564 (0.628), search 4436 (0.241), other 2368 (0.129)
+  k3_hg005         whatshap  segdup    pairs   112420 wrong   2591: none 5 (0.002), data 1748 (0.675), search 641 (0.247), other 197 (0.076)
+  k3_hg005         whatshap  lowmap    pairs   120481 wrong   2822: none 4 (0.001), data 2417 (0.856), search 258 (0.091), other 143 (0.051)
+  k3_hg005         whatshap  tandem    pairs   213399 wrong   1968: none 38 (0.019), data 1260 (0.640), search 344 (0.175), other 326 (0.166)
+  k3_hg005         whatshap  difficult pairs   124794 wrong     20: none 0 (0.000), data 15 (0.750), search 3 (0.150), other 2 (0.100)
+  k3_hg005         whatshap  easy      pairs  1149959 wrong    147: none 1 (0.007), data 102 (0.694), search 25 (0.170), other 19 (0.129)
+
+2. K3: k3_hg005 whatshap, inside = both variants in HG005_GRCh38_1_22_v4.2.1_benchmark.bed
+  all       inside  pairs  1824535 wrong   1144 rate 6.270e-04 units  25200 wrong   721
+    all       inside  wrong   1144: none 4 (0.003), data 782 (0.684), search 246 (0.215), other 112 (0.098)
+  all       outside pairs   671549 wrong  24818 rate 3.696e-02 units  24645 wrong  7736
+    all       outside wrong  24818: none 90 (0.004), data 16324 (0.658), search 5461 (0.220), other 2943 (0.119)
+  all       outside/inside per pair 58.94; share of wrong outside 0.956
+  K3 whatshap: share 0.956 (>= 0.3): holds
+
+  indel     inside  pairs   365589 wrong    879 rate 2.404e-03 units  22988 wrong   573
+    indel     inside  wrong    879: none 3 (0.003), data 593 (0.675), search 208 (0.237), other 75 (0.085)
+  indel     outside pairs   409442 wrong  17535 rate 4.283e-02 units  24133 wrong  7297
+    indel     outside wrong  17535: none 43 (0.002), data 10971 (0.626), search 4228 (0.241), other 2293 (0.131)
+  indel     outside/inside per pair 17.81; share of wrong outside 0.952
+  segdup    inside  pairs    55326 wrong     56 rate 1.012e-03 units   2844 wrong    21
+    segdup    inside  wrong     56: none 0 (0.000), data 43 (0.768), search 7 (0.125), other 6 (0.107)
+  segdup    outside pairs    57094 wrong   2535 rate 4.440e-02 units   2155 wrong   269
+    segdup    outside wrong   2535: none 5 (0.002), data 1705 (0.673), search 634 (0.250), other 191 (0.075)
+  segdup    outside/inside per pair 43.87; share of wrong outside 0.978
+  lowmap    inside  pairs    86428 wrong     20 rate 2.314e-04 units  12666 wrong    20
+    lowmap    inside  wrong     20: none 0 (0.000), data 19 (0.950), search 1 (0.050), other 0 (0.000)
+  lowmap    outside pairs    34053 wrong   2802 rate 8.228e-02 units   7174 wrong   309
+    lowmap    outside wrong   2802: none 4 (0.001), data 2398 (0.856), search 257 (0.092), other 143 (0.051)
+  lowmap    outside/inside per pair 355.58; share of wrong outside 0.993
+  tandem    inside  pairs   110378 wrong     72 rate 6.523e-04 units  18840 wrong    55
+    tandem    inside  wrong     72: none 1 (0.014), data 41 (0.569), search 14 (0.194), other 16 (0.222)
+  tandem    outside pairs   103021 wrong   1896 rate 1.840e-02 units  18508 wrong  1276
+    tandem    outside wrong   1896: none 37 (0.020), data 1219 (0.643), search 330 (0.174), other 310 (0.164)
+  tandem    outside/inside per pair 28.21; share of wrong outside 0.963
+  difficult inside  pairs   116666 wrong     10 rate 8.571e-05 units  17319 wrong     9
+    difficult inside  wrong     10: none 0 (0.000), data 8 (0.800), search 1 (0.100), other 1 (0.100)
+  difficult outside pairs     8128 wrong     10 rate 1.230e-03 units   4118 wrong     7
+    difficult outside wrong     10: none 0 (0.000), data 7 (0.700), search 2 (0.200), other 1 (0.100)
+  difficult outside/inside per pair 14.35; share of wrong outside 0.500
+  easy      inside  pairs  1090148 wrong    107 rate 9.815e-05 units  23875 wrong    86
+    easy      inside  wrong    107: none 0 (0.000), data 78 (0.729), search 15 (0.140), other 14 (0.131)
+  easy      outside pairs    59811 wrong     40 rate 6.688e-04 units  14428 wrong    23
+    easy      outside wrong     40: none 1 (0.025), data 24 (0.600), search 10 (0.250), other 5 (0.125)
+  easy      outside/inside per pair 6.81; share of wrong outside 0.272
+  k3_hg005         longphase all       pairs  2419994 wrong   6747: none 653 (0.097), data 4839 (0.717), search 1099 (0.163), other 156 (0.023)
+  k3_hg005         longphase indel     pairs   695749 wrong   2222: none 125 (0.056), data 1478 (0.665), search 548 (0.247), other 71 (0.032)
+  k3_hg005         longphase segdup    pairs   109002 wrong   1524: none 81 (0.053), data 1169 (0.767), search 236 (0.155), other 38 (0.025)
+  k3_hg005         longphase lowmap    pairs   118661 wrong   2311: none 311 (0.135), data 1838 (0.795), search 137 (0.059), other 25 (0.011)
+  k3_hg005         longphase tandem    pairs   209135 wrong    525: none 68 (0.130), data 276 (0.526), search 162 (0.309), other 19 (0.036)
+  k3_hg005         longphase difficult pairs   126086 wrong     21: none 8 (0.381), data 11 (0.524), search 2 (0.095), other 0 (0.000)
+  k3_hg005         longphase easy      pairs  1161361 wrong    144: none 60 (0.417), data 67 (0.465), search 14 (0.097), other 3 (0.021)
+
+2. K3: k3_hg005 longphase, inside = both variants in HG005_GRCh38_1_22_v4.2.1_benchmark.bed
+  all       inside  pairs  1834584 wrong    401 rate 2.186e-04 units  25196 wrong   342
+    all       inside  wrong    401: none 94 (0.234), data 261 (0.651), search 40 (0.100), other 6 (0.015)
+  all       outside pairs   585410 wrong   6346 rate 1.084e-02 units  24135 wrong  1361
+    all       outside wrong   6346: none 559 (0.088), data 4578 (0.721), search 1059 (0.167), other 150 (0.024)
+  all       outside/inside per pair 49.59; share of wrong outside 0.941
+  K3 longphase: share 0.941 (>= 0.3): holds
+
+  indel     inside  pairs   363313 wrong    192 rate 5.285e-04 units  22842 wrong   173
+    indel     inside  wrong    192: none 18 (0.094), data 144 (0.750), search 27 (0.141), other 3 (0.016)
+  indel     outside pairs   332436 wrong   2030 rate 6.106e-03 units  23294 wrong  1014
+    indel     outside wrong   2030: none 107 (0.053), data 1334 (0.657), search 521 (0.257), other 68 (0.033)
+  indel     outside/inside per pair 11.55; share of wrong outside 0.914
+  segdup    inside  pairs    55593 wrong     35 rate 6.296e-04 units   2862 wrong    17
+    segdup    inside  wrong     35: none 5 (0.143), data 25 (0.714), search 3 (0.086), other 2 (0.057)
+  segdup    outside pairs    53409 wrong   1489 rate 2.788e-02 units   2160 wrong   161
+    segdup    outside wrong   1489: none 76 (0.051), data 1144 (0.768), search 233 (0.156), other 36 (0.024)
+  segdup    outside/inside per pair 44.28; share of wrong outside 0.977
+  lowmap    inside  pairs    86749 wrong     21 rate 2.421e-04 units  12715 wrong    21
+    lowmap    inside  wrong     21: none 4 (0.190), data 17 (0.810), search 0 (0.000), other 0 (0.000)
+  lowmap    outside pairs    31912 wrong   2290 rate 7.176e-02 units   7108 wrong   150
+    lowmap    outside wrong   2290: none 307 (0.134), data 1821 (0.795), search 137 (0.060), other 25 (0.011)
+  lowmap    outside/inside per pair 296.43; share of wrong outside 0.991
+  tandem    inside  pairs   111006 wrong     33 rate 2.973e-04 units  18881 wrong    28
+    tandem    inside  wrong     33: none 8 (0.242), data 19 (0.576), search 6 (0.182), other 0 (0.000)
+  tandem    outside pairs    98129 wrong    492 rate 5.014e-03 units  18275 wrong   367
+    tandem    outside wrong    492: none 60 (0.122), data 257 (0.522), search 156 (0.317), other 19 (0.039)
+  tandem    outside/inside per pair 16.87; share of wrong outside 0.937
+  difficult inside  pairs   117772 wrong     11 rate 9.340e-05 units  17373 wrong    10
+    difficult inside  wrong     11: none 4 (0.364), data 6 (0.545), search 1 (0.091), other 0 (0.000)
+  difficult outside pairs     8314 wrong     10 rate 1.203e-03 units   4196 wrong     7
+    difficult outside wrong     10: none 4 (0.400), data 5 (0.500), search 1 (0.100), other 0 (0.000)
+  difficult outside/inside per pair 12.88; share of wrong outside 0.476
+  easy      inside  pairs  1100151 wrong    109 rate 9.908e-05 units  23928 wrong   107
+    easy      inside  wrong    109: none 55 (0.505), data 50 (0.459), search 3 (0.028), other 1 (0.009)
+  easy      outside pairs    61210 wrong     35 rate 5.718e-04 units  14502 wrong    17
+    easy      outside wrong     35: none 5 (0.143), data 17 (0.486), search 11 (0.314), other 2 (0.057)
+  easy      outside/inside per pair 5.77; share of wrong outside 0.243
+
+K2 gate: passed
+K3 gate: finds the gap
+runtime 611 s

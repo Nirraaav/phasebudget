@@ -1,0 +1,1341 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\setlength{\emergencystretch}{1.5em}
+
+\newcommand{\pending}[1]{\textcolor{red}{\textbf{[#1]}}}
+\newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\doi}[1]{doi \href{https://doi.org/#1}{\nolinkurl{#1}}}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\title{Read selection and certified phase relations\\
+in long-read haplotype phasing:\\
+exact optimization, error control within genomic strata,\\
+and why calibration labels must match the test population}
+\author{Nirav Bhattad\\Indian Institute of Technology Bombay}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent\textbf{Motivation:} Read-based phasers decide which heterozygous
+variants share a haplotype from a subset of the reads, and report the
+decision with no error rate. We ask two questions: how much the choice of
+reads matters, and whether a phase relation can carry an error rate that
+holds on genomes it was not fitted to.
+
+\noindent\textbf{Results:} \emph{Read selection.} WhatsHap selects reads down
+to a coverage cap before its exact dynamic program. Selection is solved
+exactly by min-cost flow. At the default cap of 15, WhatsHap 2.8's selector
+reaches 0.933 of the optimum on HG002 HiFi, 0.963 on HG002 ONT and 0.934 on
+HG005 HiFi. In a registered test inside \texttt{whatshap phase}, exact
+selection lowered ONT switch error at cap 3 by 42 per cent
+($p=8.4\times10^{-28}$) and shortened blocks; at caps 5 and 15 no difference
+was detected. Most of the larger differences in our own library were
+guesses at tied sites. \emph{Certified relations.} A post-processor marks
+each relation between consecutive phased variants as trusted or not, by the
+Wilson lower bound on agreeing reads, with a threshold chosen by Learn then
+Test within GIAB difficult-region strata so that the probability that a
+100\,kb unit holds a wrong trusted relation is at most $\beta$ with
+confidence $1-\delta$. In six registered tests on 48 individuals, one
+genome-wide threshold failed on a new genome; per-stratum thresholds held in
+the easy stratum in all 582 testable cells, across relatives, basecallers and
+39 HPRC genomes of three ancestries calibrated on one European genome, while
+trusting more than 99.5 per cent of easy pairs. In the hard strata,
+calibration on one genome violated in 2 of 1{,}170 testable cells, but a
+calibration pooled over 21 genomes, which made segmental duplications
+certify, violated in 163 of 360 cells on a new family's HiFi reads. In
+development the cause was the calibration truth: it labelled a link only
+where an assembly and parental transmission agreed, which kept 46 to 49 per
+cent of duplication and tandem-repeat links against 75 per cent of easy
+ones; on the links a key of the same kind labelled in the new family, the
+pooled thresholds violated in no cell, against 120 cells when the same share
+of links was kept at random. A registered replication on 19 held-out HPRC
+genomes against their assemblies alone found the same: no violating cell on
+key-labelled links, 1{,}221 of 2{,}052 cells on all links, and hard-region
+links wrong 14 to 103 times as often overall as on key links; so did a
+registered test on NA12878's HiFi reads, never compared with a truth
+before (31 of 108 cells violating on all links, none on links her own
+family key labels). Trusting
+a relation only when a single-sample assembly of the same person agrees with
+it, a sixth registered test pooled six genomes and held in all 62 testable
+cells on two new genomes, certifying segmental duplications at
+$\beta=10^{-3}$ with 0.78 and 0.96 of their pairs trusted; with the same
+certificates, a registered test certified cis or trans calls for 0.60 to
+0.89 of within-gene variant pairs at a per-call error of $10^{-2}$; in
+development, checking the assembly only at a call's two end variants raised
+the certified share of pairs 10 to 100\,kb apart on the father from 0.55 to
+0.88 and 0.90, and a registered test on NA12878 certified 0.89 and 0.90 of
+them. Over 37 certificate tests in this project, every violation
+was on pairs outside the population the calibration labels came from, or on
+a new sequencing batch, and no test with matched labels violated. We prove
+that certifying a new sequencing batch needs about $\ln(1/\delta)/\beta$
+labelled units of that batch (about 3{,}000 at $\beta=10^{-3}$). In
+development, parental genotype calls supply them for the pairs they can
+label, and a registered replication on HG005 with labels from its
+parents' calls held in all 90 testable cells; scored against the complete
+Q100 assembly, relations outside the
+v5.0q benchmark region hold 53 and 94 per cent of two phasers' errors
+(on NA12878, against a transmission truth, 85 and 91 per cent outside GIAB's
+region, registered), and
+where parental genotype calls reach the pairs on which phaser and assembly
+disagree, they attribute 0.64 to 0.94 of those disagreements to the phaser;
+and
+read-derived flags make the tandem-repeat stratum certifiable.
+
+\noindent\textbf{Availability:} \url{https://github.com/Nirraaav/phasebudget}:
+code, registrations with their commit times, run files and scorers. All
+data are public.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Read-based phasing assigns the alleles of heterozygous variants to the two
+haplotypes of a diploid genome from reads that cover several variants. The
+usual objective is minimum error correction (MEC), the fewest allele calls to
+change so that the reads split into two consistent groups~\cite{lippert2002};
+its weighted form wMEC charges each change by the confidence of the
+call~\cite{greenberg2004}. MEC is NP-hard~\cite{lippert2002}. WhatsHap solves
+wMEC exactly with a dynamic program exponential in coverage~\cite{patterson2015}
+and therefore first selects reads down to a cap with a greedy
+heuristic~\cite{martin2016,fischer2016}; Ralphi reuses that
+selector~\cite{ralphi2025}. The result is written into the \texttt{GT} and
+\texttt{PS} fields of a VCF. The VCF specification reserves a \texttt{PQ}
+field for the probability that alleles are ordered incorrectly and leaves the
+measure undefined;\footnote{VCF v4.3, Section 1.6.2,
+\url{https://samtools.github.io/hts-specs/VCFv4.3.pdf}.}
+WhatsHap~\cite{whatshap2015,whatshap2016}, HiPhase~\cite{hiphase} and
+LongPhase~\cite{longphase} do not fill it.
+
+Two questions follow, and this paper answers both. The first concerns the
+input to the phaser: how far is the deployed selector from the best
+selection under the same cap, and what does the gap cost in switch error?
+Choosing the heaviest reads under a per-variant cap is an interval scheduling
+problem, exactly solvable by min-cost flow~\cite{arkin1987,carlisle1995}, so
+exact selection can serve as the reference (Section~\ref{sec:selection}).
+
+The second concerns the output: can a relation between two phased variants
+carry an error rate? The question matters most for in-trans calls: under the
+ACMG/AMP guidelines a variant in trans with a pathogenic variant in a
+recessive disorder is moderate evidence (PM3)~\cite{richards2015}, and
+laboratories rely on familial genotyping or read-based phasing to establish
+it~\cite{delgobbo2025}. Statistical phasing reports a per-genotype phase
+probability~\cite{shapeit5}, chosen against a cutoff
+empirically~\cite{lassen2024}; a read-based relation has no comparable
+number. Ranking relations is not the hard part: a score from read support
+separates wrong relations from right ones with an AUC of 0.998 on HG002 HiFi
+(Section~\ref{sec:score}). What is missing is a threshold whose error rate is
+stated and holds on data it was not fitted to. We treat this as selective
+classification with guaranteed risk~\cite{geifman2017,ltt2025}: trust a
+relation or abstain, so that a stated risk among trusted relations is at most
+a target. Errors are dependent along the genome, so the risk is stated over
+100\,kb units; and the error rate at a given score differs between regions,
+so thresholds are calibrated within the GIAB difficult-region
+strata~\cite{dwarshuis2024}, which is Vovk's conditional
+construction~\cite{vovk2012} applied to Learn then Test.
+
+Every confirmatory claim below comes from a test registered before its test
+data were read: a design document committed and pushed to a public
+repository, with hypotheses, levels and decision rules; deviations are dated
+amendments. Results marked \emph{post hoc} were found after the data were
+seen; results marked \emph{development} come from a gate written before it
+was computed, on data that may have been seen before.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item Exact read selection by min-cost flow, a port that reproduces
+  WhatsHap 2.8's shipped selector read for read, and the selector's distance
+  from the optimum on HiFi and ONT reads of HG002 and HiFi reads of HG005
+  (Section~\ref{sec:selection}).
+\item Registered tests of where selection changes accuracy, in our library
+  and inside \texttt{whatshap phase}: exact selection lowers ONT switch error
+  by 42 per cent at cap 3 and changes nothing detectable at caps 5 and 15;
+  post hoc, most of the library's larger differences were guesses at tied
+  sites; and a majority-vote model whose registered regime rule failed.
+\item A post-processor that needs only a BAM and the \texttt{GT} and
+  \texttt{PS} fields of any phaser's VCF, with a per-stratum threshold and a
+  finite-sample guarantee at the level of genome units
+  (Section~\ref{sec:method}).
+\item Five registered tests of that guarantee on 48 individuals
+  (Section~\ref{sec:results}), including its failures.
+\item A lower bound on the labelled units a new sequencing batch needs
+  (Proposition~\ref{prop:floor}), and three development results: labels from
+  parental genotype calls (Section~\ref{sec:labels}), the errors outside the
+  benchmark region (Section~\ref{sec:outside}), and read-derived flags for
+  tandem repeats (Section~\ref{sec:flags}).
+\item A mechanism for the one failure of pooled calibration: a truth that
+  labels a relation only where two methods agree selects easy relations, and
+  thresholds fitted on it hold only on relations like those it labels
+  (Section~\ref{sec:t5cause}), found in development and replicated in a
+  registered test on 19 held-out genomes; and an account of all 37 certificate tests in
+  the project by that rule (Section~\ref{sec:principle}).
+\item A within-gene cis or trans call that checks the assembly at the two
+  variants reported, which certifies most long-range pairs at a per-call
+  error of $10^{-2}$ (Section~\ref{sec:endcalls}), with five predictions
+  for a new genome (NA12878) registered before its phase existed, all
+  supported (Section~\ref{sec:na12878}).
+\end{enumerate}
+
+\section{Related work}\label{sec:related}
+
+\paragraph{Exact phasing and read selection.} Exact MEC solvers differ in
+the parameter they pay for: coverage in WhatsHap~\cite{patterson2015}, read
+length~\cite{he2010}, corrections per column~\cite{pirola2016,beretta2018},
+or an integer program per block~\cite{chen2013}; MEC is fixed-parameter
+tractable in coverage for fixed ploidy~\cite{bonizzoni2016}. Heuristic
+solvers have no coverage parameter~\cite{edge2017,duitama2012,das2015}.
+Fischer and Marschall wrote that they were comparing their selector with the
+flow algorithm of M\"akinen et al.~\cite{fischer2016,makinen2015}; in the
+citing works we read~\cite{martin2016,beretta2018,garg2018} we found no
+report of that comparison, and the split-interval version of selection is
+APX-hard~\cite{bareyehuda2006}. Martin et al.\ compared the deployed selector
+with random downsampling~\cite{martin2016}. HiPhase~\cite{holt2024} and
+LongPhase~\cite{lin2022} phase from all reads, so the question does not arise
+for them. Information-theoretic analyses give the coverage needed to recover
+a whole haplotype~\cite{kamath2015,chen2016,mahajan2024}; our vote model is
+local and finite. Teo et al.\ published a benchmark as a Registered
+Report~\cite{teo2024}, and Mallona et al.\ describe pre-registration as a
+check on developers benchmarking their own tools~\cite{mallona2025}, which is
+the situation here.
+
+\paragraph{Phase confidence.} HapCUT2~\cite{hapcut2} prunes variants whose
+largest configuration posterior is below 0.8 and splits blocks at low
+posteriors; we did not find a measurement of whether these posteriors are
+calibrated. ProbHap~\cite{probhap} computes per-SNP transition
+probabilities by forward-backward. PhaseQuality~\cite{damaraju2026} assigns
+variant pairs to confidence tiers, which are not probabilities.
+PhaseME~\cite{phaseme} checks a phased VCF against population linkage.
+HipHap~\cite{hiphap} reports a per-read haplotype assignment quality against
+a diploid assembly. Paraphase~\cite{chen2025paraphase} phases paralogous
+genes with a dedicated caller. Clinical studies report concordance on small
+sets of variant pairs~\cite{jamshidi2025} or no phase error
+rate~\cite{devaney2026}.
+
+\paragraph{Risk control.} Geifman and El-Yaniv~\cite{geifman2017} define
+selective risk and choose a threshold with a high-probability bound.
+Conformal risk control~\cite{crc2024} needs a loss monotone in the
+threshold, which selective risk is not. Learn then Test~\cite{ltt2025}
+casts risk control as multiple testing with finite-sample guarantees for
+any loss; our procedure is its selective classification example with genome
+units in place of points. Vovk~\cite{vovk2012} calibrates within categories
+fixed in advance; Gibbs et al.~\cite{gibbs2023} handle overlapping groups.
+Under covariate shift, calibration can be reweighted with a known
+likelihood ratio~\cite{tibshirani2019}; a shift of the error rate at a given
+score within a stratum, which is what a basecaller change can cause, is not
+covered.
+
+\paragraph{Truth sets and families.} GIAB v5.0q~\cite{hansen2026} is built
+from the complete HG002 Q100 diploid assembly; its authors report that the
+earlier v4.2.1 benchmark left out 12 per cent of the autosomes; the Platinum Pedigree~\cite{kronenberg2025} filters
+variants by inheritance in a three-generation family. Genotype errors bias
+trio-based estimates of phase accuracy~\cite{browning2022}. Relatives
+sharing segments by descent have served as surrogate parents for
+phasing~\cite{kong2008} and siblings as phasing truth for statistical
+phasing~\cite{oconnell2016}.
+
+\input{partA.tex}
+
+\section{Certified phase relations: method}\label{sec:method}
+
+\subsection{Pairs, units and risk}\label{sec:problem}
+
+Fix a chromosome and its heterozygous variants in position order. A phaser
+assigns each variant $j$ either nothing or a first-haplotype allele
+$h_j\in\{0,1\}$ and a block $b_j$. A \emph{pair} $p=(j,j')$ is two variants
+consecutive among the phased ones and in one block, with called relation
+$\rho_p=\mathbf{1}[h_j=h_{j'}]$. A pair is \emph{compared} when the truth
+phases both variants, with relation $\rho^*_p$, and \emph{wrong} when
+$\rho_p\neq\rho^*_p$.
+
+A score $s(p)$, which never reads the truth, takes values in a totally
+ordered set. At threshold $t$ the trusted set is $T(t)=\{p:s(p)\ge t\}$. The
+genome is cut into units $u$ of 100\,kb, and a pair belongs to the unit of
+its first variant. Let
+\[
+a_u(t)=\mathbf{1}[\exists p\in u\cap T(t)],\qquad
+\ell_u(t)=\mathbf{1}[\exists p\in u\cap T(t),\ p\text{ wrong}].
+\]
+A unit is \emph{active} when it holds a trusted pair and \emph{wrong} when it
+holds a wrong trusted pair. For units drawn from a distribution $D$ the
+\emph{risk} is $R(t)=\Pr_{u\sim D}[\ell_u(t)=1\mid a_u(t)=1]$. One flipped
+site breaks both of its pairs, so a per-pair loss would count one error
+twice; the unit loss counts it once. A relation between two variants of one
+unit is wrong only if the unit holds a wrong pair on the chain between them,
+so the unit loss also bounds an in-trans call inside one unit. Both $a_u$
+and $\ell_u$ are non-increasing in $t$, but $R$ is not monotone.
+
+\paragraph{Goal.} From calibration units choose $\hat t$ with
+$\Pr[R(\hat t)\le\beta]\ge1-\delta$, preferring rules that trust more pairs.
+
+\subsection{The score}\label{sec:score}
+
+For a pair, let $a_p$ be the number of reads that call both variants and
+agree with $\rho_p$, $d_p$ the number that disagree, and $m_p=a_p+d_p$. The
+score is $s(p)=(L(a_p,m_p),m_p)$ ordered lexicographically, where $L$ is the
+Wilson lower bound with $z=2$ on the agreeing share $\hat q=a_p/m_p$,
+\[
+L(a,m)=\frac{\hat q+\frac{z^2}{2m}-z\sqrt{\frac{\hat q(1-\hat q)}{m}+
+\frac{z^2}{4m^2}}}{1+\frac{z^2}{m}},\qquad L=-1\text{ when }m=0.
+\]
+It penalizes a pair supported by few reads, which the agreeing share does
+not, and a pair with many reads and many disagreements, which the support
+margin $a_p-d_p$ does not. Reads are extracted as \texttt{whatshap phase}
+extracts them (realignment against the reference, mapping quality at least
+20, no supplementary alignments), from all reads, not from a downsampled
+subset. On development data (HG002, 21 chromosomes, HiFi) its AUC for
+separating wrong from right pairs was 0.998, against 0.995 for the margin.
+
+\subsection{Choosing the threshold}\label{sec:ltt}
+
+The grid $t_1\succ t_2\succ\cdots\succ t_G$ holds the score values at which
+50, 50.25, \dots, 100 per cent of calibration pairs are trusted ($G=201$),
+ordered from strict to loose. For $t_g$, let $N_g$ be the number of active
+calibration units and $K_g$ the number of wrong ones; the p-value of
+$H_g:R(t_g)>\beta$ is $\pi_g=\Pr[\Bin(N_g,\beta)\le K_g]$. The scan rejects
+$H_1,H_2,\dots$ while $N_g>0$ and $\pi_g\le\delta$, and outputs the last
+rejected threshold, or nothing if $H_1$ is not rejected.
+
+\begin{proposition}\label{prop:guarantee}
+Assume (A1) the calibration units are independent draws from $D$, (A2) the
+grid and its order are fixed before the calibration losses are observed,
+and (A3) the truth is correct on the compared pairs. Then
+$\Pr[\hat t\text{ is output and }R(\hat t)>\beta]\le\delta$.
+\end{proposition}
+
+This is the fixed-sequence form of Learn then Test~\cite{ltt2025}; the
+proof is in Appendix~\ref{app:proofs}. The grid is computed from
+calibration scores, which do not use the truth but come from the same
+units, so (A2) holds approximately; computing it from separate chromosomes
+removes the gap. (A1) is an assumption: on development ONT data, wrong
+10\,kb bins clustered ($p=0.0005$) while wrong 100\,kb units did not (within
+one unit, 1 adjacent pair against 1.14 expected, $p=0.69$), which chose the
+unit size.
+
+\paragraph{Testing on new data.} Given $\hat t$, a test set yields $n$ active
+units and $k$ wrong ones. If the test units are independent draws with risk
+at most $\beta$, then $\Pr[\Bin(n,\beta)\ge k]$ is a valid p-value for
+exceeding $\beta$. Every validity hypothesis below uses it, with a
+Bonferroni level over its cells.
+
+\subsection{Calibration within strata}\label{sec:strata}
+
+A pair is \texttt{indel} if either variant is an indel; else
+\texttt{segdup}, \texttt{lowmap} or \texttt{tandem} if either variant lies
+in that GIAB v3.6 stratum~\cite{dwarshuis2024}, in that order; else
+\texttt{easy} if both lie in the stratum outside all difficult regions;
+else \texttt{difficult}. The unit becomes (chromosome, 100\,kb bin, group),
+and the scan runs within each group on its own rows and grid.
+Proposition~\ref{prop:guarantee} then holds per group, each at confidence
+$1-\delta$. A group with no certified threshold trusts nothing. A per-group
+statement does not depend on how a test genome's pairs are spread over the
+groups, so it needs no reweighting between genomes with different
+difficult-region content.
+
+\subsection{Relations within a block}\label{sec:chains}
+
+\begin{proposition}\label{prop:chain}
+Let a relation between two variants of one block be trusted when every pair
+between them is trusted, let its pairs lie in $m$ distinct (group, unit)
+cells of $q$ groups, and let each group's threshold be certified at
+$\beta$. If test units are exchangeable with calibration units within each
+group, then with probability at least $1-q\delta$ over the calibration, the
+relation is trusted and wrong with probability at most $m\beta$.
+\end{proposition}
+
+The bound grows with the number of units a relation spans, and a single
+untrusted pair blocks the relation; Section~\ref{sec:discussion} reports
+what this means for variant pairs within genes.
+
+\section{How many labels a certificate needs}\label{sec:theory}
+
+The scan certifies only if $\pi_1\le\delta$, and
+$\pi_1\ge\Pr[\Bin(N_1,\beta)=0]=(1-\beta)^{N_1}$. Hence:
+
+\begin{corollary}\label{cor:units}
+A group certifies $\beta$ only if it has at least
+$N^*(\beta,\delta)=\lceil\ln\delta/\ln(1-\beta)\rceil$ active calibration
+units. At $\delta=0.05$, $N^*$ is 998, 2{,}995 and 9{,}985 for $\beta=3\times
+10^{-3}$, $10^{-3}$ and $3\times10^{-4}$.
+\end{corollary}
+
+The segmental-duplication group of one genome holds about 2{,}900 units at
+30-fold (2{,}868 and 2{,}924 on HG002 ONT for the two phasers), so in one
+genome it cannot certify $10^{-3}$ whatever the score: the smallest
+certifiable $\beta$ is $1-0.05^{1/N}$, $1.04\times10^{-3}$ and
+$1.02\times10^{-3}$. The next result shows that the requirement is not an
+artefact of the procedure.
+
+\begin{proposition}[Label floor]\label{prop:floor}
+Let a procedure see the losses $\ell_1,\dots,\ell_n$ of $n$ labelled units of
+a batch, independent Bernoulli with mean $R$, and any other data whose
+distribution given the losses does not depend on $R$. If it certifies with
+probability at most $\delta$ whenever $R>\beta$, and with probability at
+least $p>\delta$ when $R=0$, then $(1-\beta)^np\le\delta$, that is,
+$n\ge\ln(p/\delta)/(-\ln(1-\beta))$.
+\end{proposition}
+
+At $p=1$, $\beta=10^{-3}$ and $\delta=0.05$ the bound is 2{,}994.2 units, which
+Learn then Test with no wrong unit attains. Units from other batches help
+only through an assumption that ties their error rate to the new batch's;
+without it they are part of the ``other data'' and cannot lower $n$.
+Prediction-powered and pooled corrections are covered by the same argument.
+In practice a new batch, such as a new basecaller release, needs labels at
+the scale of a genome.
+
+\begin{proposition}[Selected populations]\label{prop:select}
+Let a rule $E$, fixed in advance and not reading the truth, mark pairs
+eligible. Learn then Test run on the units formed by eligible calibration
+pairs controls $R_E$, the risk over units formed by eligible pairs, at
+$\beta$ with confidence $1-\delta$ under (A1) to (A3) for that distribution.
+It says nothing about the risk over all pairs.
+\end{proposition}
+
+Proofs are in Appendix~\ref{app:proofs}. Proposition~\ref{prop:select} is
+used twice: for labels that exist only for some pairs
+(Section~\ref{sec:labels}), and for abstention on pairs that a read-derived
+flag marks (Section~\ref{sec:flags}). When labels come from relatives, (A3)
+becomes the assumption that the labels are right on eligible pairs.
+
+\section{Certified phase relations: registered experiments}\label{sec:design}
+
+\paragraph{Registration.} Each test was a design document committed and
+pushed to a public repository before its test reads were drawn; the push
+time is the third-party record. It fixed the score, unit, grid, $\delta=0.05$,
+$\beta\in\{3\times10^{-4},10^{-3},3\times10^{-3}\}$, depths, phasers,
+hypotheses, Bonferroni levels and decision rules. Deviations are dated
+amendments stating whether results had been seen; none below was made after
+a test result was seen. Each test cell calibrates at its own depth with its
+own phaser, and the test population is consecutive pairs of variants the
+test truth phases, with the truth's own heterozygous calls, phase removed,
+as phaser input. In T4 the input check, registered to run before the
+scorer, ran while the scorer ran; it reads no phase, and every test-genome
+row it found had been written by the scorer. Phasers were \texttt{whatshap phase} 2.8 with
+\texttt{--reference} and \texttt{--ignore-read-groups} at its default
+\texttt{--internal-downsampling} of 15, and LongPhase 2.0.2 (\texttt{--ont}
+or \texttt{--pb}, with \texttt{--indels} from the second test on), at 30, 20
+and 10-fold slices drawn with fixed seeds, on the 21 autosomes other than
+chromosome 20, which served as a pilot. Table~\ref{tab:design} lists the
+tests.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}p{1.2cm}p{4.0cm}p{5.1cm}p{3.6cm}@{}}
+\toprule
+test & calibration & test genomes & test truth\\
+\midrule
+T1 & HG002 ONT sup 2023, one threshold & HG001 ONT sup 2023; HG002 ONT hac & Platinum Genomes 2017; v5.0q\\
+T2 & per group: NA12878 Pedigree ONT; HG002 ONT sup 2023 (v5.0q) & six relatives of NA12878; HG005 ONT sup v5.0.0 (2025) & Platinum Pedigree; GIAB transmission (SNVs)\\
+T3 & per group: HG002 ONT sup v5.0.0 & HG001 ONT sup v5.0.0, new flowcells & Platinum Pedigree (with indels)\\
+T4 (W1) & per group: HG002 HPRC HiFi & 39 HPRC HiFi genomes (20 AFR, 15 AMR, 4 EAS) & dipcall $\cap$ 1000 Genomes transmission\\
+T5 (W1b) & per group: HG002 and 20 HPRC genomes pooled & 5 Pedigree HiFi genomes; 19 HPRC genomes & Platinum Pedigree; as T4\\
+T6 (K1b) & per group, agreeing pairs only: HG002 HPRC HiFi and the 5 Pedigree HiFi genomes of T5 pooled & NA12877 Pedigree HiFi; HG005 HPRC HiFi & Platinum Pedigree; GIAB transmission (SNVs)\\
+\bottomrule
+\end{tabular}
+\caption{The six registered tests. Registration commits: T1 \texttt{f2ef0ae}
+(2 October 2026), T2 \texttt{239dde3} (8 October), T3 \texttt{9f6b1dd} (13
+October), T4 14 October with amendment 1 on 15 October, T5 15 October, T6
+\texttt{26db4b6} (19 October).
+``sup'' and ``hac'' are ONT R10.4.1 super-accuracy and high-accuracy
+basecalling.}
+\label{tab:design}
+\end{table}
+
+\paragraph{Truth quality decides what can be tested.} A test truth with
+error rate $e$ per unit raises a cell's observed rate by up to $e$. For the
+HPRC genomes, the registered truth was dipcall on each genome's trio
+assemblies. Before any test genome was scored, it was compared with GIAB
+trio transmission on HG002 and HG005: in the \texttt{easy} group 278 of
+47{,}737 units disagreed (one-sided 95 per cent bound $6.4\times10^{-3}$), so
+a single-assembly truth cannot test a unit bound of $3\times10^{-3}$.
+Amendment 1 of T4 replaced it, before any test genome's phasing was
+compared with a truth, by the consensus of dipcall and transmission from
+the 1000 Genomes high-coverage panel's trio genotypes. A consensus pair is
+wrong only where the transmission pair is wrong, so transmission's own
+error, measured on NA12878 against the Platinum Pedigree truth, bounds the
+consensus truth's. A (group, $\beta$) is testable when that bound's one-sided
+95 per cent upper limit is at most $\beta/3$ (Table~\ref{tab:gate}). Only
+39 of 44 candidate HPRC genomes have both parents in the 1000 Genomes
+pedigree; the other five are not scored.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+group & units & wrong units & upper 95\% & testable at\\
+\midrule
+\texttt{easy} & 23{,}700 & 7 & $5.55\times10^{-4}$ & $3\times10^{-3}$\\
+\texttt{difficult} & 16{,}452 & 1 & $2.88\times10^{-4}$ & $10^{-3}$, $3\times10^{-3}$\\
+\texttt{lowmap} & 12{,}317 & 11 & $1.48\times10^{-3}$ & none\\
+\texttt{tandem} & 19{,}686 & 28 & $1.95\times10^{-3}$ & none\\
+\texttt{segdup} & 3{,}000 & 11 & $6.06\times10^{-3}$ & none\\
+\texttt{indel} & 23{,}107 & 92 & $4.73\times10^{-3}$ & none\\
+\bottomrule
+\end{tabular}
+\caption{The truth gate of T4 and T5: 1000 Genomes transmission against the
+Platinum Pedigree truth on NA12878, 100\,kb units per group.}
+\label{tab:gate}
+\end{table}
+
+\section{Certified phase relations: results}\label{sec:results}
+
+\subsection{One threshold does not transfer between genomes (T1)}
+
+With one threshold for the whole genome, calibrated on HG002 ONT
+super-accuracy reads, no cell of HG002 high-accuracy reads violated the
+bound, and all 18 HG001 cells did, with realized unit rates 3.6 to 42 times
+$\beta$ (Appendix Table~\ref{tab:t1}). After scoring, and not registered,
+we traced the failure to the test's variant list: restricted to pairs whose
+two SNVs are GIAB HG001 v4.2.1 heterozygous SNVs inside its benchmark
+regions, 88 per cent of pairs remained, 98.5 per cent of WhatsHap's 30-fold
+wrong pairs were removed, and no cell violated. A registered adjudication
+against the newer Platinum Pedigree truth then found that about 1{,}700 of
+the 2017 truth's heterozygous SNVs at these errors are not heterozygous; the
+remaining errors outside the GIAB regions were phaser errors that a single
+threshold does not control. This motivated calibration within strata.
+
+\subsection{Per-stratum thresholds across genomes, basecallers and ancestries (T2 to T5)}
+
+Table~\ref{tab:main} gives the validity decisions. A cell is (test genome,
+depth, phaser, $\beta$, group); a group that certifies nothing abstains and
+cannot violate.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}p{3.3cm}p{3.6cm}rrp{1.9cm}p{1.9cm}@{}}
+\toprule
+test & groups & cells & level & violating & verdict\\
+\midrule
+T2, relatives and HG005 & \texttt{easy} & 126 & $0.05/126$ & 0 & supported\\
+T2, relatives & difficult and \texttt{indel} & 540 & $0.05/540$ & 0 (240 abstain) & supported\\
+T2, HG005 & difficult & 72 & $0.05/72$ & 0 (28 abstain) & supported\\
+T3, HG001 & \texttt{easy} & 18 & $0.05/18$ & 0 & supported\\
+T3, HG001 & difficult and \texttt{indel} & 90 & $0.05/90$ & 2 (41 abstain) & not supported\\
+T4, 39 HPRC genomes & \texttt{easy}, $\beta=3\times10^{-3}$ & 234 & $0.05/792$ & 0 & supported\\
+T4, 39 HPRC genomes & \texttt{difficult}, $\beta\ge10^{-3}$ & 468 & $0.05/3{,}960$ & 0 & supported\\
+T5, 5 Pedigree HiFi genomes & \texttt{easy}, \texttt{difficult} & 180 & $0.05/540$ & 0 & \\
+T5, 5 Pedigree HiFi genomes & \texttt{segdup}, \texttt{lowmap}, \texttt{tandem}, \texttt{indel} & 360 & $0.05/540$ & 163 (65 abstain) & B1 not supported\\
+T5, 19 HPRC genomes & \texttt{easy} and \texttt{difficult}, testable & 342 & $0.05/2{,}052$ & 0 & B2 supported\\
+T6, NA12877 and HG005 & all six groups, agreeing pairs & 72 & $0.05/72$ & 0 (10 abstain) & supported\\
+\bottomrule
+\end{tabular}
+\caption{Validity of per-stratum thresholds in the registered tests. In
+T4 only the cells that the truth gate makes testable are counted
+(Table~\ref{tab:gate}), and so are T5's HPRC cells; the levels are those
+registered for all cells. T5's Pedigree genomes have an accurate truth, so
+all their cells count. T2's
+HG005 arm was registered with 90 cells, but its truth phases SNVs only;
+the smallest $p$ among its 72 cells is 0.959, so the decision is the same
+at the registered level.}
+\label{tab:main}
+\end{table}
+
+\paragraph{The easy stratum.} No easy cell violated in any test: 126 (T2),
+18 (T3), 234 (T4), 90 on the Pedigree HiFi genomes and 114 on the held-out
+HPRC genomes (T5): 582 cells. The smallest exceedance $p$ was 0.814 (T2),
+0.371 (T3), 1 (T4) and 0.00745 (T5, against a level of $9.26\times10^{-5}$). The thresholds were useful: at $\beta=10^{-3}$
+per-stratum thresholds trusted 99.56 to 100 per cent of easy pairs on the
+relatives, 99.64 to 99.65 per cent for LongPhase on HG005, and 99.62 to
+99.69 per cent on HG001 in T3, where they kept 1 of 55 and 2 of 55 wrong
+WhatsHap pairs and 1 of 48 and 2 of 63 wrong LongPhase pairs. On the 39
+HPRC genomes (T4, descriptive at $\beta=10^{-3}$, 30-fold) they trusted
+99.75 to 99.95 per cent of easy pairs per genome for WhatsHap and 99.79 to
+99.96 for LongPhase, with at most $7.1\times10^{-6}$ of trusted pairs wrong in
+any genome. Calibration on one European genome carried over to genomes of
+African (mean trusted share 0.9993 for WhatsHap), admixed American (0.9985)
+and East Asian (0.9979) ancestry; African genomes have the most
+heterozygous variants (1{,}260 per Mb against 983 and 894), which shortens
+the gaps between them.
+
+\paragraph{One threshold against per-stratum thresholds.} Per-stratum
+thresholds trusted more of all test pairs than one pooled threshold from
+the same rows in all 28 cells of T2 (WhatsHap on the relatives 65.5 to
+66.6 per cent, where the pooled threshold trusted none) and all 4 of T3
+(60.6 and 60.2 per cent for WhatsHap against none; 73.8 and 73.3 for
+LongPhase against 51.2 and 51.1). A pooled threshold is pulled by the
+worst stratum and abstains everywhere.
+
+\paragraph{The difficult strata.} T2's difficult and indel groups held in
+all 540 relative cells and 72 HG005 cells, and T4's \texttt{difficult}
+group in all 468 testable cells. With calibration on one genome, T3 found
+the one failure: two cells of
+WhatsHap's \texttt{lowmap} group at $\beta=3\times10^{-3}$, at 30-fold (81 of
+14{,}745 units wrong, $p=4.4\times10^{-7}$) and 10-fold (79 of 14{,}651,
+$p=1.2\times10^{-6}$). There the threshold trusted 117{,}951 of 118{,}496
+pairs and 148 of 281 wrong pairs. The same group held at $\beta=10^{-3}$
+and LongPhase's at every $\beta$. After scoring, and not registered: for the
+median wrong trusted pair, 15 of 21 reads supported the wrong relation;
+LongPhase made the same call on 29 of the 37 it phased; and Platinum
+Genomes 2017 phased 14 and agreed with the Pedigree truth on all 14. Reads
+from a paralogous copy aligned here would give this pattern; we have not
+shown that they do. With thresholds calibrated on the earlier basecaller's
+reads instead, which were stricter in this group, no cell violated.
+
+\paragraph{Abstention.} At $\beta=10^{-3}$ the share of pairs in groups that
+certify nothing was 0.30 (WhatsHap) and 0.05 (LongPhase) on the relatives at
+30-fold, 0.39 and 0.25 in T3, where indel pairs are 26 per cent of
+WhatsHap's pairs, and 0.373 to 0.384 and 0.282 to 0.293 on the HPRC genomes.
+\texttt{segdup} certified nothing in all 108 relative cells of T2, and
+WhatsHap's \texttt{indel} group nothing in any cell of T2 or T3, nor at
+$\beta=10^{-3}$ and 30-fold in any T4 genome.
+WhatsHap phases indel relations that the reads do not resolve: on 468{,}157
+HG001 indel pairs both phasers phased at 30-fold, 2{,}834 were wrong only for
+WhatsHap and 106 only for LongPhase (T3).
+
+\paragraph{Pooling genomes (T5).} T5 pooled the calibration over HG002 and
+20 HPRC genomes (scored against the consensus truth) to lift the
+\texttt{segdup} group above the floor of Corollary~\ref{cor:units}. It did:
+\texttt{segdup} certified at $\beta=10^{-3}$ in all four cells of depths 30
+and 20 (B3 supported), and at $\beta=10^{-3}$ the pooled thresholds trusted
+0.823 of the Pedigree genomes' \texttt{segdup} pairs, 0.864 of
+\texttt{tandem} and 0.445 of \texttt{indel}, against 0, 0.418 and 0 with
+HG002's thresholds alone. But on the five Pedigree HiFi genomes, scored
+against the Platinum Pedigree truth, 163 of the 360 hard-stratum cells
+violated (B1 not supported): \texttt{segdup} in 71 of 75 certifying cells,
+\texttt{lowmap} in 51 of 90, \texttt{indel} in 36 of 45 (all LongPhase) and
+\texttt{tandem} in 5 of 85, with realized unit rates up to $3.0\times10^{-2}$
+in \texttt{segdup} at $\beta=3\times10^{-3}$. The \texttt{easy} and
+\texttt{difficult} groups held in all 180 cells there (smallest $p$ 0.0075
+and 0.097), and on the 19 held-out HPRC genomes all 342 testable cells held
+(smallest $p$ 0.043; B2 supported). Usefulness in \texttt{easy} (B4) held in
+the 10 LongPhase cells and failed in the 10 WhatsHap cells, where the pooled
+threshold trusted every pair and so left all 29 to 58 wrong pairs trusted.
+At scoring we could not say why the pooled hard-stratum thresholds failed;
+Section~\ref{sec:t5cause} tests three explanations.
+
+\subsection{Why pooled calibration failed (development)}\label{sec:t5cause}
+
+The registration of T5 named one risk (units of different genomes at one
+locus are not independent), and two others were plausible: the consensus
+truth labels only pairs where dipcall and transmission agree, which may
+keep easy pairs (Proposition~\ref{prop:select}), and the Pedigree HiFi reads
+are a different sequencing batch. We tested all three after T5 was scored,
+with rules written before computing (\nolinkurl{docs/design/l1-key-selection.md}).
+
+\paragraph{The key selects easy pairs.} On HG002's HPRC HiFi reads, scored
+against v5.0q, we compared pairs the consensus-style key (HG002's HPRC
+dipcall equal to GIAB trio transmission) labels with pairs it does not. The
+key labels 0.75 of \texttt{easy} pairs but 0.46 of \texttt{segdup}, 0.48 to
+0.49 of \texttt{tandem} and 0.66 of \texttt{lowmap} pairs, and no indel pair.
+At 30-fold, over \texttt{segdup}, \texttt{lowmap} and \texttt{tandem}
+together, all pairs were wrong 79 times as often as key-labelled pairs for
+WhatsHap ($4.7\times10^{-3}$ against $5.9\times10^{-5}$; pairs the key does
+not label $9.9\times10^{-3}$) and 11.6 times for LongPhase ($1.4\times10^{-3}$
+against $1.2\times10^{-4}$; unlabelled $2.8\times10^{-3}$); the rule was a
+ratio above 3 for both. The smallest single-group ratio was 3.7
+(LongPhase, \texttt{lowmap}); in the \texttt{difficult} group LongPhase's
+ratio was 0.89.
+
+\paragraph{The failure disappears on key-labelled pairs.} For each of the
+five Pedigree children we built a key of the same kind: the child's
+single-sample hifiasm assembly relates the pair with the relation that
+transmission from the 1000 Genomes genotypes of NA12877 and NA12878 gives.
+Rescoring T5's 540 cells with its pooled thresholds reproduced the 163
+violating cells on all pairs. On key-labelled pairs no cell violated. As a
+control for lost power, keeping pairs at random with the same share per
+cell left 120 violating cells (rule: at most 32 on key pairs and at least
+82 at random). The failure is selection, not fewer units.
+
+\paragraph{Batch and shared loci.} On key-labelled pairs the children were
+not more error-prone than the 20 HPRC pool genomes (WhatsHap \texttt{segdup}
+$2.3\times10^{-4}$ against $7.6\times10^{-4}$; LongPhase
+$1.5\times10^{-4}$ against $4.3\times10^{-4}$), so a batch effect does not
+explain T5. Wrong units are shared at a locus: of a child's wrong WhatsHap
+\texttt{segdup} units, 0.85 were also wrong in a sibling and 0.32 in an HPRC
+pool genome.
+
+\paragraph{Replication on 19 held-out genomes (registered).} The results
+above explain a failure already seen, in one family. We repeated the
+comparison on the 19 held-out HPRC genomes of T5, with rules committed
+after a development run on the 20 pool genomes and before any held-out
+genome was scored this way (commit \texttt{0d984c1},
+\nolinkurl{docs/design/l8-hprc-key-selection.md}). The truth was each
+genome's HPRC dipcall alone, and the key was the consensus truth of T5;
+links where dipcall and transmission both phase but disagree (0.038 to
+0.084 per cent of links) were left out. With T5's pooled thresholds, over
+$19\times108=2{,}052$ cells at level $0.05/2{,}052$, all three rules held.
+At 30-fold the wrong rate in \texttt{segdup}, \texttt{lowmap} and
+\texttt{tandem} together was more than 3 times higher on all links than on
+key links in 19 of 19 genomes for both phasers (smallest ratios 14.3 for
+WhatsHap and 31.9 for LongPhase; the rule needed 17 genomes). On all links
+1{,}221 cells violated, and every genome had a violating hard or indel cell
+(the rule needed 15). On key links no cell violated. Links kept at random
+at the key's share left 1{,}159 violating cells. On links that transmission
+does not label, dipcall is the only truth, so its own errors count as
+phaser errors there. A second registered test, on NA12878, uses a truth
+from transmission alone (Section~\ref{sec:na12878}).
+
+\subsection{Requiring an assembly to agree (T6)}\label{sec:t6}
+
+In development on HG002 HiFi, a hifiasm assembly of HG002's HiFi reads alone,
+called by dipcall, was right on all 478 hard-stratum pairs that WhatsHap got
+wrong and it phased (Appendix~\ref{app:other}). T6 makes agreement a
+condition of trust. The assembly (hifiasm 0.25.0, default options, no
+parental or Hi-C data; dipcall 0.3) \emph{relates} two variants when each
+lies in one pair of haplotype contigs, the same for both, inside dipcall's
+region, with a phased call at the same alleles; a pair \emph{agrees} when
+the assembly relates it with the phaser's relation, and a pair that does not
+agree is never trusted. Calibration pooled the agreeing pairs of HG002 and
+the five Pedigree genomes of T5 at 30-fold, a unit being (genome,
+chromosome, 100\,kb), so that \texttt{segdup} has more units than the floor
+of Section~\ref{sec:theory} requires. The test genomes were NA12877, the
+Pedigree father, whose reads the project had not read, and HG005's HPRC HiFi
+reads, never assembled before; 72 cells, level $0.05/72$. The registration
+stated the shift: NA12877 shares a haplotype with each pool genome, so HG005,
+unrelated and sequenced elsewhere, is the test of transfer. Before scoring,
+a dry run with HG002's even chromosomes as a stand-in test certified
+\texttt{segdup} at $10^{-3}$ and violated in no agreement cell.
+
+All three registered hypotheses were supported. No cell violated: 62 of the
+72 cells had a trusted unit, and the smallest $p$ was 0.818 (NA12877,
+WhatsHap, \texttt{segdup}, $10^{-3}$: 2 wrong units of 3{,}119). With
+18{,}667 (WhatsHap) and 18{,}736 (LongPhase) pooled agreeing \texttt{segdup}
+units, \texttt{segdup} certified at $10^{-3}$ for both phasers, though not at
+$3\times10^{-4}$. Table~\ref{tab:t6} gives the trusted shares at $10^{-3}$.
+The same pool without the agreement rule also had no violating cell (50
+testable, smallest $p$ 0.793) but certified nothing in \texttt{segdup} for
+either phaser and nothing in WhatsHap's \texttt{indel} group. Agreement does
+not make errors independent: on NA12877 every wrong pair among agreeing
+pairs was also wrong in the assembly (WhatsHap: 10 \texttt{indel}, 6
+\texttt{segdup}, 1 \texttt{tandem}), against 6{,}175, 1{,}147 and 357 wrong
+pairs among the pairs that did not agree. It removes most errors because
+the assembler and the phaser fail in different places.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{NA12877} & \multicolumn{2}{c}{HG005}\\
+group & WhatsHap & LongPhase & WhatsHap & LongPhase\\
+\midrule
+\texttt{segdup} & 0.776 & 0.768 & 0.963 & 0.965\\
+\texttt{tandem} & 0.880 & 0.884 & 0.994 & 0.994\\
+\texttt{indel} & 0.864 & 0.881 & -- & --\\
+\texttt{lowmap} & 0.913 & 0.917 & 0.991 & 0.991\\
+\texttt{easy} & 0.951 & 0.951 & 0.994 & 0.994\\
+\bottomrule
+\end{tabular}
+\caption{T6: share of each group's pairs trusted at $\beta=10^{-3}$ with the
+assembly-agreement certificate. A pair the assembly does not relate counts
+as untrusted. HG005's truth phases SNVs only.}
+\label{tab:t6}
+\end{table}
+
+The cost is an assembly per genome: hifiasm took one to four days per genome
+on a shared server, NA12877's 222\,GB of reads the longest.
+
+\paragraph{Within-gene calls with agreement (registered).} A second test,
+registered after T6 was scored (commit \texttt{a147ef3}, 27 October 2026),
+applies the chain call of Section~\ref{sec:chains} to pairs of variants in
+one clinically relevant gene and at most 100\,kb apart, with T6's pooled
+thresholds on the grid $\beta\in\{10^{-4},3\times10^{-4},10^{-3},3\times
+10^{-3},10^{-2}\}$, on the same two test genomes; a link the test genome's
+assembly does not agree with is never trusted. Validity is tested on one
+certified pair per gene chosen by a hash that ignores phase, in 8 cells at
+level $0.05/8$. No cell violated: 0 wrong picks of about 2{,}200 to 2{,}400
+genes in seven cells and 1 in the eighth (LongPhase, NA12877). At a per-call
+target of $10^{-2}$, WhatsHap certified 0.603 of NA12877's 30.2 million pairs
+and 0.885 of HG005's 12.2 million, LongPhase 0.642 and 0.891, against 0.050,
+0.108, 0.310 and 0.494 without agreement; WhatsHap had no wrong certified
+pair on either genome. The gain is at long range: for WhatsHap on NA12877,
+pairs 10 to 100\,kb apart were certified at 0.553 against 0.007. Not every
+gene gains. Where the assembly does not relate the pairs, agreement
+certifies fewer than the frozen score: on NA12877 with WhatsHap, PMS2 20
+against 247 of 2{,}346 pairs, CYP11B2 0 against 417 of 1{,}431, OTOA 0
+against 117 of 2{,}145 (observed after scoring).
+
+\subsection{Checking only the two variants reported (development)}\label{sec:endcalls}
+
+A chain call is wrong only if the phaser's parity between the two end
+variants is wrong, yet the chain rule above needs every link between them
+to agree with the assembly, so one link the assembly does not call blocks
+the call. We replaced it with an end rule: a within-gene call is trusted
+when the assembly relates the two end variants with the phaser's relation.
+Calibration used the same pool, one hash-chosen pair per (pool genome,
+gene, distance bin, easy or hard), with a group certified at per-call
+target $r$ when $\Pr[X\le k\mid n,r]\le0.05$; rules were written before
+computing (\nolinkurl{docs/design/l2-end-variant-calls.md}), on the test
+genomes of the registered test above, so the results are development.
+
+At $r=10^{-2}$ the certified share of NA12877's pairs 10 to 100\,kb apart
+was 0.896 (WhatsHap) and 0.884 (LongPhase), against 0.553 and 0.599 with
+the chain rule; on HG005 0.941 and 0.938 against 0.862 and 0.870. Over all
+of NA12877's 30.2 million within-gene pairs the share was 0.896 and 0.884.
+No cell violated (0 to 2 wrong picks of about 2{,}200 per cell, level
+$6.25\times10^{-3}$). Requiring both phasers and the assembly to agree at the
+ends kept the share (NA12877 0.883, HG005 0.946) and cut wrong certified
+pairs on NA12877 from 498 (WhatsHap) and 2{,}081 (LongPhase) to 88; 82 per
+cent of NA12877's 2{,}672 genes and 97 per cent of HG005's 2{,}498 had a
+certified pair, with median per-gene shares 0.93 and 1.0. Neither rule
+certified any pair 10 to 100\,kb apart at $r=10^{-3}$: the pool's 11{,}500
+picks per group allow at most 5 wrong, and the three-way rule had 6. The
+duplicated genes stay out of reach (on NA12877 with WhatsHap, OTOA 0 of
+2{,}145 pairs, CYP11B2 0 of 1{,}431, PMS2 78 of 2{,}346). Reads spanning
+both ends, used instead of the assembly, certified only 0.07 to 0.15 of
+pairs beyond 10\,kb.
+
+\subsection{A new genome: five registered predictions on NA12878}\label{sec:na12878}
+
+The development results of Sections~\ref{sec:t5cause} and~\ref{sec:endcalls}
+were tested together on NA12878's Platinum Pedigree HiFi reads, whose phase
+had never been computed. Five predictions were registered on 22 November
+2026 (\nolinkurl{docs/design/l7-na12878-plan.md}, commit \texttt{7ec2ff6})
+before any NA12878 HiFi phase existed; two amendments, also made before any
+result, replaced the read download (the reads for the assembly were drawn
+through htslib, about 30-fold, seed 78, mapped reads only) and fixed three
+details of the scorer. The truth is the Platinum Pedigree truthset, whose
+phase comes from transmission, not from an assembly. NA12878's assembly is
+single-sample hifiasm on the 30-fold subsample, called by dipcall. Phasing
+used the same pipeline as T5 and T6 (30, 20 and 10-fold; WhatsHap and
+LongPhase; 21 chromosomes; 108 cells). All five held.
+
+\begin{description}
+\item[P1.] T5's pooled thresholds, which contain no member of this family,
+  violate on all links: 31 of 108 cells at $0.05/108$ (13 \texttt{segdup},
+  11 \texttt{lowmap}, 6 \texttt{indel}, 1 \texttt{tandem}).
+\item[P2.] On links NA12878's family key labels (her assembly relates the
+  pair with the relation that transmission from NA12891 and NA12892, from
+  the 1000 Genomes genotypes, gives), no cell violates. Links kept at random
+  at the key's share left 20 violating cells.
+\item[P3.] T6's pooled thresholds on agreeing pairs at 30-fold: no cell
+  violates at $0.05/36$ (smallest $p$ 0.90), and \texttt{segdup} certifies
+  at $\beta=10^{-3}$ with 0.779 of its pairs trusted for both phasers. At
+  $3\times10^{-4}$ \texttt{segdup} does not certify.
+\item[P4.] The end rule at $r=10^{-2}$: 1 and 2 wrong picks of about
+  2{,}460, no violation at $0.05/4$, and 0.904 (WhatsHap) and 0.893
+  (LongPhase) of within-gene pairs 10 to 100\,kb apart certified. At
+  $r=10^{-3}$ none are.
+\item[P5.] At 30-fold, 0.914 (WhatsHap) and 0.848 (LongPhase) of wrong
+  relations have a variant outside GIAB's HG001 v4.2.1 benchmark BED, and
+  the error per pair outside is 40.9 and 23.0 times that inside.
+\end{description}
+
+NA12878 is the mother of the five Pedigree children in the pools of P3 and
+P4, so those two are not independent of their calibration: wrong units are
+shared at a locus between relatives (Section~\ref{sec:t5cause}). P1 and P2
+use a pool with no member of the family. P5's truth does not come from an
+assembly, so the outside errors it counts are not assembly disagreements.
+
+\section{Labels from the sequencing batch}\label{sec:labels}
+
+Thresholds calibrated on one sequencing batch did not always hold on
+another: in development, pooling six ONT genomes and holding each out in
+turn, every one of 23 violating cells (of 1{,}512) had HG002's 2025 reads held
+out, so the pool was mostly older ONT data. Proposition~\ref{prop:floor}
+says what a fix must pay. On HG002's 2025 reads as the new batch and six
+other genomes as the pool (development), Learn then Test on $k$ sampled
+HG002 units certified no group at $\beta=10^{-3}$ for $k=300$, 1{,}000 or
+3{,}000 (20 seeds each), as the bound requires, since a group's units are
+fewer than $k$; with all about 11{,}800 easy units of HG002's odd chromosomes
+it certified \texttt{easy} and \texttt{difficult} in 4 of 4 cells, with no
+violating cell for any $k$. The pool alone violated, and merging the pool
+with HG002's units violated until HG002's units dominated.
+
+A clinical sample has no benchmark truth, but it may have parents sequenced
+in the same batch. A site of the child where one parent is homozygous is
+phased by transmission, and a pair of such sites is a label. With labels
+from Clair3 calls on the parents' ONT reads (HG003 and HG004, two flowcell
+replicates each), requiring both replicates to agree brought the label error
+in the easy group to $1.33\times10^{-5}$ per pair, below WhatsHap's own
+$1.84\times10^{-5}$ there, with 0.776 of pairs labelled. Calibrating on
+labelled pairs and testing on all pairs, one cell violated
+(\texttt{lowmap} at $3\times10^{-3}$, 190 wrong units of 43{,}599), because
+labelled pairs are easier: WhatsHap's error on unlabelled \texttt{lowmap}
+pairs was $3.82\times10^{-3}$ against $6.96\times10^{-5}$ on labelled ones.
+Proposition~\ref{prop:select} prescribes the repair: test on eligible pairs
+only and abstain on the rest. Then no cell violated in 108 (level
+$1.54\times10^{-4}$); the cell that failed had 42 wrong units of 38{,}087
+($1.10\times10^{-3}$); \texttt{easy} at $10^{-3}$ certified in 6 of 6 depth and
+phaser cells, and 0.774 of all easy pairs were trusted. \texttt{segdup},
+\texttt{tandem} at $10^{-3}$ and \texttt{indel} did not certify. Pairs
+touching a site where the two replicates' parental calls disagreed had
+WhatsHap error $4.4\times10^{-2}$ in \texttt{lowmap} against $7.0\times10^{-5}$
+for eligible pairs (observed after the run). These are development results
+on one trio of a reference sample.
+
+\paragraph{A registered replication.} The same procedure was registered for
+a second trio and batch (commit \texttt{a147ef3}, 27 October 2026): HG005 ONT
+sup v5.0.0, labels from ONT's \texttt{wf-human-variation} calls on two
+flowcells each of HG006 and HG007, the \texttt{agree} filter, thresholds from
+eligible odd-chromosome pairs, scored on eligible even-chromosome pairs
+against GIAB's trio transmission; 108 cells, level $0.05/108$. Before
+scoring, the generalized scorer reproduced the HG002 output above line for
+line. No cell violated (90 had pairs; smallest $p$ 0.44), and \texttt{easy}
+at $10^{-3}$ certified in 6 of 6 depth and phaser cells with 0.993 of even
+\texttt{easy} pairs trusted; both registered hypotheses were supported. At
+$10^{-3}$, \texttt{difficult}, \texttt{lowmap} and \texttt{tandem} also
+certified in every cell, and \texttt{segdup} only at $3\times10^{-3}$. The
+trusted share is not comparable with HG002's 0.774. HG005's truth is trio
+transmission, which phases only sites where a parent is homozygous, so 99.2
+to 99.6 per cent of the scored pairs were eligible (observed after scoring);
+the test shows validity on a second trio and batch, not how much of a
+genome the procedure covers.
+
+\section{Errors outside the benchmark region}\label{sec:outside}
+
+Every test above scored relations inside a benchmark region. To see what
+lies outside, we phased HG002 HiFi at 30-fold (HPRC reads realigned with
+minimap2 2.31) on the heterozygous SNVs and indels of the Q100 dipcall truth
+inside its BED (2{,}607\,Mb of the 21 chromosomes, against 2{,}521\,Mb for
+v5.0q's benchmark BED), with phase removed, and scored consecutive relations
+against Q100. A relation is \emph{inside} when both variants lie in v5.0q's
+benchmark BED and \emph{outside} otherwise (development; gate: error per
+pair outside at least 3 times inside and at least 20 per cent of wrong
+relations outside, for both phasers).
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{inside} & \multicolumn{2}{c}{outside} & ratio of & share of wrong\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+phaser & pairs & wrong & pairs & wrong & error per pair & relations outside\\
+\midrule
+WhatsHap & 2{,}556{,}197 & 12{,}655 & 192{,}393 & 14{,}052 & 14.8 & 0.526\\
+LongPhase & 2{,}515{,}697 & 1{,}111 & 200{,}420 & 16{,}655 & 188 & 0.937\\
+\bottomrule
+\end{tabular}
+\caption{HG002 HiFi at 30-fold scored against Q100, inside and outside the
+v5.0q benchmark BED. Error per pair: WhatsHap $4.95\times10^{-3}$ inside and
+$7.30\times10^{-2}$ outside; LongPhase $4.42\times10^{-4}$ and
+$8.31\times10^{-2}$.}
+\label{tab:outside}
+\end{table}
+
+Outside relations are 7 per cent of pairs and hold half of WhatsHap's wrong
+relations and 94 per cent of LongPhase's (Table~\ref{tab:outside}). The worst
+is \texttt{lowmap} outside the region, with 13.9 and 24.2 per cent of pairs
+wrong. Thresholds calibrated inside the region (on v5.0q-scored relations
+of the same reads) violated outside in 11 of 25 cells with a threshold and
+a unit (level $0.05/25$), for example WhatsHap \texttt{lowmap} at $10^{-3}$
+with 48 wrong units of 2{,}140. Chromosome 20, not used for the gate, agreed
+(ratios 10.1 and 98; shares 0.548 and 0.918). An independent recount from
+the VCFs alone reproduced every count in Table~\ref{tab:outside}.
+
+A registered test (commit \texttt{a147ef3}, 27 October 2026) repeated this
+on HG005: HPRC HiFi at 30-fold phased on the heterozygous variants of the
+HPRC release 2 dipcall, scored against that assembly, inside and outside
+GIAB's HG005 v4.2.1 benchmark BED, with the rule that at least 0.3 of wrong
+relations lie outside for both phasers. It held. Outside relations are 27
+and 24 per cent of pairs and hold 0.956 of WhatsHap's 25{,}962 wrong
+relations and 0.941 of LongPhase's 6{,}747; error per pair is
+$6.27\times10^{-4}$ inside and $3.70\times10^{-2}$ outside for WhatsHap,
+$2.19\times10^{-4}$ and $1.08\times10^{-2}$ for LongPhase. The assembly used
+HG005's HiFi reads and may be wrong outside the BED, so the test measures
+disagreement between phaser and assembly, not which is right. A third
+registered test, on NA12878 against the Platinum Pedigree truth, whose
+phase comes from transmission, found 0.914 and 0.848 of wrong relations
+outside GIAB's HG001 region (Section~\ref{sec:na12878}, P5).
+
+To separate causes, we asked of each wrong relation whether the exact wMEC
+optimum over a window of 10 variants on each side, with reads selected as
+WhatsHap selects them at cap 15, prefers the true relation (an error of the
+phaser's search) or not (an error the reads support). Outside the region,
+72.6 per cent of WhatsHap's wrong relations are supported by the reads and
+18.1 per cent are search errors. For LongPhase, 62.2 per cent are relations
+that no read passing WhatsHap's filters spans (in \texttt{lowmap}, 9{,}305 of
+11{,}801): LongPhase links variants across gaps that those reads do not
+bridge.
+
+\paragraph{Parents as a third source (development).} Phaser and assembly
+can be told apart where a third, independent source phases the pair. We
+used the parents' ONT genotype calls (Clair3, both flowcell replicates
+agreeing, as in Section~\ref{sec:labels}) on the outside pairs where phaser
+and assembly disagree, after measuring how often these labels agree with the
+assembly inside the region where the assembly is trusted: 0.968 (WhatsHap
+disputes, 2{,}549 of 2{,}633) and 0.955 (LongPhase, 277 of 290) on HG002.
+Corrected for that accuracy, the share of outside disagreements that are
+the phaser's error was 0.840 (95 per cent interval 0.814 to 0.863) for
+WhatsHap and 0.717 (0.664 to 0.765) for LongPhase on HG002, and 0.936 (0.927
+to 0.945) and 0.642 (0.595 to 0.686) on HG005 (rule: lower bound at least
+0.5). The labels reach only 1.9 to 14.5 per cent of the outside disputes,
+0.6 per cent for LongPhase in \texttt{lowmap} on HG002, and labelled pairs
+are easier than the rest (Section~\ref{sec:t5cause}), so these shares
+describe the labelled disputes. LongPhase \texttt{tandem} on HG005 was
+0.472 (0.378 to 0.567). Inside HG005's region the labels often sided with
+the phaser against the HPRC dipcall (WhatsHap SNV disputes: 41 of 60), so
+part of the inside error counted above may be the assembly's.
+
+\paragraph{Limits.} Outside the region the truth is the same Q100 assembly
+from which v5.0q was built, and v5.0q's VCF gives the same genotype and
+relation at every outside wrong relation, so this comparison cannot
+separate truth errors from phasing errors there. These are the regions
+v5.0q's authors judged less reliable. One genome, one read type, one depth.
+The finding is that a phasing benchmark scored inside v5.0q's region sees
+half or less of the errors, not that every outside error is the phaser's.
+
+\section{Flagging read-supported errors}\label{sec:flags}
+
+Most hard-region errors are supported by the reads, so the Wilson score
+cannot reject them. We tested flags that a user computes from the sample's
+own reads (development): allele balance at each site, as a binomial
+$-\log_{10}p$; the excess wMEC cost of the exact solver over a window of two
+variants on each side, normalized by reads; read depth against the
+chromosome median; and 31-mer copy excess from the reads. On HG002 HiFi,
+per group, a subset of flags and a cutoff were tuned on odd chromosomes at a
+flagged share of 0.09; flagged pairs were abstained on, and Learn then Test
+ran on unflagged pairs (Proposition~\ref{prop:select}). The window cost was
+checked against exhaustive enumeration on fixed and random windows.
+
+On even chromosomes, the flags found 0.795 of wrong \texttt{tandem}
+relations (0.553 to 0.891 per depth and phaser cell) and 0.988 of the 165
+confidently wrong ones (every spanning read wrong, at least 10 reads), with
+at most 8.9 per cent of the group flagged. In the three cells where
+\texttt{tandem} had certified nothing at $\beta=10^{-3}$, it certified in all
+three, and no flagged cell violated (90 cells, level
+$5.56\times10^{-4}$). Allele balance and the window cost carried the signal
+(single-flag recall in \texttt{tandem} at 30-fold, WhatsHap: 0.786 and 0.810;
+depth 0.097, $k$-mers 0.097). With the settings chosen on HG002 ONT and
+applied unchanged to HG001 ONT, recall in \texttt{tandem} was 0.767 and the
+one \texttt{tandem} cell that had certified nothing certified, without a
+violation. The flags also found 0.78 to 0.84 of wrong relations in
+\texttt{segdup} and \texttt{lowmap}, but \texttt{segdup} gained no
+certificate at $10^{-3}$: it holds about 1{,}650 calibration units on HG002's
+odd chromosomes, fewer than $N^*=2{,}995$ (Corollary~\ref{cor:units}).
+
+\section{One rule behind every result}\label{sec:principle}
+
+Proposition~\ref{prop:select} says what a certificate controls: the risk on
+the population its calibration labels come from. Table~\ref{tab:principle}
+groups all 37 certificate tests of this project by whether the test pairs
+were drawn from that population. Every test with a violation drew test
+pairs from outside it; every matched test had none. Two failures fall
+outside the rule: thresholds pooled from older ONT batches failed on HG002's
+2025 reads (23 of 1{,}512 cells, all with that batch held out), so the
+rule needs the same sequencing batch as well, and one K1b development run
+mixed truths and batches and cannot be assigned. The rule predicts whether
+a certificate fails, not by how much: HG002's rates on and off its key
+predicted the children's all-pair rates only within a factor of 0.24 to 13.9.
+The rule is Learn then Test's exchangeability assumption~\cite{ltt2025},
+broken in a way that is easy to miss when a truth set is itself a
+selection. It was stated after most of these tests were scored; the
+registered tests on NA12878 and on the 19 held-out HPRC genomes (rows L7
+and L8) were scored after it and fit it.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}p{5.6cm}p{3.6cm}r@{}}
+\toprule
+test & test pairs & violating / cells\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{matched: test pairs from the calibration labels' population}}\\
+HG002 hac (T1) & same truth regions & 0 / 18\\
+HG001 restricted to GIAB HG001 v4.2.1 (T1, post hoc) & GIAB-like SNVs & 0 / 18\\
+T2 \texttt{easy}; relatives, difficult and \texttt{indel} & matched truth & 0 / 126; 0 / 540\\
+Parental labels: HG002 (R3); HG005, registered & label-eligible pairs & 0 / 108; 0 / 90\\
+T5 B2, 19 held-out HPRC genomes & consensus-labelled & 0 / 342\\
+T5 thresholds on the children's key-labelled pairs & key-labelled & 0 / 540\\
+T5 thresholds, 19 held-out genomes, dipcall truth (L8, registered) & consensus-labelled & 0 / 2{,}052\\
+T5 thresholds, NA12878 (L7 P2, registered) & family-key-labelled & 0 / 108\\
+T6 thresholds and end rule, NA12878 (L7 P3, P4, registered) & agreeing pairs & 0 / 36; 0 / 4\\
+Assembly agreement: K1a; T6 & agreeing pairs & 0 / 26; 0 / 62\\
+Within-gene calls: chain rule (registered); end rule & agreeing calls & 0 / 8; 0 / 8\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{mismatched: test pairs reach beyond the labels' population}}\\
+HG001, one threshold (T1) & Platinum 2017 regions & 18 / 18\\
+HG001 against the Pedigree truth (adjudication) & beyond GIAB & 12 / 18\\
+HG001 hard groups (T3) & Pedigree regions & 2 / 90\\
+Labels from parents, tested on all pairs (\texttt{agree} filter) & all pairs & 1 / 108\\
+T5 B1, Pedigree children & all pairs & 163 / 540\\
+Same, pairs kept at random at the key's share & random subset & 120 / 540\\
+T5 thresholds, 19 held-out genomes, all links (L8); random & all; random & 1{,}221; 1{,}159 / 2{,}052\\
+T5 thresholds, NA12878, all links (L7 P1); random & all; random & 31; 20 / 108\\
+Inside v5.0q to outside (HG002, Q100) & outside the BED & 11 / 25\\
+\bottomrule
+\end{tabular}
+\caption{Certificate tests grouped by whether test pairs came from the
+population the calibration labels came from. Full table, with tests whose
+labels were noisy or not easier and sources for every count:
+\nolinkurl{docs/design/l10-selection-principle.md}.}
+\label{tab:principle}
+\end{table}
+
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Read selection.} At WhatsHap's default cap, the deployed
+selector's shortfall from the optimum (4 to 7 per cent of the objective) did
+not appear in accuracy inside the tool, on HiFi or ONT, nor in pedigree mode,
+whose tests had little power. At cap 3 on ONT, exact selection is more
+accurate and less contiguous. The larger differences our library measured
+were mostly guesses at tied sites, which a phaser that abstains leaves
+unphased; a comparison of selectors should report abstentions beside
+errors. The choice of tool changed HiFi switch error more than the choice of
+selector (HiPhase 0.052 against 0.165 per 10{,}000 for stock
+\texttt{whatshap phase}, each on its own pairs, untested).
+
+\paragraph{Certified relations.} Per-stratum risk control gave read-based
+phase relations an error rate that held, in the easy stratum, in all 582
+testable cells, on every genome, basecaller and ancestry we tested, while
+trusting more than 99.5 per cent of easy pairs. Its limits are as clear as
+its success. First, it is only as general as its calibration: thresholds
+pooled from older ONT batches failed on a new one in development, a
+calibration pooled over 21 HiFi genomes failed in the hard strata of a new
+family (T5), because the consensus truth it was calibrated on labels easy
+hard-stratum pairs (Section~\ref{sec:t5cause}), and Proposition~\ref{prop:floor} shows that no procedure
+certifies a new batch from a few hundred of its own labels. A trio sequenced
+on the batch supplies genome-scale labels for the pairs its calls can label.
+Second, it abstains in segmental duplications and on WhatsHap's indel
+relations with calibration on one genome, and pooling genomes to make them
+certify broke the bound, unless a trusted relation must also agree with an
+assembly of the same person (T6), which held on two new genomes and trusted
+most hard-stratum pairs. That certificate needs an assembly, so it applies
+to HiFi data at full depth. Third, a benchmark region sees a small part of the
+errors: on HG002, most wrong relations lie outside v5.0q's region, and
+thresholds calibrated inside do not hold there. In tandem repeats, flags
+computed from the reads recover most read-supported errors.
+
+For in-trans calls, Proposition~\ref{prop:chain} gives a per-relation bound,
+but a relation spanning tens of kilobases crosses many pairs and one
+untrusted pair blocks it. On HG002 ONT at 30-fold, of 33{,}055{,}724 pairs of
+variants within one clinically relevant gene and at most 100\,kb apart, the
+chain was certified at a per-call target of $10^{-2}$ for 0.53 of pairs up to
+1\,kb apart and 0.003 of pairs 10 to 100\,kb apart (WhatsHap), mostly because
+of untrusted indel pairs (development). Requiring
+assembly agreement (Section~\ref{sec:t6}) lifted this, in a registered test
+on two new genomes, to 0.60 to 0.89 of all within-gene pairs and 0.55 to 0.87
+of pairs 10 to 100\,kb apart, without a violating cell, and checking the
+assembly only at the two variants reported lifted pairs 10 to 100\,kb apart
+to 0.88 to 0.94 (development) and to 0.89 and 0.90 on NA12878 (registered); some duplicated genes such as PMS2 still
+abstain, because the assembly does not resolve them.
+
+The practical lesson of Section~\ref{sec:principle} is for anyone who
+calibrates against a truth set: calibrate and test on pairs chosen by the
+same rule, and report the rule. A truth that exists only where two methods
+agree, or only inside a benchmark region, or only where parents are
+informative, gives a certificate for that population and no other.
+
+\paragraph{Limitations.} The selection results rest on HG002 for ONT, the
+tool-level tests and the trio, with HG005 replicating the HiFi results; only
+SNVs inside the v4.2.1 benchmark regions were measured there, and every
+subsample used one seed. The certificate assumes independent units, and at
+100\,kb they are not independent in the hard groups: over every genome with
+a full truth, wrong units of the same (platform, depth, phaser, group)
+adjoined more often than under a within-chromosome permutation in 181 of 576
+tests at level $0.05/576$, including 78 of 96 \texttt{segdup} and 60 of 96
+\texttt{indel} tests. Merging neighbouring units into 200 and 300\,kb units
+and refitting the pooled thresholds of T5 and T6 made no decision less
+conservative (0 of 360 cells) (development,
+\nolinkurl{docs/design/l5-unit-independence.md}). The explanations of Sections~\ref{sec:t5cause}
+and~\ref{sec:endcalls} and the parental adjudication of
+Section~\ref{sec:outside} are development results on data seen before;
+registered tests on NA12878 and on 19 held-out HPRC genomes supported the
+first two, and the parental adjudication has no registered test. Test truths have their own errors, which is why T4
+and T5 test only some cells. Relatives in T2 share haplotypes with their
+calibration genome, and T3's test genome had been studied on other reads.
+The development results of Sections~\ref{sec:labels} to~\ref{sec:flags}
+come from one or two genomes and need registered tests; of these, only the
+batch labels have one so far (HG005), and its truth limits it to validity.
+
+\section*{Availability and implementation}
+Code (Python 3.10 or newer), registrations, amendments, run files and
+scorers are at \url{https://github.com/Nirraaav/phasebudget}; the
+post-processor is \nolinkurl{benchmarks/phase_confidence.py} and the
+procedure \nolinkurl{phasebudget.confidence.learn_then_test_by_group}. Each
+number above is printed by a scorer in \nolinkurl{benchmarks/} into a run
+file in \nolinkurl{benchmarks/results/runs/}.
+
+\section*{Data availability}
+All data are public: GIAB HG001, HG002 and HG005 ONT reads (ONT open data,
+\texttt{giab\_2023.05} and \texttt{giab\_2025.01}); HPRC HiFi alignments and
+release 2 assemblies (\texttt{human-pangenomics} bucket); Platinum Pedigree
+ONT and HiFi reads and truthset~\cite{kronenberg2025}; GIAB v4.2.1, v5.0q and
+the HG002 Q100 dipcall files~\cite{hansen2026}; GIAB v3.6
+stratifications~\cite{dwarshuis2024}; the 1000 Genomes high-coverage phased
+panel (\texttt{20220422\_3202\_phased\_SNV\_INDEL\_SV}). The design document of
+each test lists every file with its source.
+
+\appendix
+
+\section{Proofs}\label{app:proofs}
+
+\begin{proof}[Proof of Proposition~\ref{prop:flow}]
+For $j\in\{1,\dots,n\}$ the arcs leaving $S_j=\{v_0,\dots,v_{j-1}\}$ are the
+chain arc $(v_{j-1},v_j)$ and the read arcs with $a_r\le j\le b_r$; no arc
+enters $S_j$, since every arc goes to a higher index. For a flow $f$ of value
+$c$, conservation therefore gives, for every $j$,
+$f(v_{j-1},v_j)+\sum_{r:\,a_r\le j\le b_r}f_r=c$. If $f$ is integral and
+feasible, $f_r\in\{0,1\}$, and $x_r=f_r$ satisfies $\sum_{r\ni j}x_r\le c$
+because the chain flow is non-negative; the cost of $f$ is $-\sum_rw_rx_r$.
+Conversely, a feasible $x$ gives the flow $f_r=x_r$,
+$f(v_{j-1},v_j)=c-\sum_{r\ni j}x_r\in[0,c]$. At each inner node $v_j$ the
+inflow minus the outflow is $\sum_{r\ni j}x_r-\sum_{r\ni j+1}x_r-
+\sum_{b_r=j}x_r+\sum_{a_r=j+1}x_r=0$, because a read covers $j$ but not $j+1$
+exactly when $b_r=j$, and $j+1$ but not $j$ exactly when $a_r=j+1$; the value
+is $c$ by the cut identity at $j=1$; the cost is $-\sum_rw_rx_r$. Both maps
+preserve cost, the capacities are integral and a feasible flow exists (all
+flow on the chain), so an integral min-cost flow exists and gives an optimal
+selection.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:guarantee}]
+\emph{Each p-value is valid.} Fix $g$. Under (A1), conditional on $N_g=n$, the
+$n$ active units are independent draws from $D$ conditioned on $a_u(t_g)=1$,
+so $K_g\sim\Bin(n,R(t_g))$. Under $H_g$, $R(t_g)>\beta$, and the binomial lower
+tail decreases in the success probability, so $\Pr[\pi_g\le\delta\mid
+N_g=n]\le\delta$ for every $n$, hence also unconditionally.
+\emph{The scan controls the family-wise error.} By (A2) the order is fixed and
+$R$ is a fixed function, so the index $g^*$ of the first true null is not
+random. If $\hat t=t_{\hat g}$ is output with $R(\hat t)>\beta$, then $H_{\hat
+g}$ is a true null that was rejected, so $g^*\le\hat g$, and since the scan
+rejects in order, $H_{g^*}$ was rejected. That event has probability at most
+$\delta$. (A3) makes the observed losses the true ones.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:chain}]
+By Proposition~\ref{prop:guarantee} each of the $q$ groups has
+$R_g(\hat t_g)\le\beta$ except with probability $\delta$; by the union bound
+all hold with probability at least $1-q\delta$. On that event, the relation
+is a parity of its pairs' relations, so it is wrong only if some pair on the
+chain is wrong; if all pairs are trusted, some cell of the chain then holds
+a wrong trusted pair, which for each of the $m$ cells has probability at
+most $\beta$. The union bound over cells gives $m\beta$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:floor}]
+Write $P_R$ for probabilities when the unit risk is $R$, $C$ for the event
+that the procedure certifies, and $Z$ for the event that all $n$ losses are
+0. Under $P_0$, $Z$ is sure, so $P_0[C\mid Z]=P_0[C]\ge p$. Given the losses,
+the other data and any internal randomization have the same distribution
+for every $R$, so $P_R[C\mid Z]=P_0[C\mid Z]$. For $R=\beta+\varepsilon$ with
+$0<\varepsilon<1-\beta$, validity gives
+$\delta\ge P_R[C]\ge P_R[Z]\,P_R[C\mid Z]\ge(1-\beta-\varepsilon)^n p$.
+Letting $\varepsilon\to0$ gives $(1-\beta)^np\le\delta$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:select}]
+The rule is fixed in advance and does not read the truth, so a unit's
+eligible pairs, their scores and their losses are functions of that unit's
+data. Under (A1) for $D_E$ the calibration units formed by eligible pairs
+are independent draws from $D_E$; the grid is computed without the truth as
+in Proposition~\ref{prop:guarantee}; under (A3) their losses are the true
+losses. Proposition~\ref{prop:guarantee} with $D_E$ in place of $D$ gives the
+claim. Ineligible pairs enter neither the calibration nor $R_E$, so the risk
+over all pairs is not bounded.
+\end{proof}
+
+\section{The first test}\label{app:t1}
+
+\begin{table}[h]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lll*{3}{rr}@{}}
+\toprule
+ & & & \multicolumn{2}{c}{$\beta=3\times10^{-4}$} & \multicolumn{2}{c}{$\beta=10^{-3}$} & \multicolumn{2}{c}{$\beta=3\times10^{-3}$}\\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+dataset & depth & phaser & $k/n$ & $p$ & $k/n$ & $p$ & $k/n$ & $p$\\
+\midrule
+HG001 ONT sup & 30 & WhatsHap & $9.62\times10^{-3}$ & $<10^{-6}$ & $2.21\times10^{-2}$ & $<10^{-6}$ & $4.79\times10^{-2}$ & $<10^{-6}$\\
+ &  & LongPhase & $7.40\times10^{-3}$ & $<10^{-6}$ & $1.09\times10^{-2}$ & $<10^{-6}$ & $1.09\times10^{-2}$ & $<10^{-6}$\\
+ & 20 & WhatsHap & $9.29\times10^{-3}$ & $<10^{-6}$ & $3.13\times10^{-2}$ & $<10^{-6}$ & $4.81\times10^{-2}$ & $<10^{-6}$\\
+ &  & LongPhase & $1.05\times10^{-2}$ & $<10^{-6}$ & $1.30\times10^{-2}$ & $<10^{-6}$ & $1.30\times10^{-2}$ & $<10^{-6}$\\
+ & 10 & WhatsHap & $8.59\times10^{-3}$ & $<10^{-6}$ & $2.81\times10^{-2}$ & $<10^{-6}$ & $3.42\times10^{-2}$ & $<10^{-6}$\\
+ &  & LongPhase & $1.25\times10^{-2}$ & $<10^{-6}$ & $1.50\times10^{-2}$ & $<10^{-6}$ & $1.50\times10^{-2}$ & $<10^{-6}$\\
+HG002 ONT hac & 30 & WhatsHap & $8.07\times10^{-5}$ & 0.995 & $2.81\times10^{-4}$ & 1 & $3.36\times10^{-3}$ & 0.161\\
+ &  & LongPhase & $4.03\times10^{-5}$ & 0.999 & $8.04\times10^{-5}$ & 1 & $8.04\times10^{-5}$ & 1\\
+ & 20 & WhatsHap & $4.05\times10^{-5}$ & 0.999 & $8.03\times10^{-4}$ & 0.862 & $3.93\times10^{-3}$ & 0.00585\\
+ &  & LongPhase & $4.02\times10^{-5}$ & 0.999 & $1.61\times10^{-4}$ & 1 & $1.61\times10^{-4}$ & 1\\
+ & 10 & WhatsHap & $4.13\times10^{-5}$ & 0.999 & $1.01\times10^{-3}$ & 0.511 & $1.65\times10^{-3}$ & 1\\
+ &  & LongPhase & $8.11\times10^{-5}$ & 0.995 & $2.42\times10^{-4}$ & 1 & $2.42\times10^{-4}$ & 1\\
+\bottomrule
+\end{tabular}
+\caption{T1, one genome-wide threshold calibrated on HG002 ONT
+super-accuracy reads: wrong over active test units, and
+$p=\Pr[\Bin(n,\beta)\ge k]$; a cell violates when $p<0.05/36$. Usefulness at
+$\beta=10^{-3}$ (at least 90 per cent of pairs trusted and at most half of
+wrong pairs trusted) held in 7 of 8 cells.}
+\label{tab:t1}
+\end{table}
+
+
+\section{Other directions tested}\label{app:other}
+
+Each of these had a design note and a gate committed before it was computed
+(development, \nolinkurl{docs/design/}); outputs are in
+\nolinkurl{benchmarks/results/runs/}.
+
+\paragraph{Parent of origin from methylation.} On HG002 ONT reads, with
+imprinted DMRs from~\cite{akbari2022} and methylation per haplotype, the
+parent carried along WhatsHap's phase blocks from 131 recovered DMRs was
+wrong for 32{,}152 of 198{,}729 variants (16.2 per cent; 3.5 per cent within
+100\,kb of the DMR, 28 per cent beyond 1\,Mb). Certified blocks assigned 586
+variants, none wrong, but the phaser was also right on all 586.
+
+\paragraph{Learned scores.} Gradient boosting on 22 read features raised
+WhatsHap's trusted share in \texttt{tandem} at $\beta=10^{-3}$ (from 0 to
+0.861 on HG002 ONT) and certified nothing in \texttt{segdup}; a neural score
+did no better there. Pooling six ONT genomes for calibration and holding
+each out, all 23 violating cells of 1{,}512 had HG002's 2025 reads held out.
+
+\paragraph{A complete reference.} Realigning HG002 HiFi to CHM13: of 27
+matched SNV relations that WhatsHap got confidently wrong on GRCh38 (every
+spanning read wrong, at least 10 reads), 25 stayed wrong on CHM13.
+
+\paragraph{Labels from called parental genotypes.} Parental Clair3 calls
+from one flowcell gave labels wrong at $2.06\times10^{-4}$ per easy pair,
+above WhatsHap's own error there ($1.84\times10^{-5}$), so calibration on
+them certified nothing at $\beta\le10^{-3}$; requiring both replicates to
+agree fixed this (Section~\ref{sec:labels}).
+
+\paragraph{Truth errors without a gold standard.} A latent-class fit of
+four sources of NA12878 phase was not stable between odd and even
+chromosomes (1000 Genomes transmission, \texttt{tandem}: $4.4\times10^{-4}$
+against $1.5\times10^{-4}$), and no truth reached $10^{-3}$ error in a hard
+group. Where all sources phase a relation, the Pedigree and Platinum 2017
+truths never disagreed.
+
+\paragraph{Siblings without parents as labels.} Labelling a child from
+siblings' genotypes in segments inferred to be shared identical by descent
+gave label error $2.73\times10^{-2}$, then $2.82\times10^{-3}$ after a
+repair, against $10^{-4}$ required: all remaining wrong labels lay in truly
+unshared stretches that hold no opposite homozygote within 250\,kb, which
+two siblings' genotypes cannot tell from shared ones.
+
+\paragraph{Clinical in-trans chains.} See Section~\ref{sec:discussion}: 0.037
+(WhatsHap) and 0.143 (LongPhase) of within-gene pairs up to 100\,kb apart
+were certified at a per-call target of $10^{-2}$ on HG002 HiFi; no sampled
+certified call exceeded its bound (60 cells).
+
+\paragraph{Error loci learned on one genome.} Bins holding HG002's HiFi
+errors raised the error rate of other people's pairs only 0.5 to 2.1-fold,
+against 4.6 to 21-fold for HG002's own ONT reads: error loci belong to the
+person.
+
+\paragraph{A single-sample assembly.} hifiasm on HG002's HiFi reads alone,
+called by dipcall: against v5.0q it was right on all 478 hard-stratum pairs
+that WhatsHap got wrong and it phased (\texttt{segdup}, \texttt{tandem}),
+but in \texttt{easy} it had 2{,}131 wrong of 1{,}249{,}172 pairs (switches
+inside contigs), and the trio truth phased too few hard pairs to check it.
+
+\paragraph{A calibration-size planner.} The probability that Learn then
+Test certifies, computed from a pool's unit error rate, did not predict how
+often subsamples of one to six genomes certified: 13 of 51 informative
+cells agreed (rule: 0.8), with predictions too high in 23 of the 38 others.
+Genomes differ in error rate and a resampled genome adds no new units. The
+arithmetic floor stands: \texttt{segdup} at $\beta=10^{-3}$ with K1b's pooled
+rate ($1.6\times10^{-4}$) needs about 6{,}300 units, three genomes, for
+certification probability 0.8.
+
+\paragraph{HiFi and ONT as each other's second opinion.} On HG002, five
+Pedigree members and HG005, of HiFi's wrong \texttt{segdup} pairs that ONT
+also relates, ONT made the same error on 0.39 to 0.59 for the Pedigree
+members and HG002 (gate: below 0.2; HG005 had 3 and 6 such errors), and agreement cut the error rate only 2
+to 5-fold; both platforms are aligned to the same reference and fail
+together. Platform agreement does not replace an assembly.
+
+\input{bib.tex}
+
+\end{document}

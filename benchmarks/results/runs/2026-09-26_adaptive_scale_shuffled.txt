@@ -1,0 +1,10 @@
+commit edfcbbc; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 16 replicates, seed 8000 + 17 * replicate, signal shuffled, fragile rule P(wrong) > 0.05, acceptance stitched with window 50, other loop settings at defaults; simulated data
+profile  cap     exact  adaptive      diff          95% interval    wins
+------------------------------------------------------------------------
+    ont    3   0.01423   0.00620  -0.00803 [-0.01006, -0.00599]  16:0  
+    ont    5   0.00172   0.00031  -0.00141 [-0.00193, -0.00088]  13:0  
+    ont   10   0.00006   0.00006  +0.00000 [+0.00000, +0.00000]   0:0  
+  noisy    3   0.05416   0.03790  -0.01626 [-0.01840, -0.01413]  16:0  
+  noisy    5   0.01601   0.00563  -0.01038 [-0.01182, -0.00895]  16:0  
+  noisy   10   0.00125   0.00047  -0.00078 [-0.00114, -0.00042]  11:0  

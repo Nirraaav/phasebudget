@@ -1,0 +1,563 @@
+# start 2026-10-15T23:38:15+05:30 32f2fa5
+W2 scale-up (development): platform cal_v5, chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22, beta 0.001; DMR call: listed parent's haplotype methylated at least 0.2 above the other over at least 5 CpGs with coverage 3 or more per haplotype
+chr6: v5.0q against trio transmission, 109089 of 109089 sites agree (kept); 172692 truth-phased variants
+chr4: v5.0q against trio transmission, 123804 of 123804 sites agree (kept); 192179 truth-phased variants
+chr3: v5.0q against trio transmission, 121082 of 121082 sites agree (kept); 189976 truth-phased variants
+chr2: v5.0q against trio transmission, 132484 of 132484 sites agree (kept); 207302 truth-phased variants
+chr1: v5.0q against trio transmission, 131222 of 131223 sites agree (kept); 206253 truth-phased variantschr5: v5.0q against trio transmission, 113866 of 113866 sites agree (kept); 183348 truth-phased variants
+
+chr2: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "easy": [0.6193175032044734, 19], "segdup": null, "tandem": null, "difficult": [0.5555555555555555, 5], "lowmap": [0.8430562740251636, 33]}); 86909 untrusted links
+  chr2 done
+chr7: v5.0q against trio transmission, 93992 of 93992 sites agree (kept); 153969 truth-phased variants
+chr3: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 76549 untrusted links
+chr1: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 88230 untrusted links
+chr4: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [0.5555555555555555, 5]}); 78971 untrusted links
+chr5: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 75549 untrusted links
+  chr3 done
+chr6: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8278053198292057, 39], "segdup": null, "difficult": [0.5555555555555555, 5]}); 70834 untrusted links
+  chr4 done
+  chr1 done
+chr8: v5.0q against trio transmission, 93916 of 93916 sites agree (kept); 142688 truth-phased variants
+  chr5 done
+chr10: v5.0q against trio transmission, 84834 of 84834 sites agree (kept); 135219 truth-phased variants
+chr9: v5.0q against trio transmission, 75441 of 75441 sites agree (kept); 114828 truth-phased variants
+chr11: v5.0q against trio transmission, 78557 of 78557 sites agree (kept); 126619 truth-phased variants
+  chr6 done
+chr12: v5.0q against trio transmission, 81946 of 81946 sites agree (kept); 132430 truth-phased variants
+chr7: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 67987 untrusted links
+  chr7 done
+chr13: v5.0q against trio transmission, 64757 of 64758 sites agree (kept); 97861 truth-phased variants
+chr8: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 54962 untrusted links
+chr9: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 46851 untrusted links
+  chr9 done
+  chr8 done
+chr11: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 52057 untrusted links
+chr10: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [-1.0, 0]}); 57256 untrusted links
+chr12: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [0.5555555555555555, 5]}); 58095 untrusted links
+chr14: v5.0q against trio transmission, 53817 of 53817 sites agree (kept); 87508 truth-phased variants
+chr15: v5.0q against trio transmission, 48312 of 48312 sites agree (kept); 78943 truth-phased variants
+  chr10 done
+  chr12 done
+  chr11 done
+chr16: v5.0q against trio transmission, 50807 of 50807 sites agree (kept); 81713 truth-phased variants
+chr18: v5.0q against trio transmission, 46350 of 46350 sites agree (kept); 72351 truth-phased variants
+chr17: v5.0q against trio transmission, 40960 of 40960 sites agree (kept); 69504 truth-phased variants
+chr13: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 40236 untrusted links
+  chr13 done
+chr19: v5.0q against trio transmission, 38404 of 38404 sites agree (kept); 68717 truth-phased variants
+chr14: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [0.5555555555555555, 5]}); 37180 untrusted links
+chr15: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 35644 untrusted links
+  chr14 done
+chr20: v5.0q against trio transmission, 36496 of 36498 sites agree (kept); 58144 truth-phased variants
+chr16: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [0.5555555555555555, 5]}); 36421 untrusted links
+  chr15 done
+chr17: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 33710 untrusted links
+chr18: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6193175032044734, 19], "lowmap": [0.8430562740251636, 33], "segdup": null, "difficult": [0.5555555555555555, 5]}); 29480 untrusted links
+chr21: v5.0q against trio transmission, 21350 of 21350 sites agree (kept); 35958 truth-phased variants
+  chr16 done
+chr22: v5.0q against trio transmission, 20519 of 20519 sites agree (kept); 35258 truth-phased variants
+  chr17 done
+  chr18 done
+chr19: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 37900 untrusted links
+  chr19 done
+chr20: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 23957 untrusted links
+  chr20 done
+chr21: thresholds at beta 0.001 from 10 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8292718275766172, 30], "segdup": null, "difficult": [0.5555555555555555, 5]}); 15980 untrusted links
+  chr21 done
+chr22: thresholds at beta 0.001 from 9 even chromosomes ({"indel": null, "tandem": null, "easy": [0.6157735254112645, 11], "lowmap": [0.8423410277159071, 43], "segdup": null, "difficult": [0.5555555555555555, 5]}); 16883 untrusted links
+  chr22 done
+
+chr1: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  PPIEL                        39558954-39559868   Maternal  truth 0.95/0.95 (39) phaser 0.95/0.95 (39) certified 0.95/0.95 (39)
+  DIRAS3_Ex2                   68046822-68047803   Maternal  truth 0.30/0.75 (38) recovered phaser 0.30/0.75 (38) certified 0.30/0.75 (38)
+  DIRAS3                       68049750-68051862   Maternal  truth 0.07/0.84 (87) recovered phaser 0.07/0.84 (87) certified 0.07/0.84 (87)
+  PER3,RP3-467L1.4              7827139-7827709    Maternal  truth 0.86/0.87 (34) phaser 0.87/0.86 (34) certified 0.87/0.86 (34)
+  PTCHD2                       11501432-11501606   Maternal  truth 0.34/0.41 (19) phaser 0.34/0.41 (19) certified 0.34/0.41 (19)
+  LOC100506801;ECE1            21292978-21293090   Maternal  truth 0.00/0.00 (4) phaser 0.00/0.00 (4) certified 0.00/0.00 (4)
+  ZBTB8B                       32471178-32471396   Maternal  truth 0.31/0.72 (9) recovered phaser 0.74/0.35 (9) certified 0.73/0.33 (9)
+  OSCP1                        36450238-36451005   Maternal  truth 0.01/0.00 (54) phaser 0.00/0.01 (54) certified 0.00/0.01 (54)
+  HEYL                         39632923-39633140   Maternal  truth 0.93/0.67 (32) phaser 0.67/0.93 (32) certified 0.67/0.93 (32)
+  DMRTB1                       53470245-53470710   Maternal  truth 0.59/0.50 (31) phaser 0.59/0.50 (31) certified 0.58/0.51 (31)
+  TTC22                        54781194-54781684   Maternal  truth 0.94/0.95 (60) phaser 0.95/0.94 (60) certified 0.95/0.94 (60)
+  C1orf177                     54805999-54806005   Maternal  truth 0.98/0.99 (2) phaser 0.99/0.98 (2) certified 0.99/0.98 (2)
+  C1orf141                     67134745-67135005   Maternal  truth 0.06/0.03 (17) phaser 0.06/0.03 (17) certified 0.06/0.03 (17)
+  C1orf141;C1orf141;C1orf141   67135015-67135025   Maternal  truth 0.00/0.00 (1) phaser 0.00/0.00 (1) certified 0.00/0.00 (1)
+  BRDT                         91948786-91949166   Maternal  truth 0.62/0.83 (11) recovered phaser 0.62/0.83 (11) certified 0.62/0.83 (11)
+  LOC101928118                 95233397-95233758   Paternal  truth 0.11/0.70 (12) phaser 0.70/0.11 (12) certified 0.70/0.11 (12)
+  RNU1-114P                   143667790-143667879  Maternal  truth - phaser - certified -
+  PUDPP2                      152188921-152189550  Maternal  truth 0.02/0.15 (50) phaser 0.02/0.15 (50) certified 0.02/0.15 (50)
+  LCE3C                       152600202-152600988  Maternal  truth - phaser - certified -
+  PYHIN1                      158930593-158930760  Maternal  truth 0.54/0.40 (3) phaser 0.54/0.40 (3) certified 0.54/0.40 (3)
+  ITLN1;ITLN1                 160885164-160885359  Paternal  truth 0.53/0.48 (2) phaser 0.48/0.53 (2) certified 0.48/0.53 (2)
+  FCRLB                       161729021-161729032  Paternal  truth 0.00/0.00 (1) phaser 0.00/0.00 (1) certified 0.00/0.00 (1)
+  FCRLB                       161730131-161730132  Maternal  truth - phaser - certified -
+  CD247;CD247                 167518058-167518397  Maternal  truth 0.81/0.78 (10) phaser 0.81/0.78 (10) certified 0.81/0.78 (10)
+  ASTN1                       177032657-177032837  Maternal  truth 0.88/0.83 (13) phaser 0.88/0.83 (13) certified 0.88/0.83 (13)
+  OBSCN                       228315991-228316101  Maternal  truth 0.96/0.94 (8) phaser 0.94/0.96 (8) certified 0.94/0.96 (8)
+  GALNT2                      230279439-230279923  Maternal  truth 0.51/0.98 (26) recovered phaser 0.98/0.51 (26) certified 0.98/0.51 (26)
+  MIR1273E                    240492916-240493438  Maternal  truth 0.89/0.88 (47) phaser 0.89/0.88 (47) certified 0.89/0.88 (47)
+  chr1: 19 DMRs with coverage, 5 recovered under truth tagging; 206253 truth-phased variants
+
+chr2: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  ZDBF2                       206249859-206271820  Paternal  truth 0.78/0.22 (437) recovered phaser 0.22/0.77 (437) certified 0.22/0.78 (437)
+  ZDBF2                       206271459-206273541  Paternal  truth 0.84/0.50 (35) recovered phaser 0.50/0.84 (35) certified 0.50/0.84 (35)
+  LCLAT1;LCLAT1;LCLAT1;LCLAT   30446891-30446998   Maternal  truth 0.01/0.03 (3) phaser 0.03/0.01 (3) certified 0.03/0.01 (3)
+  MAP4K3                       39243584-39244042   Maternal  truth 0.94/0.92 (52) phaser 0.92/0.94 (52) certified 0.92/0.94 (52)
+  MRPL45P1                     88284038-88284327   Maternal  truth 0.65/0.53 (23) phaser 0.53/0.65 (23) certified 0.53/0.65 (23)
+  AC097374.2,TEKT4             94871304-94872050   Paternal  truth 0.19/0.42 (55) phaser 0.19/0.42 (55) certified 0.19/0.42 (55)
+  AC012363.2                  120313516-120313883  Paternal  truth 0.81/0.73 (14) phaser 0.73/0.81 (14) certified 0.73/0.81 (14)
+  LOC151121                   129587470-129587783  Paternal  truth 0.78/0.90 (37) phaser 0.90/0.78 (37) certified 0.90/0.78 (37)
+  FAR2P1,KLF2P1               130037382-130038260  Maternal  truth 0.76/0.88 (55) phaser 0.88/0.76 (55) certified 0.85/0.77 (55)
+  FAR2P4,KLF2P4,PLEKHB2       131300169-131300522  Maternal  truth 0.39/0.82 (32) recovered phaser 0.39/0.82 (32) certified 0.42/0.82 (32)
+  LOC401010                   131444912-131444965  Maternal  truth 0.87/0.86 (9) phaser 0.87/0.86 (9) certified 0.87/0.86 (9)
+  C2orf27B                    131829505-131830210  Paternal  truth 0.69/0.37 (93) recovered phaser 0.69/0.37 (93) certified 0.63/0.43 (93)
+  THSD7B                      136766706-136767019  Maternal  truth - phaser - certified -
+  DLX2-AS1                    172109409-172109490  Paternal  truth 0.04/0.06 (4) phaser 0.06/0.04 (4) certified 0.06/0.04 (4)
+  FZD7                        202036322-202039615  Maternal  truth 0.55/0.86 (44) recovered phaser 0.86/0.55 (44) certified 0.86/0.55 (44)
+  MEAF6P1                     209208321-209209864  Maternal  truth 0.76/0.80 (65) phaser 0.76/0.80 (65) certified 0.76/0.80 (65)
+  ECEL1P3                     232351651-232352005  Maternal  truth 0.30/0.34 (27) phaser 0.30/0.34 (27) certified 0.30/0.34 (27)
+  ECEL1P2                     232387060-232387461  Maternal  truth 0.90/0.93 (38) phaser 0.90/0.93 (38) certified 0.89/0.93 (38)
+  ANKMY1                      240557132-240557566  Maternal  truth 0.64/0.94 (32) recovered phaser 0.94/0.64 (32) certified 0.94/0.64 (32)
+  SNED1                       241035441-241037210  Maternal  truth 0.26/0.36 (109) phaser 0.36/0.26 (109) certified 0.36/0.26 (109)
+  chr2: 17 DMRs with coverage, 6 recovered under truth tagging; 207302 truth-phased variants
+
+chr3: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  MOBP                         39501848-39502216   Maternal  truth 0.03/0.85 (9) recovered phaser 0.85/0.03 (9) certified 0.85/0.03 (9)
+  VGLL4                        11704930-11705437   Maternal  truth 0.92/0.87 (31) phaser 0.87/0.92 (31) certified 0.87/0.92 (31)
+  GADL1                        30894288-30894468   Maternal  truth 0.76/0.36 (11) phaser 0.36/0.76 (11) certified 0.36/0.76 (11)
+  CLEC3B                       45035877-45036274   Maternal  truth 0.01/0.02 (28) phaser 0.01/0.02 (28) certified 0.01/0.02 (28)
+  FBXW12                       48366603-48366713   Paternal  truth 0.86/0.67 (2) phaser 0.86/0.67 (2) certified 0.86/0.67 (2)
+  PLA1A                       119629738-119629739  Maternal  truth - phaser - certified -
+  PLA1A                       119630766-119630994  Paternal  truth 0.58/0.03 (2) phaser 0.58/0.03 (2) certified 0.58/0.03 (2)
+  P2RY12;MED12L               151346026-151347867  Paternal  truth 0.59/0.40 (11) phaser 0.59/0.40 (11) certified 0.59/0.40 (11)
+  FGF12                       192571291-192571834  Maternal  truth 0.02/0.69 (22) recovered phaser 0.69/0.02 (22) certified 0.69/0.02 (22)
+  LINC02012                   197498660-197499279  Paternal  truth 0.97/0.96 (60) phaser 0.96/0.97 (60) certified 0.96/0.97 (60)
+  chr3: 7 DMRs with coverage, 2 recovered under truth tagging; 189976 truth-phased variants
+
+chr4: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  JAKMIP1                       6105403-6105907    Maternal  truth 0.19/0.96 (57) recovered phaser 0.19/0.96 (57) certified 0.19/0.96 (57)
+  NAP1L5                       88697033-88698086   Maternal  truth 0.01/0.95 (56) recovered phaser 0.01/0.95 (56) certified 0.01/0.95 (56)
+  TRPC3                       121932574-121933160  Maternal  truth 0.50/0.92 (42) recovered phaser 0.92/0.50 (42) certified 0.91/0.50 (42)
+  FAM53A                        1548466-1548623    Maternal  truth 0.83/0.84 (12) phaser 0.84/0.83 (12) certified 0.84/0.83 (12)
+  GPR78                         8580973-8581784    Maternal  truth 0.51/0.74 (76) recovered phaser 0.51/0.74 (76) certified 0.52/0.74 (76)
+  FAM184B                      17641982-17642265   Maternal  truth 0.92/0.96 (29) phaser 0.92/0.96 (29) certified 0.92/0.96 (29)
+  RP11-33B1.1                 119455534-119455914  Maternal  truth 0.69/0.24 (16) phaser 0.24/0.69 (16) certified 0.25/0.68 (16)
+  LRAT                        154740697-154740781  Maternal  truth 0.92/0.93 (4) phaser 0.91/0.93 (4) certified 0.91/0.94 (4)
+  RBM46                       154781458-154781987  Maternal  truth 0.43/0.91 (50) recovered phaser 0.43/0.91 (50) certified 0.43/0.91 (50)
+  PTGES3P3                    169774385-169774935  Maternal  truth 0.02/0.80 (30) recovered phaser 0.80/0.02 (30) certified 0.80/0.02 (30)
+  chr4: 9 DMRs with coverage, 6 recovered under truth tagging; 192179 truth-phased variants
+
+chr5: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  VTRNA2-1                    136079439-136080341  Maternal  truth 0.12/0.86 (35) recovered phaser 0.12/0.86 (35) certified 0.12/0.86 (35)
+  RP1-137K24.1                 15271459-15271770   Maternal  truth 0.81/0.79 (16) phaser 0.79/0.81 (16) certified 0.79/0.81 (16)
+  MARK2P5                      15384409-15384881   Maternal  truth 0.83/0.83 (15) phaser 0.83/0.83 (15) certified 0.83/0.83 (15)
+  TBCA                         77850972-77851318   Maternal  truth 0.89/0.93 (19) phaser 0.89/0.93 (19) certified 0.89/0.93 (19)
+  CMYA5                        79689739-79689770   Maternal  truth 0.69/0.51 (4) phaser 0.69/0.51 (4) certified 0.68/0.51 (4)
+  LINC00992                   117455047-117455203  Maternal  truth 0.00/0.01 (4) phaser 0.01/0.00 (4) certified 0.01/0.00 (4)
+  AC011431.1                  135767915-135768919  Maternal  truth 0.62/0.74 (20) phaser 0.62/0.74 (20) certified 0.62/0.74 (20)
+  AC011431.1                  135769815-135771319  Maternal  truth 0.78/0.75 (24) phaser 0.78/0.75 (24) certified 0.78/0.75 (24)
+  MIR5692C1                   135778208-135778521  Maternal  truth 0.77/0.86 (8) phaser 0.77/0.86 (8) certified 0.77/0.86 (8)
+  PKD2L2                      137889215-137889522  Maternal  truth 0.00/0.00 (37) phaser 0.00/0.00 (37) certified 0.00/0.00 (37)
+  RGS14                       177370919-177371049  Paternal  truth 0.81/0.98 (11) phaser 0.81/0.98 (11) certified 0.81/0.98 (11)
+  ADAMTS2;ADAMTS2             179265690-179265806  Paternal  truth 0.39/0.32 (12) phaser 0.39/0.32 (12) certified 0.39/0.32 (12)
+  GFPT2                       180313743-180314121  Maternal  truth 0.01/0.31 (38) recovered phaser 0.31/0.01 (38) certified 0.31/0.01 (38)
+  chr5: 11 DMRs with coverage, 2 recovered under truth tagging; 183348 truth-phased variants
+
+chr6: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  FAM50B                        3848848-3850125    Maternal  truth 0.05/0.97 (89) recovered phaser 0.05/0.97 (89) certified 0.05/0.97 (89)
+  PLAGL1                      144006941-144008751  Maternal  truth 0.14/0.97 (142) recovered phaser 0.97/0.14 (142) certified 0.97/0.14 (142)
+  IGF2R                       160005526-160006529  Maternal  truth 0.52/0.99 (73) recovered phaser 0.52/0.99 (73) certified 0.52/0.97 (73)
+  WDR27                       169654408-169655522  Maternal  truth 0.14/0.98 (57) recovered phaser 0.98/0.14 (57) certified 0.98/0.14 (57)
+  HIST1H3E                     26225054-26225162   Maternal  truth 0.71/0.98 (3) phaser 0.98/0.71 (3) certified 0.98/0.71 (3)
+  ZFP57                        29680602-29681316   Maternal  truth 0.73/0.73 (50) phaser 0.73/0.73 (50) certified 0.73/0.73 (50)
+  LTA;LTA                      31571958-31572360   Maternal  truth 0.01/0.00 (15) phaser 0.00/0.01 (15) certified 0.00/0.01 (15)
+  DDX43                        73395145-73395155   Maternal  truth 0.50/0.99 (2) phaser 0.99/0.50 (2) certified 0.99/0.50 (2)
+  SPACA1                       88047653-88047986   Maternal  truth 0.33/0.95 (45) recovered phaser 0.95/0.33 (45) certified 0.95/0.33 (45)
+  RP1-76C18.1                 103332287-103333035  Maternal  truth 0.69/0.76 (25) phaser 0.69/0.76 (25) certified 0.70/0.76 (25)
+  DDO;DDO                     110415569-110415851  Paternal  truth 0.66/0.69 (6) phaser 0.69/0.66 (6) certified 0.69/0.66 (6)
+  RPF2;RPF2                   110981434-110981527  Maternal  truth 0.00/0.00 (2) phaser 0.00/0.00 (2) certified 0.00/0.00 (2)
+  PLAGL1;PLAGL1;PLAGL1;PLAGL  144008772-144008773  Maternal  truth - phaser - certified -
+  SMOC2                       168384674-168384845  Maternal  truth 0.59/0.71 (8) phaser 0.71/0.59 (8) certified 0.71/0.59 (8)
+  WDR27                       169577181-169577797  Maternal  truth 0.93/0.95 (57) phaser 0.95/0.93 (57) certified 0.95/0.93 (57)
+  chr6: 11 DMRs with coverage, 5 recovered under truth tagging; 172692 truth-phased variants
+
+chr7: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  RPS2P32                      23490379-23491192   Maternal  truth 0.00/0.98 (59) recovered phaser 0.98/0.00 (59) certified 0.98/0.00 (59)
+  GRB10                        50781029-50783615   Maternal  truth 0.26/0.91 (170) recovered phaser 0.91/0.26 (170) certified 0.91/0.26 (170)
+  PEG10                        94656225-94658648   Maternal  truth 0.02/0.95 (118) recovered phaser 0.02/0.95 (118) certified 0.02/0.95 (118)
+  MEST                        130490281-130494547  Maternal  truth 0.22/0.92 (225) recovered phaser 0.22/0.92 (225) certified 0.22/0.92 (225)
+  SVOPL                       138664028-138664699  Maternal  truth 0.01/0.94 (53) recovered phaser 0.01/0.94 (53) certified 0.01/0.94 (53)
+  HTR5A                       155071009-155071672  Maternal  truth 0.47/0.84 (54) recovered phaser 0.47/0.84 (54) certified 0.47/0.84 (54)
+  MAD1L1                        1940842-1941257    Paternal  truth 0.70/0.34 (17) recovered phaser 0.70/0.34 (17) certified 0.70/0.34 (17)
+  ZNF890P                       5144361-5144525    Maternal  truth 0.85/0.92 (13) phaser 0.85/0.92 (13) certified 0.85/0.92 (13)
+  SLC29A4;SLC29A4;SLC29A4;SL    5282949-5282956    Maternal  truth 0.04/0.06 (2) phaser 0.04/0.06 (2) certified 0.04/0.06 (2)
+  RP11-455J15.1                16850625-16851508   Maternal  truth 0.11/0.80 (44) recovered phaser 0.80/0.11 (44) certified 0.80/0.11 (44)
+  HOXA1;HOXA1                  27093487-27094751   Maternal  truth 0.90/0.18 (26) phaser 0.18/0.90 (26) certified 0.18/0.90 (26)
+  AC010132.10                  42856558-42857371   Maternal  truth 0.01/0.51 (42) recovered phaser 0.51/0.01 (42) certified 0.51/0.01 (42)
+  RP11-561N12.5                64575091-64575739   Maternal  truth 0.63/0.69 (36) phaser 0.69/0.63 (36) certified 0.69/0.64 (36)
+  CLDN4                        73827399-73827672   Paternal  truth 0.69/0.50 (3) phaser 0.50/0.69 (3) certified 0.50/0.69 (3)
+  BAIAP2L1                     98399954-98399974   Paternal  truth 0.49/0.65 (2) phaser 0.49/0.65 (2) certified 0.52/0.65 (2)
+  SH2B2                       102321329-102321657  Maternal  truth 0.91/0.86 (55) phaser 0.86/0.91 (55) certified 0.86/0.91 (55)
+  CALD1                       134831752-134832178  Maternal  truth 0.86/0.78 (20) phaser 0.86/0.78 (20) certified 0.86/0.78 (20)
+  PTPRN2;PTPRN2;PTPRN2        158253333-158253531  Maternal  truth 0.40/0.73 (9) recovered phaser 0.40/0.73 (9) certified 0.40/0.73 (9)
+  AC004863.1                  158957916-158958494  Maternal  truth 0.09/0.01 (35) phaser 0.07/0.02 (35) certified 0.08/0.02 (35)
+  chr7: 16 DMRs with coverage, 10 recovered under truth tagging; 153969 truth-phased variants
+
+chr8: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  CXORF56_pseudogene,ERLIN2    37747474-37748570   Maternal  truth 0.10/0.94 (36) recovered phaser 0.94/0.10 (36) certified 0.94/0.10 (36)
+  CHD7                         60714065-60714274   Maternal  truth 0.36/0.98 (27) recovered phaser 0.39/0.98 (25) certified 0.39/0.98 (25)
+  TRAPPC9                     140098048-140100982  Maternal  truth 0.09/0.95 (192) recovered phaser 0.09/0.95 (192) certified 0.09/0.95 (192)
+  ZNF596                         266578-266789     Maternal  truth 0.24/0.62 (14) recovered phaser 0.62/0.24 (14) certified 0.62/0.24 (14)
+  LOC101927815                  2727694-2728686    Maternal  truth 0.00/0.84 (76) recovered phaser 0.00/0.84 (76) certified 0.00/0.84 (76)
+  LOC101927815                  2733675-2733881    Maternal  truth 0.00/0.88 (12) recovered phaser 0.00/0.88 (12) certified 0.00/0.88 (12)
+  CLDN23                        8702335-8703302    Maternal  truth - phaser - certified -
+  XPO7                         22010755-22011096   Maternal  truth 0.71/0.65 (9) phaser 0.71/0.65 (9) certified 0.71/0.65 (9)
+  ADGRA2,GPR124                37841713-37841990   Maternal  truth 0.02/0.94 (31) recovered phaser 0.94/0.02 (31) certified 0.94/0.02 (31)
+  ADAM5P                       39314503-39314602   Maternal  truth 0.92/0.92 (11) phaser 0.92/0.92 (11) certified 0.92/0.92 (11)
+  ADAM3A;ADAM3A;ADAM3A;ADAM3   39523957-39524413   Paternal  truth 0.38/0.35 (3) phaser 0.35/0.38 (3) certified 0.36/0.37 (3)
+  LOC100130298                 60967833-60967912   Paternal  truth 0.76/0.86 (3) phaser 0.86/0.76 (3) certified 0.85/0.76 (3)
+  CDH17                        94119077-94120749   Maternal  truth 0.43/0.59 (43) phaser 0.43/0.59 (43) certified 0.43/0.59 (43)
+  KB-1980E6.3                 102527935-102529486  Maternal  truth 0.24/0.77 (51) recovered phaser 0.24/0.77 (51) certified 0.24/0.77 (51)
+  TRAPPC9                     140035407-140035811  Paternal  truth 0.63/0.65 (13) phaser 0.63/0.65 (13) certified 0.63/0.65 (13)
+  TRAPPC9                     140038516-140038940  Paternal  truth 0.78/0.86 (14) phaser 0.78/0.86 (14) certified 0.78/0.86 (14)
+  TRAPPC9                     140085725-140086791  Paternal  truth 0.52/0.51 (19) phaser 0.52/0.51 (19) certified 0.52/0.51 (19)
+  TRAPPC9                     140088744-140088969  Paternal  truth 0.78/0.65 (6) phaser 0.78/0.65 (6) certified 0.78/0.65 (6)
+  TRAPPC9                     140349439-140349688  Maternal  truth 0.55/0.95 (16) recovered phaser 0.55/0.95 (16) certified 0.55/0.95 (16)
+  PSCA                        142670377-142670384  Maternal  truth 0.80/0.61 (2) phaser 0.61/0.80 (2) certified 0.61/0.80 (2)
+  chr8: 16 DMRs with coverage, 9 recovered under truth tagging; 142688 truth-phased variants
+
+chr9: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  UNQ6494,LOC100129066         89661988-89662352   Paternal  truth 0.02/0.16 (10) phaser 0.16/0.02 (10) certified 0.16/0.02 (10)
+  C9orf129;C9orf129            93346185-93346600   Maternal  truth 0.15/0.19 (45) phaser 0.19/0.15 (45) certified 0.19/0.15 (45)
+  FANCC_Int1-DMR               95313210-95313211   Maternal  truth - phaser - certified -
+  AL162588.1                  113061735-113063023  Maternal  truth 0.43/0.53 (82) phaser 0.53/0.43 (82) certified 0.52/0.41 (82)
+  AL449105.4                  113071610-113078826  Maternal  truth 0.28/0.33 (411) phaser 0.33/0.28 (411) certified 0.33/0.28 (411)
+  AL449105.5                  113088975-113090248  Maternal  truth 0.36/0.64 (81) recovered phaser 0.64/0.36 (81) certified 0.60/0.37 (81)
+  EXD3                        137416835-137418376  Maternal  truth 0.95/0.96 (139) phaser 0.96/0.95 (139) certified 0.96/0.95 (139)
+  chr9: 6 DMRs with coverage, 1 recovered under truth tagging; 114828 truth-phased variants
+
+chr10: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  INPP5F                      119818534-119819215  Maternal  truth 0.39/0.93 (50) recovered phaser 0.39/0.93 (50) certified 0.39/0.93 (50)
+  AL137186.2                    5945699-5945839    Paternal  truth 0.38/0.75 (5) phaser 0.38/0.75 (5) certified 0.38/0.75 (5)
+  PTCHD3                       27414400-27414434   Maternal  truth 0.50/0.87 (5) recovered phaser 0.50/0.87 (5) certified 0.50/0.87 (5)
+  MBL2                         52778745-52778940   Maternal  truth 0.64/0.05 (15) phaser 0.64/0.05 (15) certified 0.64/0.05 (15)
+  C10orf143                   130045333-130045535  Maternal  truth 0.92/0.89 (14) phaser 0.92/0.89 (14) certified 0.92/0.89 (14)
+  GLRX3                       130190919-130191634  Maternal  truth 0.85/0.89 (38) phaser 0.85/0.89 (38) certified 0.85/0.89 (38)
+  chr10: 6 DMRs with coverage, 2 recovered under truth tagging; 135219 truth-phased variants
+
+chr11: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  H19                           1997582-2003510    Paternal  truth - phaser - certified -
+  IGF2_DMR2                     2132761-2133882    Paternal  truth 0.51/0.04 (62) recovered phaser 0.04/0.51 (62) certified 0.04/0.51 (62)
+  IGF2_DMR0                     2147103-2148538    Paternal  truth 0.48/0.12 (33) recovered phaser 0.12/0.48 (33) certified 0.12/0.48 (33)
+  KvDMR1                        2698718-2701029    Maternal  truth 0.01/0.92 (191) recovered phaser 0.92/0.01 (191) certified 0.92/0.01 (191)
+  RBMXL2                        7088843-7089383    Maternal  truth - phaser - certified -
+  AC136475.9                     316247-316457     Maternal  truth 0.77/0.99 (25) recovered phaser 0.99/0.77 (25) certified 0.99/0.77 (25)
+  BRSK2                         1442324-1442433    Maternal  truth 0.83/0.02 (2) phaser 0.83/0.02 (2) certified 0.83/0.02 (2)
+  LINC00301                    60647012-60647445   Maternal  truth 0.21/0.87 (31) recovered phaser 0.21/0.87 (31) certified 0.21/0.87 (31)
+  MRPL21;MRPL21                68890915-68891502   Paternal  truth 0.38/0.96 (22) phaser 0.38/0.96 (22) certified 0.38/0.96 (22)
+  CREBZF                       85682722-85683003   Maternal  truth 0.00/0.72 (21) recovered phaser 0.72/0.00 (21) certified 0.72/0.00 (21)
+  ZBTB44                      130315489-130315776  Maternal  truth 0.01/0.86 (16) recovered phaser 0.01/0.86 (16) certified 0.01/0.86 (16)
+  OPCML;OPCML                 132792877-132793069  Maternal  truth 0.93/0.91 (9) phaser 0.91/0.93 (9) certified 0.91/0.93 (9)
+  chr11: 9 DMRs with coverage, 7 recovered under truth tagging; 126619 truth-phased variants
+
+chr12: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  RP11-283I3.2,SLC6A12           203429-204151     Maternal  truth 0.35/0.20 (83) phaser 0.35/0.20 (83) certified 0.35/0.20 (83)
+  LOC100049716;NINJ2;NINJ2       630787-632342     Paternal  truth 0.47/0.92 (45) phaser 0.92/0.47 (45) certified 0.92/0.47 (45)
+  CD27;LOC678655                6444419-6444886    Maternal  truth 0.09/0.00 (7) phaser 0.09/0.00 (7) certified 0.09/0.00 (7)
+  CLEC9A                       10030568-10030622   Paternal  truth 0.93/0.93 (6) phaser 0.93/0.93 (6) certified 0.93/0.93 (6)
+  H2AFJ;H2AFJ                  14773810-14774053   Maternal  truth 0.15/0.01 (12) phaser 0.02/0.16 (12) certified 0.03/0.15 (12)
+  RP11-313F23.4                34218926-34219575   Paternal  truth 0.45/0.06 (36) recovered phaser 0.45/0.06 (36) certified 0.45/0.06 (36)
+  AK6P1                        34362974-34363820   Maternal  truth - phaser - certified -
+  AK6P1                        34372206-34374112   Maternal  truth - phaser - certified -
+  WIF1                         65121923-65122279   Maternal  truth 0.95/0.90 (26) phaser 0.95/0.90 (26) certified 0.95/0.90 (26)
+  ELK3                         96223999-96224321   Paternal  truth 0.36/0.50 (6) phaser 0.36/0.50 (6) certified 0.36/0.50 (6)
+  PIWIL1                      130337741-130338059  Maternal  truth 0.88/0.86 (21) phaser 0.88/0.86 (21) certified 0.88/0.86 (21)
+  RNU6-1017P                  131808975-131809158  Maternal  truth 0.97/0.00 (15) phaser 0.97/0.00 (15) certified 0.97/0.00 (15)
+  chr12: 10 DMRs with coverage, 1 recovered under truth tagging; 132430 truth-phased variants
+
+chr13: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  RB1                          48318205-48321627   Maternal  truth 0.13/0.98 (194) recovered phaser 0.98/0.13 (194) certified 0.92/0.26 (194)
+  TARDBPP2                     60267520-60269245   Maternal  truth 0.14/0.79 (36) recovered phaser 0.14/0.79 (36) certified 0.14/0.79 (36)
+  LINC01198                    46529791-46532042   Paternal  truth 0.59/0.57 (9) phaser 0.57/0.59 (9) certified 0.57/0.59 (9)
+  LRCH1                        46543003-46543004   Maternal  truth - phaser - certified -
+  AL135901.1                   49620186-49620508   Paternal  truth 0.91/0.72 (15) phaser 0.93/0.73 (15) certified 0.90/0.74 (15)
+  PWWP2AP1                     80654825-80655272   Maternal  truth 0.70/0.81 (29) phaser 0.81/0.70 (29) certified 0.81/0.70 (29)
+  COL4A2                      110409899-110409941  Maternal  truth 0.06/0.24 (5) phaser 0.06/0.24 (5) certified 0.06/0.24 (5)
+  TMCO3                       113509836-113510340  Paternal  truth 0.90/0.95 (12) phaser 0.90/0.95 (12) certified 0.90/0.95 (12)
+  CDC16                       114234673-114234688  Paternal  truth 0.03/0.00 (2) phaser 0.03/0.00 (2) certified 0.03/0.00 (2)
+  chr13: 7 DMRs with coverage, 2 recovered under truth tagging; 97861 truth-phased variants
+
+chr14: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  DLK1                        100726514-100726577  Paternal  truth 0.85/0.33 (7) recovered phaser 0.85/0.33 (7) certified 0.85/0.33 (7)
+  IG-DMR                      100809090-100811721  Paternal  truth 0.77/0.46 (64) recovered phaser 0.77/0.46 (64) certified 0.77/0.46 (64)
+  MEG3                        100824187-100827641  Paternal  truth 0.90/0.14 (187) recovered phaser 0.90/0.14 (187) certified 0.90/0.14 (187)
+  MEG8                        100904404-100905082  Maternal  truth 0.10/0.78 (42) recovered phaser 0.10/0.78 (42) certified 0.10/0.78 (42)
+  NPAS3                        33799741-33800646   Maternal  truth 0.15/0.49 (111) recovered phaser 0.49/0.15 (111) certified 0.49/0.15 (111)
+  ACTN1                        68874777-68874992   Maternal  truth 0.93/0.93 (23) phaser 0.93/0.93 (23) certified 0.93/0.93 (23)
+  DLK1                        100727514-100728411  Maternal  truth 0.64/0.50 (29) phaser 0.64/0.50 (29) certified 0.64/0.50 (29)
+  MEG3,MEG8,RP11-123M6.2      100835999-100836272  Maternal  truth 0.49/0.69 (14) phaser 0.49/0.69 (14) certified 0.49/0.69 (14)
+  MEG8,SNHG23                 100900401-100901267  Maternal  truth 0.18/0.23 (24) phaser 0.18/0.23 (24) certified 0.18/0.23 (24)
+  MEG9                        101067986-101069282  Maternal  truth 0.32/0.25 (38) phaser 0.32/0.25 (38) certified 0.32/0.25 (38)
+  MEG9                        101072233-101073637  Maternal  truth 0.38/0.45 (52) phaser 0.38/0.45 (52) certified 0.38/0.45 (52)
+  RP11-8L8.2                  101151414-101151997  Paternal  truth 0.82/0.81 (28) phaser 0.82/0.81 (28) certified 0.82/0.81 (28)
+  RP11-1029J19.5              101635099-101635431  Paternal  truth 0.90/0.91 (23) phaser 0.90/0.91 (23) certified 0.90/0.91 (23)
+  TDRD9                       103928439-103928449  Maternal  truth 0.04/0.26 (2) phaser 0.26/0.04 (2) certified 0.26/0.04 (2)
+  IGHV3-37                    106399075-106399179  Maternal  truth - phaser - certified -
+  chr14: 13 DMRs with coverage, 5 recovered under truth tagging; 87508 truth-phased variants
+
+chr15: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  MKRN3,MIR4508                23561939-23567348   Maternal  truth 0.62/0.73 (108) phaser 0.62/0.73 (108) certified 0.62/0.73 (108)
+  MAGEL2                       23647278-23648882   Maternal  truth 0.10/0.87 (50) recovered phaser 0.10/0.87 (50) certified 0.10/0.87 (50)
+  NDN                          23686304-23688131   Maternal  truth 0.22/0.77 (115) recovered phaser 0.22/0.77 (115) certified 0.22/0.77 (115)
+  PWRN4                        23897772-23897854   Maternal  truth 0.43/0.97 (11) recovered phaser 0.43/0.97 (11) certified 0.43/0.97 (11)
+  SNRPN_intragenic_CpG32       24101056-24101995   Maternal  truth 0.29/0.46 (43) phaser 0.29/0.46 (43) certified 0.29/0.46 (43)
+  SNRPN_intragenic_CpG29       24426725-24427532   Maternal  truth 0.28/0.77 (38) recovered phaser 0.28/0.77 (38) certified 0.44/0.54 (38)
+  SNRPN_intragenic_CpG40       24772777-24773739   Maternal  truth 0.14/0.69 (66) recovered phaser 0.14/0.69 (66) certified 0.14/0.69 (66)
+  SNRPN                        24823417-24824759   Maternal  truth 0.23/0.56 (21) recovered phaser 0.56/0.23 (21) certified 0.56/0.23 (21)
+  SNRPN                        24847861-24848682   Maternal  truth 0.37/0.78 (43) recovered phaser 0.78/0.37 (43) certified 0.78/0.37 (43)
+  SNRPN                        24856479-24856534   Maternal  truth 0.43/0.59 (5) phaser 0.59/0.43 (5) certified 0.59/0.43 (5)
+  SNRPN                        24877880-24878758   Maternal  truth 0.23/0.79 (44) recovered phaser 0.79/0.23 (44) certified 0.79/0.23 (44)
+  SNURF                        24954857-24956829   Maternal  truth 0.01/0.88 (112) recovered phaser 0.89/0.01 (112) certified 0.82/0.22 (112)
+  PWARSN,SNORD107,PWARSN,PWA   24981888-24985149   Paternal  truth 0.97/0.71 (41) recovered phaser 0.71/0.96 (41) certified 0.71/0.94 (41)
+  SNORD116Cluster              25051256-25056714   Paternal  truth 0.93/0.69 (109) recovered phaser 0.69/0.93 (109) certified 0.69/0.93 (109)
+  SNORD116Cluster              25073965-25093073   Paternal  truth 0.90/0.46 (240) recovered phaser 0.46/0.90 (240) certified 0.46/0.90 (240)
+  SNORD115Cluster              25181244-25184030   Paternal  truth 0.66/0.61 (49) phaser 0.61/0.66 (49) certified 0.61/0.66 (49)
+  SORD                         45022590-45022746   Maternal  truth 0.03/0.05 (12) phaser 0.05/0.03 (12) certified 0.04/0.03 (12)
+  IGF1R                        98865267-98866421   Maternal  truth 0.01/0.83 (54) recovered phaser 0.83/0.01 (54) certified 0.83/0.01 (54)
+  TUBGCP5                      23039853-23039919   Maternal  truth 0.00/0.25 (4) phaser 0.25/0.00 (4) certified 0.25/0.02 (4)
+  GOLGA8S                      23364409-23364521   Maternal  truth - phaser - certified -
+  MIR4508                      23534531-23535315   Paternal  truth 0.58/0.59 (12) phaser 0.58/0.59 (12) certified 0.58/0.59 (12)
+  MKRN3                        23606638-23609456   Paternal  truth 0.35/0.23 (13) phaser 0.35/0.23 (13) certified 0.35/0.23 (13)
+  MKRN3                        23629039-23629213   Maternal  truth 0.42/0.69 (9) recovered phaser 0.42/0.69 (9) certified 0.42/0.69 (9)
+  MKRN3                        23634077-23634289   Maternal  truth 0.90/0.78 (7) phaser 0.90/0.78 (7) certified 0.90/0.78 (7)
+  MAGEL2                       23642878-23643103   Maternal  truth 0.05/0.24 (5) phaser 0.05/0.24 (5) certified 0.05/0.24 (5)
+  MAGEL2                       23661255-23662817   Paternal  truth 0.54/0.51 (14) phaser 0.54/0.51 (14) certified 0.54/0.51 (14)
+  NDN                          23674115-23675360   Paternal  truth 0.52/0.44 (11) phaser 0.52/0.44 (11) certified 0.52/0.44 (11)
+  RNU6-741P                    23769176-23769945   Paternal  truth 0.29/0.25 (10) phaser 0.29/0.25 (10) certified 0.29/0.25 (10)
+  RNU6-741P                    23782845-23783768   Paternal  truth 0.50/0.51 (11) phaser 0.50/0.51 (11) certified 0.50/0.51 (11)
+  RNU6-741P                    23797680-23798290   Maternal  truth 0.19/0.56 (21) recovered phaser 0.19/0.56 (21) certified 0.19/0.56 (21)
+  RNU6-741P                    23829311-23829706   Paternal  truth 0.48/0.50 (5) phaser 0.48/0.50 (5) certified 0.48/0.50 (5)
+  RP11-484P15.1                23854644-23855506   Maternal  truth 0.03/0.16 (9) phaser 0.03/0.16 (9) certified 0.03/0.16 (9)
+  RP11-484P15.1                23857016-23857880   Maternal  truth 0.28/0.34 (14) phaser 0.28/0.34 (14) certified 0.28/0.34 (14)
+  RP11-484P15.1                23858683-23861887   Maternal  truth 0.38/0.57 (64) phaser 0.38/0.57 (64) certified 0.38/0.57 (64)
+  RP11-484P15.1                23869240-23869921   Maternal  truth 0.18/0.58 (31) recovered phaser 0.18/0.58 (31) certified 0.18/0.58 (31)
+  RP11-484P15.1                23877454-23878654   Maternal  truth 0.22/0.28 (39) phaser 0.22/0.28 (39) certified 0.22/0.28 (39)
+  RP11-484P15.1                23883075-23883432   Paternal  truth 0.48/0.37 (10) phaser 0.48/0.37 (10) certified 0.48/0.37 (10)
+  RP11-484P15.1                23908972-23909688   Paternal  truth 0.56/0.52 (16) phaser 0.56/0.52 (16) certified 0.56/0.52 (16)
+  PWRN4                        23912230-23912384   Maternal  truth 0.53/0.73 (4) phaser 0.53/0.73 (4) certified 0.53/0.73 (4)
+  RP11-484P15.1                23914065-23915807   Paternal  truth 0.33/0.28 (10) phaser 0.33/0.28 (10) certified 0.33/0.28 (10)
+  RP11-484P15.1                23922214-23923177   Paternal  truth 0.47/0.43 (17) phaser 0.47/0.43 (17) certified 0.47/0.43 (17)
+  RP11-484P15.1                23931257-23933138   Paternal  truth 0.53/0.39 (15) phaser 0.53/0.39 (15) certified 0.53/0.40 (15)
+  RP11-484P15.1                23939735-23940870   Paternal  truth 0.27/0.31 (12) phaser 0.26/0.32 (12) certified 0.26/0.32 (12)
+  PWRN4                        23967138-23967845   Paternal  truth 0.47/0.37 (7) phaser 0.47/0.37 (7) certified 0.47/0.37 (7)
+  PWRN4                        23968767-23970583   Paternal  truth 0.48/0.46 (19) phaser 0.48/0.46 (19) certified 0.48/0.46 (19)
+  PWRN4                        23971255-23971960   Paternal  truth 0.70/0.52 (10) phaser 0.70/0.52 (10) certified 0.70/0.52 (10)
+  PWRN4                        23975861-23977507   Paternal  truth 0.64/0.49 (18) phaser 0.64/0.49 (18) certified 0.64/0.49 (18)
+  PWRN4                        23984693-23986673   Paternal  truth 0.37/0.33 (16) phaser 0.37/0.33 (16) certified 0.37/0.33 (16)
+  PWRN4                        23999391-24001886   Paternal  truth 0.48/0.37 (30) phaser 0.48/0.37 (30) certified 0.48/0.37 (30)
+  PWRN4                        24004599-24005919   Paternal  truth 0.31/0.14 (18) phaser 0.31/0.14 (18) certified 0.31/0.14 (18)
+  PWRN4                        24009020-24009903   Paternal  truth 0.25/0.14 (6) phaser 0.25/0.14 (6) certified 0.25/0.14 (6)
+  PWRN4                        24019161-24019660   Paternal  truth 0.35/0.10 (6) recovered phaser 0.35/0.10 (6) certified 0.35/0.10 (6)
+  PWRN4                        24029218-24029630   Paternal  truth 0.36/0.19 (5) phaser 0.36/0.19 (5) certified 0.36/0.19 (5)
+  PWRN4                        24050087-24051502   Paternal  truth 0.56/0.28 (11) recovered phaser 0.56/0.29 (11) certified 0.56/0.29 (11)
+  PWRN2                        24086139-24087500   Paternal  truth 0.36/0.37 (13) phaser 0.36/0.37 (13) certified 0.36/0.37 (13)
+  PWRN2                        24111944-24113625   Paternal  truth 0.54/0.42 (20) phaser 0.54/0.42 (20) certified 0.54/0.42 (20)
+  PWRN2                        24115509-24117169   Paternal  truth 0.29/0.25 (11) phaser 0.29/0.25 (11) certified 0.28/0.26 (11)
+  PWRN2                        24132683-24133507   Paternal  truth 0.54/0.45 (9) phaser 0.54/0.45 (9) certified 0.54/0.45 (9)
+  PWRN2                        24156357-24157105   Paternal  truth 0.29/0.37 (7) phaser 0.29/0.37 (7) certified 0.29/0.37 (7)
+  PWRN2                        24163134-24163879   Paternal  truth 0.27/0.28 (7) phaser 0.27/0.28 (7) certified 0.27/0.28 (7)
+  PWRN2                        24174217-24175175   Paternal  truth 0.34/0.08 (8) recovered phaser 0.34/0.08 (8) certified 0.34/0.08 (8)
+  RP11-580I1.1                 24225156-24227501   Paternal  truth 0.47/0.41 (20) phaser 0.47/0.41 (20) certified 0.47/0.41 (20)
+  RP11-350A1.2,RP11-580I1.2    24239642-24241406   Paternal  truth 0.37/0.43 (18) phaser 0.37/0.43 (18) certified 0.38/0.42 (18)
+  RP11-580I1.2                 24252735-24254128   Paternal  truth 0.49/0.45 (17) phaser 0.49/0.45 (17) certified 0.49/0.45 (17)
+  RP11-580I1.2                 24274859-24275806   Paternal  truth 0.21/0.32 (9) phaser 0.21/0.32 (9) certified 0.21/0.32 (9)
+  RP11-107D24.2                24300755-24301849   Paternal  truth 0.46/0.37 (14) phaser 0.46/0.37 (14) certified 0.45/0.38 (14)
+  PWRN3                        24406235-24407327   Paternal  truth 0.19/0.25 (9) phaser 0.19/0.25 (9) certified 0.19/0.26 (9)
+  PWRN3                        24416085-24417692   Paternal  truth 0.33/0.35 (11) phaser 0.33/0.35 (11) certified 0.33/0.35 (11)
+  SNRPN_intragenic_CpG30       24477606-24477924   Maternal  truth 0.08/0.63 (28) recovered phaser 0.08/0.63 (28) certified 0.11/0.62 (28)
+  PWRN1                        24535702-24537396   Paternal  truth 0.39/0.31 (14) phaser 0.39/0.31 (14) certified 0.39/0.31 (14)
+  PWRN1                        24551067-24552042   Paternal  truth 0.37/0.35 (8) phaser 0.37/0.35 (8) certified 0.37/0.35 (8)
+  PWRN1                        24552829-24553614   Paternal  truth 0.32/0.25 (10) phaser 0.32/0.25 (10) certified 0.32/0.25 (10)
+  PWRN1                        24561446-24562639   Paternal  truth 0.28/0.29 (9) phaser 0.28/0.29 (9) certified 0.28/0.29 (9)
+  PWRN1                        24566428-24567551   Paternal  truth 0.32/0.33 (19) phaser 0.32/0.33 (19) certified 0.32/0.33 (19)
+  PWRN1                        24576113-24576926   Paternal  truth 0.28/0.22 (7) phaser 0.28/0.22 (7) certified 0.28/0.21 (7)
+  PWRN1                        24578494-24579011   Paternal  truth 0.36/0.04 (6) recovered phaser 0.36/0.04 (6) certified 0.36/0.04 (6)
+  PWRN1                        24606385-24608581   Paternal  truth 0.45/0.38 (16) phaser 0.45/0.38 (16) certified 0.45/0.38 (16)
+  PWRN1                        24648973-24649668   Paternal  truth 0.29/0.27 (12) phaser 0.29/0.27 (12) certified 0.29/0.27 (12)
+  NPAP1                        24689074-24690306   Paternal  truth 0.37/0.41 (20) phaser 0.37/0.41 (20) certified 0.37/0.41 (20)
+  NPAP1                        24733127-24735542   Paternal  truth 0.46/0.49 (16) phaser 0.46/0.49 (16) certified 0.46/0.49 (16)
+  NPAP1                        24747566-24748890   Paternal  truth 0.46/0.36 (20) phaser 0.46/0.36 (20) certified 0.46/0.36 (20)
+  PWRN1                        24765007-24765008   Maternal  truth - phaser - certified -
+  SNRPN                        24768838-24769120   Paternal  truth 0.86/0.63 (9) recovered phaser 0.86/0.63 (9) certified 0.86/0.63 (9)
+  PWRN1                        24769819-24769820   Paternal  truth - phaser - certified -
+  SNRPN                        24784260-24785474   Maternal  truth 0.43/0.32 (14) phaser 0.43/0.32 (14) certified 0.43/0.32 (14)
+  SNRPN                        24809111-24810320   Paternal  truth - phaser - certified -
+  SNRPN                        24816493-24817798   Paternal  truth 0.36/0.43 (12) phaser 0.43/0.36 (12) certified 0.43/0.36 (12)
+  SNRPN                        24828587-24829569   Paternal  truth 0.50/0.31 (6) phaser 0.31/0.50 (6) certified 0.31/0.50 (6)
+  SNRPN                        24833609-24834203   Paternal  truth 0.66/0.43 (7) recovered phaser 0.43/0.66 (7) certified 0.43/0.66 (7)
+  SNRPN                        24885960-24886572   Paternal  truth 0.71/0.67 (8) phaser 0.67/0.71 (8) certified 0.67/0.71 (8)
+  SNRPN                        24887240-24888535   Paternal  truth 0.60/0.52 (19) phaser 0.52/0.60 (19) certified 0.52/0.60 (19)
+  SNRPN                        24901543-24903906   Paternal  truth 0.60/0.49 (28) phaser 0.49/0.60 (28) certified 0.49/0.60 (28)
+  AC090602.2,SNRPN             24910643-24911281   Paternal  truth 0.25/0.19 (7) phaser 0.19/0.25 (7) certified 0.19/0.25 (7)
+  SNRPN                        24949168-24949368   Paternal  truth 0.63/0.49 (5) phaser 0.48/0.63 (5) certified 0.53/0.57 (5)
+  RP11-701H24.9,SNHG14         24996577-24998201   Paternal  truth 0.96/0.26 (12) recovered phaser 0.26/0.96 (12) certified 0.26/0.96 (12)
+  SNHG14                       25000817-25000975   Paternal  truth 0.99/0.70 (6) recovered phaser 0.70/0.99 (6) certified 0.70/0.99 (6)
+  SNHG14                       25005051-25005302   Paternal  truth 0.98/0.55 (9) recovered phaser 0.55/0.98 (9) certified 0.55/0.98 (9)
+  SNHG14                       25015223-25015809   Paternal  truth 0.97/0.40 (11) recovered phaser 0.40/0.97 (11) certified 0.40/0.97 (11)
+  SNHG14                       25039354-25039564   Paternal  truth 0.93/0.48 (6) recovered phaser 0.48/0.93 (6) certified 0.48/0.93 (6)
+  SNHG14                       25048423-25049425   Paternal  truth 0.62/0.30 (9) recovered phaser 0.30/0.62 (9) certified 0.30/0.62 (9)
+  SNHG14                       25060537-25061269   Paternal  truth 0.91/0.58 (14) recovered phaser 0.58/0.91 (14) certified 0.58/0.91 (14)
+  SNHG14                       25062432-25064422   Paternal  truth 0.93/0.52 (27) recovered phaser 0.52/0.93 (27) certified 0.52/0.93 (27)
+  SNHG14,SNORD116-6            25064951-25066060   Paternal  truth 0.91/0.64 (21) recovered phaser 0.64/0.91 (21) certified 0.64/0.91 (21)
+  SNHG14                       25066776-25067078   Paternal  truth 0.94/0.66 (9) recovered phaser 0.66/0.94 (9) certified 0.66/0.94 (9)
+  GABRG3                       26970805-26970825   Maternal  truth 0.09/0.10 (2) phaser 0.10/0.09 (2) certified 0.10/0.09 (2)
+  AC022613.1                   29675828-29675992   Maternal  truth 0.28/0.69 (16) recovered phaser 0.68/0.36 (16) certified 0.63/0.40 (16)
+  RP11-111A22.1                40486055-40486903   Maternal  truth 0.86/0.89 (43) phaser 0.86/0.89 (43) certified 0.86/0.89 (43)
+  AP4E1                        50909603-50909875   Maternal  truth 0.75/0.77 (18) phaser 0.77/0.75 (18) certified 0.77/0.75 (18)
+  ADAMTS17                    100132077-100132175  Maternal  truth 0.93/0.90 (10) phaser 0.93/0.90 (10) certified 0.93/0.90 (10)
+  PRKXP1                      100553573-100553696  Paternal  truth 0.98/0.96 (7) phaser 0.98/0.96 (7) certified 0.98/0.96 (7)
+  chr15: 103 DMRs with coverage, 34 recovered under truth tagging; 78943 truth-phased variants
+
+chr16: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  MTRNR2L4                      3364982-3365312    Paternal  truth 0.01/0.00 (25) phaser 0.00/0.01 (25) certified 0.00/0.01 (25)
+  ZNF597                        3431801-3432388    Maternal  truth 0.09/0.96 (28) recovered phaser 0.96/0.09 (28) certified 0.96/0.09 (28)
+  ZNF597,NAA60                  3442828-3444463    Paternal  truth 0.77/0.01 (75) recovered phaser 0.01/0.77 (75) certified 0.01/0.77 (75)
+  PRR25                          806879-808764     Maternal  truth 0.15/0.75 (140) recovered phaser 0.75/0.15 (140) certified 0.75/0.15 (140)
+  PRR25                          817075-818443     Maternal  truth 0.26/0.80 (82) recovered phaser 0.80/0.26 (82) certified 0.80/0.26 (82)
+  AC009041.1                     998006-998155     Maternal  truth 0.48/0.03 (8) phaser 0.03/0.48 (8) certified 0.03/0.48 (8)
+  MEFV                          3254405-3254770    Paternal  truth 0.73/0.16 (33) recovered phaser 0.73/0.16 (33) certified 0.73/0.16 (33)
+  TIGD7                         3295462-3295605    Maternal  truth 0.74/0.79 (19) phaser 0.74/0.79 (19) certified 0.74/0.79 (19)
+  LA16c-306E5.2                 3413769-3414262    Paternal  truth 0.49/0.59 (26) phaser 0.59/0.49 (26) certified 0.59/0.49 (26)
+  LA16c-306E5.2,ZNF597          3434920-3435926    Maternal  truth 0.26/0.96 (6) recovered phaser 0.96/0.26 (6) certified 0.96/0.26 (6)
+  MTCYBP33                     10707754-10708438   Maternal  truth 0.71/0.77 (27) phaser 0.71/0.77 (27) certified 0.71/0.77 (27)
+  MYLK3                        46790023-46790232   Maternal  truth 0.08/0.01 (19) phaser 0.07/0.01 (19) certified 0.07/0.01 (19)
+  BCO1,BCMO1                   81238499-81238677   Paternal  truth 0.00/0.02 (2) phaser 0.02/0.00 (2) certified 0.02/0.00 (2)
+  chr16: 12 DMRs with coverage, 6 recovered under truth tagging; 81713 truth-phased variants
+
+chr17: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  AC108004.3                     409552-410094     Maternal  truth 0.06/0.60 (31) recovered phaser 0.06/0.60 (31) certified 0.06/0.60 (31)
+  C17orf107,CHRNE               4900360-4902310    Maternal  truth 0.10/0.48 (138) recovered phaser 0.10/0.48 (138) certified 0.10/0.48 (138)
+  KCNAB3                        7929534-7929920    Maternal  truth 0.95/0.96 (31) phaser 0.95/0.96 (31) certified 0.95/0.96 (31)
+  SARM1                        28381207-28381755   Maternal  truth 0.62/0.27 (67) phaser 0.27/0.62 (67) certified 0.27/0.63 (67)
+  DHX58                        42112302-42112353   Paternal  truth 0.01/0.01 (4) phaser 0.01/0.01 (4) certified 0.01/0.01 (4)
+  LOC404266;LOC404266;HOXB6    48603954-48604189   Maternal  truth 0.03/0.01 (11) phaser 0.03/0.01 (11) certified 0.02/0.01 (11)
+  FOXK2                        82583971-82584131   Maternal  truth 0.99/0.99 (8) phaser 0.99/0.99 (8) certified 0.99/0.99 (8)
+  TBCD                         82907996-82908238   Maternal  truth 0.13/0.08 (11) phaser 0.13/0.08 (11) certified 0.13/0.08 (11)
+  chr17: 7 DMRs with coverage, 2 recovered under truth tagging; 69504 truth-phased variants
+
+chr18: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  RP11-767C4.1                 47667786-47668339   Maternal  truth 0.35/0.38 (22) phaser 0.34/0.38 (22) certified 0.34/0.38 (22)
+  ZNF236-DT                    76787416-76787618   Maternal  truth 0.92/0.02 (14) phaser 0.92/0.02 (14) certified 0.92/0.02 (14)
+  AC068473.4                   79617119-79617590   Maternal  truth 0.05/0.82 (50) recovered phaser 0.82/0.05 (50) certified 0.82/0.05 (50)
+  KCNG2                        79899277-79899991   Maternal  truth 0.63/0.96 (82) recovered phaser 0.96/0.63 (82) certified 0.96/0.63 (82)
+  ADNP2,PARD6G-AS1             80147168-80149255   Maternal  truth 0.10/0.52 (98) recovered phaser 0.52/0.10 (98) certified 0.52/0.10 (98)
+  chr18: 5 DMRs with coverage, 3 recovered under truth tagging; 72351 truth-phased variants
+
+chr19: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  ZNF331                       53537256-53538958   Maternal  truth 0.07/0.91 (124) recovered phaser 0.07/0.91 (124) certified 0.07/0.91 (124)
+  ZNF331                       53553832-53555171   Maternal  truth 0.07/0.93 (101) recovered phaser 0.07/0.93 (101) certified 0.07/0.93 (101)
+  PEG3                         56837125-56841903   Maternal  truth 0.17/0.89 (220) recovered phaser 0.89/0.17 (220) certified 0.89/0.17 (220)
+  MAN2B1                       12647902-12648343   Maternal  truth 0.29/0.26 (27) phaser 0.26/0.31 (27) certified 0.26/0.30 (27)
+  NWD1;NWD1                    16719744-16719833   Paternal  truth 0.02/0.04 (3) phaser 0.04/0.02 (3) certified 0.04/0.02 (3)
+  CRTC1;CRTC1                  18777271-18778194   Maternal  truth 0.31/0.89 (82) recovered phaser 0.89/0.31 (82) certified 0.89/0.31 (82)
+  CTD-2561J22.3,LINC00664      21482472-21484491   Maternal  truth 0.93/0.91 (98) phaser 0.91/0.93 (98) certified 0.91/0.93 (98)
+  ZNF726                       23914741-23914794   Maternal  truth 0.00/0.01 (2) phaser 0.00/0.01 (2) certified 0.00/0.01 (2)
+  ZNF565                       36266285-36266855   Maternal  truth 0.64/0.92 (46) recovered phaser 0.87/0.63 (46) certified 0.92/0.63 (46)
+  HKR1                         37334553-37334778   Maternal  truth 0.73/0.03 (15) phaser 0.03/0.73 (15) certified 0.03/0.73 (15)
+  AC067969.1,RYR1              38527504-38528578   Maternal  truth 0.53/0.81 (51) recovered phaser 0.81/0.53 (51) certified 0.81/0.53 (51)
+  RYR1                         38543710-38544472   Maternal  truth 0.71/0.61 (24) phaser 0.61/0.71 (24) certified 0.61/0.71 (24)
+  CNTD2                        40223250-40223480   Maternal  truth 0.04/0.70 (18) recovered phaser 0.70/0.04 (18) certified 0.70/0.04 (18)
+  EXOC3L2                      45234365-45234616   Maternal  truth 0.20/0.25 (38) phaser 0.20/0.25 (38) certified 0.20/0.25 (38)
+  ZIM2-AS1                     56725960-56726738   Maternal  truth 0.41/0.64 (16) recovered phaser 0.64/0.41 (16) certified 0.64/0.41 (16)
+  PEG3,ZIM2                    56829669-56829913   Paternal  truth 0.36/0.12 (4) phaser 0.12/0.36 (4) certified 0.12/0.36 (4)
+  MIMT1                        56864809-56865037   Maternal  truth 0.69/0.81 (19) phaser 0.81/0.69 (19) certified 0.81/0.69 (19)
+  AURKC;AURKC;AURKC            57230744-57231077   Maternal  truth 0.93/0.95 (23) phaser 0.93/0.95 (23) certified 0.93/0.95 (23)
+  ZSCAN1                       58055058-58055675   Paternal  truth 0.45/0.25 (25) recovered phaser 0.25/0.45 (25) certified 0.25/0.45 (25)
+  NCRNA00181;A1BG              58350136-58350698   Maternal  truth 0.25/0.94 (67) recovered phaser 0.94/0.25 (67) certified 0.94/0.25 (67)
+  chr19: 17 DMRs with coverage, 10 recovered under truth tagging; 68717 truth-phased variants
+
+chr20: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  MCTS2P,HM13                  31546860-31548130   Maternal  truth 0.06/0.98 (46) recovered phaser 0.98/0.06 (46) certified 0.96/0.19 (46)
+  BLCAP,NNAT                   37520202-37522126   Maternal  truth 0.31/0.97 (134) recovered phaser 0.33/0.89 (134) certified 0.32/0.93 (134)
+  L3MBTL                       43513725-43515400   Maternal  truth - phaser - certified -
+  GNAS                         58838984-58843557   Paternal  truth 0.94/0.05 (256) recovered phaser 0.94/0.05 (256) certified 0.68/0.40 (256)
+  NESP-AS,GNAS-AS1             58850594-58852978   Maternal  truth 0.06/0.57 (127) recovered phaser 0.09/0.56 (127) certified 0.27/0.45 (127)
+  GNAS_XL                      58853850-58856408   Maternal  truth 0.11/0.90 (199) recovered phaser 0.16/0.89 (199) certified 0.42/0.71 (199)
+  GNAS_Ex1A                    58888210-58890146   Maternal  truth 0.01/0.97 (197) recovered phaser 0.91/0.01 (197) certified 0.91/0.01 (197)
+  FAM110A;FAM110A;FAM110A        845380-845415     Maternal  truth 0.04/0.03 (4) phaser 0.03/0.04 (4) certified 0.03/0.04 (4)
+  RP1-66N13.1                  48384392-48385349   Maternal  truth 0.62/0.89 (49) recovered phaser 0.62/0.89 (49) certified 0.62/0.89 (49)
+  GNAS,GNAS-AS1                58846210-58846670   Paternal  truth 0.81/0.27 (5) recovered phaser 0.78/0.28 (5) certified 0.55/0.43 (5)
+  RP11-164D18.2                59526001-59526478   Maternal  truth 0.73/0.75 (24) phaser 0.75/0.73 (24) certified 0.75/0.73 (24)
+  CDH4;CDH4;CDH4               61719763-61719885   Maternal  truth 0.07/0.66 (3) phaser 0.66/0.07 (3) certified 0.66/0.07 (3)
+  LIME1                        63736532-63736542   Maternal  truth 0.00/0.02 (2) phaser 0.02/0.00 (2) certified 0.02/0.00 (2)
+  UCKL1                        63938417-63938769   Maternal  truth 0.06/0.85 (35) recovered phaser 0.85/0.06 (35) certified 0.83/0.06 (35)
+  chr20: 10 DMRs with coverage, 9 recovered under truth tagging; 58144 truth-phased variants
+
+chr21: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  WRB                          39385584-39386350   Maternal  truth 0.47/0.94 (42) recovered phaser 0.47/0.94 (42) certified 0.47/0.94 (42)
+  MIR8069-1,MIR3118-1          13704774-13705242   Maternal  truth - phaser 0.60/0.63 (53) certified 0.60/0.63 (53)
+  MIR8069-1,2                  13723581-13723690   Maternal  truth - phaser - certified -
+  ANKRD20A11P                  13980286-13980637   Paternal  truth 0.01/0.03 (21) phaser 0.03/0.01 (21) certified 0.03/0.01 (21)
+  LIPI                         14063938-14064099   Maternal  truth 0.98/0.95 (22) phaser 0.95/0.98 (22) certified 0.95/0.98 (22)
+  LIPI                         14084283-14084946   Maternal  truth 0.98/0.95 (50) phaser 0.95/0.98 (50) certified 0.95/0.98 (50)
+  LINC01684                    24428728-24429198   Paternal  truth 0.28/0.02 (4) phaser 0.28/0.02 (4) certified 0.28/0.02 (4)
+  MAP3K7CL;MAP3K7CL;MAP3K7CL   29080541-29080644   Paternal  truth 0.69/0.04 (3) phaser 0.04/0.69 (3) certified 0.04/0.69 (3)
+  RUNX1;RUNX1;RUNX1            34886200-34887322   Maternal  truth 0.01/0.01 (69) phaser 0.01/0.01 (69) certified 0.01/0.01 (69)
+  WRB                          39387837-39388701   Maternal  truth 0.11/0.07 (28) phaser 0.12/0.07 (28) certified 0.12/0.07 (28)
+  PRDM15;PRDM15                41801681-41803200   Paternal  truth 0.80/0.45 (37) recovered phaser 0.45/0.80 (37) certified 0.45/0.80 (37)
+  ICOSLG                       44199565-44202491   Maternal  truth 0.89/0.88 (70) phaser 0.89/0.88 (70) certified 0.89/0.88 (70)
+  COL18A1;COL18A1;COL18A1      45470993-45471154   Maternal  truth 0.90/0.93 (13) phaser 0.90/0.93 (13) certified 0.90/0.93 (13)
+  PRMT2                        46661264-46661774   Maternal  truth 0.21/0.95 (44) recovered phaser 0.21/0.95 (44) certified 0.21/0.95 (44)
+  chr21: 10 DMRs with coverage, 3 recovered under truth tagging; 35958 truth-phased variants
+
+chr22: DMRs; methylation of HP1 / HP2 (CpGs) per tagging; under truth tagging HP1 is paternal
+  NHP2L1                       41681770-41682869   Maternal  truth 0.01/0.98 (62) recovered phaser 0.98/0.01 (62) certified 0.78/0.07 (62)
+  RP3-434P1.6                  38412407-38412798   Maternal  truth 0.35/0.09 (21) phaser 0.09/0.35 (21) certified 0.09/0.35 (21)
+  TBC1D22A;TBC1D22A;TBC1D22A   46773330-46773424   Maternal  truth 0.01/0.97 (4) phaser 0.97/0.01 (4) certified 0.97/0.01 (4)
+  chr22: 2 DMRs with coverage, 1 recovered under truth tagging; 35258 truth-phased variants
+
+all chromosomes: 323 DMRs with coverage, 131 recovered under truth tagging; 2643460 truth-phased variants
+
+parent of origin per variant, from the nearest DMR whose call passes the rule: view, tagging, DMRs used, variants assigned (share of truth-phased variants), wrong, rate; then by distance from the DMR
+  every DMR            phaser     DMRs  141 variants   241533 (0.0914) wrong  61176 (2.53e-01); DMRs with a wrong variant 116
+      under 100 kb       23029 wrong   4173 (1.81e-01)
+      100 kb to 1 Mb    117117 wrong  25509 (2.18e-01)
+      1 Mb or more      101387 wrong  31494 (3.11e-01)
+  every DMR            certified  DMRs  138 variants      682 (0.0003) wrong     96 (1.41e-01); DMRs with a wrong variant 16
+      under 100 kb         682 wrong     96 (1.41e-01)
+      100 kb to 1 Mb         0 wrong      0 (0.00e+00)
+      1 Mb or more           0 wrong      0 (0.00e+00)
+  every DMR            phaser on the certified variants: 682 of 682, wrong 96 (1.41e-01), DMRs with a wrong variant 16
+  recovered DMRs only  phaser     DMRs  124 variants   198729 (0.0752) wrong  32152 (1.62e-01); DMRs with a wrong variant 99
+      under 100 kb       19226 wrong    669 (3.48e-02)
+      100 kb to 1 Mb     96840 wrong   8112 (8.38e-02)
+      1 Mb or more       82663 wrong  23371 (2.83e-01)
+  recovered DMRs only  certified  DMRs  122 variants      586 (0.0002) wrong      0 (0.00e+00); DMRs with a wrong variant 0
+      under 100 kb         586 wrong      0 (0.00e+00)
+      100 kb to 1 Mb         0 wrong      0 (0.00e+00)
+      1 Mb or more           0 wrong      0 (0.00e+00)
+  recovered DMRs only  phaser on the certified variants: 586 of 586, wrong 0 (0.00e+00), DMRs with a wrong variant 0
+	Command being timed: ".venv/bin/python -u benchmarks/w2_pofo.py"
+	User time (seconds): 908.76
+	System time (seconds): 50.91
+	Percent of CPU this job got: 400%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:59.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1550404
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 10098646
+	Voluntary context switches: 18400
+	Involuntary context switches: 209854
+	Swaps: 0
+	File system inputs: 533248
+	File system outputs: 460872
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+# end 2026-10-15T23:42:15+05:30 exit 0

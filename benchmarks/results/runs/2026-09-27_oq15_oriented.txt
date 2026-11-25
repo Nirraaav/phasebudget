@@ -1,0 +1,10 @@
+commit b1ee137; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 32 replicates, seed 20000 + 17 * replicate, signal posterior, fragile rule P(wrong) > 0.05, acceptance stitched_oriented, 4 iterations, boost 2; unreported errors systematic_rate 0, systematic_strength 0.5, burst_rate 0, burst_length 5, burst_error 0.35; simulated data
+switch error, paired; N50 and QAN50 are means in kb, exact arm then adaptive arm
+profile  cap     exact  adaptive      diff          95% interval    wins  N50 ex  N50 ad QAN50 ex QAN50 ad
+----------------------------------------------------------------------------------------------------------
+    ont    3   0.01414   0.00401  -0.01014 [-0.01139, -0.00889]  32:0       906    1441      187      686
+    ont    5   0.00239   0.00069  -0.00170 [-0.00217, -0.00124]  28:0      1705    1659      892     1354
+  noisy    3   0.05531   0.03271  -0.02260 [-0.02446, -0.02074]  32:0       890    1361       54       98
+  noisy    5   0.01753   0.00432  -0.01321 [-0.01446, -0.01197]  32:0      1714    1765      179      743
+OQ15DONE

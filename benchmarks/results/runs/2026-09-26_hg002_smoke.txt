@@ -1,0 +1,15 @@
+HG002 chr20 smoke checks, 26 Sep 2026, commit c9af266; region chr20:10,000,000-12,000,000 of the 11 kb Sequel II slice; 1,334 het SNVs inside the v4.2.1 BED
+
+== extractHAIRS --bam smoke.bam --VCF smoke.vcf --pacbio 1 --ref chr20.fa --out smoke.frag (HapCUT2 9a10aba, htslib 1.21)
+fragment lines: 4203
+== HAPCUT2 --fragments smoke.frag --VCF smoke.vcf --output smoke.hapcut2
+blocks: 24
+== whatshap phase --reference chr20.fa --output-read-list smoke.readlist.tsv (WhatsHap 2.8)
+Kept 4201 reads that cover at least two variants each
+Selected 1699 most phase-informative reads covering 1324 variants
+Best-case phasing would result in 24 non-singleton phased blocks (0 singletons). 
+Largest block contains 293 variants (22.1% of accessible variants) between position 10717399 and 11018203
+== benchmarks/extract_fragments.py on the same inputs
+1334 heterozygous SNVs; 5051 reads call at least one, 4201 call two or more
+== select_whatshap at cap 15 on those 4201 reads, positions from the VCF
+ours 1699 whatshap 1699 identical True symmetric difference 0

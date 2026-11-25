@@ -1,0 +1,114 @@
+K1b (DRY RUN, no test genome read, docs/design/k1b-agreement-plan.md): 30x, whatshap and LongPhase; agreement = the single-sample hifiasm 0.25.0 assembly relates the pair (Q6 contig rule on dipcall 0.3) with the phaser's relation; pool HG002a (hprc_HG002, 6 chromosomes), HG002b (hprc_HG002, 5 chromosomes); tests HG002even (hprc_HG002, 10 chromosomes); learn_then_test_by_group on pooled agreeing pairs, unit (genome, chromosome, 100 kb), betas (0.0003, 0.001, 0.003), delta 0.05; 72 registered cells, level 6.944e-04; K1b-2 segdup certifies at 0.001 for both phasers; K1b-3 trusted share >= 0.5 at 0.001 for one phaser in {'NA12877': ('segdup', 'tandem', 'indel'), 'HG005': ('segdup', 'tandem')}
+
+== whatshap: pool pairs 1317359, agreeing 1273262
+  pool agree beta 0.0003 indel cert (12169 units), segdup none (1630 units), lowmap none (7461 units), tandem none (11150 units), difficult none (9429 units), easy cert (12298 units)
+  pool all   beta 0.0003 indel none (12683 units), segdup none (1652 units), lowmap none (7514 units), tandem none (11265 units), difficult none (9447 units), easy cert (12321 units)
+  pool agree beta 0.001  indel cert (12169 units), segdup none (1630 units), lowmap cert (7461 units), tandem cert (11150 units), difficult cert (9429 units), easy cert (12298 units)
+  pool all   beta 0.001  indel none (12683 units), segdup none (1652 units), lowmap cert (7514 units), tandem none (11265 units), difficult cert (9447 units), easy cert (12321 units)
+  pool agree beta 0.003  indel cert (12169 units), segdup cert (1630 units), lowmap cert (7461 units), tandem cert (11150 units), difficult cert (9429 units), easy cert (12298 units)
+  pool all   beta 0.003  indel none (12683 units), segdup none (1652 units), lowmap cert (7514 units), tandem cert (11265 units), difficult cert (9447 units), easy cert (12321 units)
+  K1b-2 whatshap: segdup at 0.001 abstains
+
+  test HG002even whatshap: pairs 1251137
+  K1b-5 per group: pairs, assembly relates, agree, wrong among agreeing, wrong among others, both wrong
+    indel     pairs   384562 relates 0.9278 agree 0.9147 wrong agreeing    26 others  6259 both   26
+    segdup    pairs    23074 relates 0.8863 agree 0.8840 wrong agreeing     0 others    87 both    0
+    lowmap    pairs    53955 relates 0.9845 agree 0.9840 wrong agreeing     0 others    35 both    0
+    tandem    pairs   103740 relates 0.9814 agree 0.9757 wrong agreeing     1 others   668 both    1
+    difficult pairs    65603 relates 0.9892 agree 0.9891 wrong agreeing     0 others     0 both    0
+    easy      pairs   620203 relates 0.9905 agree 0.9905 wrong agreeing     0 others    15 both    0
+  cells: threshold, units with a trusted pair, wrong units, P(X >= k | n, beta), trusted pairs, trusted share of the group's pairs, wrong trusted
+    0.0003 agree indel     (0.7895, 15)     units  10847 wrong   0 p 1.00e+00 trusted   210990 share 0.5487 wrong trusted    0
+    0.0003 agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree easy      (0.5000, 4)      units  11655 wrong   0 p 1.00e+00 trusted   612933 share 0.9883 wrong trusted    0
+    0.0003 all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   easy      (0.7500, 12)     units  11575 wrong   2 p 8.61e-01 trusted   613801 share 0.9897 wrong trusted    3
+    0.001  agree indel     (0.3174, 26)     units  11511 wrong   9 p 8.10e-01 trusted   349079 share 0.9077 wrong trusted   13
+    0.001  agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  agree lowmap    (-1.0000, 0)     units   7110 wrong   0 p 1.00e+00 trusted    53090 share 0.9840 wrong trusted    0
+    0.001  agree tandem    (-1.0000, 0)     units  10472 wrong   1 p 1.00e+00 trusted   101223 share 0.9757 wrong trusted    1
+    0.001  agree difficult (0.2000, 1)      units   9065 wrong   0 p 1.00e+00 trusted    64891 share 0.9891 wrong trusted    0
+    0.001  agree easy      (-1.0000, 0)     units  11721 wrong   0 p 1.00e+00 trusted   614290 share 0.9905 wrong trusted    0
+    0.001  all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  all   lowmap    (0.7482, 19)     units   7009 wrong   4 p 9.19e-01 trusted    52979 share 0.9819 wrong trusted    4
+    0.001  all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  all   difficult (0.2000, 1)      units   9119 wrong   0 p 1.00e+00 trusted    65603 share 1.0000 wrong trusted    0
+    0.001  all   easy      (0.5000, 4)      units  11709 wrong   3 p 9.99e-01 trusted   618751 share 0.9977 wrong trusted    4
+    0.003  agree indel     (-1.0000, 0)     units  11522 wrong  21 p 9.95e-01 trusted   351767 share 0.9147 wrong trusted   26
+    0.003  agree segdup    (-1.0000, 0)     units   1137 wrong   0 p 1.00e+00 trusted    20397 share 0.8840 wrong trusted    0
+    0.003  agree lowmap    (-1.0000, 0)     units   7110 wrong   0 p 1.00e+00 trusted    53090 share 0.9840 wrong trusted    0
+    0.003  agree tandem    (-1.0000, 0)     units  10472 wrong   1 p 1.00e+00 trusted   101223 share 0.9757 wrong trusted    1
+    0.003  agree difficult (0.2000, 1)      units   9065 wrong   0 p 1.00e+00 trusted    64891 share 0.9891 wrong trusted    0
+    0.003  agree easy      (-1.0000, 0)     units  11721 wrong   0 p 1.00e+00 trusted   614290 share 0.9905 wrong trusted    0
+    0.003  all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.003  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.003  all   lowmap    (0.4919, 13)     units   7136 wrong   7 p 1.00e+00 trusted    53700 share 0.9953 wrong trusted    7
+    0.003  all   tandem    (0.8293, 30)     units   9987 wrong  21 p 9.64e-01 trusted    81294 share 0.7836 wrong trusted   29
+    0.003  all   difficult (0.2000, 1)      units   9119 wrong   0 p 1.00e+00 trusted    65603 share 1.0000 wrong trusted    0
+    0.003  all   easy      (-1.0000, 0)     units  11775 wrong  14 p 1.00e+00 trusted   620203 share 1.0000 wrong trusted   15
+
+== longphase: pool pairs 1288134, agreeing 1259583
+  pool agree beta 0.0003 indel cert (12114 units), segdup none (1637 units), lowmap none (7481 units), tandem none (11129 units), difficult none (9456 units), easy cert (12309 units)
+  pool all   beta 0.0003 indel none (12554 units), segdup none (1659 units), lowmap none (7527 units), tandem none (11242 units), difficult none (9476 units), easy cert (12337 units)
+  pool agree beta 0.001  indel cert (12114 units), segdup none (1637 units), lowmap cert (7481 units), tandem cert (11129 units), difficult cert (9456 units), easy cert (12309 units)
+  pool all   beta 0.001  indel none (12554 units), segdup none (1659 units), lowmap cert (7527 units), tandem cert (11242 units), difficult cert (9476 units), easy cert (12337 units)
+  pool agree beta 0.003  indel cert (12114 units), segdup cert (1637 units), lowmap cert (7481 units), tandem cert (11129 units), difficult cert (9456 units), easy cert (12309 units)
+  pool all   beta 0.003  indel cert (12554 units), segdup none (1659 units), lowmap cert (7527 units), tandem cert (11242 units), difficult cert (9476 units), easy cert (12337 units)
+  K1b-2 longphase: segdup at 0.001 abstains
+
+  test HG002even longphase: pairs 1224452
+  K1b-5 per group: pairs, assembly relates, agree, wrong among agreeing, wrong among others, both wrong
+    indel     pairs   355516 relates 0.9448 agree 0.9437 wrong agreeing    20 others   484 both   20
+    segdup    pairs    22867 relates 0.8881 agree 0.8869 wrong agreeing     2 others    25 both    2
+    lowmap    pairs    53954 relates 0.9850 agree 0.9845 wrong agreeing     2 others    21 both    2
+    tandem    pairs   102450 relates 0.9833 agree 0.9820 wrong agreeing     5 others   142 both    5
+    difficult pairs    66064 relates 0.9892 agree 0.9890 wrong agreeing     1 others    12 both    1
+    easy      pairs   623601 relates 0.9914 agree 0.9913 wrong agreeing    11 others    26 both   11
+  cells: threshold, units with a trusted pair, wrong units, P(X >= k | n, beta), trusted pairs, trusted share of the group's pairs, wrong trusted
+    0.0003 agree indel     (0.7895, 15)     units  10828 wrong   0 p 1.00e+00 trusted   209348 share 0.5889 wrong trusted    0
+    0.0003 agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 agree easy      (0.5000, 4)      units  11654 wrong   0 p 1.00e+00 trusted   616654 share 0.9889 wrong trusted    0
+    0.0003 all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.0003 all   easy      (0.6364, 7)      units  11660 wrong   0 p 1.00e+00 trusted   620636 share 0.9952 wrong trusted    0
+    0.001  agree indel     (0.2366, 34)     units  11432 wrong   2 p 1.00e+00 trusted   333077 share 0.9369 wrong trusted    3
+    0.001  agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  agree lowmap    (0.3913, 10)     units   7089 wrong   0 p 1.00e+00 trusted    52973 share 0.9818 wrong trusted    0
+    0.001  agree tandem    (0.0108, 16)     units  10478 wrong   1 p 1.00e+00 trusted   100381 share 0.9798 wrong trusted    1
+    0.001  agree difficult (-1.0000, 0)     units   9081 wrong   1 p 1.00e+00 trusted    65334 share 0.9890 wrong trusted    1
+    0.001  agree easy      (0.5000, 4)      units  11654 wrong   0 p 1.00e+00 trusted   616654 share 0.9889 wrong trusted    0
+    0.001  all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.001  all   lowmap    (0.5000, 4)      units   7135 wrong   5 p 8.39e-01 trusted    53704 share 0.9954 wrong trusted    6
+    0.001  all   tandem    (0.8182, 18)     units  10099 wrong   2 p 1.00e+00 trusted    86943 share 0.8486 wrong trusted    2
+    0.001  all   difficult (-1.0000, 0)     units   9140 wrong  13 p 1.35e-01 trusted    66064 share 1.0000 wrong trusted   13
+    0.001  all   easy      (0.4286, 3)      units  11722 wrong   0 p 1.00e+00 trusted   622393 share 0.9981 wrong trusted    0
+    0.003  agree indel     (-1.0000, 0)     units  11445 wrong  19 p 9.98e-01 trusted   335509 share 0.9437 wrong trusted   20
+    0.003  agree segdup    (-1.0000, 0)     units   1145 wrong   2 p 8.57e-01 trusted    20280 share 0.8869 wrong trusted    2
+    0.003  agree lowmap    (-1.0000, 0)     units   7120 wrong   2 p 1.00e+00 trusted    53119 share 0.9845 wrong trusted    2
+    0.003  agree tandem    (-1.0000, 0)     units  10488 wrong   5 p 1.00e+00 trusted   100607 share 0.9820 wrong trusted    5
+    0.003  agree difficult (-1.0000, 0)     units   9081 wrong   1 p 1.00e+00 trusted    65334 share 0.9890 wrong trusted    1
+    0.003  agree easy      (-1.0000, 0)     units  11723 wrong  11 p 1.00e+00 trusted   618165 share 0.9913 wrong trusted   11
+    0.003  all   indel     (0.7369, 18)     units  11320 wrong  16 p 1.00e+00 trusted   259858 share 0.7309 wrong trusted   19
+    0.003  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+    0.003  all   lowmap    (0.3333, 2)      units   7158 wrong   6 p 1.00e+00 trusted    53834 share 0.9978 wrong trusted    7
+    0.003  all   tandem    (0.5000, 4)      units  10534 wrong  22 p 9.70e-01 trusted   101057 share 0.9864 wrong trusted   25
+    0.003  all   difficult (-1.0000, 0)     units   9140 wrong  13 p 9.99e-01 trusted    66064 share 1.0000 wrong trusted   13
+    0.003  all   easy      (0.4286, 3)      units  11722 wrong   0 p 1.00e+00 trusted   622393 share 0.9981 wrong trusted    0
+
+dry run: violating agreement cells at 6.944e-04: none; segdup at 0.001 abstains for both phasers
+runtime 1171 s

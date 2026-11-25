@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phasebudget"
+version = "0.1.0"
+description = "Exact read selection and certified phase relations for long-read haplotype phasing."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Nirav Rajendra Bhattad" }]
+keywords = [
+  "bioinformatics",
+  "haplotype-assembly",
+  "phasing",
+  "minimum-error-correction",
+  "combinatorial-optimization",
+  "min-cost-flow",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+# PuLP 4.0.1 and 4.2.0 import numpy (for HiGHS) without depending on it, so `import pulp`
+# fails without numpy; listing numpy here covers every such release.
+ilp = ["pulp>=2.7", "numpy"]
+benchmark = ["pytest-benchmark>=4"]
+# Pinned: `select_whatshap` reproduces this release, and tests/test_whatshap_port.py
+# checks it against WhatsHap live when installed.
+whatshap = ["whatshap==2.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,12 @@
+commit 67e43a0 plus working tree; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+60 variants, coverage 8, span 5, 40 replicates, seed 5500 + 29 * replicate, general model solved by dp; simulated data
+bip is read-bipartition error against the true origin, flip-invariant; switch is over consecutive truly heterozygous sites
+sw gen charges the general model at sites it declined to phase; sw gen* scores only the pairs it phased, and gen phas is that fraction
+the complementary model phases every site, so its fraction is 1.000
+the general model is a relaxation, so its cost is a lower bound
+simulated data; the general model is exact under either solver
+
+  hom    err  miscall  cost cmp  cost gen  bip cmp  bip gen   sw cmp   sw gen  sw gen*  gen phas    n
+-----------------------------------------------------------------------------------------------------
+ 0.00   0.02     0.00    37.848    36.680   0.0276   0.0323   0.0042   0.0301   0.0004     0.906   40
+ 0.00   0.10     0.00   100.853    94.920   0.1169   0.1755   0.0318   0.0953   0.0083     0.790   40

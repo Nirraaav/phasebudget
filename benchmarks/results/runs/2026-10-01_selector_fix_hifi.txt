@@ -1,0 +1,35 @@
+0 fm_paper runs to do
+selector fix, platform hifi, truth GIAB v5.0q, 21 chromosomes; paired columns count common pairs where only the first / only the second is wrong
+depth cap  pipeline  switches     pairs  N50 kb |  vs whatshap         p |   vs optimal         p
+ full   3  whatshap       184   1916244     102 
+ full   3  fm_paper       200   1941709     232 |   129/116     4.43e-01 |   155/49      5.13e-14
+ full   3   optimal        82   1915608     112 
+
+ full   5  whatshap        78   1940716     223 
+ full   5  fm_paper        58   1941720     233 |    18/38      1.05e-02 |    30/42      1.95e-01
+ full   5   optimal        67   1929354     167 
+
+   20   3  whatshap       185   1915949     102 
+   20   3  fm_paper       227   1940427     223 |   157/117     1.83e-02 |   177/72      2.22e-11
+   20   3   optimal       111   1921536     123 
+
+   20   5  whatshap        74   1939752     217 
+   20   5  fm_paper        64   1940460     224 |    24/36      1.55e-01 |    30/32      8.99e-01
+   20   5   optimal        63   1932865     180 
+
+   15   3  whatshap       201   1915700     101 
+   15   3  fm_paper       196   1939327     214 |   123/136     4.56e-01 |   153/78      9.09e-07
+   15   3   optimal       114   1923431     126 
+
+   15   5  whatshap        82   1938843     210 
+   15   5  fm_paper        76   1939394     215 |    33/41      4.16e-01 |    34/26      3.66e-01
+   15   5   optimal        64   1933609     181 
+
+   10   3  whatshap       265   1914251     100 
+   10   3  fm_paper       199   1936656     194 |   102/171     3.53e-05 |   130/83      1.56e-03
+   10   3   optimal       146   1923156     119 
+
+   10   5  whatshap        89   1936364     193 
+   10   5  fm_paper        83   1936822     197 |    17/23      4.30e-01 |    27/28      1.00e+00
+   10   5   optimal        83   1932656     166 
+

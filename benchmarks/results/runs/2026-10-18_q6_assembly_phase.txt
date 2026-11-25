@@ -1,0 +1,77 @@
+Q6 (development, docs/design/q6-assembly-phase.md): HG002 HiFi; assembly hifiasm 0.25.0-r726 default options on data/w4/reads.fq.gz, dipcall 0.3 against GRCh38 no-alt (data/r6_q6/dip); read-based w4_grch38 30x whatshap and LongPhase; pairs of consecutive v5.0q heterozygous variants inside its BED; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22; truths v5.0q and GIAB trio transmission (PATMAT); assembly relation only within one hap1 contig and one hap2 contig; certificates frozen score, per group on odd chromosomes, betas (0.0003, 0.001, 0.003), delta 0.05, 100 kb units; gate groups (a) ('segdup', 'lowmap', 'tandem'), (b) ('segdup', 'lowmap', 'tandem', 'indel'), at least 20
+check whatshap: 2566892 pairs in both the W4 rows and the table, 0 disagree on wrong; rows 2568398
+check longphase: 2494687 pairs in both the W4 rows and the table, 0 disagree on wrong; rows 2527159
+
+Pairs each source phases, and errors against v5.0q (all 21 chromosomes)
+  group          pairs    v5 rel |  whatshap phased   wrong | longphase phased   wrong |  assembly phased   wrong
+  easy         1257957   1257957 |          1253075      37 |          1251044       8 |          1249172    2131
+  difficult     135601    135601 |           134877       4 |           134697       0 |           134176     313
+  segdup         59441     59441 |            58520     309 |            57898     129 |            54285     152
+  lowmap        111309    111309 |           110680      58 |           109582       6 |           109750     261
+  tandem        213828    213828 |           212035    1037 |           208582      51 |           209737     517
+  indel         807159    807159 |           797705   11037 |           732884     456 |           744415    1146
+
+Against v5.0q
+  (a) even chromosomes, pairs whatshap phases wrongly and the assembly phases: assembly right
+    segdup     55/55 = 1.000
+    lowmap     13/13 = 1.000 (not judged)
+    tandem     423/423 = 1.000
+  (b) all chromosomes, pairs all three phase: wrong whatshap / LongPhase / assembly
+    segdup     n    52936      64     44     21  rates 1.21e-03 8.31e-04 3.97e-04
+    lowmap     n   108190      12      3     12  rates 1.11e-04 2.77e-05 1.11e-04 (not judged)
+    tandem     n   205098     452     26     39  rates 2.20e-03 1.27e-04 1.90e-04
+    indel      n   693570    5195    151    212  rates 7.49e-03 2.18e-04 3.06e-04
+  (a) ok (judged ['segdup', 'tandem']); (b) ok (judged ['segdup', 'tandem', 'indel'])
+
+Against trio
+  (a) even chromosomes, pairs whatshap phases wrongly and the assembly phases: assembly right
+    segdup     0/0 = 0.000 (not judged)
+    lowmap     1/1 = 1.000 (not judged)
+    tandem     1/1 = 1.000 (not judged)
+  (b) all chromosomes, pairs all three phase: wrong whatshap / LongPhase / assembly
+    segdup     n    26791       0      0     11  rates 0.00e+00 0.00e+00 4.11e-04 (not judged)
+    lowmap     n    72215       1      0      8  rates 1.38e-05 0.00e+00 1.11e-04 (not judged)
+    tandem     n   101686       5      0     15  rates 4.92e-05 0.00e+00 1.48e-04 (not judged)
+    indel      n        0       0      0      0  rates 0.00e+00 0.00e+00 0.00e+00 (not judged)
+  (a) FAIL (judged []); (b) FAIL (judged [])
+
+Hybrid (descriptive, v5.0q, even chromosomes): per phaser and beta, pairs the certificate does not trust and the assembly phases, and errors there
+  whatshap  0.0003  easy       pairs   620060 untrusted     3125 wrong     13; assembly phases     2969: whatshap wrong     13, assembly wrong     15
+  whatshap  0.0003  difficult  pairs    65579 untrusted    65579 wrong      1; assembly phases    64871: whatshap wrong      1, assembly wrong      4
+  whatshap  0.0003  segdup     pairs    23029 untrusted    23029 wrong    111; assembly phases    20415: whatshap wrong     55, assembly wrong     10
+  whatshap  0.0003  lowmap     pairs    53941 untrusted    53941 wrong     24; assembly phases    53107: whatshap wrong     13, assembly wrong      3
+  whatshap  0.0003  tandem     pairs   103665 untrusted   103665 wrong    506; assembly phases   101734: whatshap wrong    423, assembly wrong     19
+  whatshap  0.0003  indel      pairs   384324 untrusted   384324 wrong   5241; assembly phases   356566: whatshap wrong   3992, assembly wrong    144
+  whatshap  0.001   easy       pairs   620060 untrusted     1436 wrong     13; assembly phases     1362: whatshap wrong     13, assembly wrong     11
+  whatshap  0.001   difficult  pairs    65579 untrusted        1 wrong      1; assembly phases        1: whatshap wrong      1, assembly wrong      0
+  whatshap  0.001   segdup     pairs    23029 untrusted    23029 wrong    111; assembly phases    20415: whatshap wrong     55, assembly wrong     10
+  whatshap  0.001   lowmap     pairs    53941 untrusted      680 wrong     22; assembly phases      605: whatshap wrong     13, assembly wrong      3
+  whatshap  0.001   tandem     pairs   103665 untrusted   103665 wrong    506; assembly phases   101734: whatshap wrong    423, assembly wrong     19
+  whatshap  0.001   indel      pairs   384324 untrusted   384324 wrong   5241; assembly phases   356566: whatshap wrong   3992, assembly wrong    144
+  whatshap  0.003   easy       pairs   620060 untrusted        0 wrong      0; assembly phases        0: whatshap wrong      0, assembly wrong      0
+  whatshap  0.003   difficult  pairs    65579 untrusted        1 wrong      1; assembly phases        1: whatshap wrong      1, assembly wrong      0
+  whatshap  0.003   segdup     pairs    23029 untrusted     2582 wrong    109; assembly phases     1922: whatshap wrong     55, assembly wrong      9
+  whatshap  0.003   lowmap     pairs    53941 untrusted       92 wrong     12; assembly phases       79: whatshap wrong      7, assembly wrong      1
+  whatshap  0.003   tandem     pairs   103665 untrusted    18210 wrong    483; assembly phases    17299: whatshap wrong    403, assembly wrong     19
+  whatshap  0.003   indel      pairs   384324 untrusted   384324 wrong   5241; assembly phases   356566: whatshap wrong   3992, assembly wrong    144
+  longphase 0.0003  easy       pairs   618981 untrusted     2666 wrong      4; assembly phases     2522: longphase wrong      4, assembly wrong     16
+  longphase 0.0003  difficult  pairs    65483 untrusted    65483 wrong      0; assembly phases    64782: longphase wrong      0, assembly wrong      4
+  longphase 0.0003  segdup     pairs    22681 untrusted    22681 wrong     19; assembly phases    20142: longphase wrong      2, assembly wrong     11
+  longphase 0.0003  lowmap     pairs    53357 untrusted    53357 wrong      2; assembly phases    52592: longphase wrong      2, assembly wrong      3
+  longphase 0.0003  tandem     pairs   101998 untrusted   101998 wrong     23; assembly phases   100314: longphase wrong     15, assembly wrong     22
+  longphase 0.0003  indel      pairs   353895 untrusted   353895 wrong    213; assembly phases   335053: longphase wrong     84, assembly wrong    111
+  longphase 0.001   easy       pairs   618981 untrusted     1025 wrong      4; assembly phases      979: longphase wrong      4, assembly wrong     10
+  longphase 0.001   difficult  pairs    65483 untrusted        0 wrong      0; assembly phases        0: longphase wrong      0, assembly wrong      0
+  longphase 0.001   segdup     pairs    22681 untrusted    22681 wrong     19; assembly phases    20142: longphase wrong      2, assembly wrong     11
+  longphase 0.001   lowmap     pairs    53357 untrusted       84 wrong      1; assembly phases       72: longphase wrong      1, assembly wrong      1
+  longphase 0.001   tandem     pairs   101998 untrusted     1213 wrong     18; assembly phases     1036: longphase wrong     11, assembly wrong     13
+  longphase 0.001   indel      pairs   353895 untrusted   149236 wrong    209; assembly phases   136963: longphase wrong     83, assembly wrong    110
+  longphase 0.003   easy       pairs   618981 untrusted     1025 wrong      4; assembly phases      979: longphase wrong      4, assembly wrong     10
+  longphase 0.003   difficult  pairs    65483 untrusted        0 wrong      0; assembly phases        0: longphase wrong      0, assembly wrong      0
+  longphase 0.003   segdup     pairs    22681 untrusted      973 wrong     12; assembly phases      686: longphase wrong      2, assembly wrong     10
+  longphase 0.003   lowmap     pairs    53357 untrusted        0 wrong      0; assembly phases        0: longphase wrong      0, assembly wrong      0
+  longphase 0.003   tandem     pairs   101998 untrusted      610 wrong     11; assembly phases      516: longphase wrong      4, assembly wrong      6
+  longphase 0.003   indel      pairs   353895 untrusted    19457 wrong    194; assembly phases    15407: longphase wrong     72, assembly wrong     97
+
+Q6 gate: (a) ok; (b) ok; (c) FAIL (against the trio truth)
+Q6 gate: not passed

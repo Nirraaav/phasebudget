@@ -1,0 +1,66 @@
+posterior calibration, platform ont, truth GIAB v5.0q, cap 5 optimal, realign fragments with log-odds weights
+given: T = 0.7264, eps = 0.0
+test full uncorrected: 1961675 boundaries, observed 230, predicted 60.5, ratio 3.80 [3.12, 4.63], ECE 0.00009, log-loss 0.000813 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1949117 boundaries, observed   20, predicted      0.00
+    p' in [1e-7, 1e-6):       13 boundaries, observed    0, predicted      0.00
+    p' in [1e-6, 1e-5):     6480 boundaries, observed   10, predicted      0.01
+    p' in [1e-4, 1e-3):      855 boundaries, observed   22, predicted      0.82
+    p' in [1e-3, 1e-2):     5103 boundaries, observed  114, predicted      6.22
+    p' in [1e-1, 1e0):      107 boundaries, observed   64, predicted     53.46
+test full   corrected: 1961675 boundaries, observed 230, predicted 97.7, ratio 2.36 [1.99, 2.75], ECE 0.00007, log-loss 0.000621 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1882327 boundaries, observed    3, predicted      0.00
+    p' in [1e-7, 1e-6):    66105 boundaries, observed   17, predicted      0.02
+    p' in [1e-6, 1e-5):      685 boundaries, observed    0, predicted      0.00
+    p' in [1e-5, 1e-4):     5872 boundaries, observed    9, predicted      0.28
+    p' in [1e-4, 1e-3):      621 boundaries, observed    1, predicted      0.07
+    p' in [1e-3, 1e-2):     4858 boundaries, observed  116, predicted     31.80
+    p' in [1e-2, 1e-1):     1100 boundaries, observed   20, predicted     11.99
+    p' in [1e-1, 1e0):      107 boundaries, observed   64, predicted     53.48
+test 30 uncorrected: 1961595 boundaries, observed 241, predicted 95.6, ratio 2.52 [2.10, 3.02], ECE 0.00008, log-loss 0.000840 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1946413 boundaries, observed   21, predicted      0.00
+    p' in [1e-7, 1e-6):       32 boundaries, observed    0, predicted      0.00
+    p' in [1e-6, 1e-5):     8604 boundaries, observed   11, predicted      0.01
+    p' in [1e-4, 1e-3):      898 boundaries, observed   32, predicted      0.86
+    p' in [1e-3, 1e-2):     5472 boundaries, observed   95, predicted      6.78
+    p' in [1e-1, 1e0):      176 boundaries, observed   82, predicted     87.92
+test 30   corrected: 1961595 boundaries, observed 241, predicted 135.7, ratio 1.78 [1.51, 2.07], ECE 0.00006, log-loss 0.000649 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1875020 boundaries, observed    6, predicted      0.00
+    p' in [1e-7, 1e-6):    70703 boundaries, observed   15, predicted      0.02
+    p' in [1e-6, 1e-5):      690 boundaries, observed    0, predicted      0.00
+    p' in [1e-5, 1e-4):     7913 boundaries, observed   11, predicted      0.38
+    p' in [1e-4, 1e-3):      723 boundaries, observed    0, predicted      0.09
+    p' in [1e-3, 1e-2):     5079 boundaries, observed  114, predicted     33.26
+    p' in [1e-2, 1e-1):     1291 boundaries, observed   13, predicted     14.05
+    p' in [1e-1, 1e0):      176 boundaries, observed   82, predicted     87.94
+test 20 uncorrected: 1961156 boundaries, observed 344, predicted 163.3, ratio 2.11 [1.82, 2.42], ECE 0.00010, log-loss 0.000984 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1940276 boundaries, observed   14, predicted      0.00
+    p' in [1e-7, 1e-6):       55 boundaries, observed    0, predicted      0.00
+    p' in [1e-6, 1e-5):    13363 boundaries, observed   18, predicted      0.02
+    p' in [1e-4, 1e-3):      830 boundaries, observed   21, predicted      0.80
+    p' in [1e-3, 1e-2):     6316 boundaries, observed  145, predicted      7.83
+    p' in [1e-1, 1e0):      316 boundaries, observed  146, predicted    154.67
+test 20   corrected: 1961156 boundaries, observed 344, predicted 209.6, ratio 1.64 [1.43, 1.86], ECE 0.00008, log-loss 0.000769 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1851956 boundaries, observed    3, predicted      0.00
+    p' in [1e-7, 1e-6):    87617 boundaries, observed   11, predicted      0.03
+    p' in [1e-6, 1e-5):      703 boundaries, observed    0, predicted      0.00
+    p' in [1e-5, 1e-4):    12633 boundaries, observed   17, predicted      0.60
+    p' in [1e-4, 1e-3):      785 boundaries, observed    1, predicted      0.09
+    p' in [1e-3, 1e-2):     5653 boundaries, observed  148, predicted     37.05
+    p' in [1e-2, 1e-1):     1493 boundaries, observed   18, predicted     16.26
+    p' in [1e-1, 1e0):      316 boundaries, observed  146, predicted    155.53
+test 10 uncorrected: 1958036 boundaries, observed 889, predicted 630.6, ratio 1.41 [1.31, 1.52], ECE 0.00016, log-loss 0.001678 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1870210 boundaries, observed    8, predicted      0.00
+    p' in [1e-7, 1e-6):      138 boundaries, observed    0, predicted      0.00
+    p' in [1e-6, 1e-5):    65454 boundaries, observed   32, predicted      0.09
+    p' in [1e-4, 1e-3):     1003 boundaries, observed   24, predicted      0.96
+    p' in [1e-3, 1e-2):    20013 boundaries, observed  241, predicted     26.55
+    p' in [1e-1, 1e0):     1218 boundaries, observed  584, predicted    602.97
+test 10   corrected: 1958036 boundaries, observed 889, predicted 774.1, ratio 1.15 [1.07, 1.23], ECE 0.00008, log-loss 0.001413 -> not calibrated
+    p' in [1e-8, 1e-7) or below:  1650550 boundaries, observed    3, predicted      0.00
+    p' in [1e-7, 1e-6):   218714 boundaries, observed    5, predicted      0.08
+    p' in [1e-6, 1e-5):      946 boundaries, observed    0, predicted      0.00
+    p' in [1e-5, 1e-4):    64154 boundaries, observed   32, predicted      3.41
+    p' in [1e-4, 1e-3):     1438 boundaries, observed    0, predicted      0.17
+    p' in [1e-3, 1e-2):    14530 boundaries, observed  204, predicted     95.43
+    p' in [1e-2, 1e-1):     6486 boundaries, observed   61, predicted     70.51
+    p' in [1e-1, 1e0):     1218 boundaries, observed  584, predicted    604.52

@@ -1,0 +1,4 @@
+archive_unfiled_counts.py uncalled; platform hifi; depth full, cap 3, 21 confirmatory chromosomes, truth GIAB v5.0q; phasing as reported before 33b92bb
+selection: uncalled variants inside blocks (all, v5-phased); boundaries joined with no read calling both: touching an uncalled variant (scored, wrong), both called (scored, wrong)
+whatshap:   146   142 |   278   140 |   364     2
+ optimal:    12     9 |    18     8 |     7     0

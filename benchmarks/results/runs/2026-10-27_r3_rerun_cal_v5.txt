@@ -1,0 +1,164 @@
+R3 (development, docs/design/r3-label-eligible.md): child HG002 (cal_v5); labels from both replicates of the parents' Clair3 calls; filters ('agree', 'all', 'double'); calibrate on eligible odd-chromosome pairs against the labels, score even-chromosome pairs against v5.0q, eligible only and all; 100 kb units, delta 0.05; betas (0.0003, 0.001, 0.003); depths ('30', '20', '10'); phasers ('whatshap', 'longphase')
+
+30x whatshap: 2574590 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.776 1.84e-05; uninformative 0.217 1.83e-05; other 0.006 2.60e-03
+  difficult  eligible 0.773 6.67e-05; uninformative 0.221 3.33e-05; other 0.006 2.34e-03
+  lowmap     eligible 0.774 6.96e-05; uninformative 0.208 3.89e-04; other 0.018 4.36e-02
+  segdup     eligible 0.702 5.05e-04; uninformative 0.216 1.95e-03; other 0.082 5.03e-02
+  tandem     eligible 0.703 1.31e-03; uninformative 0.206 3.88e-03; other 0.091 7.65e-02
+  indel      eligible 0.510 1.75e-02; uninformative 0.186 4.84e-02; other 0.305 1.57e-01
+
+30x longphase: 2406339 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.777 8.30e-05; uninformative 0.217 5.58e-05; other 0.006 1.31e-04
+  difficult  eligible 0.773 7.29e-05; uninformative 0.221 0.00e+00; other 0.006 2.46e-03
+  lowmap     eligible 0.778 1.46e-04; uninformative 0.209 8.35e-05; other 0.013 1.64e-02
+  segdup     eligible 0.712 2.76e-04; uninformative 0.218 5.25e-04; other 0.070 2.05e-02
+  tandem     eligible 0.734 4.50e-04; uninformative 0.212 8.23e-04; other 0.054 1.86e-02
+  indel      eligible 0.668 3.74e-04; uninformative 0.205 8.68e-04; other 0.127 1.02e-02
+
+20x whatshap: 2572342 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.776 2.96e-05; uninformative 0.217 2.19e-05; other 0.006 2.35e-03
+  difficult  eligible 0.773 3.81e-05; uninformative 0.221 3.33e-05; other 0.006 2.35e-03
+  lowmap     eligible 0.774 1.04e-04; uninformative 0.208 3.45e-04; other 0.018 4.89e-02
+  segdup     eligible 0.702 4.33e-04; uninformative 0.216 2.42e-03; other 0.082 5.19e-02
+  tandem     eligible 0.703 1.36e-03; uninformative 0.206 4.12e-03; other 0.090 7.73e-02
+  indel      eligible 0.511 1.77e-02; uninformative 0.186 4.94e-02; other 0.303 1.60e-01
+
+20x longphase: 2408316 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.777 9.87e-05; uninformative 0.217 5.93e-05; other 0.006 2.62e-03
+  difficult  eligible 0.773 1.28e-04; uninformative 0.221 0.00e+00; other 0.006 2.46e-03
+  lowmap     eligible 0.778 1.23e-04; uninformative 0.209 1.25e-04; other 0.014 2.12e-02
+  segdup     eligible 0.711 8.31e-04; uninformative 0.219 8.26e-04; other 0.070 2.27e-02
+  tandem     eligible 0.734 4.90e-04; uninformative 0.212 1.07e-03; other 0.054 2.37e-02
+  indel      eligible 0.660 5.43e-04; uninformative 0.204 1.82e-03; other 0.136 1.71e-02
+
+10x whatshap: 2563224 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.776 5.00e-05; uninformative 0.217 2.56e-05; other 0.006 3.48e-03
+  difficult  eligible 0.773 1.33e-04; uninformative 0.221 3.33e-05; other 0.006 3.52e-03
+  lowmap     eligible 0.774 1.62e-04; uninformative 0.208 3.88e-04; other 0.018 4.64e-02
+  segdup     eligible 0.703 7.22e-04; uninformative 0.217 1.88e-03; other 0.081 6.97e-02
+  tandem     eligible 0.705 1.62e-03; uninformative 0.207 4.77e-03; other 0.088 8.31e-02
+  indel      eligible 0.515 2.32e-02; uninformative 0.187 5.71e-02; other 0.299 1.80e-01
+
+10x longphase: 2406185 pairs; per group, class: share of pairs, error against v5.0q
+  easy       eligible 0.777 1.09e-04; uninformative 0.217 1.16e-04; other 0.006 8.51e-03
+  difficult  eligible 0.773 1.28e-04; uninformative 0.221 1.60e-04; other 0.006 4.95e-03
+  lowmap     eligible 0.778 1.80e-04; uninformative 0.209 1.26e-04; other 0.013 2.88e-02
+  segdup     eligible 0.710 6.48e-04; uninformative 0.218 5.29e-04; other 0.072 3.74e-02
+  tandem     eligible 0.732 8.71e-04; uninformative 0.212 2.66e-03; other 0.056 4.91e-02
+  indel      eligible 0.639 2.24e-03; uninformative 0.202 8.63e-03; other 0.159 5.70e-02
+
+scored on eligible even-chromosome pairs; violation level 1.54e-04 over 324 cells; per filter, beta, group, pooled over depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  agree   0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   easy        6 of 6    0  1.00e+00  0.9975  4/69268 = 5.77e-05
+  agree   0.001   difficult   6 of 6    0  1.00e+00  0.9971  0/49770 = 0.00e+00
+  agree   0.001   lowmap      4 of 6    0  9.98e-01  0.6373  2/24515 = 8.16e-05
+  agree   0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.003   easy        6 of 6    0  9.64e-01  0.9991  47/69489 = 6.76e-04
+  agree   0.003   difficult   6 of 6    0  1.00e+00  1.0000  24/49989 = 4.80e-04
+  agree   0.003   lowmap      6 of 6    0  9.43e-01  1.0000  42/38087 = 1.10e-03
+  agree   0.003   segdup      3 of 6    0  1.00e+00  0.4579  0/2999 = 0.00e+00
+  agree   0.003   tandem      5 of 6    0  1.00e+00  0.6145  5/44646 = 1.12e-04
+  agree   0.003   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   difficult   6 of 6    0  1.00e+00  0.9990  6/50024 = 1.20e-04
+  all     0.003   lowmap      6 of 6    0  1.00e+00  0.9903  7/37847 = 1.85e-04
+  all     0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   easy        6 of 6    0  9.57e-01  0.9992  4/29702 = 1.35e-04
+  double  0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   indel       2 of 6    0  9.04e-01  0.2511  2/7699 = 2.60e-04
+  double  0.003   easy        6 of 6    0  1.00e+00  1.0000  6/29737 = 2.02e-04
+  double  0.003   difficult   6 of 6    0  1.00e+00  0.9998  0/13197 = 0.00e+00
+  double  0.003   lowmap      6 of 6    0  1.00e+00  1.0000  0/8951 = 0.00e+00
+  double  0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   tandem      6 of 6    0  9.74e-01  0.9712  18/17956 = 1.00e-03
+  double  0.003   indel       3 of 6    0  1.00e+00  0.3923  6/11688 = 5.13e-04
+
+scored on all even-chromosome pairs; violation level 1.54e-04 over 324 cells; per filter, beta, group, pooled over depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  agree   0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   easy        6 of 6    0  9.77e-01  0.9976  10/70974 = 1.41e-04
+  agree   0.001   difficult   6 of 6    0  1.00e+00  0.9973  0/55172 = 0.00e+00
+  agree   0.001   lowmap      4 of 6    0  8.18e-01  0.6346  14/28102 = 4.98e-04
+  agree   0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.003   easy        6 of 6    0  4.94e-01  0.9992  79/71172 = 1.11e-03
+  agree   0.003   difficult   6 of 6    0  1.00e+00  1.0000  31/55401 = 5.60e-04
+  agree   0.003   lowmap      6 of 6    1  1.63e-05  1.0000  190/43599 = 4.36e-03
+  agree   0.003   segdup      3 of 6    0  4.38e-01  0.4477  9/3410 = 2.64e-03
+  agree   0.003   tandem      5 of 6    0  9.07e-01  0.5843  61/49053 = 1.24e-03
+  agree   0.003   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   difficult   6 of 6    0  1.00e+00  0.9991  8/55327 = 1.45e-04
+  all     0.003   lowmap      6 of 6    0  9.95e-01  0.9883  37/43116 = 8.58e-04
+  all     0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.003   indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  indel       0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   easy        6 of 6    2  5.89e-12  0.9983  118/71141 = 1.66e-03
+  double  0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   indel       2 of 6    0  1.41e-02  0.2104  31/22665 = 1.37e-03
+  double  0.003   easy        6 of 6    2  5.64e-10  1.0000  247/71326 = 3.46e-03
+  double  0.003   difficult   6 of 6    0  1.00e+00  0.9991  2/55316 = 3.62e-05
+  double  0.003   lowmap      6 of 6    1  1.63e-05  0.9992  149/43554 = 3.42e-03
+  double  0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   tandem      6 of 6    6  0.00e+00  0.9478  662/63309 = 1.05e-02
+  double  0.003   indel       3 of 6    1  0.00e+00  0.3355  198/34231 = 5.78e-03
+
+R3 gate (agree): (a) valid on eligible pairs ok (0 violating of 108); (b) easy at 1e-3 certifies in 6 of 6 cells, trusted share of all easy pairs 0.7740 ok
+R3 gate: passed

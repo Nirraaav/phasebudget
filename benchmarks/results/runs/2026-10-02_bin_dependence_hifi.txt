@@ -1,0 +1,6 @@
+wrong-bin clustering, HG002 HiFi whatshap phase cap 15, 10 kb bins: 17 wrong bins of 186627; 2,000 uniform placements per chromosome, seed 0
+  wrong-bin pairs within   1 bins: observed 0, expected 0.00, p 1.0000
+  wrong-bin pairs within   2 bins: observed 0, expected 0.00, p 1.0000
+  wrong-bin pairs within   5 bins: observed 0, expected 0.01, p 1.0000
+  wrong-bin pairs within  10 bins: observed 0, expected 0.02, p 1.0000
+  wrong-bin pairs within 100 bins: observed 0, expected 0.14, p 1.0000

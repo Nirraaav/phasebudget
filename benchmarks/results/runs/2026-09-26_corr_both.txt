@@ -1,0 +1,39 @@
+commit aaf9836; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 10 replicates, seed 8000 + 17 * replicate; profiles ont (10000 bp, error 0.05), noisy (10000 bp, error 0.1); simulated data
+unreported errors: systematic_rate 0.05, systematic_strength 0.5, burst_rate 0.2, burst_length 5, burst_error 0.35
+obj/opt is the additive objective over the certified optimum; worst is the worst replicate; switch and N50 come from the phasing of the selected reads
+profile  cap           selector  obj/opt   worst   MEC full   switch  sw worst  phased   sel s    dp s  mixed
+-------------------------------------------------------------------------------------------------------------
+    ont    3             random   0.7937  0.7817    24338.0  0.10784   0.12161   0.997    0.02    0.03       
+    ont    3             greedy   0.8844  0.8791    25685.4  0.07157   0.08039   0.976    0.03    0.02       
+    ont    3  fischer_marschall   0.8530  0.8427    22012.2  0.08986   0.09755   1.000    1.04    0.02       
+    ont    3   max_min_coverage   0.9995  0.9985    19746.0  0.05785   0.06660   1.000    0.22    0.02       
+    ont    3            optimal   1.0000  1.0000    19862.7  0.05901   0.07357   1.000    0.06    0.02       
+    ont    3            hapchat      n/a     n/a    17684.0  0.02360   0.02827   0.999    1.18    0.02  0.000
+    ont    3      merge_optimal      n/a     n/a    17300.2  0.02063   0.02863   1.000    1.20    0.02  0.000
+
+    ont    5             random   0.8268  0.8176    18510.6  0.04787   0.06356   1.000    0.02    0.04       
+    ont    5             greedy   0.8874  0.8800    20153.9  0.03750   0.04587   0.991    0.03    0.03       
+    ont    5  fischer_marschall   0.8615  0.8535    17777.5  0.03732   0.05003   1.000    1.54    0.03       
+    ont    5   max_min_coverage   0.9992  0.9979    17006.5  0.02493   0.03852   1.000    0.33    0.04       
+    ont    5            optimal   1.0000  1.0000    17030.7  0.02567   0.03452   1.000    0.07    0.04       
+    ont    5            hapchat      n/a     n/a    16355.7  0.01017   0.01505   1.000    1.17    0.03  0.000
+    ont    5      merge_optimal      n/a     n/a    16258.0  0.00922   0.01401   1.000    1.21    0.03  0.000
+
+  noisy    3             random   0.7738  0.7637    25875.3  0.17024   0.18851   0.997    0.03    0.02       
+  noisy    3             greedy   0.8845  0.8757    25254.2  0.12498   0.13757   0.979    0.03    0.02       
+  noisy    3  fischer_marschall   0.8392  0.8269    24073.1  0.14825   0.16508   1.000    1.14    0.02       
+  noisy    3   max_min_coverage   0.9983  0.9963    22001.0  0.10654   0.12018   1.000    0.22    0.02       
+  noisy    3            optimal   1.0000  1.0000    21916.1  0.10495   0.12255   1.000    0.06    0.02       
+  noisy    3            hapchat      n/a     n/a    19568.9  0.04902   0.05817   0.998    1.32    0.02  0.001
+  noisy    3      merge_optimal      n/a     n/a    18823.7  0.04088   0.05080   1.000    1.36    0.02  0.001
+
+  noisy    5             random   0.8085  0.7995    20890.9  0.09183   0.10360   1.000    0.02    0.04       
+  noisy    5             greedy   0.8912  0.8841    21015.2  0.06966   0.08215   0.993    0.03    0.03       
+  noisy    5  fischer_marschall   0.8489  0.8404    19917.6  0.07149   0.08804   1.000    1.40    0.03       
+  noisy    5   max_min_coverage   0.9978  0.9954    18923.7  0.05306   0.06503   1.000    0.29    0.03       
+  noisy    5            optimal   1.0000  1.0000    18832.3  0.05154   0.06153   1.000    0.07    0.03       
+  noisy    5            hapchat      n/a     n/a    17820.8  0.02223   0.03518   1.000    1.07    0.03  0.001
+  noisy    5      merge_optimal      n/a     n/a    17745.6  0.02179   0.03105   1.000    0.98    0.03  0.001
+
+reads per instance: mean 6022, range 5726 to 6323

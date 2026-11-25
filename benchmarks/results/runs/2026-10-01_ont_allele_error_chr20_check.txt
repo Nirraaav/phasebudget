@@ -1,0 +1,1 @@
+platform ont, sample HG002, chr20, depth full, truth GIAB v5.0q: 100423 reads, 2196228 alleles, 11045 wrong, e = 0.00503; sites 44491, with error above 0.2 (5 or more reads): 5, holding 67 of the errors

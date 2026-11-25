@@ -1,0 +1,2 @@
+archive_unfiled_counts.py depth; platform ont; chr20; from data/genome_ont/chr20/depth.json, written by genome_run.py
+records 392093, mean aligned length 14335, chromosome length 64444167, depth 64.27

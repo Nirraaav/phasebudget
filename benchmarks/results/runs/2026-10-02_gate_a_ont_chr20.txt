@@ -1,0 +1,33 @@
+gate G-A, platform ont, chr20; support margin from all realign reads; errors left among the trusted top share of pairs
+full  whatshap: pairs 44440, wrong 0, pairs with margin <= 0: 4
+                 margin: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+                 wilson: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+full longphase: pairs 44188, wrong 0, pairs with margin <= 0: 5
+                 margin: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+                 wilson: AUC nan; wrong left at coverage 1.000: 0, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+  30  whatshap: pairs 44415, wrong 1, pairs with margin <= 0: 6
+                 margin: AUC 0.999; wrong left at coverage 1.000: 1, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC 0.826; wrong left at coverage 1.000: 1, 0.999: 1, 0.995: 1, 0.990: 1, 0.980: 1, 0.950: 1
+                 wilson: AUC 0.999; wrong left at coverage 1.000: 1, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+  30 longphase: pairs 44245, wrong 3, pairs with margin <= 0: 6
+                 margin: AUC 1.000; wrong left at coverage 1.000: 3, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC 0.942; wrong left at coverage 1.000: 3, 0.999: 1, 0.995: 1, 0.990: 1, 0.980: 1, 0.950: 1
+                 wilson: AUC 1.000; wrong left at coverage 1.000: 3, 0.999: 0, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+  20  whatshap: pairs 44395, wrong 3, pairs with margin <= 0: 11
+                 margin: AUC 0.998; wrong left at coverage 1.000: 3, 0.999: 3, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC 0.960; wrong left at coverage 1.000: 3, 0.999: 1, 0.995: 1, 0.990: 1, 0.980: 1, 0.950: 1
+                 wilson: AUC 0.998; wrong left at coverage 1.000: 3, 0.999: 3, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+  20 longphase: pairs 44256, wrong 4, pairs with margin <= 0: 13
+                 margin: AUC 1.000; wrong left at coverage 1.000: 4, 0.999: 1, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC 0.970; wrong left at coverage 1.000: 4, 0.999: 1, 0.995: 1, 0.990: 1, 0.980: 1, 0.950: 1
+                 wilson: AUC 1.000; wrong left at coverage 1.000: 4, 0.999: 1, 0.995: 0, 0.990: 0, 0.980: 0, 0.950: 0
+  10  whatshap: pairs 44265, wrong 17, pairs with margin <= 0: 22
+                 margin: AUC 0.991; wrong left at coverage 1.000: 17, 0.999: 15, 0.995: 7, 0.990: 4, 0.980: 2, 0.950: 0
+               conflict: AUC 0.955; wrong left at coverage 1.000: 17, 0.999: 13, 0.995: 11, 0.990: 11, 0.980: 11, 0.950: 11
+                 wilson: AUC 0.993; wrong left at coverage 1.000: 17, 0.999: 15, 0.995: 7, 0.990: 4, 0.980: 0, 0.950: 0
+  10 longphase: pairs 43932, wrong 21, pairs with margin <= 0: 36
+                 margin: AUC 0.997; wrong left at coverage 1.000: 21, 0.999: 10, 0.995: 3, 0.990: 0, 0.980: 0, 0.950: 0
+               conflict: AUC 0.969; wrong left at coverage 1.000: 21, 0.999: 10, 0.995: 10, 0.990: 10, 0.980: 10, 0.950: 10
+                 wilson: AUC 0.997; wrong left at coverage 1.000: 21, 0.999: 10, 0.995: 3, 0.990: 0, 0.980: 0, 0.950: 0

@@ -1,0 +1,47 @@
+W4 gate (development, docs/design/w4-reference-gate.md): HG002 HPRC HiFi realigned with minimap2, 30x, chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22; truth v5.0q per reference; confident = every consecutive pair has at least 10 reads and none disagrees; region list GRCh38_false_duplications_correct_copy, GRCh38_false_duplications_incorrect_copy, GRCh38_collapsed_duplication_FP_regions (GIAB v3.6); chain grch38-chm13v2.chain
+  whatshap  GRCh38  relations   2568398 wrong  12601 confident wrong  1553
+  whatshap  CHM13   relations   2601389 wrong  11897 confident wrong  1276
+  whatshap  GRCh38 by group: relations, wrong, confident wrong
+      segdup         81839    763    60
+      lowmap        138166    531    40
+      tandem        783661  10662  1365
+      difficult     158468     77    13
+      easy         1406264    568    75
+      region list   2045 relations (7.96e-04), wrong 76, confident wrong 3 (1.93e-03 of all confident wrong)
+  whatshap  matched: relations 1740181, truths disagree 31, cw38 27, cw13 28, cw38 right13 2, cw38 right13 confident 1, cw38 wrong13 25, cw38 not one block13 0
+  longphase GRCh38  relations   2527159 wrong   1083 confident wrong    25
+  longphase CHM13   relations   2558898 wrong   1146 confident wrong    51
+  longphase GRCh38 by group: relations, wrong, confident wrong
+      segdup         80542    248    13
+      lowmap        135861     66     0
+      tandem        736275    666    12
+      difficult     159524     13     0
+      easy         1414957     90     0
+      region list   2047 relations (8.10e-04), wrong 33, confident wrong 2 (8.00e-02 of all confident wrong)
+  longphase matched: relations 1752182, truths disagree 15, cw38 2, cw13 2, cw38 right13 0, cw38 right13 confident 0, cw38 wrong13 2, cw38 not one block13 0
+
+whatshap: removal FAIL, location FAIL; longphase: removal FAIL, location FAIL
+W4 gate: not passed
+	Command being timed: ".venv/bin/python -u benchmarks/w4_gate.py"
+	User time (seconds): 973.02
+	System time (seconds): 104.30
+	Percent of CPU this job got: 299%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:59.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5013956
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 46
+	Minor (reclaiming a frame) page faults: 25971680
+	Voluntary context switches: 112262
+	Involuntary context switches: 191427
+	Swaps: 0
+	File system inputs: 1215432
+	File system outputs: 1056664
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

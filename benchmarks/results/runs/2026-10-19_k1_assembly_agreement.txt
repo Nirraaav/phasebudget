@@ -1,0 +1,139 @@
+K1a and K4 (development, docs/design/k1-assembly-agreement.md): HG002 HPRC HiFi, w4_grch38 30x, whatshap and LongPhase; assembly hifiasm 0.25.0-r726 HiFi only, dipcall 0.3 (Q6 tables, data/r6_q6/tables); pairs of consecutive v5.0q heterozygous variants inside its BED, truth v5.0q (trio transmission descriptive); agreement = the assembly relates the pair (Q6 contig rule) with the phaser's relation; K1a: learn_then_test_by_group on agreeing pairs of odd chromosomes chr1 chr3 chr5 chr7 chr9 chr11 chr13 chr15 chr17 chr19 chr21, test on even chr2 chr4 chr6 chr8 chr10 chr12 chr14 chr16 chr18 chr22, betas (0.0003, 0.001, 0.003), delta 0.05, 100 kb units; gate (a) no violating cell at 0.05/cells, (b) segdup, tandem, indel each certify at 0.001 for one phaser trusting >= 0.5 of the group's even pairs; K4: Q4 call, betas (0.0001, 0.0003, 0.001, 0.003, 0.01), targets (0.001, 0.01), window 100000, two folds by parity, gate (a) no cell below 0.05/4, (b) certified share >= 0.5 at r 0.01 for one phaser
+
+1. Pairs each phaser relates (v5.0q phases), share the assembly agrees with, and wrong pairs among agreeing and other pairs (all 21 chromosomes)
+  whatshap  easy      pairs  1253075 agree 0.9931  wrong among agreeing     1 of  1244462  among others    36 of    8613
+  whatshap  difficult pairs   134877 agree 0.9897  wrong among agreeing     0 of   133494  among others     4 of    1383
+  whatshap  segdup    pairs    58520 agree 0.9134  wrong among agreeing     0 of    53454  among others   309 of    5066
+  whatshap  lowmap    pairs   110680 agree 0.9861  wrong among agreeing     1 of   109140  among others    57 of    1540
+  whatshap  tandem    pairs   212035 agree 0.9779  wrong among agreeing     1 of   207355  among others  1036 of    4680
+  whatshap  indel     pairs   797705 agree 0.9174  wrong among agreeing    45 of   731801  among others 10992 of   65904
+  longphase easy      pairs  1251044 agree 0.9932  wrong among agreeing     1 of  1242585  among others     7 of    8459
+  longphase difficult pairs   134697 agree 0.9898  wrong among agreeing     0 of   133325  among others     0 of    1372
+  longphase segdup    pairs    57898 agree 0.9185  wrong among agreeing     0 of    53179  among others   129 of    4719
+  longphase lowmap    pairs   109582 agree 0.9873  wrong among agreeing     1 of   108186  among others     5 of    1396
+  longphase tandem    pairs   208582 agree 0.9843  wrong among agreeing     1 of   205308  among others    50 of    3274
+  longphase indel     pairs   732884 agree 0.9475  wrong among agreeing    20 of   694408  among others   436 of   38476
+
+2. Pairs wrong in both the phaser and the assembly (all 21 chromosomes): pairs, units of the group, units holding one, share (above 1e-3 the group cannot certify at 1e-3)
+  whatshap  easy      both wrong     1  units  24095 holding one    1 share 4.15e-05
+  whatshap  difficult both wrong     0  units  18565 holding one    0 share 0.00e+00
+  whatshap  segdup    both wrong     0  units   2828 holding one    0 share 0.00e+00
+  whatshap  lowmap    both wrong     1  units  14683 holding one    1 share 6.81e-05
+  whatshap  tandem    both wrong     1  units  21922 holding one    1 share 4.56e-05
+  whatshap  indel     both wrong    45  units  24715 holding one   39 share 1.58e-03
+  longphase easy      both wrong     1  units  24083 holding one    1 share 4.15e-05
+  longphase difficult both wrong     0  units  18560 holding one    0 share 0.00e+00
+  longphase segdup    both wrong     0  units   2824 holding one    0 share 0.00e+00
+  longphase lowmap    both wrong     1  units  14640 holding one    1 share 6.83e-05
+  longphase tandem    both wrong     1  units  21886 holding one    1 share 4.57e-05
+  longphase indel     both wrong    20  units  24460 holding one   18 share 7.36e-04
+
+3. Certificates, calibrated on odd and tested on even chromosomes. all = frozen score on all pairs; agree = frozen score on agreeing pairs only. Cell: threshold, units with a trusted pair, units with a wrong trusted pair, P(X >= k | n, beta), trusted pairs, trusted share of the group's even pairs, wrong trusted
+  whatshap  0.0003 all   easy      (0.6667, 8)      units  11647 wrong   2 p 8.64e-01 trusted   616935 share 0.9950 wrong trusted    3
+  whatshap  0.0003 all   difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 all   lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 agree easy      (0.5000, 4)      units  11656 wrong   0 p 1.00e+00 trusted   612810 share 0.9883 wrong trusted    0
+  whatshap  0.0003 agree difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 agree lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 agree tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.0003 agree indel     (0.7895, 15)     units  10849 wrong   0 p 1.00e+00 trusted   209777 share 0.5458 wrong trusted    0
+  whatshap  0.001  all   easy      (0.5000, 4)      units  11710 wrong   2 p 1.00e+00 trusted   618624 share 0.9977 wrong trusted    3
+  whatshap  0.001  all   difficult (0.1787, 20)     units   9118 wrong   0 p 1.00e+00 trusted    65578 share 1.0000 wrong trusted    0
+  whatshap  0.001  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.001  all   lowmap    (0.7143, 10)     units   7051 wrong   2 p 9.93e-01 trusted    53261 share 0.9874 wrong trusted    2
+  whatshap  0.001  all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.001  all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.001  agree easy      (-1.0000, 0)     units  11719 wrong   0 p 1.00e+00 trusted   614148 share 0.9905 wrong trusted    0
+  whatshap  0.001  agree difficult (0.1787, 20)     units   9064 wrong   0 p 1.00e+00 trusted    64866 share 0.9891 wrong trusted    0
+  whatshap  0.001  agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.001  agree lowmap    (0.0000, 3)      units   7108 wrong   0 p 1.00e+00 trusted    53090 share 0.9842 wrong trusted    0
+  whatshap  0.001  agree tandem    (-1.0000, 0)     units  10476 wrong   0 p 1.00e+00 trusted   101292 share 0.9771 wrong trusted    0
+  whatshap  0.001  agree indel     (0.3333, 2)      units  11514 wrong   6 p 9.73e-01 trusted   349816 share 0.9102 wrong trusted    8
+  whatshap  0.003  all   easy      (-1.0000, 0)     units  11774 wrong  15 p 1.00e+00 trusted   620060 share 1.0000 wrong trusted   16
+  whatshap  0.003  all   difficult (0.1787, 20)     units   9118 wrong   0 p 1.00e+00 trusted    65578 share 1.0000 wrong trusted    0
+  whatshap  0.003  all   segdup    (0.8128, 27)     units   1087 wrong   1 p 9.62e-01 trusted    20458 share 0.8884 wrong trusted    2
+  whatshap  0.003  all   lowmap    (0.3333, 2)      units   7156 wrong  11 p 9.95e-01 trusted    53849 share 0.9983 wrong trusted   12
+  whatshap  0.003  all   tandem    (0.8187, 28)     units  10075 wrong  18 p 9.94e-01 trusted    85455 share 0.8243 wrong trusted   23
+  whatshap  0.003  all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  whatshap  0.003  agree easy      (-1.0000, 0)     units  11719 wrong   0 p 1.00e+00 trusted   614148 share 0.9905 wrong trusted    0
+  whatshap  0.003  agree difficult (0.1787, 20)     units   9064 wrong   0 p 1.00e+00 trusted    64866 share 0.9891 wrong trusted    0
+  whatshap  0.003  agree segdup    (-1.0000, 0)     units   1136 wrong   0 p 1.00e+00 trusted    20350 share 0.8837 wrong trusted    0
+  whatshap  0.003  agree lowmap    (0.0000, 3)      units   7108 wrong   0 p 1.00e+00 trusted    53090 share 0.9842 wrong trusted    0
+  whatshap  0.003  agree tandem    (-1.0000, 0)     units  10476 wrong   0 p 1.00e+00 trusted   101292 share 0.9771 wrong trusted    0
+  whatshap  0.003  agree indel     (-1.0000, 0)     units  11528 wrong  16 p 1.00e+00 trusted   352468 share 0.9171 wrong trusted   19
+  longphase 0.0003 all   easy      (0.5000, 4)      units  11702 wrong   0 p 1.00e+00 trusted   617530 share 0.9977 wrong trusted    0
+  longphase 0.0003 all   difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 all   lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 all   tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 all   indel     none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 agree easy      (0.5000, 4)      units  11647 wrong   0 p 1.00e+00 trusted   611848 share 0.9885 wrong trusted    0
+  longphase 0.0003 agree difficult none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 agree lowmap    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 agree tandem    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.0003 agree indel     (0.7895, 15)     units  10830 wrong   0 p 1.00e+00 trusted   207485 share 0.5863 wrong trusted    0
+  longphase 0.001  all   easy      (-1.0000, 0)     units  11766 wrong   4 p 9.97e-01 trusted   618981 share 1.0000 wrong trusted    4
+  longphase 0.001  all   difficult (-1.0000, 0)     units   9114 wrong   0 p 1.00e+00 trusted    65483 share 1.0000 wrong trusted    0
+  longphase 0.001  all   segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.001  all   lowmap    (0.4286, 3)      units   7123 wrong   1 p 9.99e-01 trusted    53216 share 0.9974 wrong trusted    1
+  longphase 0.001  all   tandem    (0.4286, 3)      units  10549 wrong   6 p 9.51e-01 trusted   101077 share 0.9910 wrong trusted    6
+  longphase 0.001  all   indel     (0.7895, 15)     units  11046 wrong   6 p 9.64e-01 trusted   214683 share 0.6066 wrong trusted    6
+  longphase 0.001  agree easy      (-1.0000, 0)     units  11710 wrong   0 p 1.00e+00 trusted   613205 share 0.9907 wrong trusted    0
+  longphase 0.001  agree difficult (-1.0000, 0)     units   9060 wrong   0 p 1.00e+00 trusted    64778 share 0.9892 wrong trusted    0
+  longphase 0.001  agree segdup    none             units      0 wrong   0 p 1.00e+00 trusted        0 share 0.0000 wrong trusted    0
+  longphase 0.001  agree lowmap    (-1.0000, 0)     units   7092 wrong   0 p 1.00e+00 trusted    52587 share 0.9856 wrong trusted    0
+  longphase 0.001  agree tandem    (-1.0000, 0)     units  10468 wrong   0 p 1.00e+00 trusted   100277 share 0.9831 wrong trusted    0
+  longphase 0.001  agree indel     (0.2269, 32)     units  11440 wrong   1 p 1.00e+00 trusted   332412 share 0.9393 wrong trusted    2
+  longphase 0.003  all   easy      (-1.0000, 0)     units  11766 wrong   4 p 1.00e+00 trusted   618981 share 1.0000 wrong trusted    4
+  longphase 0.003  all   difficult (-1.0000, 0)     units   9114 wrong   0 p 1.00e+00 trusted    65483 share 1.0000 wrong trusted    0
+  longphase 0.003  all   segdup    (0.7458, 25)     units   1141 wrong   2 p 8.56e-01 trusted    21723 share 0.9578 wrong trusted    7
+  longphase 0.003  all   lowmap    (-1.0000, 0)     units   7153 wrong   2 p 1.00e+00 trusted    53357 share 1.0000 wrong trusted    2
+  longphase 0.003  all   tandem    (0.0000, 19)     units  10619 wrong  16 p 9.99e-01 trusted   101766 share 0.9977 wrong trusted   18
+  longphase 0.003  all   indel     (0.5429, 18)     units  11783 wrong  20 p 9.98e-01 trusted   340188 share 0.9613 wrong trusted   24
+  longphase 0.003  agree easy      (-1.0000, 0)     units  11710 wrong   0 p 1.00e+00 trusted   613205 share 0.9907 wrong trusted    0
+  longphase 0.003  agree difficult (-1.0000, 0)     units   9060 wrong   0 p 1.00e+00 trusted    64778 share 0.9892 wrong trusted    0
+  longphase 0.003  agree segdup    (-1.0000, 0)     units   1136 wrong   0 p 1.00e+00 trusted    20129 share 0.8875 wrong trusted    0
+  longphase 0.003  agree lowmap    (-1.0000, 0)     units   7092 wrong   0 p 1.00e+00 trusted    52587 share 0.9856 wrong trusted    0
+  longphase 0.003  agree tandem    (-1.0000, 0)     units  10468 wrong   0 p 1.00e+00 trusted   100277 share 0.9831 wrong trusted    0
+  longphase 0.003  agree indel     (-1.0000, 0)     units  11449 wrong   8 p 1.00e+00 trusted   334876 share 0.9463 wrong trusted    9
+
+  agreement cells with a threshold and a unit: 26; level 1.92e-03; violating 0
+  (b) segdup  at 0.001: whatshap none share 0.0000, longphase none share 0.0000: fails
+  (b) tandem  at 0.001: whatshap certifies share 0.9771, longphase certifies share 0.9831: holds
+  (b) indel   at 0.001: whatshap certifies share 0.9102, longphase certifies share 0.9393: holds
+
+4. Against GIAB trio transmission (descriptive): agreeing pairs it phases, and phaser wrong among them (all 21 chromosomes)
+  whatshap  easy      agreeing, trio-phased   932870 wrong    0
+  whatshap  difficult agreeing, trio-phased    98393 wrong    0
+  whatshap  segdup    agreeing, trio-phased    26863 wrong    0
+  whatshap  lowmap    agreeing, trio-phased    72545 wrong    0
+  whatshap  tandem    agreeing, trio-phased   101838 wrong    1
+  whatshap  indel     agreeing, trio-phased        0 wrong    0
+  longphase easy      agreeing, trio-phased   931754 wrong    0
+  longphase difficult agreeing, trio-phased    98294 wrong    0
+  longphase segdup    agreeing, trio-phased    26787 wrong    0
+  longphase lowmap    agreeing, trio-phased    72207 wrong    0
+  longphase tandem    agreeing, trio-phased   101671 wrong    0
+  longphase indel     agreeing, trio-phased        0 wrong    0
+
+K1a gate: (a) holds; (b) fails
+K1a gate: not passed
+
+5. K4: within-gene pairs (Q4 population) on w4_grch38 30x, two folds. Per phaser and rule: pairs, chains, then per target certified, share, wrong, genes picked, wrong picks, P(X >= k | n, r)
+  whatshap  all   pairs 33055724 chains 32227723  r 0.001  certified   714276 share 0.0216 wrong    2 genes 2465 wrong  0 p 1.00e+00
+  whatshap  all   pairs 33055724 chains 32227723  r 0.01   certified  1257680 share 0.0380 wrong  118 genes 2555 wrong  4 p 1.00e+00
+  whatshap  agree pairs 33055724 chains 32227723  r 0.001  certified  1852357 share 0.0560 wrong    1 genes 2604 wrong  0 p 1.00e+00
+  whatshap  agree pairs 33055724 chains 32227723  r 0.01   certified 18104173 share 0.5477 wrong   77 genes 2617 wrong  0 p 1.00e+00
+  longphase all   pairs 33055724 chains 31458925  r 0.001  certified   874093 share 0.0264 wrong   34 genes 2583 wrong  0 p 1.00e+00
+  longphase all   pairs 33055724 chains 31458925  r 0.01   certified  8341269 share 0.2523 wrong 2999 genes 2672 wrong  2 p 1.00e+00
+  longphase agree pairs 33055724 chains 31458925  r 0.001  certified  1927330 share 0.0583 wrong   35 genes 2599 wrong  0 p 1.00e+00
+  longphase agree pairs 33055724 chains 31458925  r 0.01   certified 21398484 share 0.6473 wrong  698 genes 2616 wrong  1 p 1.00e+00
+
+K4 gate: (a) holds; (b) holds
+K4 gate: passed
+runtime 945 s

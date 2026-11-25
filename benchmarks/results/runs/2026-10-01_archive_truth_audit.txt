@@ -1,0 +1,23 @@
+archive_unfiled_counts.py truth-audit; platform hifi; 21 confirmatory chromosomes; truths: transmission (unfiltered), hifiasm phase transfer, GIAB v5.0q inside its benchmark BED
+  chr1: both phase   129647, paternal = v5 first allele   129646; filter removed   101, v5 phases    97, agrees with transmission    96
+  chr2: both phase   131038, paternal = v5 first allele   131038; filter removed   354, v5 phases   352, agrees with transmission   352
+  chr3: both phase   119720, paternal = v5 first allele   119720; filter removed   268, v5 phases   268, agrees with transmission   268
+  chr4: both phase   122372, paternal = v5 first allele   122372; filter removed   111, v5 phases   105, agrees with transmission   105
+  chr5: both phase   112678, paternal = v5 first allele   112678; filter removed    38, v5 phases    38, agrees with transmission    38
+  chr6: both phase   107821, paternal = v5 first allele   107821; filter removed    62, v5 phases    61, agrees with transmission    61
+  chr7: both phase    92833, paternal = v5 first allele    92833; filter removed   142, v5 phases   142, agrees with transmission   142
+  chr8: both phase    92857, paternal = v5 first allele    92857; filter removed    37, v5 phases    37, agrees with transmission    37
+  chr9: both phase    74567, paternal = v5 first allele    74567; filter removed   144, v5 phases   144, agrees with transmission   144
+ chr10: both phase    83822, paternal = v5 first allele    83822; filter removed    44, v5 phases    44, agrees with transmission    44
+ chr11: both phase    77594, paternal = v5 first allele    77594; filter removed    25, v5 phases    25, agrees with transmission    25
+ chr12: both phase    80888, paternal = v5 first allele    80888; filter removed   639, v5 phases   639, agrees with transmission   639
+ chr13: both phase    64026, paternal = v5 first allele    64026; filter removed   114, v5 phases   111, agrees with transmission   111
+ chr14: both phase    53134, paternal = v5 first allele    53134; filter removed    50, v5 phases    50, agrees with transmission    50
+ chr15: both phase    47643, paternal = v5 first allele    47643; filter removed    30, v5 phases    28, agrees with transmission    28
+ chr16: both phase    50048, paternal = v5 first allele    50048; filter removed    94, v5 phases    91, agrees with transmission    91
+ chr17: both phase    40335, paternal = v5 first allele    40335; filter removed    23, v5 phases    21, agrees with transmission    21
+ chr18: both phase    45802, paternal = v5 first allele    45802; filter removed    11, v5 phases    11, agrees with transmission    11
+ chr19: both phase    37613, paternal = v5 first allele    37613; filter removed    15, v5 phases    15, agrees with transmission    15
+ chr21: both phase    21086, paternal = v5 first allele    21086; filter removed    66, v5 phases    66, agrees with transmission    66
+ chr22: both phase    20175, paternal = v5 first allele    20175; filter removed    10, v5 phases    10, agrees with transmission    10
+ total: both phase  1605699, paternal = v5 first allele  1605698; filter removed  2378, v5 phases  2355, agrees with transmission  2354

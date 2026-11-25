@@ -1,0 +1,62 @@
+K4b (registered, docs/design/k4b-clinical-agreement-plan.md): 30x, whatshap and LongPhase; pool HG002 (hprc_HG002, 21 chromosomes), NA12879 (phifi_NA12879, 21 chromosomes), NA12881 (phifi_NA12881, 21 chromosomes), NA12882 (phifi_NA12882, 21 chromosomes), NA12885 (phifi_NA12885, 21 chromosomes), NA12886 (phifi_NA12886, 21 chromosomes); tests NA12877 (phifi_NA12877, 21 chromosomes), HG005 (k1_hg005, 21 chromosomes); thresholds from pooled agreeing pairs (baseline: all pooled pairs), betas (0.0001, 0.0003, 0.001, 0.003, 0.01), delta 0.05, unit (genome, chromosome, 100 kb); Q4 call on clinical genes, window 100000, targets (0.001, 0.01); links the test genome's assembly does not agree with are never trusted; 8 registered cells, level 6.250e-03; K4b-2/3 certified share >= 0.5 at r 0.01 for one phaser
+
+== whatshap: pool pairs 14974383, agreeing 13978718
+  agree thresholds per group (beta (0.0001, 0.0003, 0.001, 0.003, 0.01)): difficult -1.000/0 -1.000/0 -1.000/0 -1.000/0 -1.000/0; easy -1.000/0 -1.000/0 -1.000/0 -1.000/0 -1.000/0; indel 0.769/28 0.362/21 -1.000/0 -1.000/0 -1.000/0; lowmap 0.500/4 -1.000/0 -1.000/0 -1.000/0 -1.000/0; segdup - - 0.333/2 -1.000/0 -1.000/0; tandem 0.304/27 -1.000/0 -1.000/0 -1.000/0 -1.000/0
+  all   thresholds per group (beta (0.0001, 0.0003, 0.001, 0.003, 0.01)): difficult 0.429/3 -1.000/0 -1.000/0 -1.000/0 -1.000/0; easy 0.714/10 0.556/5 0.429/3 -1.000/0 -1.000/0; indel - - - - -; lowmap - 0.807/26 0.600/6 0.429/3 -1.000/0; segdup - - - - 0.692/9; tandem - - 0.810/35 0.636/7 0.372/29
+
+  test NA12877 whatshap agree: pairs 30181041, unbroken chains 29423723
+    r 0.001  certified  7341618 share 0.2433 wrong certified    0 genes picked  2198 wrong picks   0 p 1.00e+00
+    r 0.01   certified 18193638 share 0.6028 wrong certified    0 genes picked  2198 wrong picks   0 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.8627 (606708/703292), <= 10 kb 0.8254 (3901512/4726564), <= 100 kb 0.5529 (13685418/24751185)
+    named paralog genes at r 0.01: CHEK2 15/21, CYP11B1 0/406, CYP11B2 0/1431, GBA1 253/253, HBA2 0/1, HYDIN 21034/22086, NCF1 276/300, NEB 211/502, OTOA 0/2145, PKD1 0/190, PMS2 20/2346, SDHA 3/28, SMN1 0/3, STRC 6/6, TNXB 27/55
+
+  test NA12877 whatshap all: pairs 30181041, unbroken chains 29423723
+    r 0.001  certified  1020086 share 0.0338 wrong certified    1 genes picked  2467 wrong picks   0 p 1.00e+00
+    r 0.01   certified  1517902 share 0.0503 wrong certified   93 genes picked  2554 wrong picks   1 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.5896 (414636/703292), <= 10 kb 0.1951 (922086/4726564), <= 100 kb 0.0073 (181180/24751185)
+    named paralog genes at r 0.01: CHEK2 15/21, CYP11B1 354/406, CYP11B2 417/1431, GBA1 58/253, HBA2 1/1, HYDIN 1104/22086, NCF1 60/300, NEB 57/502, OTOA 117/2145, PKD1 27/190, PMS2 247/2346, SDHA 28/28, SMN1 0/3, STRC 6/6, TNXB 22/55
+
+  test HG005 whatshap agree: pairs 12203402, unbroken chains 11777887
+    r 0.001  certified  5339159 share 0.4375 wrong certified    0 genes picked  2413 wrong picks   0 p 1.00e+00
+    r 0.01   certified 10794095 share 0.8845 wrong certified    0 genes picked  2417 wrong picks   0 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.9905 (300483/303373), <= 10 kb 0.9783 (1972138/2015941), <= 100 kb 0.8621 (8521474/9884088)
+    named paralog genes at r 0.01: CHEK2 6/6, CYP21A2 45/45, GBA1 136/136, HBA2 1/1, HYDIN 7099/7362, NEB 3424/3424, OTOA 0/3003, PKD1 3/21, PMS2 0/36, SDHA 1/1, SMN1 1/1, STRC 0/10, TNXB 1035/1035
+
+  test HG005 whatshap all: pairs 12203402, unbroken chains 11777887
+    r 0.001  certified   962491 share 0.0789 wrong certified    0 genes picked  2350 wrong picks   0 p 1.00e+00
+    r 0.01   certified  1319087 share 0.1081 wrong certified    0 genes picked  2408 wrong picks   0 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.8694 (263746/303373), <= 10 kb 0.3900 (786130/2015941), <= 100 kb 0.0272 (269211/9884088)
+    named paralog genes at r 0.01: CHEK2 3/6, CYP21A2 45/45, GBA1 121/136, HBA2 1/1, HYDIN 2738/7362, NEB 396/3424, OTOA 725/3003, PKD1 4/21, PMS2 20/36, SDHA 1/1, SMN1 1/1, STRC 6/10, TNXB 215/1035
+
+== longphase: pool pairs 14776566, agreeing 13897470
+  agree thresholds per group (beta (0.0001, 0.0003, 0.001, 0.003, 0.01)): difficult 0.333/2 -1.000/0 -1.000/0 -1.000/0 -1.000/0; easy 0.429/3 0.429/3 -1.000/0 -1.000/0 -1.000/0; indel 0.595/21 0.203/3 -1.000/0 -1.000/0 -1.000/0; lowmap 0.333/2 -1.000/0 -1.000/0 -1.000/0 -1.000/0; segdup - - 0.200/1 -1.000/0 -1.000/0; tandem 0.372/29 0.200/1 -1.000/0 -1.000/0 -1.000/0
+  all   thresholds per group (beta (0.0001, 0.0003, 0.001, 0.003, 0.01)): difficult 0.333/2 0.333/2 -1.000/0 -1.000/0 -1.000/0; easy 0.556/5 0.429/3 0.429/3 -1.000/0 -1.000/0; indel - - 0.754/32 0.500/4 0.273/27; lowmap 0.818/18 0.696/15 0.500/16 0.200/1 -1.000/0; segdup - - - 0.846/22 0.636/7; tandem 0.846/22 0.679/14 0.429/3 0.200/1 -1.000/0
+
+  test NA12877 longphase agree: pairs 30181041, unbroken chains 28850372
+    r 0.001  certified 14305979 share 0.4740 wrong certified   13 genes picked  2191 wrong picks   1 p 8.88e-01
+    r 0.01   certified 19363806 share 0.6416 wrong certified   75 genes picked  2191 wrong picks   1 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.8567 (602499/703292), <= 10 kb 0.8303 (3924650/4726564), <= 100 kb 0.5994 (14836657/24751185)
+    named paralog genes at r 0.01: CHEK2 15/21, CYP11B1 0/406, CYP11B2 0/1431, GBA1 253/253, HBA2 0/1, HYDIN 20453/22086, NCF1 276/300, NEB 211/502, OTOA 0/2145, PKD1 0/190, PMS2 20/2346, SDHA 3/28, SMN1 0/3, STRC 6/6, TNXB 27/55
+
+  test NA12877 longphase all: pairs 30181041, unbroken chains 28850372
+    r 0.001  certified  1611429 share 0.0534 wrong certified   11 genes picked  2560 wrong picks   0 p 1.00e+00
+    r 0.01   certified  9353760 share 0.3099 wrong certified  972 genes picked  2632 wrong picks   2 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.9619 (676497/703292), <= 10 kb 0.8228 (3888927/4726564), <= 100 kb 0.1935 (4788336/24751185)
+    named paralog genes at r 0.01: CHEK2 15/21, CYP11B1 406/406, CYP11B2 496/1431, GBA1 69/253, HBA2 1/1, HYDIN 8293/22086, NCF1 74/300, NEB 241/502, OTOA 925/2145, PKD1 91/190, PMS2 441/2346, SDHA 28/28, SMN1 0/3, STRC 6/6, TNXB 22/55
+
+  test HG005 longphase agree: pairs 12203402, unbroken chains 11755809
+    r 0.001  certified  9435265 share 0.7732 wrong certified    0 genes picked  2416 wrong picks   0 p 1.00e+00
+    r 0.01   certified 10871184 share 0.8908 wrong certified    0 genes picked  2416 wrong picks   0 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.9870 (299430/303373), <= 10 kb 0.9767 (1968950/2015941), <= 100 kb 0.8704 (8602804/9884088)
+    named paralog genes at r 0.01: CHEK2 6/6, CYP21A2 45/45, GBA1 136/136, HBA2 1/1, HYDIN 7099/7362, NEB 3424/3424, OTOA 0/3003, PKD1 3/21, PMS2 0/36, SDHA 1/1, SMN1 1/1, STRC 0/10, TNXB 1035/1035
+
+  test HG005 longphase all: pairs 12203402, unbroken chains 11755809
+    r 0.001  certified  1310969 share 0.1074 wrong certified    0 genes picked  2380 wrong picks   0 p 1.00e+00
+    r 0.01   certified  6028203 share 0.4940 wrong certified 2090 genes picked  2441 wrong picks   0 p 1.00e+00
+    certified share at r 0.01 by distance: <= 1 kb 0.9953 (301945/303373), <= 10 kb 0.9471 (1909317/2015941), <= 100 kb 0.3862 (3816941/9884088)
+    named paralog genes at r 0.01: CHEK2 3/6, CYP21A2 45/45, GBA1 125/136, HBA2 1/1, HYDIN 3284/7362, NEB 2130/3424, OTOA 1036/3003, PKD1 9/21, PMS2 32/36, SDHA 1/1, SMN1 1/1, STRC 6/10, TNXB 536/1035
+
+K4b-1 validity: supported
+K4b-2 usefulness on NA12877: whatshap 0.6028, longphase 0.6416: supported
+K4b-3 usefulness on HG005: whatshap 0.8845, longphase 0.8908: supported
+runtime 1669 s

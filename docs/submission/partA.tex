@@ -1,0 +1,237 @@
+% Part A of the submission: exact read selection. Numbers from the run files in benchmarks/results/runs/
+% (the measurement paper), whose run files are cited there.
+
+\section{Exact read selection}\label{sec:selection}
+
+\subsection{The selection problem}\label{sec:selproblem}
+
+WhatsHap solves weighted minimum error correction (wMEC) exactly with a
+dynamic program whose state is exponential in coverage~\cite{patterson2015},
+so it first selects reads down to a cap $c$ per variant~\cite{martin2016}
+with a greedy heuristic~\cite{fischer2016}. A read covers the variants in its
+span; an interior gap carries no allele but still occupies coverage. For read
+weights $w_r$, the sum of a read's allele log-odds, the additive selection
+problem is
+\begin{equation}\label{eq:selection}
+\max \sum_r w_r x_r \quad\text{s.t.}\quad \sum_{r\ni j}x_r\le c\ \
+\text{for every variant } j,\qquad x_r\in\{0,1\}.
+\end{equation}
+Each read occupies a run of consecutive variants, so the constraint matrix
+has consecutive ones in each column and the problem is a min-cost flow
+(interval scheduling with capacity $c$)~\cite{arkin1987,carlisle1995}.
+
+\begin{proposition}\label{prop:flow}
+Let read $r$ cover the variants $a_r,\dots,b_r$. On nodes $v_0,\dots,v_n$
+put a chain arc $(v_{j-1},v_j)$ of capacity $c$ and cost 0 for each $j$, and
+a read arc $(v_{a_r-1},v_{b_r})$ of capacity 1 and cost $-w_r$ for each read.
+An integral min-cost flow of value $c$ from $v_0$ to $v_n$ exists, and the
+reads whose arcs carry flow solve (\ref{eq:selection}), with optimal value
+equal to minus the flow's cost.
+\end{proposition}
+
+The proof is in Appendix~\ref{app:proofs}. The optimum bounds how far any
+other selection is from it. The implementation matches exhaustive
+enumeration on 250 random instances of up to 7 reads and 7 variants at caps
+0 to 3. WhatsHap 2.8's selector differs from its published
+procedure~\cite{fischer2016}: after admitting a read it lowers each queued
+read's score by the variants the admitted read did not newly cover. Our port
+reproduces WhatsHap's selections read for read on 1{,}500 of 1{,}500 small
+instances, against 178 of 1{,}500 for the published procedure; the pipelines
+use WhatsHap's own compiled selector.
+
+The objective and the accuracy are different quantities: the true haplotypes
+can have a higher MEC than a heuristic solution~\cite{duitama2012}, and MEC
+can prefer a wrong haplotype at realistic error rates~\cite{majidian2020}. We
+therefore report both.
+
+\subsection{Experiments}\label{sec:seldesign}
+
+\paragraph{Data.} HG002 PacBio Sequel II 11\,kb HiFi reads from
+GIAB~\cite{zook2016,wagner2022} (27.7 to 38.5-fold per chromosome) and ONT
+R10.4.1 super-accuracy reads (\texttt{giab\_2023.05}, about 64-fold), with
+seeded subsamples at 20, 15 and 10-fold (HiFi) and 30, 20 and 10-fold (ONT);
+HG005 HiFi (about 30-fold) at full depth and 10-fold as a replication; and
+the HG002 trio's HiFi reads on chromosomes 16, 18, 21 and 22. Variants are
+the biallelic heterozygous SNVs inside the GIAB v4.2.1 benchmark regions on
+the 21 autosomes other than chromosome 20, which was the pilot (2{,}015{,}699
+for HG002). The truth is GIAB v5.0q~\cite{hansen2026} for HG002 and
+transmission from HG006 and HG007 for HG005.
+
+\paragraph{Pipelines and statistics.} Each selection is phased exactly by a
+coverage-parameterized DP under the complementary diploid model, at caps 3,
+5, 10 and 15. Two phasings are compared on their common pairs (consecutive
+variants that the truth and both phasings phase, inside one block of each);
+pairs wrong under exactly one phasing are tested with an exact two-sided sign
+test, and the difference in errors per 10{,}000 common pairs has a 95 per
+cent interval from 2{,}000 bootstrap resamples of 1\,Mb windows. Levels are
+Bonferroni-corrected within each hypothesis. A tool-level test runs
+\texttt{whatshap phase} 2.8 unchanged except that its read selection is
+replaced by exact selection under the same cap, with WhatsHap's own allele
+qualities as weights.
+
+\paragraph{Registration.} Each run's plan was a commit fixing chromosomes,
+depths, caps, pipelines, truth, statistics, hypotheses and rules, with later
+changes as dated amendments. The exceptions to ``plan before data'' are
+stated with each result: the HiFi re-score against v5.0q and an
+uncalled-variant correction came after the HiFi results were seen (our
+library first reported an arbitrary allele at variants inside a selected
+read's span that no selected read called, differentially: 146 such variants
+inside blocks for WhatsHap's selection and 12 for exact selection at cap 3;
+every library run was repeated after the fix), and the vote model below was
+built after the HiFi results.
+
+\subsection{Results}\label{sec:selresults}
+
+\paragraph{The selector's distance from the optimum.} At WhatsHap 2.8's
+default cap of 15, WhatsHap's selection reaches 0.9327 of the optimum on
+HG002 HiFi (worst chromosome 0.9306), 0.9634 on HG002 ONT and 0.9343 on
+HG005 HiFi; 0.9025 at cap 3 on HiFi. A random selection under the cap reaches
+0.9054 on HG002 HiFi (exploratory).
+
+\paragraph{Where selection changes accuracy.} In our library, selection
+changes switch error at cap 3 on HiFi and at caps 3 and 5 on ONT, and at no
+larger cap (Table~\ref{tab:regime}). On HiFi at full depth and cap 3, 141
+common pairs are wrong only under WhatsHap's selection and 47 only under
+exact selection ($p=4.2\times10^{-12}$). On ONT at full depth the counts are
+2{,}389 and 666 at cap 3 ($p=5.7\times10^{-226}$) and 351 and 189 at cap 5
+($p=2.95\times10^{-12}$); the difference grows as depth falls. HG005
+replicates the HiFi pattern: at cap 3, 77 against 20 discordant pairs at full
+depth ($p=4.6\times10^{-9}$), and neither cap-5 test is significant. Exact
+selection has the shorter block N50 in 7 of the 8 ONT cells at caps 3 and 5
+(338 against 658\,kb at cap 3 and full depth).
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\multicolumn{5}{@{}l}{HG002 HiFi} \\
+cap & full & 20-fold & 15-fold & 10-fold \\
+\midrule
+3  & $+0.50$ [$+0.31$, $+0.70$] & $+0.36$ [$+0.15$, $+0.58$] & $+0.43$ [$+0.21$, $+0.63$] & $+0.60$ [$+0.37$, $+0.84$] \\
+5  & $+0.04$ [$-0.11$, $+0.19$] & $+0.05$ [$-0.07$, $+0.17$] & $+0.08$ [$-0.03$, $+0.20$] & $+0.03$ [$-0.09$, $+0.14$] \\
+15 & $-0.01$ [$-0.06$, $+0.04$] & $+0.00$ [$-0.04$, $+0.03$] & $-0.01$ [$-0.05$, $+0.04$] & $-0.01$ [$-0.02$, $+0.00$] \\
+\midrule
+\multicolumn{5}{@{}l}{HG002 ONT} \\
+cap & full & 30-fold & 20-fold & 10-fold \\
+\midrule
+3  & $+8.81$ [$+8.06$, $+9.56$] & $+12.75$ [$+11.84$, $+13.65$] & $+14.49$ [$+13.38$, $+15.59$] & $+15.01$ [$+13.70$, $+16.23$] \\
+5  & $+0.83$ [$+0.52$, $+1.13$] & $+1.20$ [$+0.87$, $+1.52$] & $+1.35$ [$+0.96$, $+1.75$] & $+2.69$ [$+2.23$, $+3.16$] \\
+15 & $+0.03$ [$-0.06$, $+0.12$] & $-0.10$ [$-0.21$, $+0.02$] & $-0.04$ [$-0.11$, $+0.02$] & $+0.01$ [$-0.02$, $+0.04$] \\
+\bottomrule
+\end{tabular}
+\caption{WhatsHap's selection minus exact selection in our library, switch
+errors per 10{,}000 common pairs against v5.0q, pooled over 21 chromosomes,
+with 95 per cent window-bootstrap intervals. Positive values favour exact
+selection. Cap 10 behaves like cap 15 (every interval contains 0 except
+HiFi at 10-fold, $+0.06$ [$+0.00$, $+0.12$]). The HiFi rows are a re-score
+against v5.0q made after the registered scoring.}
+\label{tab:regime}
+\end{table}
+
+\paragraph{Tied sites (post hoc).} Inside a phased block, orient each
+selected read to the haplotype its calls agree with by weight; a site is
+\emph{tied} when the selected reads, so oriented, weigh equally for both
+alleles. Flipping a tied site leaves the wMEC cost unchanged, so the reads do
+not determine it: our library's DP reports a guessed allele there, and
+\texttt{whatshap phase} leaves it unphased. A worse selection leaves more of
+them: at cap 3 and full depth, 1{,}640 for WhatsHap's selection against 33 for
+exact selection on ONT, 128 against 4 on HG002 HiFi and 105 against 3 on
+HG005. With tied sites left unphased in both selections, the ONT cap-3
+difference falls from $+8.81$ to $+1.33$ [$+0.80$, $+1.85$] per 10{,}000 at
+full depth and from $+15.01$ to $+3.52$ [$+2.92$, $+4.09$] at 10-fold (77 to
+85 per cent of it goes) and stays significant at every depth; on HiFi the
+cap-3 difference falls by 51 to 86 per cent. This re-score was found after
+all registered library results had been scored and decides no hypothesis.
+
+\paragraph{Exact selection inside \texttt{whatshap phase} (registered).} On
+ONT at cap 3, of 1{,}956{,}915 common pairs, 888 are wrong only under stock
+\texttt{whatshap phase} and 485 only with exact selection
+($p=8.44\times10^{-28}$, level $0.05/3$), a difference of $+2.06$ [$+1.57$,
+$+2.56$] per 10{,}000; on each run's own pairs the switch error falls from
+5.204 to 3.029 per 10{,}000, by 42 per cent, and block N50 from 658 to
+442\,kb. At cap 5 the counts are 177 and 136 ($p=0.0236$, not significant at
+the level), and at cap 15, 16 and 25 ($p=0.211$). On HiFi at cap 3 the
+counts are 66 and 46 ($p=0.072$); at caps 5 and 15, 25 and 25 and 9 and 9.
+The tool's differences lie close to the tie-aware library values: on ONT at
+cap 3 the library's $+8.81$ becomes $+1.33$ against the tool's $+2.06$, and
+on HiFi $+0.50$ becomes $+0.09$ against the tool's $+0.11$. This comparison
+was not registered. Table~\ref{tab:tool} gives the tool-level runs.
+
+\begin{table}[t]
+\centering\footnotesize
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+run & switches & pairs & per $10^4$ & N50 kb & hours \\
+\midrule
+\multicolumn{6}{@{}l}{HG002 HiFi} \\
+stock, cap 3   & 105 & 1{,}916{,}135 & 0.548 & 102 & 0.75 \\
+exact, cap 3   & 78  & 1{,}912{,}530 & 0.408 & 99  & 0.73 \\
+stock, cap 15  & 32  & 1{,}941{,}714 & 0.165 & 233 & 3.38 \\
+exact, cap 15  & 38  & 1{,}939{,}820 & 0.196 & 224 & 4.94 \\
+HiPhase 1.7.0  & 10  & 1{,}941{,}560 & 0.052 & 236 & 3.28 \\
+LongPhase 2.0.2 & 29 & 1{,}937{,}641 & 0.150 & 235 & 0.42 \\
+\midrule
+\multicolumn{6}{@{}l}{HG002 ONT} \\
+stock, cap 3   & 1{,}022 & 1{,}964{,}036 & 5.204 & 658   & 0.96 \\
+exact, cap 3   & 594   & 1{,}960{,}829 & 3.029 & 442   & 0.96 \\
+stock, cap 5   & 239   & 1{,}967{,}845 & 1.215 & 1{,}044 & 0.99 \\
+exact, cap 5   & 186   & 1{,}964{,}486 & 0.947 & 685   & 0.98 \\
+stock, cap 15  & 61    & 1{,}968{,}027 & 0.310 & 1{,}044 & 2.93 \\
+exact, cap 15  & 68    & 1{,}967{,}210 & 0.346 & 961   & 4.62 \\
+\bottomrule
+\end{tabular}
+\caption{\texttt{whatshap phase} 2.8 with its own selector (stock) and with
+exact selection, HG002 at full depth, against v5.0q, switch errors per
+10{,}000 of each run's own pairs (descriptive; the paired tests are in the
+text). HiPhase and LongPhase are uncapped. Hours are wall-clock time summed
+over 21 chromosomes. HiFi cap 5: 0.299 and 0.270.}
+\label{tab:tool}
+\end{table}
+
+\paragraph{A vote model and its registered predictions.} At the boundary
+between adjacent variants, let $i$ be the number of selected reads that call
+both. If each such read votes for the wrong relation independently with
+probability $q=2e(1-e)$, for a per-allele error $e$, and ties are broken by a
+fair coin, the boundary is wrong with probability
+\[
+f(i)=\Pr[\Bin(i,q)>i/2]+\tfrac12\Pr[\Bin(i,q)=i/2],
+\]
+and $f(2k)=f(2k-1)$ for every $k\ge1$ (Theorem~1 of Berend and
+Sapir~\cite{berend2005}; we claim no novelty). The predicted difference
+between selections is the mean of $f(i^{\mathrm{W}})-f(i^{\mathrm{opt}})$
+over boundaries, from $e$ measured on chromosome 20 ($0.00503$ on ONT,
+$0.00011$ on HG005). Registered rules: R1, at caps 3 and 5 the prediction
+lies in the observed interval or within a factor of 2; R2, the model and the
+data agree on whether selection matters (prediction at least 0.5 per
+10{,}000; interval above 0); R3, the model beats three baselines. On ONT, R1
+and R3 held (mean absolute error 0.611 per 10{,}000 against 2.223 to 3.594
+for the baselines) and R2 failed in 1 of 16 cells, at cap 5 and full depth,
+where the prediction was 0.4959 and the interval excluded 0. On HG005, R1
+held in all four cells and R2 failed at both cap-3 cells (predictions 0.4535
+and 0.4565). The model is not supported under its registered rules. All
+three R2 failures are predictions within 0.05 below the fixed line of 0.5.
+The model breaks ties as the library does, so it described the library's
+differences with their guesses included.
+
+\paragraph{Other registered tests.} In WhatsHap's pedigree mode, which splits
+the cap across a trio, no registered allocation test was supported; every
+run had 2 to 8 switch errors in about 164{,}200 pairs of the child, and a
+two-sided sign test needs at least 6 discordant pairs to reach 0.05, so two
+of the tests could not have succeeded. Two-level orientation of phased
+blocks raised HiFi block N50 at cap 3 from 112 to 234\,kb (ratios 1.66 to
+2.09 over four depths), as did connectivity-aware selection (233\,kb); the
+added pairs carry the extra errors (4.1 to 5.8 per 10{,}000 at 10-fold
+against 0.52 to 0.76). Changes to the selection objective or weights gave no
+consistent gain: an adaptive reselection loop was worse than exact selection
+at cap 3 (349 against 5 discordant pairs), error-optimal selection failed its
+HiFi pilot (96 against 39) and neither replicated nor reversed on ONT, and a
+posterior correction frozen before its ONT test was not calibrated at any
+depth (2.36 times the predicted wrong calls at full depth).
+
+\paragraph{Reading.} At WhatsHap's default cap of 15, and at cap 5, which is
+its per-member cap in pedigree mode, no difference was detected inside the
+tool on either platform, although the selector reaches only 0.93 to 0.96 of
+the optimum. At cap 3 on ONT, exact selection is more accurate and less
+contiguous. Most of the larger differences in our library were guessing at
+tied sites, so a comparison of selectors should report abstentions beside
+errors.

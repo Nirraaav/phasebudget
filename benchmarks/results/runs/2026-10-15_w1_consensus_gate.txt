@@ -1,0 +1,64 @@
+# benchmarks/w1_consensus_gate.py on the KCDH server, commit 7d7bea3; 2026-10-15T18:40:06+05:30
+W1 amendment 1, gate: consecutive pairs both truths phase; 100 kb units; one-sided 95% exact upper bound; testable when at most beta/3
+  NA12878 chr1: 176201 variants
+  NA12878 chr2: 209409 variants
+  NA12878 chr3: 176966 variants
+  NA12878 chr4: 182928 variants
+  NA12878 chr5: 169135 variants
+  NA12878 chr6: 180887 variants
+  NA12878 chr7: 148456 variants
+  NA12878 chr8: 137826 variants
+  NA12878 chr9: 103441 variants
+  NA12878 chr10: 135084 variants
+  NA12878 chr11: 125334 variants
+  NA12878 chr12: 123336 variants
+  NA12878 chr13: 84110 variants
+  NA12878 chr14: 81398 variants
+  NA12878 chr15: 73229 variants
+  NA12878 chr16: 82478 variants
+  NA12878 chr17: 67710 variants
+  NA12878 chr18: 70482 variants
+  NA12878 chr19: 63278 variants
+  NA12878 chr21: 38095 variants
+  NA12878 chr22: 39766 variants
+
+NA12878: 1931183 of 2469549 variants labelled by transmission (0.782)
+
+comparison                            group       units  wrong_units  unit_rate  upper95    pairs  wrong_pairs
+NA12878 transmission vs Pedigree      difficult   16452            1   6.08e-05  2.88e-04   104092            1
+NA12878 transmission vs Pedigree      easy        23700            7   2.95e-04  5.55e-04   963275            7
+NA12878 transmission vs Pedigree      indel       23107           92   3.98e-03  4.73e-03   439205          133
+NA12878 transmission vs Pedigree      lowmap      12317           11   8.93e-04  1.48e-03    70610           11
+NA12878 transmission vs Pedigree      segdup       3000           11   3.67e-03  6.06e-03    50977           14
+NA12878 transmission vs Pedigree      tandem      19686           28   1.42e-03  1.95e-03   149332           34
+
+gate (registered in amendment 1):
+  easy       units  23700 wrong    7 upper95 5.55e-04  testable at beta 0.003
+  difficult  units  16452 wrong    1 upper95 2.88e-04  testable at beta 0.001, 0.003
+  lowmap     units  12317 wrong   11 upper95 1.48e-03  testable at beta none
+  segdup     units   3000 wrong   11 upper95 6.06e-03  testable at beta none
+  tandem     units  19686 wrong   28 upper95 1.95e-03  testable at beta none
+  indel      units  23107 wrong   92 upper95 4.73e-03  testable at beta none
+	Command being timed: ".venv/bin/python -u benchmarks/w1_consensus_gate.py"
+	User time (seconds): 1103.17
+	System time (seconds): 62.35
+	Percent of CPU this job got: 94%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 20:35.13
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1429344
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 69
+	Minor (reclaiming a frame) page faults: 1114972
+	Voluntary context switches: 5908
+	Involuntary context switches: 150953
+	Swaps: 0
+	File system inputs: 19600
+	File system outputs: 27811776
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

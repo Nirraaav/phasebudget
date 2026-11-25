@@ -1,0 +1,1059 @@
+L5 unit independence (docs/design/l5-unit-independence.md, development: data seen); unit 100 kb per group, wrong = any wrong pair; statistic = joins of adjacent wrong units; null = within-chromosome permutation, B 2000 then 40000 when p < 0.01, seed 0; 576 tests, level 0.05/576 = 8.681e-05; platforms hprc_HG002 (30/20/10), w4_grch38 (30), cal_v5 (30/20/10), cal_r10 (30/20/10), hg001_v5 (30/20/10), ped_NA12879 (30/20/10), ped_NA12881 (30/20/10), ped_NA12882 (30/20/10), ped_NA12885 (30/20/10), ped_NA12886 (30/20/10), phifi_NA12879 (30/20/10), phifi_NA12881 (30/20/10), phifi_NA12882 (30/20/10), phifi_NA12885 (30/20/10), phifi_NA12886 (30/20/10), phifi_NA12877 (30), k1_hg005 (30), hg005_ont (30/20/10); phasers ('whatshap', 'longphase'); groups ('indel', 'segdup', 'lowmap', 'tandem', 'difficult', 'easy'); merge check widen x(2, 3) on K1b pool (30x, agree and all) and W1b pool (depths ('30', '20', '10')), betas (0.0003, 0.001, 0.003), delta 0.05
+  part 1 hprc_HG002 10x longphase done
+  part 1 hprc_HG002 20x longphase done
+  part 1 hprc_HG002 30x longphase done
+  part 1 hprc_HG002 10x whatshap done
+  part 1 cal_v5 20x longphase done
+  part 1 cal_v5 10x longphase done
+  part 1 w4_grch38 30x longphase done
+  part 1 w4_grch38 30x whatshap done
+  part 1 cal_v5 10x whatshap done
+  part 1 cal_v5 30x whatshap done
+  part 1 hprc_HG002 20x whatshap done
+  part 1 hprc_HG002 30x whatshap done
+  part 1 cal_v5 30x longphase done
+  part 1 cal_r10 30x whatshap done
+  part 1 cal_v5 20x whatshap done
+  part 1 cal_r10 30x longphase done
+  part 1 cal_r10 20x longphase done
+  part 1 cal_r10 20x whatshap done
+  part 1 cal_r10 10x whatshap done
+  part 1 hg001_v5 10x longphase done
+  part 1 hg001_v5 30x longphase done
+  part 1 hg001_v5 20x longphase done
+  part 1 cal_r10 10x longphase done
+  part 1 ped_NA12879 30x longphase done
+  part 1 hg001_v5 10x whatshap done
+  part 1 hg001_v5 30x whatshap done
+  part 1 ped_NA12879 20x whatshap done
+  part 1 ped_NA12879 10x whatshap done
+  part 1 hg001_v5 20x whatshap done
+  part 1 ped_NA12879 20x longphase done
+  part 1 ped_NA12879 30x whatshap done
+  part 1 ped_NA12879 10x longphase done
+  part 1 ped_NA12881 30x longphase done
+  part 1 ped_NA12881 30x whatshap done
+  part 1 ped_NA12881 20x whatshap done
+  part 1 ped_NA12882 30x longphase done
+  part 1 ped_NA12881 10x longphase done
+  part 1 ped_NA12881 10x whatshap done
+  part 1 ped_NA12881 20x longphase done
+  part 1 ped_NA12885 30x longphase done
+  part 1 ped_NA12882 20x longphase done
+  part 1 ped_NA12882 10x whatshap done
+  part 1 ped_NA12882 30x whatshap done
+  part 1 ped_NA12882 20x whatshap done
+  part 1 ped_NA12885 30x whatshap done
+  part 1 ped_NA12882 10x longphase done
+  part 1 ped_NA12885 20x longphase done
+  part 1 ped_NA12885 20x whatshap done
+  part 1 ped_NA12886 30x longphase done
+  part 1 ped_NA12886 20x longphase done
+  part 1 phifi_NA12879 20x longphase done
+  part 1 ped_NA12885 10x whatshap done
+  part 1 ped_NA12885 10x longphase done
+  part 1 ped_NA12886 30x whatshap done
+  part 1 ped_NA12886 10x longphase done
+  part 1 phifi_NA12879 20x whatshap done
+  part 1 phifi_NA12879 30x longphase done
+  part 1 ped_NA12886 10x whatshap done
+  part 1 phifi_NA12879 30x whatshap done
+  part 1 ped_NA12886 20x whatshap done
+  part 1 phifi_NA12879 10x whatshap done
+  part 1 phifi_NA12879 10x longphase done
+  part 1 phifi_NA12881 30x whatshap done
+  part 1 phifi_NA12881 30x longphase done
+  part 1 phifi_NA12882 30x longphase done
+  part 1 phifi_NA12881 10x whatshap done
+  part 1 phifi_NA12881 10x longphase done
+  part 1 phifi_NA12881 20x longphase done
+  part 1 phifi_NA12881 20x whatshap done
+  part 1 phifi_NA12882 30x whatshap done
+  part 1 phifi_NA12885 30x longphase done
+  part 1 phifi_NA12882 20x longphase done
+  part 1 phifi_NA12882 20x whatshap done
+  part 1 phifi_NA12885 10x longphase done
+  part 1 phifi_NA12885 20x longphase done
+  part 1 phifi_NA12882 10x longphase done
+  part 1 phifi_NA12882 10x whatshap done
+  part 1 phifi_NA12885 30x whatshap done
+  part 1 phifi_NA12885 10x whatshap done
+  part 1 phifi_NA12886 20x longphase done
+  part 1 phifi_NA12886 30x whatshap done
+  part 1 phifi_NA12886 30x longphase done
+  part 1 phifi_NA12885 20x whatshap done
+  part 1 k1_hg005 30x whatshap done
+  part 1 k1_hg005 30x longphase done
+  part 1 hg005_ont 30x whatshap done
+  part 1 hg005_ont 30x longphase done
+  part 1 hg005_ont 20x whatshap done
+  part 1 hg005_ont 20x longphase done
+  part 1 phifi_NA12886 10x longphase done
+  part 1 hg005_ont 10x whatshap done
+  part 1 hg005_ont 10x longphase done
+  part 1 phifi_NA12886 10x whatshap done
+  part 1 phifi_NA12877 30x whatshap done
+  part 1 phifi_NA12877 30x longphase done
+  part 1 phifi_NA12886 20x whatshap done
+  part 2 K1b longphase done
+  part 2 K1b whatshap done
+  part 2 W1b 10x whatshap done
+  part 2 W1b 10x longphase done
+  part 2 W1b 20x longphase done
+  part 2 W1b 20x whatshap done
+  part 2 W1b 30x whatshap done
+  part 2 W1b 30x longphase done
+
+Part 1: platform depth phaser group units wrong adjacent joins null_mean ratio p rho neff/n clustered
+  hprc_HG002     30 whatshap  indel      24717  6059  24064  1630  1456.35   1.12 2.50e-05 +0.0357 0.9310  CLUSTERED
+  hprc_HG002     30 whatshap  segdup      2828    60    991     9     0.73  12.25 2.50e-05 +0.1706 0.7085  CLUSTERED
+  hprc_HG002     30 whatshap  lowmap     14687    70   9464     1     0.22   4.48 2.02e-01 +0.0185 0.9637
+  hprc_HG002     30 whatshap  tandem     21916   960  19697    58    37.82   1.53 7.75e-04 +0.0236 0.9539
+  hprc_HG002     30 whatshap  difficult  18566     3  14825     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  hprc_HG002     30 whatshap  easy       24096    33  23133     0     0.05   0.00 1.00e+00 -0.0014 1.0000
+  hprc_HG002     30 longphase indel      24486   804  23684    41    26.28   1.56 3.30e-03 +0.0215 0.9578
+  hprc_HG002     30 longphase segdup      2843    41   1002     7     0.38  18.64 2.50e-05 +0.2211 0.6379  CLUSTERED
+  hprc_HG002     30 longphase lowmap     14707    39   9496     1     0.09  11.17 8.65e-02 +0.0467 0.9107
+  hprc_HG002     30 longphase tandem     21905   236  19685     3     2.31   1.30 4.00e-01 +0.0042 0.9916
+  hprc_HG002     30 longphase difficult  18616    17  14886     0     0.01   0.00 1.00e+00 -0.0009 1.0000
+  hprc_HG002     30 longphase easy       24116    76  23176     0     0.21   0.00 1.00e+00 -0.0032 1.0000
+  hprc_HG002     20 whatshap  indel      24704  6247  24044  1692  1548.16   1.09 2.50e-05 +0.0290 0.9436  CLUSTERED
+  hprc_HG002     20 whatshap  segdup      2821    72    986    12     1.16  10.35 2.50e-05 +0.1720 0.7065  CLUSTERED
+  hprc_HG002     20 whatshap  lowmap     14671    79   9446     1     0.26   3.81 2.26e-01 +0.0159 0.9688
+  hprc_HG002     20 whatshap  tandem     21894   951  19668    56    37.20   1.51 1.82e-03 +0.0221 0.9567
+  hprc_HG002     20 whatshap  difficult  18553     2  14807     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  hprc_HG002     20 whatshap  easy       24071    43  23092     0     0.06   0.00 1.00e+00 -0.0019 1.0000
+  hprc_HG002     20 longphase indel      24444  1022  23619    58    41.75   1.39 7.10e-03 +0.0185 0.9638
+  hprc_HG002     20 longphase segdup      2841    48   1000     4     0.45   8.81 7.50e-04 +0.0911 0.8331
+  hprc_HG002     20 longphase lowmap     14714    40   9495     1     0.09  10.75 9.10e-02 +0.0508 0.9033
+  hprc_HG002     20 longphase tandem     21896   311  19675     7     4.14   1.69 1.23e-01 +0.0134 0.9735
+  hprc_HG002     20 longphase difficult  18606    12  14874     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hprc_HG002     20 longphase easy       24088    99  23127     0     0.40   0.00 1.00e+00 -0.0042 1.0000
+  hprc_HG002     10 whatshap  indel      24655  7116  23960  2177  2009.79   1.08 2.50e-05 +0.0291 0.9434  CLUSTERED
+  hprc_HG002     10 whatshap  segdup      2813    78    979    11     1.21   9.07 2.50e-05 +0.1431 0.7496  CLUSTERED
+  hprc_HG002     10 whatshap  lowmap     14644    85   9416     2     0.35   5.74 4.95e-02 +0.0319 0.9382
+  hprc_HG002     10 whatshap  tandem     21837  1016  19585    51    42.19   1.21 8.65e-02 +0.0096 0.9810
+  hprc_HG002     10 whatshap  difficult  18507    12  14758     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hprc_HG002     10 whatshap  easy       24034    59  23032     1     0.15   6.80 1.37e-01 +0.0153 0.9699
+  hprc_HG002     10 longphase indel      24379  1914  23499   180   148.87   1.21 3.45e-03 +0.0199 0.9611
+  hprc_HG002     10 longphase segdup      2829    55    992     4     0.74   5.40 5.87e-03 +0.0626 0.8822
+  hprc_HG002     10 longphase lowmap     14691    54   9473     1     0.14   6.97 1.37e-01 +0.0286 0.9445
+  hprc_HG002     10 longphase tandem     21838   520  19580    14    11.76   1.19 2.89e-01 +0.0069 0.9864
+  hprc_HG002     10 longphase difficult  18563    18  14826     0     0.01   0.00 1.00e+00 -0.0009 1.0000
+  hprc_HG002     10 longphase easy       24052   158  23068     3     0.98   3.07 7.75e-02 +0.0132 0.9739
+  w4_grch38      30 whatshap  indel      24715  5286  24060  1264  1106.00   1.14 2.50e-05 +0.0366 0.9294  CLUSTERED
+  w4_grch38      30 whatshap  segdup      2828    57    992    11     0.78  14.10 2.50e-05 +0.2336 0.6213  CLUSTERED
+  w4_grch38      30 whatshap  lowmap     14686    49   9462     1     0.11   9.09 1.04e-01 +0.0286 0.9445
+  w4_grch38      30 whatshap  tandem     21922   729  19707    33    21.72   1.52 1.55e-02 +0.0173 0.9659
+  w4_grch38      30 whatshap  difficult  18565     4  14824     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  w4_grch38      30 whatshap  easy       24095    33  23131     0     0.05   0.00 1.00e+00 -0.0014 1.0000
+  w4_grch38      30 longphase indel      24500   561  23708    23    12.61   1.82 4.55e-03 +0.0205 0.9598
+  w4_grch38      30 longphase segdup      2847    35   1006     5     0.28  18.05 2.50e-05 +0.1843 0.6888  CLUSTERED
+  w4_grch38      30 longphase lowmap     14721    17   9506     0     0.04   0.00 1.00e+00 -0.0009 1.0000
+  w4_grch38      30 longphase tandem     21950   106  19745     2     0.48   4.15 8.00e-02 +0.0178 0.9651
+  w4_grch38      30 longphase difficult  18618    11  14888     0     0.00   0.00 1.00e+00 -0.0005 1.0000
+  w4_grch38      30 longphase easy       24110    68  23164     1     0.19   5.33 1.71e-01 +0.0125 0.9754
+  cal_v5         30 whatshap  indel      24879 15141  24344  9680  9066.40   1.07 2.50e-05 +0.0913 0.8327  CLUSTERED
+  cal_v5         30 whatshap  segdup      2876    54   1028     5     0.45  11.05 5.00e-05 +0.0857 0.8422  CLUSTERED
+  cal_v5         30 whatshap  lowmap     14832    79   9605     2     0.29   6.96 3.45e-02 +0.0350 0.9324
+  cal_v5         30 whatshap  tandem     22116  1254  19966    79    64.33   1.23 2.65e-02 +0.0118 0.9767
+  cal_v5         30 whatshap  difficult  18713    10  14997     0     0.01   0.00 1.00e+00 -0.0005 1.0000
+  cal_v5         30 whatshap  easy       24323    36  23506     0     0.06   0.00 1.00e+00 -0.0015 1.0000
+  cal_v5         30 longphase indel      24289   626  23346    30    15.86   1.89 6.50e-04 +0.0265 0.9484
+  cal_v5         30 longphase segdup      2932    25   1069     0     0.18   0.00 1.00e+00 -0.0157 1.0000
+  cal_v5         30 longphase lowmap     15009    35   9804     0     0.04   0.00 1.00e+00 -0.0017 1.0000
+  cal_v5         30 longphase tandem     22103   246  19949     8     2.48   3.22 3.87e-03 +0.0300 0.9417
+  cal_v5         30 longphase difficult  18926    10  15279     0     0.01   0.00 1.00e+00 -0.0005 1.0000
+  cal_v5         30 longphase easy       24408   101  23658     1     0.32   3.12 2.74e-01 +0.0064 0.9873
+  cal_v5         20 whatshap  indel      24868 15271  24324  9898  9223.40   1.07 2.50e-05 +0.0988 0.8202  CLUSTERED
+  cal_v5         20 whatshap  segdup      2871    68   1024    10     0.78  12.83 2.50e-05 +0.1749 0.7023  CLUSTERED
+  cal_v5         20 whatshap  lowmap     14824    87   9596     1     0.34   2.93 2.94e-01 +0.0128 0.9748
+  cal_v5         20 whatshap  tandem     22099  1284  19943    90    67.39   1.34 2.72e-03 +0.0198 0.9612
+  cal_v5         20 whatshap  difficult  18699     7  14976     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  cal_v5         20 whatshap  easy       24307    48  23479     0     0.10   0.00 1.00e+00 -0.0020 1.0000
+  cal_v5         20 longphase indel      24292  1045  23346    58    44.39   1.31 1.65e-02 +0.0170 0.9667
+  cal_v5         20 longphase segdup      2926    43   1062     3     0.44   6.77 8.75e-03 +0.0880 0.8382
+  cal_v5         20 longphase lowmap     14991    42   9781     0     0.06   0.00 1.00e+00 -0.0020 1.0000
+  cal_v5         20 longphase tandem     22063   310  19883    11     3.87   2.84 1.67e-03 +0.0306 0.9406
+  cal_v5         20 longphase difficult  18906    16  15257     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  cal_v5         20 longphase easy       24382   130  23614     2     0.70   2.86 1.54e-01 +0.0114 0.9775
+  cal_v5         10 whatshap  indel      24825 16283  24254 11113 10483.44   1.06 2.50e-05 +0.0963 0.8243  CLUSTERED
+  cal_v5         10 whatshap  segdup      2868    65   1020     5     0.83   6.05 1.22e-03 +0.0583 0.8898
+  cal_v5         10 whatshap  lowmap     14803    92   9575     2     0.40   4.97 5.80e-02 +0.0297 0.9424
+  cal_v5         10 whatshap  tandem     22045  1373  19866    95    77.79   1.22 2.45e-02 +0.0133 0.9737
+  cal_v5         10 whatshap  difficult  18690    18  14964     0     0.02   0.00 1.00e+00 -0.0010 1.0000
+  cal_v5         10 whatshap  easy       24263    73  23413     0     0.22   0.00 1.00e+00 -0.0031 1.0000
+  cal_v5         10 longphase indel      24349  3492  23418   563   491.43   1.15 1.75e-04 +0.0266 0.9481
+  cal_v5         10 longphase segdup      2917    40   1056     1     0.27   3.70 2.41e-01 +0.0106 0.9790
+  cal_v5         10 longphase lowmap     14937    55   9724     1     0.12   8.13 1.16e-01 +0.0323 0.9375
+  cal_v5         10 longphase tandem     22015   640  19818    17    16.85   1.01 5.12e-01 +0.0007 0.9987
+  cal_v5         10 longphase difficult  18862    22  15196     0     0.01   0.00 1.00e+00 -0.0010 1.0000
+  cal_v5         10 longphase easy       24315   189  23509     0     1.45   0.00 1.00e+00 -0.0078 1.0000
+  cal_r10        30 whatshap  indel      24849 16224  24290 11035 10398.51   1.06 2.50e-05 +0.0971 0.8229  CLUSTERED
+  cal_r10        30 whatshap  segdup      2868    68   1017     5     0.90   5.55 1.77e-03 +0.0566 0.8928
+  cal_r10        30 whatshap  lowmap     14807    96   9580     0     0.37   0.00 1.00e+00 -0.0059 1.0000
+  cal_r10        30 whatshap  tandem     22085  1329  19919    94    72.89   1.29 6.87e-03 +0.0169 0.9668
+  cal_r10        30 whatshap  difficult  18683     5  14959     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  cal_r10        30 whatshap  easy       24282    47  23437     0     0.09   0.00 1.00e+00 -0.0020 1.0000
+  cal_r10        30 longphase indel      24180   890  23151    53    31.67   1.67 3.50e-04 +0.0284 0.9447
+  cal_r10        30 longphase segdup      2924    40   1056     4     0.30  13.19 2.00e-04 +0.1196 0.7863
+  cal_r10        30 longphase lowmap     14980    37   9783     0     0.07   0.00 1.00e+00 -0.0018 1.0000
+  cal_r10        30 longphase tandem     22097   329  19931    11     4.53   2.43 5.22e-03 +0.0276 0.9463
+  cal_r10        30 longphase difficult  18899    21  15263     0     0.02   0.00 1.00e+00 -0.0009 1.0000
+  cal_r10        30 longphase easy       24348   154  23553     5     0.90   5.55 2.20e-03 +0.0278 0.9459
+  cal_r10        20 whatshap  indel      24834 16370  24268 11203 10584.60   1.06 2.50e-05 +0.0937 0.8287  CLUSTERED
+  cal_r10        20 whatshap  segdup      2866    72   1016    10     1.07   9.35 2.50e-05 +0.1586 0.7262  CLUSTERED
+  cal_r10        20 whatshap  lowmap     14801   103   9572     0     0.47   0.00 1.00e+00 -0.0064 1.0000
+  cal_r10        20 whatshap  tandem     22070  1370  19898    94    77.23   1.22 2.35e-02 +0.0125 0.9753
+  cal_r10        20 whatshap  difficult  18671     8  14951     0     0.00    nan 1.00e+00 -0.0004 1.0000
+  cal_r10        20 whatshap  easy       24261    64  23407     0     0.21   0.00 1.00e+00 -0.0026 1.0000
+  cal_r10        20 longphase indel      24176  1554  23147   124    97.56   1.27 3.20e-03 +0.0212 0.9585
+  cal_r10        20 longphase segdup      2921    51   1057     5     0.47  10.54 1.75e-04 +0.1187 0.7878
+  cal_r10        20 longphase lowmap     14959    53   9755     0     0.11   0.00 1.00e+00 -0.0028 1.0000
+  cal_r10        20 longphase tandem     22082   398  19918    12     6.79   1.77 4.35e-02 +0.0181 0.9645
+  cal_r10        20 longphase difficult  18875    29  15239     1     0.03  32.26 3.10e-02 +0.0561 0.8938
+  cal_r10        20 longphase easy       24320   176  23514     2     1.24   1.61 3.55e-01 +0.0051 0.9899
+  cal_r10        10 whatshap  indel      24781 17563  24178 12775 12187.56   1.05 2.50e-05 +0.0917 0.8320  CLUSTERED
+  cal_r10        10 whatshap  segdup      2862    91   1014    14     1.77   7.91 2.50e-05 +0.1510 0.7377  CLUSTERED
+  cal_r10        10 whatshap  lowmap     14777   134   9556     1     0.76   1.32 5.22e-01 +0.0050 0.9901
+  cal_r10        10 whatshap  tandem     22015  1579  19825   113   103.05   1.10 1.65e-01 +0.0066 0.9868
+  cal_r10        10 whatshap  difficult  18646    17  14913     0     0.01   0.00 1.00e+00 -0.0009 1.0000
+  cal_r10        10 whatshap  easy       24228   113  23349     1     0.49   2.02 3.91e-01 +0.0046 0.9909
+  cal_r10        10 longphase indel      24236  4888  23257  1131   958.34   1.18 2.50e-05 +0.0447 0.9144  CLUSTERED
+  cal_r10        10 longphase segdup      2912    69   1048     5     0.81   6.14 1.05e-03 +0.0678 0.8730
+  cal_r10        10 longphase lowmap     14883    82   9685     0     0.31   0.00 1.00e+00 -0.0048 1.0000
+  cal_r10        10 longphase tandem     21988   752  19770    35    23.18   1.51 1.06e-02 +0.0198 0.9612
+  cal_r10        10 longphase difficult  18817    53  15167     0     0.12   0.00 1.00e+00 -0.0027 1.0000
+  cal_r10        10 longphase easy       24288   302  23454     3     3.73   0.80 7.31e-01 -0.0021 1.0000
+  hg001_v5       30 whatshap  indel      24364  9278  23250  3891  3391.48   1.15 2.50e-05 +0.0710 0.8674  CLUSTERED
+  hg001_v5       30 whatshap  segdup      3636   227   1661    67    12.86   5.21 2.50e-05 +0.3235 0.5111  CLUSTERED
+  hg001_v5       30 whatshap  lowmap     14797   141   9694     3     0.90   3.35 6.35e-02 +0.0209 0.9590
+  hg001_v5       30 whatshap  tandem     21595   529  19242    22    11.53   1.91 2.85e-03 +0.0211 0.9586
+  hg001_v5       30 whatshap  difficult  18250     4  14478     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  hg001_v5       30 whatshap  easy       24101    35  23243     0     0.06   0.00 1.00e+00 -0.0014 1.0000
+  hg001_v5       30 longphase indel      23781   253  22324     5     2.50   2.00 1.03e-01 +0.0129 0.9745
+  hg001_v5       30 longphase segdup      3660   120   1678    30     4.36   6.88 2.50e-05 +0.2924 0.5475  CLUSTERED
+  hg001_v5       30 longphase lowmap     14829    47   9739     6     0.09  67.55 2.50e-05 +0.2047 0.6602  CLUSTERED
+  hg001_v5       30 longphase tandem     21586    83  19233     3     0.28  10.81 2.75e-03 +0.0425 0.9184
+  hg001_v5       30 longphase difficult  18352     8  14605     0     0.00    nan 1.00e+00 -0.0004 1.0000
+  hg001_v5       30 longphase easy       24138    44  23318     0     0.09   0.00 1.00e+00 -0.0018 1.0000
+  hg001_v5       20 whatshap  indel      24345  9374  23219  4023  3461.27   1.16 2.50e-05 +0.0824 0.8477  CLUSTERED
+  hg001_v5       20 whatshap  segdup      3632   224   1655    62    12.80   4.84 2.50e-05 +0.3007 0.5376  CLUSTERED
+  hg001_v5       20 whatshap  lowmap     14785   150   9681     6     1.04   5.76 7.75e-04 +0.0465 0.9111
+  hg001_v5       20 whatshap  tandem     21587   505  19232    20    10.36   1.93 4.40e-03 +0.0200 0.9607
+  hg001_v5       20 whatshap  difficult  18237     9  14462     1     0.01 182.65 5.45e-03 +0.1332 0.7649
+  hg001_v5       20 whatshap  easy       24080    38  23209     1     0.06  17.70 5.55e-02 +0.0267 0.9480
+  hg001_v5       20 longphase indel      23781   424  22315    14     7.11   1.97 1.55e-02 +0.0194 0.9618
+  hg001_v5       20 longphase segdup      3657   131   1678    28     4.88   5.74 2.50e-05 +0.2348 0.6197  CLUSTERED
+  hg001_v5       20 longphase lowmap     14818    43   9725     5     0.07  68.12 2.50e-05 +0.1830 0.6906  CLUSTERED
+  hg001_v5       20 longphase tandem     21565    97  19206     3     0.38   7.80 6.75e-03 +0.0330 0.9362
+  hg001_v5       20 longphase difficult  18339    13  14595     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hg001_v5       20 longphase easy       24105    62  23257     0     0.16   0.00 1.00e+00 -0.0025 1.0000
+  hg001_v5       10 whatshap  indel      24272 10535  23103  4957  4370.54   1.13 2.50e-05 +0.0785 0.8545  CLUSTERED
+  hg001_v5       10 whatshap  segdup      3610   243   1641    74    14.35   5.16 2.50e-05 +0.3462 0.4856  CLUSTERED
+  hg001_v5       10 whatshap  lowmap     14756   161   9656     9     1.16   7.79 2.50e-05 +0.0708 0.8677  CLUSTERED
+  hg001_v5       10 whatshap  tandem     21514   615  19131    20    15.56   1.29 1.55e-01 +0.0075 0.9852
+  hg001_v5       10 whatshap  difficult  18199    11  14421     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hg001_v5       10 whatshap  easy       24025    74  23119     1     0.22   4.57 1.92e-01 +0.0113 0.9777
+  hg001_v5       10 longphase indel      23704  1555  22200   131    96.17   1.36 1.50e-04 +0.0252 0.9508
+  hg001_v5       10 longphase segdup      3630   160   1658    43     7.14   6.02 2.50e-05 +0.3128 0.5235  CLUSTERED
+  hg001_v5       10 longphase lowmap     14778    69   9684     2     0.20   9.95 1.80e-02 +0.0454 0.9132
+  hg001_v5       10 longphase tandem     21467   209  19063     2     1.79   1.12 5.33e-01 +0.0025 0.9950
+  hg001_v5       10 longphase difficult  18300    12  14548     0     0.00   0.00 1.00e+00 -0.0007 1.0000
+  hg001_v5       10 longphase easy       24055    92  23176     1     0.36   2.77 3.03e-01 +0.0077 0.9848
+  ped_NA12879    30 whatshap  indel      24489 13856  23440  8429  7527.11   1.12 2.50e-05 +0.1203 0.7852  CLUSTERED
+  ped_NA12879    30 whatshap  segdup      3724   250   1754    70    11.76   5.95 2.50e-05 +0.2750 0.5686  CLUSTERED
+  ped_NA12879    30 whatshap  lowmap     14963   163   9917     9     1.25   7.19 2.50e-05 +0.0773 0.8564  CLUSTERED
+  ped_NA12879    30 whatshap  tandem     21548   754  19133    44    23.47   1.87 1.00e-04 +0.0296 0.9426
+  ped_NA12879    30 whatshap  difficult  18267     5  14470     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  ped_NA12879    30 whatshap  easy       24274    19  23521     1     0.02  64.52 1.60e-02 +0.0619 0.8835
+  ped_NA12879    30 longphase indel      23110   136  21270    10     1.05   9.51 2.50e-05 +0.0832 0.8463  CLUSTERED
+  ped_NA12879    30 longphase segdup      3742   123   1766    45     4.15  10.83 2.50e-05 +0.4096 0.4189  CLUSTERED
+  ped_NA12879    30 longphase lowmap     14994    27   9967     4     0.04  96.74 2.50e-05 +0.3501 0.4814  CLUSTERED
+  ped_NA12879    30 longphase tandem     21328    23  18835     1     0.02  45.45 2.25e-02 +0.0598 0.8871
+  ped_NA12879    30 longphase difficult  18469     1  14743     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12879    30 longphase easy       24367     2  23685     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12879    20 whatshap  indel      24475 13909  23422  8450  7583.35   1.11 2.50e-05 +0.1136 0.7960  CLUSTERED
+  ped_NA12879    20 whatshap  segdup      3721   258   1755    77    12.36   6.23 2.50e-05 +0.3139 0.5222  CLUSTERED
+  ped_NA12879    20 whatshap  lowmap     14963   159   9920     7     1.22   5.73 2.00e-04 +0.0582 0.8900
+  ped_NA12879    20 whatshap  tandem     21543   750  19133    33    23.89   1.38 4.05e-02 +0.0140 0.9724
+  ped_NA12879    20 whatshap  difficult  18270     8  14476     1     0.00 266.67 3.77e-03 +0.1539 0.7332
+  ped_NA12879    20 whatshap  easy       24273    17  23521     1     0.01 110.80 9.00e-03 +0.0639 0.8798
+  ped_NA12879    20 longphase indel      23164   402  21363    23     6.59   3.49 2.50e-05 +0.0462 0.9117  CLUSTERED
+  ped_NA12879    20 longphase segdup      3749   133   1772    44     4.78   9.21 2.50e-05 +0.3712 0.4586  CLUSTERED
+  ped_NA12879    20 longphase lowmap     14984    32   9958     7     0.11  66.46 2.50e-05 +0.4235 0.4050  CLUSTERED
+  ped_NA12879    20 longphase tandem     21308    46  18797     2     0.09  22.99 3.05e-03 +0.0546 0.8964
+  ped_NA12879    20 longphase difficult  18453     3  14725     0     0.00   0.00 1.00e+00 -0.0002 1.0000
+  ped_NA12879    20 longphase easy       24367     5  23684     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12879    10 whatshap  indel      24435 14959  23367  9742  8769.74   1.11 2.50e-05 +0.1280 0.7730  CLUSTERED
+  ped_NA12879    10 whatshap  segdup      3720   309   1754    91    17.88   5.09 2.50e-05 +0.2854 0.5559  CLUSTERED
+  ped_NA12879    10 whatshap  lowmap     14948   200   9905    11     1.79   6.14 5.00e-05 +0.0772 0.8567  CLUSTERED
+  ped_NA12879    10 whatshap  tandem     21521  1013  19105    49    43.53   1.13 2.13e-01 +0.0050 0.9900
+  ped_NA12879    10 whatshap  difficult  18278    15  14485     0     0.00   0.00 1.00e+00 -0.0009 1.0000
+  ped_NA12879    10 whatshap  easy       24261    98  23504     2     0.37   5.37 5.00e-02 +0.0174 0.9659
+  ped_NA12879    10 longphase indel      23254  2544  21498   397   260.50   1.52 2.50e-05 +0.0605 0.8859  CLUSTERED
+  ped_NA12879    10 longphase segdup      3735   173   1766    53     6.98   7.59 2.50e-05 +0.3374 0.4954  CLUSTERED
+  ped_NA12879    10 longphase lowmap     14929    64   9893     7     0.25  27.94 2.50e-05 +0.1790 0.6963  CLUSTERED
+  ped_NA12879    10 longphase tandem     21225   243  18683     7     2.48   2.82 1.65e-02 +0.0225 0.9560
+  ped_NA12879    10 longphase difficult  18410     6  14671     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  ped_NA12879    10 longphase easy       24340    52  23655     0     0.10   0.00 1.00e+00 -0.0021 1.0000
+  ped_NA12881    30 whatshap  indel      24535 13722  23494  8231  7367.21   1.12 2.50e-05 +0.1109 0.8004  CLUSTERED
+  ped_NA12881    30 whatshap  segdup      3729   277   1753   101    16.83   6.00 2.50e-05 +0.4046 0.4239  CLUSTERED
+  ped_NA12881    30 whatshap  lowmap     15015   169   9955    16     1.31  12.20 2.50e-05 +0.1252 0.7774  CLUSTERED
+  ped_NA12881    30 whatshap  tandem     21728   759  19373    27    23.81   1.13 2.80e-01 +0.0043 0.9914
+  ped_NA12881    30 whatshap  difficult  18418     0  14677     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12881    30 whatshap  easy       24306    20  23550     0     0.02   0.00 1.00e+00 -0.0008 1.0000
+  ped_NA12881    30 longphase indel      23238   140  21460    10     1.04   9.64 2.50e-05 +0.0774 0.8562  CLUSTERED
+  ped_NA12881    30 longphase segdup      3756   124   1759    44     4.99   8.82 2.50e-05 +0.4113 0.4171  CLUSTERED
+  ped_NA12881    30 longphase lowmap     15064    35  10032     7     0.10  71.12 2.50e-05 +0.4108 0.4177  CLUSTERED
+  ped_NA12881    30 longphase tandem     21486    19  19039     1     0.02  64.52 1.60e-02 +0.0683 0.8721
+  ped_NA12881    30 longphase difficult  18619     1  14960     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12881    30 longphase easy       24412     2  23729     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12881    20 whatshap  indel      24522 13885  23480  8423  7543.94   1.12 2.50e-05 +0.1123 0.7980  CLUSTERED
+  ped_NA12881    20 whatshap  segdup      3732   288   1755   111    18.70   5.94 2.50e-05 +0.4217 0.4067  CLUSTERED
+  ped_NA12881    20 whatshap  lowmap     15023   173   9969    11     1.43   7.69 2.50e-05 +0.0819 0.8486  CLUSTERED
+  ped_NA12881    20 whatshap  tandem     21732   769  19383    30    24.31   1.23 1.40e-01 +0.0078 0.9846
+  ped_NA12881    20 whatshap  difficult  18424     2  14687     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12881    20 whatshap  easy       24306    18  23552     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  ped_NA12881    20 longphase indel      23276   406  21511    28     6.87   4.07 2.50e-05 +0.0610 0.8850  CLUSTERED
+  ped_NA12881    20 longphase segdup      3749   130   1758    47     5.04   9.33 2.50e-05 +0.4276 0.4010  CLUSTERED
+  ped_NA12881    20 longphase lowmap     15068    40  10027     9     0.11  84.61 2.50e-05 +0.4274 0.4012  CLUSTERED
+  ped_NA12881    20 longphase tandem     21433    42  18952     2     0.07  27.84 1.77e-03 +0.0555 0.8948
+  ped_NA12881    20 longphase difficult  18619     0  14964     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12881    20 longphase easy       24406     3  23720     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12881    10 whatshap  indel      24490 14904  23428  9521  8695.82   1.09 2.50e-05 +0.1051 0.8098  CLUSTERED
+  ped_NA12881    10 whatshap  segdup      3727   336   1746   108    23.45   4.60 2.50e-05 +0.3422 0.4901  CLUSTERED
+  ped_NA12881    10 whatshap  lowmap     15017   221   9967    14     2.19   6.40 2.50e-05 +0.0791 0.8534  CLUSTERED
+  ped_NA12881    10 whatshap  tandem     21713  1052  19361    59    45.73   1.29 2.35e-02 +0.0130 0.9744
+  ped_NA12881    10 whatshap  difficult  18429    10  14696     0     0.01   0.00 1.00e+00 -0.0005 1.0000
+  ped_NA12881    10 whatshap  easy       24302    75  23548     1     0.20   4.93 1.84e-01 +0.0111 0.9780
+  ped_NA12881    10 longphase indel      23333  2514  21629   400   252.78   1.58 2.50e-05 +0.0651 0.8778  CLUSTERED
+  ped_NA12881    10 longphase segdup      3753   163   1762    58     7.22   8.04 2.50e-05 +0.4166 0.4118  CLUSTERED
+  ped_NA12881    10 longphase lowmap     15027    73   9974     6     0.30  19.81 2.50e-05 +0.1312 0.7681  CLUSTERED
+  ped_NA12881    10 longphase tandem     21384   218  18906     6     1.93   3.11 1.05e-02 +0.0199 0.9609
+  ped_NA12881    10 longphase difficult  18552     6  14859     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  ped_NA12881    10 longphase easy       24392    31  23700     0     0.03   0.00 1.00e+00 -0.0012 1.0000
+  ped_NA12882    30 whatshap  indel      24639 13833  23617  8340  7466.65   1.12 2.50e-05 +0.1167 0.7910  CLUSTERED
+  ped_NA12882    30 whatshap  segdup      3789   275   1793    86    15.24   5.64 2.50e-05 +0.3046 0.5331  CLUSTERED
+  ped_NA12882    30 whatshap  lowmap     15030   162   9972    10     1.10   9.06 2.50e-05 +0.0858 0.8420  CLUSTERED
+  ped_NA12882    30 whatshap  tandem     21758   790  19389    41    26.06   1.57 3.10e-03 +0.0211 0.9588
+  ped_NA12882    30 whatshap  difficult  18462     0  14786     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12882    30 whatshap  easy       24382    16  23639     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  ped_NA12882    30 longphase indel      23206   168  21352    15     1.55   9.71 2.50e-05 +0.1042 0.8113  CLUSTERED
+  ped_NA12882    30 longphase segdup      3826   122   1813    45     4.26  10.57 2.50e-05 +0.4283 0.4003  CLUSTERED
+  ped_NA12882    30 longphase lowmap     15062    32  10019     7     0.09  74.67 2.50e-05 +0.4401 0.3888  CLUSTERED
+  ped_NA12882    30 longphase tandem     21528    25  19076     1     0.03  34.48 2.95e-02 +0.0517 0.9017
+  ped_NA12882    30 longphase difficult  18687     0  15090     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12882    30 longphase easy       24486     5  23825     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12882    20 whatshap  indel      24628 14008  23604  8465  7653.90   1.11 2.50e-05 +0.1063 0.8079  CLUSTERED
+  ped_NA12882    20 whatshap  segdup      3789   288   1790    97    18.71   5.18 2.50e-05 +0.3365 0.4964  CLUSTERED
+  ped_NA12882    20 whatshap  lowmap     15017   178   9960    14     1.42   9.87 2.50e-05 +0.1134 0.7964  CLUSTERED
+  ped_NA12882    20 whatshap  tandem     21756   798  19383    41    27.06   1.52 5.52e-03 +0.0192 0.9623
+  ped_NA12882    20 whatshap  difficult  18469     1  14796     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12882    20 whatshap  easy       24380    18  23635     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  ped_NA12882    20 longphase indel      23267   425  21438    17     7.49   2.27 1.50e-03 +0.0266 0.9482
+  ped_NA12882    20 longphase segdup      3822   111   1811    36     2.64  13.64 2.50e-05 +0.3842 0.4448  CLUSTERED
+  ped_NA12882    20 longphase lowmap     15054    41  10014     8     0.15  52.41 2.50e-05 +0.3467 0.4852  CLUSTERED
+  ped_NA12882    20 longphase tandem     21517    41  19044     3     0.07  41.49 7.50e-05 +0.0868 0.8403  CLUSTERED
+  ped_NA12882    20 longphase difficult  18685     0  15088     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12882    20 longphase easy       24488     4  23831     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12882    10 whatshap  indel      24591 15140  23557  9782  8947.45   1.09 2.50e-05 +0.1119 0.7987  CLUSTERED
+  ped_NA12882    10 whatshap  segdup      3785   322   1792   103    22.07   4.67 2.50e-05 +0.3039 0.5338  CLUSTERED
+  ped_NA12882    10 whatshap  lowmap     15013   227   9954    14     2.33   6.02 2.50e-05 +0.0784 0.8546  CLUSTERED
+  ped_NA12882    10 whatshap  tandem     21744  1038  19369    54    44.27   1.22 7.75e-02 +0.0094 0.9813
+  ped_NA12882    10 whatshap  difficult  18469    19  14794     0     0.01   0.00 1.00e+00 -0.0011 1.0000
+  ped_NA12882    10 whatshap  easy       24372    88  23629     1     0.28   3.61 2.43e-01 +0.0086 0.9830
+  ped_NA12882    10 longphase indel      23376  2492  21600   425   250.18   1.70 2.50e-05 +0.0818 0.8488  CLUSTERED
+  ped_NA12882    10 longphase segdup      3809   153   1811    54     5.47   9.87 2.50e-05 +0.3982 0.4304  CLUSTERED
+  ped_NA12882    10 longphase lowmap     15005    63   9953    10     0.24  41.60 2.50e-05 +0.2504 0.5995  CLUSTERED
+  ped_NA12882    10 longphase tandem     21419   206  18898    11     1.84   5.99 2.50e-05 +0.0531 0.8992  CLUSTERED
+  ped_NA12882    10 longphase difficult  18624    11  15013     0     0.00   0.00 1.00e+00 -0.0005 1.0000
+  ped_NA12882    10 longphase easy       24471    44  23808     1     0.09  11.05 8.75e-02 +0.0227 0.9556
+  ped_NA12885    30 whatshap  indel      24605 14138  23599  8741  7808.54   1.12 2.50e-05 +0.1225 0.7817  CLUSTERED
+  ped_NA12885    30 whatshap  segdup      3705   244   1762    69    11.40   6.05 2.50e-05 +0.2941 0.5455  CLUSTERED
+  ped_NA12885    30 whatshap  lowmap     14949   159   9892     9     1.15   7.81 2.50e-05 +0.0844 0.8443  CLUSTERED
+  ped_NA12885    30 whatshap  tandem     21623   759  19207    29    23.92   1.21 1.70e-01 +0.0067 0.9867
+  ped_NA12885    30 whatshap  difficult  18336     4  14591     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  ped_NA12885    30 whatshap  easy       24359    14  23607     0     0.00   0.00 1.00e+00 -0.0005 1.0000
+  ped_NA12885    30 longphase indel      23149   145  21303     2     0.98   2.04 2.53e-01 +0.0109 0.9784
+  ped_NA12885    30 longphase segdup      3746   110   1789    35     2.47  14.17 2.50e-05 +0.3615 0.4689  CLUSTERED
+  ped_NA12885    30 longphase lowmap     15013    29   9973     6     0.05 126.12 2.50e-05 +0.3518 0.4795  CLUSTERED
+  ped_NA12885    30 longphase tandem     21393    20  18880     1     0.02  58.82 1.75e-02 +0.0763 0.8582
+  ped_NA12885    30 longphase difficult  18524     2  14841     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12885    30 longphase easy       24468     6  23798     0     0.00   0.00 1.00e+00 -0.0001 1.0000
+  ped_NA12885    20 whatshap  indel      24604 14127  23596  8703  7792.33   1.12 2.50e-05 +0.1194 0.7867  CLUSTERED
+  ped_NA12885    20 whatshap  segdup      3702   234   1760    70    10.18   6.88 2.50e-05 +0.3209 0.5142  CLUSTERED
+  ped_NA12885    20 whatshap  lowmap     14947   173   9894    12     1.35   8.91 2.50e-05 +0.0986 0.8206  CLUSTERED
+  ped_NA12885    20 whatshap  tandem     21623   787  19203    41    25.19   1.63 1.65e-03 +0.0222 0.9566
+  ped_NA12885    20 whatshap  difficult  18339     3  14593     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12885    20 whatshap  easy       24352    20  23601     0     0.02   0.00 1.00e+00 -0.0007 1.0000
+  ped_NA12885    20 longphase indel      23199   429  21373    15     7.49   2.00 8.55e-03 +0.0191 0.9624
+  ped_NA12885    20 longphase segdup      3740   129   1783    38     3.48  10.93 2.50e-05 +0.3499 0.4816  CLUSTERED
+  ped_NA12885    20 longphase lowmap     15003    39   9962     7     0.09  75.17 2.50e-05 +0.3323 0.5012  CLUSTERED
+  ped_NA12885    20 longphase tandem     21350    49  18816     5     0.11  44.64 2.50e-05 +0.1339 0.7638  CLUSTERED
+  ped_NA12885    20 longphase difficult  18525     3  14839     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  ped_NA12885    20 longphase easy       24453     6  23779     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  ped_NA12885    10 whatshap  indel      24540 15130  23500  9806  8952.85   1.10 2.50e-05 +0.1112 0.7999  CLUSTERED
+  ped_NA12885    10 whatshap  segdup      3699   298   1753    91    16.24   5.60 2.50e-05 +0.3056 0.5318  CLUSTERED
+  ped_NA12885    10 whatshap  lowmap     14938   196   9879    12     1.69   7.12 2.50e-05 +0.0796 0.8525  CLUSTERED
+  ped_NA12885    10 whatshap  tandem     21607  1035  19184    73    44.31   1.65 7.50e-05 +0.0311 0.9398  CLUSTERED
+  ped_NA12885    10 whatshap  difficult  18340    16  14594     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  ped_NA12885    10 whatshap  easy       24341    86  23582     1     0.28   3.57 2.49e-01 +0.0086 0.9830
+  ped_NA12885    10 longphase indel      23251  2704  21414   435   292.89   1.49 2.50e-05 +0.0597 0.8874  CLUSTERED
+  ped_NA12885    10 longphase segdup      3744   174   1787    50     5.58   8.96 2.50e-05 +0.3241 0.5104  CLUSTERED
+  ped_NA12885    10 longphase lowmap     14923    63   9870     5     0.20  25.01 2.50e-05 +0.1490 0.7407  CLUSTERED
+  ped_NA12885    10 longphase tandem     21299   262  18724    10     2.77   3.61 6.25e-04 +0.0332 0.9357
+  ped_NA12885    10 longphase difficult  18483    12  14783     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  ped_NA12885    10 longphase easy       24432    54  23746     0     0.12   0.00 1.00e+00 -0.0021 1.0000
+  ped_NA12886    30 whatshap  indel      24657 13843  23643  8352  7474.30   1.12 2.50e-05 +0.1168 0.7909  CLUSTERED
+  ped_NA12886    30 whatshap  segdup      3779   269   1812   101    16.29   6.20 2.50e-05 +0.3984 0.4302  CLUSTERED
+  ped_NA12886    30 whatshap  lowmap     15032   174   9900    12     1.37   8.79 2.50e-05 +0.0954 0.8259  CLUSTERED
+  ped_NA12886    30 whatshap  tandem     21840   777  19551    37    24.86   1.49 1.35e-02 +0.0177 0.9652
+  ped_NA12886    30 whatshap  difficult  18388     4  14631     1     0.00 740.74 1.37e-03 +0.2885 0.5522
+  ped_NA12886    30 whatshap  easy       24410    24  23660     3     0.03 108.99 2.50e-05 +0.1325 0.7659  CLUSTERED
+  ped_NA12886    30 longphase indel      23361   184  21585    17     1.70  10.00 2.50e-05 +0.1025 0.8140  CLUSTERED
+  ped_NA12886    30 longphase segdup      3810   140   1836    59     6.48   9.11 2.50e-05 +0.4706 0.3600  CLUSTERED
+  ped_NA12886    30 longphase lowmap     15098    33   9988     9     0.13  71.77 2.50e-05 +0.6007 0.2494  CLUSTERED
+  ped_NA12886    30 longphase tandem     21595    20  19192     1     0.01  71.43 1.45e-02 +0.0709 0.8675
+  ped_NA12886    30 longphase difficult  18601     0  14933     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12886    30 longphase easy       24522     8  23861     1     0.00 481.93 2.10e-03 +0.1541 0.7330
+  ped_NA12886    20 whatshap  indel      24636 14084  23620  8567  7740.34   1.11 2.50e-05 +0.1068 0.8070  CLUSTERED
+  ped_NA12886    20 whatshap  segdup      3780   261   1812    93    15.33   6.06 2.50e-05 +0.3797 0.4496  CLUSTERED
+  ped_NA12886    20 whatshap  lowmap     15032   177   9905    11     1.33   8.26 2.50e-05 +0.0785 0.8545  CLUSTERED
+  ped_NA12886    20 whatshap  tandem     21842   801  19559    49    25.94   1.89 2.50e-05 +0.0311 0.9397  CLUSTERED
+  ped_NA12886    20 whatshap  difficult  18389     6  14627     1     0.00 740.74 1.37e-03 +0.1823 0.6917
+  ped_NA12886    20 whatshap  easy       24413    27  23667     2     0.03  76.78 2.75e-04 +0.0825 0.8476
+  ped_NA12886    20 longphase indel      23388   423  21628    24     7.32   3.28 2.50e-05 +0.0474 0.9095  CLUSTERED
+  ped_NA12886    20 longphase segdup      3808   150   1832    60     6.93   8.66 2.50e-05 +0.4464 0.3827  CLUSTERED
+  ped_NA12886    20 longphase lowmap     15078    36   9970     7     0.08  93.27 2.50e-05 +0.3693 0.4606  CLUSTERED
+  ped_NA12886    20 longphase tandem     21595    43  19193     1     0.08  12.90 7.45e-02 +0.0318 0.9383
+  ped_NA12886    20 longphase difficult  18590     0  14916     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  ped_NA12886    20 longphase easy       24519     5  23858     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  ped_NA12886    10 whatshap  indel      24604 14948  23554  9586  8714.99   1.10 2.50e-05 +0.1121 0.7984  CLUSTERED
+  ped_NA12886    10 whatshap  segdup      3773   305   1802   105    19.79   5.31 2.50e-05 +0.3757 0.4538  CLUSTERED
+  ped_NA12886    10 whatshap  lowmap     15030   220   9905    14     2.18   6.42 2.50e-05 +0.0766 0.8577  CLUSTERED
+  ped_NA12886    10 whatshap  tandem     21828   998  19537    61    41.50   1.47 1.90e-03 +0.0224 0.9562
+  ped_NA12886    10 whatshap  difficult  18399    13  14651     1     0.01  83.33 1.25e-02 +0.0793 0.8531
+  ped_NA12886    10 whatshap  easy       24407    87  23658     2     0.28   7.05 3.15e-02 +0.0205 0.9598
+  ped_NA12886    10 longphase indel      23458  2509  21728   437   251.54   1.74 2.50e-05 +0.0821 0.8483  CLUSTERED
+  ped_NA12886    10 longphase segdup      3800   172   1827    62     8.82   7.03 2.50e-05 +0.4082 0.4203  CLUSTERED
+  ped_NA12886    10 longphase lowmap     15022    73   9895     4     0.28  14.48 1.75e-04 +0.0904 0.8342
+  ped_NA12886    10 longphase tandem     21492   202  19035     3     1.76   1.71 2.48e-01 +0.0086 0.9829
+  ped_NA12886    10 longphase difficult  18531    13  14861     0     0.01   0.00 1.00e+00 -0.0008 1.0000
+  ped_NA12886    10 longphase easy       24497    37  23820     3     0.05  55.94 2.50e-05 +0.0856 0.8422  CLUSTERED
+  phifi_NA12879  30 whatshap  indel      24129  2834  22933   366   317.68   1.15 1.65e-03 +0.0171 0.9664
+  phifi_NA12879  30 whatshap  segdup      3599   218   1631    49     8.64   5.67 2.50e-05 +0.2407 0.6120  CLUSTERED
+  phifi_NA12879  30 whatshap  lowmap     14795    86   9739     4     0.33  12.27 4.50e-04 +0.0641 0.8796
+  phifi_NA12879  30 whatshap  tandem     21287   231  18803     4     2.17   1.85 1.64e-01 +0.0086 0.9830
+  phifi_NA12879  30 whatshap  difficult  18096     4  14283     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12879  30 whatshap  easy       23879    27  22905     2     0.03  79.68 2.00e-04 +0.0807 0.8507
+  phifi_NA12879  30 longphase indel      23931   320  22630    15     4.20   3.57 5.00e-05 +0.0400 0.9231  CLUSTERED
+  phifi_NA12879  30 longphase segdup      3615   168   1659    33     5.76   5.73 2.50e-05 +0.1959 0.6723  CLUSTERED
+  phifi_NA12879  30 longphase lowmap     14767    48   9707     4     0.15  26.77 2.50e-05 +0.1431 0.7497  CLUSTERED
+  phifi_NA12879  30 longphase tandem     21277    51  18791     0     0.14   0.00 1.00e+00 -0.0021 1.0000
+  phifi_NA12879  30 longphase difficult  18102     7  14294     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  phifi_NA12879  30 longphase easy       23880    34  22914     0     0.05   0.00 1.00e+00 -0.0013 1.0000
+  phifi_NA12879  20 whatshap  indel      24098  2956  22880   423   345.98   1.22 2.50e-05 +0.0280 0.9455  CLUSTERED
+  phifi_NA12879  20 whatshap  segdup      3588   237   1626    57    10.17   5.60 2.50e-05 +0.2538 0.5951  CLUSTERED
+  phifi_NA12879  20 whatshap  lowmap     14783    99   9725     2     0.46   4.35 8.75e-02 +0.0257 0.9498
+  phifi_NA12879  20 whatshap  tandem     21265   239  18774     1     2.31   0.43 8.99e-01 -0.0068 1.0000
+  phifi_NA12879  20 whatshap  difficult  18080     5  14259     1     0.00 634.92 1.60e-03 +0.2498 0.6003
+  phifi_NA12879  20 whatshap  easy       23854    28  22866     1     0.03  39.22 2.60e-02 +0.0382 0.9265
+  phifi_NA12879  20 longphase indel      23880   406  22550    12     6.52   1.84 3.75e-02 +0.0168 0.9670
+  phifi_NA12879  20 longphase segdup      3610   179   1660    41     6.19   6.63 2.50e-05 +0.2305 0.6253  CLUSTERED
+  phifi_NA12879  20 longphase lowmap     14755    49   9698     2     0.16  12.42 1.45e-02 +0.0715 0.8665
+  phifi_NA12879  20 longphase tandem     21259    80  18769     1     0.29   3.39 2.60e-01 +0.0126 0.9752
+  phifi_NA12879  20 longphase difficult  18099     9  14290     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  phifi_NA12879  20 longphase easy       23857    35  22877     0     0.06   0.00 1.00e+00 -0.0014 1.0000
+  phifi_NA12879  10 whatshap  indel      24012  3660  22754   699   532.91   1.31 2.50e-05 +0.0537 0.8982  CLUSTERED
+  phifi_NA12879  10 whatshap  segdup      3561   231   1606    53     9.17   5.78 2.50e-05 +0.2304 0.6255  CLUSTERED
+  phifi_NA12879  10 whatshap  lowmap     14728   111   9666     3     0.58   5.20 1.85e-02 +0.0345 0.9333
+  phifi_NA12879  10 whatshap  tandem     21200   286  18691     5     3.28   1.52 2.43e-01 +0.0057 0.9886
+  phifi_NA12879  10 whatshap  difficult  18026     6  14190     2     0.00 529.80 5.00e-05 +0.4999 0.3335  CLUSTERED
+  phifi_NA12879  10 whatshap  easy       23795    47  22770     2     0.09  21.60 4.10e-03 +0.0447 0.9144
+  phifi_NA12879  10 longphase indel      23786   935  22413    62    35.57   1.74 7.50e-05 +0.0330 0.9360  CLUSTERED
+  phifi_NA12879  10 longphase segdup      3593   190   1650    40     6.71   5.96 2.50e-05 +0.2114 0.6510  CLUSTERED
+  phifi_NA12879  10 longphase lowmap     14716    83   9658     3     0.32   9.27 4.27e-03 +0.0514 0.9022
+  phifi_NA12879  10 longphase tandem     21189   138  18686     2     0.90   2.23 2.35e-01 +0.0102 0.9798
+  phifi_NA12879  10 longphase difficult  18055    15  14231     1     0.02  58.82 1.75e-02 +0.0863 0.8411
+  phifi_NA12879  10 longphase easy       23802    63  22788     1     0.18   5.67 1.65e-01 +0.0147 0.9710
+  phifi_NA12881  30 whatshap  indel      24270  2825  23109   397   315.54   1.26 2.50e-05 +0.0321 0.9377  CLUSTERED
+  phifi_NA12881  30 whatshap  segdup      3622   242   1639    71    13.02   5.45 2.50e-05 +0.3247 0.5098  CLUSTERED
+  phifi_NA12881  30 whatshap  lowmap     14894    83   9827     3     0.31   9.68 3.65e-03 +0.0507 0.9035
+  phifi_NA12881  30 whatshap  tandem     21503   213  19092     3     1.75   1.71 2.55e-01 +0.0065 0.9870
+  phifi_NA12881  30 whatshap  difficult  18292     2  14535     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12881  30 whatshap  easy       23990    23  23063     0     0.02   0.00 1.00e+00 -0.0009 1.0000
+  phifi_NA12881  30 longphase indel      24097   285  22854    10     3.61   2.77 3.42e-03 +0.0272 0.9470
+  phifi_NA12881  30 longphase segdup      3636   154   1671    33     5.74   5.75 2.50e-05 +0.2237 0.6344  CLUSTERED
+  phifi_NA12881  30 longphase lowmap     14878    40   9807     4     0.06  63.57 2.50e-05 +0.1726 0.7055  CLUSTERED
+  phifi_NA12881  30 longphase tandem     21512    51  19117     1     0.13   7.72 1.21e-01 +0.0208 0.9593
+  phifi_NA12881  30 longphase difficult  18322     2  14576     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12881  30 longphase easy       23991    37  23071     0     0.05   0.00 1.00e+00 -0.0015 1.0000
+  phifi_NA12881  20 whatshap  indel      24244  2911  23076   428   335.23   1.28 2.50e-05 +0.0357 0.9311  CLUSTERED
+  phifi_NA12881  20 whatshap  segdup      3614   248   1632    65    13.73   4.73 2.50e-05 +0.2975 0.5415  CLUSTERED
+  phifi_NA12881  20 whatshap  lowmap     14880    79   9812     4     0.33  12.23 3.25e-04 +0.0676 0.8733
+  phifi_NA12881  20 whatshap  tandem     21487   242  19073     3     2.37   1.26 4.28e-01 +0.0029 0.9941
+  phifi_NA12881  20 whatshap  difficult  18276     2  14515     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12881  20 whatshap  easy       23967    22  23031     0     0.02   0.00 1.00e+00 -0.0009 1.0000
+  phifi_NA12881  20 longphase indel      24038   366  22763    13     5.61   2.32 3.90e-03 +0.0245 0.9523
+  phifi_NA12881  20 longphase segdup      3636   159   1670    36     6.14   5.87 2.50e-05 +0.2462 0.6049  CLUSTERED
+  phifi_NA12881  20 longphase lowmap     14880    41   9812     3     0.07  44.54 7.50e-05 +0.1256 0.7768  CLUSTERED
+  phifi_NA12881  20 longphase tandem     21482    60  19075     1     0.21   4.83 1.90e-01 +0.0172 0.9661
+  phifi_NA12881  20 longphase difficult  18311     6  14567     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  phifi_NA12881  20 longphase easy       23972    38  23044     1     0.06  15.87 6.10e-02 +0.0259 0.9495
+  phifi_NA12881  10 whatshap  indel      24186  3657  22978   679   528.86   1.28 2.50e-05 +0.0467 0.9107  CLUSTERED
+  phifi_NA12881  10 whatshap  segdup      3588   246   1613    69    13.42   5.14 2.50e-05 +0.3195 0.5158  CLUSTERED
+  phifi_NA12881  10 whatshap  lowmap     14839   100   9767     1     0.41   2.45 3.36e-01 +0.0069 0.9863
+  phifi_NA12881  10 whatshap  tandem     21426   284  18980     3     3.24   0.93 6.34e-01 -0.0009 1.0000
+  phifi_NA12881  10 whatshap  difficult  18243     4  14474     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  phifi_NA12881  10 whatshap  easy       23929    28  22967     1     0.04  22.99 4.25e-02 +0.0374 0.9279
+  phifi_NA12881  10 longphase indel      23960   770  22622    47    24.15   1.95 5.00e-05 +0.0342 0.9338  CLUSTERED
+  phifi_NA12881  10 longphase segdup      3626   189   1661    46     8.79   5.23 2.50e-05 +0.2653 0.5806  CLUSTERED
+  phifi_NA12881  10 longphase lowmap     14831    56   9767     0     0.11   0.00 1.00e+00 -0.0034 1.0000
+  phifi_NA12881  10 longphase tandem     21439   111  19002     1     0.50   2.01 3.89e-01 +0.0061 0.9879
+  phifi_NA12881  10 longphase difficult  18289     8  14541     0     0.00   0.00 1.00e+00 -0.0004 1.0000
+  phifi_NA12881  10 longphase easy       23944    49  22997     0     0.12   0.00 1.00e+00 -0.0020 1.0000
+  phifi_NA12882  30 whatshap  indel      24276  2761  23052   387   299.13   1.29 2.50e-05 +0.0370 0.9287  CLUSTERED
+  phifi_NA12882  30 whatshap  segdup      3670   240   1661    57    11.62   4.90 2.50e-05 +0.2555 0.5929  CLUSTERED
+  phifi_NA12882  30 whatshap  lowmap     14847   101   9774     5     0.43  11.51 5.00e-05 +0.0697 0.8697  CLUSTERED
+  phifi_NA12882  30 whatshap  tandem     21470   236  19015     4     2.28   1.76 1.88e-01 +0.0081 0.9839
+  phifi_NA12882  30 whatshap  difficult  18274     2  14563     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12882  30 whatshap  easy       23980    28  23018     1     0.03  32.79 3.00e-02 +0.0375 0.9277
+  phifi_NA12882  30 longphase indel      24091   286  22745     7     3.52   1.99 5.60e-02 +0.0170 0.9665
+  phifi_NA12882  30 longphase segdup      3690   187   1698    55     8.28   6.65 2.50e-05 +0.3197 0.5154  CLUSTERED
+  phifi_NA12882  30 longphase lowmap     14840    37   9759     2     0.07  30.45 1.87e-03 +0.0982 0.8212
+  phifi_NA12882  30 longphase tandem     21461    64  19004     0     0.16   0.00 1.00e+00 -0.0027 1.0000
+  phifi_NA12882  30 longphase difficult  18278     6  14572     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  phifi_NA12882  30 longphase easy       23979    37  23022     0     0.04   0.00 1.00e+00 -0.0015 1.0000
+  phifi_NA12882  20 whatshap  indel      24246  2800  23012   383   308.27   1.24 2.50e-05 +0.0305 0.9407  CLUSTERED
+  phifi_NA12882  20 whatshap  segdup      3662   238   1655    61    11.88   5.13 2.50e-05 +0.2869 0.5541  CLUSTERED
+  phifi_NA12882  20 whatshap  lowmap     14836   102   9761     5     0.45  11.00 1.50e-04 +0.0661 0.8760
+  phifi_NA12882  20 whatshap  tandem     21441   232  18977     3     2.20   1.37 3.87e-01 +0.0043 0.9914
+  phifi_NA12882  20 whatshap  difficult  18261     1  14544     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12882  20 whatshap  easy       23963    27  22986     1     0.03  35.71 2.85e-02 +0.0374 0.9279
+  phifi_NA12882  20 longphase indel      24029   384  22665    17     6.02   2.82 1.50e-04 +0.0345 0.9333
+  phifi_NA12882  20 longphase segdup      3688   194   1699    57     8.98   6.35 2.50e-05 +0.3168 0.5189  CLUSTERED
+  phifi_NA12882  20 longphase lowmap     14839    37   9765     2     0.07  30.45 1.95e-03 +0.0890 0.8366
+  phifi_NA12882  20 longphase tandem     21434    67  18961     2     0.17  12.12 1.35e-02 +0.0354 0.9316
+  phifi_NA12882  20 longphase difficult  18276     7  14565     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  phifi_NA12882  20 longphase easy       23965    30  22992     0     0.04   0.00 1.00e+00 -0.0012 1.0000
+  phifi_NA12882  10 whatshap  indel      24179  3379  22900   554   449.90   1.23 2.50e-05 +0.0365 0.9296  CLUSTERED
+  phifi_NA12882  10 whatshap  segdup      3645   248   1632    67    12.48   5.37 2.50e-05 +0.3003 0.5381  CLUSTERED
+  phifi_NA12882  10 whatshap  lowmap     14772   113   9696     5     0.52   9.69 3.50e-04 +0.0621 0.8831
+  phifi_NA12882  10 whatshap  tandem     21367   261  18876     6     2.81   2.13 6.35e-02 +0.0137 0.9729
+  phifi_NA12882  10 whatshap  difficult  18206     6  14471     1     0.00 377.36 2.67e-03 +0.1997 0.6671
+  phifi_NA12882  10 whatshap  easy       23884    35  22861     1     0.06  17.86 5.50e-02 +0.0294 0.9428
+  phifi_NA12882  10 longphase indel      23929   824  22511    38    27.15   1.40 1.65e-02 +0.0180 0.9647
+  phifi_NA12882  10 longphase segdup      3686   232   1695    73    11.82   6.17 2.50e-05 +0.3366 0.4963  CLUSTERED
+  phifi_NA12882  10 longphase lowmap     14789    61   9703     3     0.17  17.63 5.25e-04 +0.0827 0.8472
+  phifi_NA12882  10 longphase tandem     21369   109  18871     4     0.48   8.33 1.75e-03 +0.0388 0.9253
+  phifi_NA12882  10 longphase difficult  18232    11  14508     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  phifi_NA12882  10 longphase easy       23893    59  22871     0     0.13   0.00 1.00e+00 -0.0024 1.0000
+  phifi_NA12885  30 whatshap  indel      24173  2756  22949   364   298.68   1.22 2.50e-05 +0.0259 0.9495  CLUSTERED
+  phifi_NA12885  30 whatshap  segdup      3588   186   1629    40     6.78   5.90 2.50e-05 +0.2526 0.5967  CLUSTERED
+  phifi_NA12885  30 whatshap  lowmap     14724   103   9652     3     0.52   5.72 1.45e-02 +0.0390 0.9250
+  phifi_NA12885  30 whatshap  tandem     21298   219  18784     5     1.97   2.53 5.55e-02 +0.0157 0.9691
+  phifi_NA12885  30 whatshap  difficult  18090     5  14315     1     0.00 909.09 1.12e-03 +0.2498 0.6003
+  phifi_NA12885  30 whatshap  easy       23897    29  22893     2     0.03  62.60 5.50e-04 +0.0744 0.8615
+  phifi_NA12885  30 longphase indel      24001   329  22678     6     4.17   1.44 2.42e-01 +0.0073 0.9855
+  phifi_NA12885  30 longphase segdup      3611   148   1675    24     4.62   5.20 2.50e-05 +0.1633 0.7192  CLUSTERED
+  phifi_NA12885  30 longphase lowmap     14698    45   9636     2     0.09  21.73 3.60e-03 +0.0663 0.8756
+  phifi_NA12885  30 longphase tandem     21302    77  18790     2     0.24   8.30 2.25e-02 +0.0288 0.9441
+  phifi_NA12885  30 longphase difficult  18095     4  14324     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12885  30 longphase easy       23896    40  22893     0     0.06   0.00 1.00e+00 -0.0017 1.0000
+  phifi_NA12885  20 whatshap  indel      24114  2823  22853   368   312.53   1.18 3.25e-04 +0.0205 0.9598
+  phifi_NA12885  20 whatshap  segdup      3575   192   1619    37     6.57   5.63 2.50e-05 +0.1975 0.6701  CLUSTERED
+  phifi_NA12885  20 whatshap  lowmap     14695   105   9620     3     0.57   5.29 1.70e-02 +0.0370 0.9287
+  phifi_NA12885  20 whatshap  tandem     21264   222  18741     7     2.02   3.47 4.22e-03 +0.0254 0.9504
+  phifi_NA12885  20 whatshap  difficult  18056     3  14276     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12885  20 whatshap  easy       23846    37  22804     1     0.06  16.39 5.85e-02 +0.0289 0.9438
+  phifi_NA12885  20 longphase indel      23919   420  22554     8     6.96   1.15 4.03e-01 +0.0041 0.9919
+  phifi_NA12885  20 longphase segdup      3601   159   1662    29     4.61   6.30 2.50e-05 +0.1923 0.6774  CLUSTERED
+  phifi_NA12885  20 longphase lowmap     14677    45   9612     3     0.12  25.92 2.50e-04 +0.1045 0.8107
+  phifi_NA12885  20 longphase tandem     21264    91  18737     1     0.32   3.10 2.76e-01 +0.0102 0.9798
+  phifi_NA12885  20 longphase difficult  18076     3  14305     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12885  20 longphase easy       23842    43  22798     0     0.08   0.00 1.00e+00 -0.0018 1.0000
+  phifi_NA12885  10 whatshap  indel      24016  3248  22707   497   415.44   1.20 2.50e-05 +0.0286 0.9445  CLUSTERED
+  phifi_NA12885  10 whatshap  segdup      3546   200   1593    35     7.02   4.99 2.50e-05 +0.1804 0.6944  CLUSTERED
+  phifi_NA12885  10 whatshap  lowmap     14641   120   9569     3     0.73   4.10 3.75e-02 +0.0297 0.9423
+  phifi_NA12885  10 whatshap  tandem     21178   259  18639     5     2.80   1.79 1.42e-01 +0.0100 0.9801
+  phifi_NA12885  10 whatshap  difficult  17990     9  14202     0     0.01   0.00 1.00e+00 -0.0005 1.0000
+  phifi_NA12885  10 whatshap  easy       23772    45  22687     1     0.07  13.61 7.15e-02 +0.0226 0.9558
+  phifi_NA12885  10 longphase indel      23790   876  22334    39    31.63   1.23 1.13e-01 +0.0116 0.9770
+  phifi_NA12885  10 longphase segdup      3589   183   1650    37     6.41   5.77 2.50e-05 +0.2014 0.6648  CLUSTERED
+  phifi_NA12885  10 longphase lowmap     14629    61   9561     1     0.16   6.21 1.47e-01 +0.0220 0.9569
+  phifi_NA12885  10 longphase tandem     21179   144  18631     0     0.85   0.00 1.00e+00 -0.0061 1.0000
+  phifi_NA12885  10 longphase difficult  18016    13  14237     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  phifi_NA12885  10 longphase easy       23772    65  22689     0     0.16   0.00 1.00e+00 -0.0027 1.0000
+  phifi_NA12886  30 whatshap  indel      24311  2952  23111   439   342.64   1.28 2.50e-05 +0.0381 0.9266  CLUSTERED
+  phifi_NA12886  30 whatshap  segdup      3677   248   1700    80    13.09   6.11 2.50e-05 +0.3679 0.4621  CLUSTERED
+  phifi_NA12886  30 whatshap  lowmap     14857   109   9719     3     0.50   5.99 1.80e-02 +0.0363 0.9300
+  phifi_NA12886  30 whatshap  tandem     21554   224  19154     2     2.09   0.96 6.16e-01 +0.0005 0.9990
+  phifi_NA12886  30 whatshap  difficult  18215     7  14421     0     0.00    nan 1.00e+00 -0.0004 1.0000
+  phifi_NA12886  30 whatshap  easy       24017    22  23025     1     0.01  66.67 1.55e-02 +0.0505 0.9039
+  phifi_NA12886  30 longphase indel      24119   358  22829    16     5.40   2.97 1.00e-04 +0.0372 0.9282
+  phifi_NA12886  30 longphase segdup      3698   190   1735    52     7.92   6.56 2.50e-05 +0.2955 0.5439  CLUSTERED
+  phifi_NA12886  30 longphase lowmap     14860    50   9720     1     0.11   8.73 1.11e-01 +0.0345 0.9334
+  phifi_NA12886  30 longphase tandem     21561    63  19171     2     0.18  11.02 1.40e-02 +0.0371 0.9285
+  phifi_NA12886  30 longphase difficult  18230     7  14436     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  phifi_NA12886  30 longphase easy       24022    40  23040     1     0.06  18.02 5.50e-02 +0.0275 0.9464
+  phifi_NA12886  20 whatshap  indel      24282  2965  23068   434   346.49   1.25 2.50e-05 +0.0348 0.9327  CLUSTERED
+  phifi_NA12886  20 whatshap  segdup      3667   251   1692    78    13.96   5.59 2.50e-05 +0.3522 0.4790  CLUSTERED
+  phifi_NA12886  20 whatshap  lowmap     14832   109   9691     4     0.49   8.09 1.65e-03 +0.0494 0.9059
+  phifi_NA12886  20 whatshap  tandem     21519   220  19112     2     2.08   0.96 6.22e-01 +0.0004 0.9991
+  phifi_NA12886  20 whatshap  difficult  18199     6  14403     1     0.00 851.06 1.20e-03 +0.2234 0.6348
+  phifi_NA12886  20 whatshap  easy       23986    29  22976     2     0.05  41.09 1.10e-03 +0.0744 0.8615
+  phifi_NA12886  20 longphase indel      24072   442  22747    13     8.12   1.60 6.85e-02 +0.0158 0.9688
+  phifi_NA12886  20 longphase segdup      3688   189   1724    48     7.62   6.30 2.50e-05 +0.2595 0.5879  CLUSTERED
+  phifi_NA12886  20 longphase lowmap     14834    56   9687     1     0.11   8.97 1.06e-01 +0.0281 0.9453
+  phifi_NA12886  20 longphase tandem     21528    73  19133     1     0.20   5.04 1.78e-01 +0.0137 0.9729
+  phifi_NA12886  20 longphase difficult  18217     8  14426     0     0.00    nan 1.00e+00 -0.0004 1.0000
+  phifi_NA12886  20 longphase easy       23995    43  23000     1     0.07  14.08 6.95e-02 +0.0247 0.9517
+  phifi_NA12886  10 whatshap  indel      24193  3509  22935   586   488.39   1.20 2.50e-05 +0.0343 0.9336  CLUSTERED
+  phifi_NA12886  10 whatshap  segdup      3646   254   1675    78    13.27   5.88 2.50e-05 +0.3484 0.4832  CLUSTERED
+  phifi_NA12886  10 whatshap  lowmap     14782   140   9641     5     0.87   5.75 1.92e-03 +0.0449 0.9140
+  phifi_NA12886  10 whatshap  tandem     21457   286  19038     6     3.57   1.68 1.53e-01 +0.0112 0.9779
+  phifi_NA12886  10 whatshap  difficult  18152     9  14353     0     0.00   0.00 1.00e+00 -0.0005 1.0000
+  phifi_NA12886  10 whatshap  easy       23908    32  22844     0     0.05   0.00 1.00e+00 -0.0012 1.0000
+  phifi_NA12886  10 longphase indel      23931   871  22508    56    30.29   1.85 2.50e-05 +0.0355 0.9314  CLUSTERED
+  phifi_NA12886  10 longphase segdup      3680   229   1719    65    10.67   6.09 2.50e-05 +0.2962 0.5429  CLUSTERED
+  phifi_NA12886  10 longphase lowmap     14798    73   9655     1     0.25   3.99 2.28e-01 +0.0165 0.9675
+  phifi_NA12886  10 longphase tandem     21450   131  19030     2     0.79   2.53 1.90e-01 +0.0122 0.9760
+  phifi_NA12886  10 longphase difficult  18175    10  14385     0     0.01   0.00 1.00e+00 -0.0005 1.0000
+  phifi_NA12886  10 longphase easy       23915    58  22855     0     0.15   0.00 1.00e+00 -0.0024 1.0000
+  phifi_NA12877  30 whatshap  indel      24269  2982  23063   436   349.88   1.25 2.50e-05 +0.0311 0.9397  CLUSTERED
+  phifi_NA12877  30 whatshap  segdup      3693   242   1713    63    10.64   5.92 2.50e-05 +0.2671 0.5784  CLUSTERED
+  phifi_NA12877  30 whatshap  lowmap     14824    92   9681     2     0.41   4.90 6.65e-02 +0.0254 0.9505
+  phifi_NA12877  30 whatshap  tandem     21438   234  19006     2     2.20   0.91 6.57e-01 -0.0013 1.0000
+  phifi_NA12877  30 whatshap  difficult  18176     4  14415     0     0.00   0.00 1.00e+00 -0.0002 1.0000
+  phifi_NA12877  30 whatshap  easy       23924    26  22952     0     0.02   0.00 1.00e+00 -0.0010 1.0000
+  phifi_NA12877  30 longphase indel      24061   329  22759    19     4.27   4.45 2.50e-05 +0.0497 0.9053  CLUSTERED
+  phifi_NA12877  30 longphase segdup      3704   188   1736    55     7.32   7.52 2.50e-05 +0.2946 0.5449  CLUSTERED
+  phifi_NA12877  30 longphase lowmap     14812    31   9685     0     0.03   0.00 1.00e+00 -0.0013 1.0000
+  phifi_NA12877  30 longphase tandem     21438    54  19009     0     0.13   0.00 1.00e+00 -0.0022 1.0000
+  phifi_NA12877  30 longphase difficult  18197     3  14440     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  phifi_NA12877  30 longphase easy       23926    33  22957     0     0.04   0.00 1.00e+00 -0.0013 1.0000
+  k1_hg005       30 whatshap  indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  k1_hg005       30 whatshap  segdup      2607     3   1015     0     0.00    nan 1.00e+00 -0.0014 1.0000
+  k1_hg005       30 whatshap  lowmap     11217     1   5981     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  k1_hg005       30 whatshap  tandem     16418     0  11949     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  k1_hg005       30 whatshap  difficult  15746     0  11181     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  k1_hg005       30 whatshap  easy       23346     3  21689     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  k1_hg005       30 longphase indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  k1_hg005       30 longphase segdup      2603     3   1012     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  k1_hg005       30 longphase lowmap     11211     4   5980     0     0.00   0.00 1.00e+00 -0.0003 1.0000
+  k1_hg005       30 longphase tandem     16418     2  11949     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  k1_hg005       30 longphase difficult  15748     2  11182     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  k1_hg005       30 longphase easy       23346    14  21688     0     0.00   0.00 1.00e+00 -0.0006 1.0000
+  hg005_ont      30 whatshap  indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      30 whatshap  segdup      2673     9   1065     1     0.02  58.82 1.75e-02 +0.1962 0.6719
+  hg005_ont      30 whatshap  lowmap     11410     1   6140     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  hg005_ont      30 whatshap  tandem     16644     6  12180     0     0.01   0.00 1.00e+00 -0.0004 1.0000
+  hg005_ont      30 whatshap  difficult  15980     1  11422     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  hg005_ont      30 whatshap  easy       23820    15  22457     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hg005_ont      30 longphase indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      30 longphase segdup      2676     6   1067     0     0.01   0.00 1.00e+00 -0.0023 1.0000
+  hg005_ont      30 longphase lowmap     11437     5   6164     0     0.00   0.00 1.00e+00 -0.0005 1.0000
+  hg005_ont      30 longphase tandem     16666    11  12210     0     0.01   0.00 1.00e+00 -0.0003 1.0000
+  hg005_ont      30 longphase difficult  16019     3  11461     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  hg005_ont      30 longphase easy       23842    39  22503     0     0.06   0.00 1.00e+00 -0.0016 1.0000
+  hg005_ont      20 whatshap  indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      20 whatshap  segdup      2663     7   1059     1     0.02  62.50 1.65e-02 +0.2203 0.6389
+  hg005_ont      20 whatshap  lowmap     11397     2   6132     0     0.00    nan 1.00e+00 +0.0000 1.0000
+  hg005_ont      20 whatshap  tandem     16628     5  12167     0     0.01   0.00 1.00e+00 -0.0003 1.0000
+  hg005_ont      20 whatshap  difficult  15969     2  11410     0     0.00    nan 1.00e+00 -0.0001 1.0000
+  hg005_ont      20 whatshap  easy       23784    23  22398     0     0.03   0.00 1.00e+00 -0.0009 1.0000
+  hg005_ont      20 longphase indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      20 longphase segdup      2665     8   1056     0     0.02   0.00 1.00e+00 -0.0033 1.0000
+  hg005_ont      20 longphase lowmap     11427     6   6155     0     0.00   0.00 1.00e+00 -0.0007 1.0000
+  hg005_ont      20 longphase tandem     16642     8  12184     0     0.00    nan 1.00e+00 -0.0004 1.0000
+  hg005_ont      20 longphase difficult  16003     5  11450     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  hg005_ont      20 longphase easy       23807    42  22440     0     0.07   0.00 1.00e+00 -0.0018 1.0000
+  hg005_ont      10 whatshap  indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      10 whatshap  segdup      2648     6   1049     1     0.01 119.05 8.42e-03 +0.2863 0.5548
+  hg005_ont      10 whatshap  lowmap     11346     4   6092     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  hg005_ont      10 whatshap  tandem     16573    15  12096     0     0.01   0.00 1.00e+00 -0.0008 1.0000
+  hg005_ont      10 whatshap  difficult  15915     5  11360     0     0.00    nan 1.00e+00 -0.0003 1.0000
+  hg005_ont      10 whatshap  easy       23675    41  22219     0     0.07   0.00 1.00e+00 -0.0016 1.0000
+  hg005_ont      10 longphase indel          0     0      0     0     0.00    nan 1.00e+00 +0.0000 0.0000
+  hg005_ont      10 longphase segdup      2661     5   1056     0     0.01   0.00 1.00e+00 -0.0019 1.0000
+  hg005_ont      10 longphase lowmap     11366     7   6110     0     0.01   0.00 1.00e+00 -0.0007 1.0000
+  hg005_ont      10 longphase tandem     16563    15  12093     0     0.01   0.00 1.00e+00 -0.0006 1.0000
+  hg005_ont      10 longphase difficult  15941     5  11384     0     0.00    nan 1.00e+00 -0.0002 1.0000
+  hg005_ont      10 longphase easy       23690    69  22247     1     0.19   5.19 1.74e-01 +0.0126 0.9750
+
+clustered tests: 181 of 576
+  indel     clustered 60 of 96
+  segdup    clustered 78 of 96
+  lowmap    clustered 35 of 96
+  tandem    clustered 5 of 96
+  difficult clustered 1 of 96
+  easy      clustered 2 of 96
+worst neff/n: 0.0000 (k1_hg005 30 whatshap indel, rho +0.0000)
+join ratio observed/null over tests with a null mean > 0: mean 20.485, max 909.091
+
+Part 2: pool depth phaser mode beta group widen base merged conservative
+  K1b 30 whatshap  agree 0.0003 indel     x2 (0.3617,21)        (0.4584,26)        yes
+  K1b 30 whatshap  agree 0.0003 segdup    x2 none               none               yes
+  K1b 30 whatshap  agree 0.0003 lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.0003 tandem    x2 (-1.0000,0)        (0.3044,27)        yes
+  K1b 30 whatshap  agree 0.0003 difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.0003 easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.0003 indel     x3 (0.3617,21)        (0.6121,29)        yes
+  K1b 30 whatshap  agree 0.0003 segdup    x3 none               none               yes
+  K1b 30 whatshap  agree 0.0003 lowmap    x3 (-1.0000,0)        (0.3333,2)         yes
+  K1b 30 whatshap  agree 0.0003 tandem    x3 (-1.0000,0)        (0.3044,27)        yes
+  K1b 30 whatshap  agree 0.0003 difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.0003 easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  indel     x2 (-1.0000,0)        (0.3174,26)        yes
+  K1b 30 whatshap  agree 0.001  segdup    x2 (0.3333,2)         (0.5556,5)         yes
+  K1b 30 whatshap  agree 0.001  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  tandem    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  indel     x3 (-1.0000,0)        (0.3617,21)        yes
+  K1b 30 whatshap  agree 0.001  segdup    x3 (0.3333,2)         (0.6923,9)         yes
+  K1b 30 whatshap  agree 0.001  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  tandem    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.001  easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  indel     x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  segdup    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  tandem    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  indel     x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  segdup    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  tandem    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  agree 0.003  easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.0003 indel     x2 none               none               yes
+  K1b 30 whatshap  all   0.0003 segdup    x2 none               none               yes
+  K1b 30 whatshap  all   0.0003 lowmap    x2 (0.8066,26)        (0.8261,19)        yes
+  K1b 30 whatshap  all   0.0003 tandem    x2 none               none               yes
+  K1b 30 whatshap  all   0.0003 difficult x2 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 whatshap  all   0.0003 easy      x2 (0.5556,5)         (0.5556,5)         yes
+  K1b 30 whatshap  all   0.0003 indel     x3 none               none               yes
+  K1b 30 whatshap  all   0.0003 segdup    x3 none               none               yes
+  K1b 30 whatshap  all   0.0003 lowmap    x3 (0.8066,26)        (0.8621,25)        yes
+  K1b 30 whatshap  all   0.0003 tandem    x3 none               none               yes
+  K1b 30 whatshap  all   0.0003 difficult x3 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 whatshap  all   0.0003 easy      x3 (0.5556,5)         (0.6364,7)         yes
+  K1b 30 whatshap  all   0.001  indel     x2 none               none               yes
+  K1b 30 whatshap  all   0.001  segdup    x2 none               none               yes
+  K1b 30 whatshap  all   0.001  lowmap    x2 (0.6000,6)         (0.6710,27)        yes
+  K1b 30 whatshap  all   0.001  tandem    x2 (0.8103,35)        (0.8431,33)        yes
+  K1b 30 whatshap  all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.001  easy      x2 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 whatshap  all   0.001  indel     x3 none               none               yes
+  K1b 30 whatshap  all   0.001  segdup    x3 none               none               yes
+  K1b 30 whatshap  all   0.001  lowmap    x3 (0.6000,6)         (0.7333,11)        yes
+  K1b 30 whatshap  all   0.001  tandem    x3 (0.8103,35)        (0.8617,38)        yes
+  K1b 30 whatshap  all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.001  easy      x3 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 whatshap  all   0.003  indel     x2 none               none               yes
+  K1b 30 whatshap  all   0.003  segdup    x2 none               none               yes
+  K1b 30 whatshap  all   0.003  lowmap    x2 (0.4286,3)         (0.4919,13)        yes
+  K1b 30 whatshap  all   0.003  tandem    x2 (0.6364,7)         (0.7682,21)        yes
+  K1b 30 whatshap  all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.003  indel     x3 none               none               yes
+  K1b 30 whatshap  all   0.003  segdup    x3 none               none               yes
+  K1b 30 whatshap  all   0.003  lowmap    x3 (0.4286,3)         (0.5224,17)        yes
+  K1b 30 whatshap  all   0.003  tandem    x3 (0.6364,7)         (0.8000,25)        yes
+  K1b 30 whatshap  all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 whatshap  all   0.003  easy      x3 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 longphase agree 0.0003 indel     x2 (0.2026,3)         (0.2026,3)         yes
+  K1b 30 longphase agree 0.0003 segdup    x2 none               none               yes
+  K1b 30 longphase agree 0.0003 lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.0003 tandem    x2 (0.2000,1)         (0.2000,1)         yes
+  K1b 30 longphase agree 0.0003 difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.0003 easy      x2 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 longphase agree 0.0003 indel     x3 (0.2026,3)         (0.3561,37)        yes
+  K1b 30 longphase agree 0.0003 segdup    x3 none               none               yes
+  K1b 30 longphase agree 0.0003 lowmap    x3 (-1.0000,0)        (0.3333,2)         yes
+  K1b 30 longphase agree 0.0003 tandem    x3 (0.2000,1)         (0.3722,29)        yes
+  K1b 30 longphase agree 0.0003 difficult x3 (-1.0000,0)        (0.3333,2)         yes
+  K1b 30 longphase agree 0.0003 easy      x3 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 longphase agree 0.001  indel     x2 (-1.0000,0)        (0.0000,21)        yes
+  K1b 30 longphase agree 0.001  segdup    x2 (0.2000,1)         (0.4393,16)        yes
+  K1b 30 longphase agree 0.001  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.001  tandem    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.001  easy      x2 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 longphase agree 0.001  indel     x3 (-1.0000,0)        (0.2026,3)         yes
+  K1b 30 longphase agree 0.001  segdup    x3 (0.2000,1)         (0.6710,27)        yes
+  K1b 30 longphase agree 0.001  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.001  tandem    x3 (-1.0000,0)        (0.2000,1)         yes
+  K1b 30 longphase agree 0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.001  easy      x3 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 longphase agree 0.003  indel     x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  segdup    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  tandem    x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  indel     x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  segdup    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  tandem    x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase agree 0.003  easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase all   0.0003 indel     x2 none               none               yes
+  K1b 30 longphase all   0.0003 segdup    x2 none               none               yes
+  K1b 30 longphase all   0.0003 lowmap    x2 (0.6957,15)        (0.7500,12)        yes
+  K1b 30 longphase all   0.0003 tandem    x2 (0.6790,14)        (0.7694,28)        yes
+  K1b 30 longphase all   0.0003 difficult x2 (0.3333,2)         (0.3333,2)         yes
+  K1b 30 longphase all   0.0003 easy      x2 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 longphase all   0.0003 indel     x3 none               none               yes
+  K1b 30 longphase all   0.0003 segdup    x3 none               none               yes
+  K1b 30 longphase all   0.0003 lowmap    x3 (0.6957,15)        (0.7682,21)        yes
+  K1b 30 longphase all   0.0003 tandem    x3 (0.6790,14)        (0.8293,30)        yes
+  K1b 30 longphase all   0.0003 difficult x3 (0.3333,2)         (0.3333,2)         yes
+  K1b 30 longphase all   0.0003 easy      x3 (0.4286,3)         (0.5556,5)         yes
+  K1b 30 longphase all   0.001  indel     x2 (0.7540,32)        none               yes
+  K1b 30 longphase all   0.001  segdup    x2 none               none               yes
+  K1b 30 longphase all   0.001  lowmap    x2 (0.5000,16)        (0.5556,5)         yes
+  K1b 30 longphase all   0.001  tandem    x2 (0.4286,3)         (0.6000,6)         yes
+  K1b 30 longphase all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase all   0.001  easy      x2 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 longphase all   0.001  indel     x3 (0.7540,32)        none               yes
+  K1b 30 longphase all   0.001  segdup    x3 none               none               yes
+  K1b 30 longphase all   0.001  lowmap    x3 (0.5000,16)        (0.6364,7)         yes
+  K1b 30 longphase all   0.001  tandem    x3 (0.4286,3)         (0.6364,7)         yes
+  K1b 30 longphase all   0.001  difficult x3 (-1.0000,0)        (0.3333,2)         yes
+  K1b 30 longphase all   0.001  easy      x3 (0.4286,3)         (0.4286,3)         yes
+  K1b 30 longphase all   0.003  indel     x2 (0.5000,4)         (0.6370,24)        yes
+  K1b 30 longphase all   0.003  segdup    x2 (0.8462,22)        none               yes
+  K1b 30 longphase all   0.003  lowmap    x2 (0.2000,1)         (0.2000,1)         yes
+  K1b 30 longphase all   0.003  tandem    x2 (0.2000,1)         (0.3333,2)         yes
+  K1b 30 longphase all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase all   0.003  easy      x2 (-1.0000,0)        (0.4286,3)         yes
+  K1b 30 longphase all   0.003  indel     x3 (0.5000,4)         (0.7273,23)        yes
+  K1b 30 longphase all   0.003  segdup    x3 (0.8462,22)        none               yes
+  K1b 30 longphase all   0.003  lowmap    x3 (0.2000,1)         (0.4288,11)        yes
+  K1b 30 longphase all   0.003  tandem    x3 (0.2000,1)         (0.3333,2)         yes
+  K1b 30 longphase all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  K1b 30 longphase all   0.003  easy      x3 (-1.0000,0)        (0.4286,3)         yes
+  W1b 30 whatshap  all   0.0003 indel     x2 none               none               yes
+  W1b 30 whatshap  all   0.0003 segdup    x2 (0.8241,29)        (0.8333,20)        yes
+  W1b 30 whatshap  all   0.0003 lowmap    x2 (0.6364,7)         (0.7500,12)        yes
+  W1b 30 whatshap  all   0.0003 tandem    x2 (0.8571,24)        none               yes
+  W1b 30 whatshap  all   0.0003 difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.0003 easy      x2 (0.6364,7)         (0.6364,7)         yes
+  W1b 30 whatshap  all   0.0003 indel     x3 none               none               yes
+  W1b 30 whatshap  all   0.0003 segdup    x3 (0.8241,29)        (0.8333,20)        yes
+  W1b 30 whatshap  all   0.0003 lowmap    x3 (0.6364,7)         (0.7778,14)        yes
+  W1b 30 whatshap  all   0.0003 tandem    x3 (0.8571,24)        none               yes
+  W1b 30 whatshap  all   0.0003 difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.0003 easy      x3 (0.6364,7)         (0.6364,7)         yes
+  W1b 30 whatshap  all   0.001  indel     x2 none               none               yes
+  W1b 30 whatshap  all   0.001  segdup    x2 (0.7355,40)        (0.7771,22)        yes
+  W1b 30 whatshap  all   0.001  lowmap    x2 (0.5000,4)         (0.5000,4)         yes
+  W1b 30 whatshap  all   0.001  tandem    x2 (0.8128,27)        (0.8341,31)        yes
+  W1b 30 whatshap  all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.001  easy      x2 (-1.0000,0)        (0.6364,7)         yes
+  W1b 30 whatshap  all   0.001  indel     x3 none               none               yes
+  W1b 30 whatshap  all   0.001  segdup    x3 (0.7355,40)        (0.7895,15)        yes
+  W1b 30 whatshap  all   0.001  lowmap    x3 (0.5000,4)         (0.5000,4)         yes
+  W1b 30 whatshap  all   0.001  tandem    x3 (0.8128,27)        (0.8519,23)        yes
+  W1b 30 whatshap  all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.001  easy      x3 (-1.0000,0)        (0.6364,7)         yes
+  W1b 30 whatshap  all   0.003  indel     x2 none               none               yes
+  W1b 30 whatshap  all   0.003  segdup    x2 (0.4831,46)        (0.5556,5)         yes
+  W1b 30 whatshap  all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.003  tandem    x2 (0.5468,24)        (0.7726,35)        yes
+  W1b 30 whatshap  all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.003  indel     x3 none               none               yes
+  W1b 30 whatshap  all   0.003  segdup    x3 (0.4831,46)        (0.5556,5)         yes
+  W1b 30 whatshap  all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.003  tandem    x3 (0.5468,24)        (0.7929,24)        yes
+  W1b 30 whatshap  all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 whatshap  all   0.003  easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.0003 indel     x2 (0.6284,34)        (0.7398,30)        yes
+  W1b 30 longphase all   0.0003 segdup    x2 (0.8095,17)        (0.8195,37)        yes
+  W1b 30 longphase all   0.0003 lowmap    x2 (0.5000,4)         (0.5000,4)         yes
+  W1b 30 longphase all   0.0003 tandem    x2 (0.4839,10)        (0.5556,5)         yes
+  W1b 30 longphase all   0.0003 difficult x2 (0.5556,5)         (0.5556,5)         yes
+  W1b 30 longphase all   0.0003 easy      x2 (0.6000,6)         (0.6000,6)         yes
+  W1b 30 longphase all   0.0003 indel     x3 (0.6284,34)        (0.7929,24)        yes
+  W1b 30 longphase all   0.0003 segdup    x3 (0.8095,17)        (0.8750,28)        yes
+  W1b 30 longphase all   0.0003 lowmap    x3 (0.5000,4)         (0.5000,4)         yes
+  W1b 30 longphase all   0.0003 tandem    x3 (0.4839,10)        (0.6364,7)         yes
+  W1b 30 longphase all   0.0003 difficult x3 (0.5556,5)         (0.5556,5)         yes
+  W1b 30 longphase all   0.0003 easy      x3 (0.6000,6)         (0.6000,6)         yes
+  W1b 30 longphase all   0.001  indel     x2 (0.3828,39)        (0.5390,29)        yes
+  W1b 30 longphase all   0.001  segdup    x2 (0.6000,6)         (0.6923,9)         yes
+  W1b 30 longphase all   0.001  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.001  tandem    x2 (0.3333,2)         (0.3333,2)         yes
+  W1b 30 longphase all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.001  easy      x2 (0.6000,6)         (0.6000,6)         yes
+  W1b 30 longphase all   0.001  indel     x3 (0.3828,39)        (0.5953,21)        yes
+  W1b 30 longphase all   0.001  segdup    x3 (0.6000,6)         (0.6923,9)         yes
+  W1b 30 longphase all   0.001  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.001  tandem    x3 (0.3333,2)         (0.3333,2)         yes
+  W1b 30 longphase all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.001  easy      x3 (0.6000,6)         (0.6000,6)         yes
+  W1b 30 longphase all   0.003  indel     x2 (0.2454,36)        (0.2454,36)        yes
+  W1b 30 longphase all   0.003  segdup    x2 (0.4062,19)        (0.4062,19)        yes
+  W1b 30 longphase all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.003  tandem    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.003  easy      x2 (-1.0000,0)        (0.6000,6)         yes
+  W1b 30 longphase all   0.003  indel     x3 (0.2454,36)        (0.3828,39)        yes
+  W1b 30 longphase all   0.003  segdup    x3 (0.4062,19)        (0.4062,19)        yes
+  W1b 30 longphase all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.003  tandem    x3 (-1.0000,0)        (0.3333,2)         yes
+  W1b 30 longphase all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 30 longphase all   0.003  easy      x3 (-1.0000,0)        (0.6000,6)         yes
+  W1b 20 whatshap  all   0.0003 indel     x2 none               none               yes
+  W1b 20 whatshap  all   0.0003 segdup    x2 (0.8000,16)        (0.8095,17)        yes
+  W1b 20 whatshap  all   0.0003 lowmap    x2 (0.5556,5)         (0.6667,8)         yes
+  W1b 20 whatshap  all   0.0003 tandem    x2 (0.8128,27)        none               yes
+  W1b 20 whatshap  all   0.0003 difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.0003 easy      x2 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 whatshap  all   0.0003 indel     x3 none               none               yes
+  W1b 20 whatshap  all   0.0003 segdup    x3 (0.8000,16)        (0.8261,19)        yes
+  W1b 20 whatshap  all   0.0003 lowmap    x3 (0.5556,5)         (0.7143,10)        yes
+  W1b 20 whatshap  all   0.0003 tandem    x3 (0.8128,27)        none               yes
+  W1b 20 whatshap  all   0.0003 difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.0003 easy      x3 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 whatshap  all   0.001  indel     x2 none               none               yes
+  W1b 20 whatshap  all   0.001  segdup    x2 (0.6790,14)        (0.7108,16)        yes
+  W1b 20 whatshap  all   0.001  lowmap    x2 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 whatshap  all   0.001  tandem    x2 (0.7586,20)        (0.7895,15)        yes
+  W1b 20 whatshap  all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.001  easy      x2 (-1.0000,0)        (0.5000,4)         yes
+  W1b 20 whatshap  all   0.001  indel     x3 none               none               yes
+  W1b 20 whatshap  all   0.001  segdup    x3 (0.6790,14)        (0.7333,11)        yes
+  W1b 20 whatshap  all   0.001  lowmap    x3 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 whatshap  all   0.001  tandem    x3 (0.7586,20)        (0.8000,16)        yes
+  W1b 20 whatshap  all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.001  easy      x3 (-1.0000,0)        (0.5000,4)         yes
+  W1b 20 whatshap  all   0.003  indel     x2 none               none               yes
+  W1b 20 whatshap  all   0.003  segdup    x2 (0.4919,13)        (0.5267,20)        yes
+  W1b 20 whatshap  all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.003  tandem    x2 (0.5000,4)         (0.6667,18)        yes
+  W1b 20 whatshap  all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.003  indel     x3 none               none               yes
+  W1b 20 whatshap  all   0.003  segdup    x3 (0.4919,13)        (0.5556,5)         yes
+  W1b 20 whatshap  all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.003  tandem    x3 (0.5000,4)         (0.7333,11)        yes
+  W1b 20 whatshap  all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 whatshap  all   0.003  easy      x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.0003 indel     x2 (0.6347,20)        (0.7170,22)        yes
+  W1b 20 longphase all   0.0003 segdup    x2 none               none               yes
+  W1b 20 longphase all   0.0003 lowmap    x2 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 longphase all   0.0003 tandem    x2 (0.4795,7)         (0.5556,5)         yes
+  W1b 20 longphase all   0.0003 difficult x2 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 longphase all   0.0003 easy      x2 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 longphase all   0.0003 indel     x3 (0.6347,20)        (0.7682,21)        yes
+  W1b 20 longphase all   0.0003 segdup    x3 none               none               yes
+  W1b 20 longphase all   0.0003 lowmap    x3 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 longphase all   0.0003 tandem    x3 (0.4795,7)         (0.6027,18)        yes
+  W1b 20 longphase all   0.0003 difficult x3 (0.4286,3)         (0.4286,3)         yes
+  W1b 20 longphase all   0.0003 easy      x3 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 longphase all   0.001  indel     x2 (0.4622,12)        (0.5618,19)        yes
+  W1b 20 longphase all   0.001  segdup    x2 (0.6000,6)         (0.6364,7)         yes
+  W1b 20 longphase all   0.001  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.001  tandem    x2 (0.2026,3)         (0.2026,3)         yes
+  W1b 20 longphase all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.001  easy      x2 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 longphase all   0.001  indel     x3 (0.4622,12)        (0.6006,28)        yes
+  W1b 20 longphase all   0.001  segdup    x3 (0.6000,6)         (0.6667,8)         yes
+  W1b 20 longphase all   0.001  lowmap    x3 (-1.0000,0)        (0.4286,3)         yes
+  W1b 20 longphase all   0.001  tandem    x3 (0.2026,3)         (0.4031,8)         yes
+  W1b 20 longphase all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.001  easy      x3 (0.5000,4)         (0.5000,4)         yes
+  W1b 20 longphase all   0.003  indel     x2 (0.2802,21)        (0.3826,20)        yes
+  W1b 20 longphase all   0.003  segdup    x2 (0.3333,2)         (0.4325,35)        yes
+  W1b 20 longphase all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.003  tandem    x2 (-1.0000,0)        (0.2026,3)         yes
+  W1b 20 longphase all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.003  easy      x2 (-1.0000,0)        (0.5000,4)         yes
+  W1b 20 longphase all   0.003  indel     x3 (0.2802,21)        (0.4393,16)        yes
+  W1b 20 longphase all   0.003  segdup    x3 (0.3333,2)         (0.4325,35)        yes
+  W1b 20 longphase all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.003  tandem    x3 (-1.0000,0)        (0.2026,3)         yes
+  W1b 20 longphase all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 20 longphase all   0.003  easy      x3 (-1.0000,0)        (0.5000,4)         yes
+  W1b 10 whatshap  all   0.0003 indel     x2 none               none               yes
+  W1b 10 whatshap  all   0.0003 segdup    x2 none               none               yes
+  W1b 10 whatshap  all   0.0003 lowmap    x2 (0.5000,4)         (0.5888,10)        yes
+  W1b 10 whatshap  all   0.0003 tandem    x2 none               none               yes
+  W1b 10 whatshap  all   0.0003 difficult x2 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 whatshap  all   0.0003 easy      x2 (0.3333,2)         (0.4286,3)         yes
+  W1b 10 whatshap  all   0.0003 indel     x3 none               none               yes
+  W1b 10 whatshap  all   0.0003 segdup    x3 none               none               yes
+  W1b 10 whatshap  all   0.0003 lowmap    x3 (0.5000,4)         (0.6364,7)         yes
+  W1b 10 whatshap  all   0.0003 tandem    x3 none               none               yes
+  W1b 10 whatshap  all   0.0003 difficult x3 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 whatshap  all   0.0003 easy      x3 (0.3333,2)         (0.4286,3)         yes
+  W1b 10 whatshap  all   0.001  indel     x2 none               none               yes
+  W1b 10 whatshap  all   0.001  segdup    x2 (0.6364,7)         (0.6667,8)         yes
+  W1b 10 whatshap  all   0.001  lowmap    x2 (0.3333,2)         (0.3333,2)         yes
+  W1b 10 whatshap  all   0.001  tandem    x2 (0.6158,11)        (0.6923,9)         yes
+  W1b 10 whatshap  all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.001  easy      x2 (0.3333,2)         (0.3333,2)         yes
+  W1b 10 whatshap  all   0.001  indel     x3 none               none               yes
+  W1b 10 whatshap  all   0.001  segdup    x3 (0.6364,7)         (0.6667,8)         yes
+  W1b 10 whatshap  all   0.001  lowmap    x3 (0.3333,2)         (0.4286,3)         yes
+  W1b 10 whatshap  all   0.001  tandem    x3 (0.6158,11)        none               yes
+  W1b 10 whatshap  all   0.001  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.001  easy      x3 (0.3333,2)         (0.3333,2)         yes
+  W1b 10 whatshap  all   0.003  indel     x2 none               none               yes
+  W1b 10 whatshap  all   0.003  segdup    x2 (0.4557,19)        (0.5000,4)         yes
+  W1b 10 whatshap  all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.003  tandem    x2 (0.4286,3)         (0.5218,8)         yes
+  W1b 10 whatshap  all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.003  easy      x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.003  indel     x3 none               none               yes
+  W1b 10 whatshap  all   0.003  segdup    x3 (0.4557,19)        (0.5218,8)         yes
+  W1b 10 whatshap  all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.003  tandem    x3 (0.4286,3)         (0.5888,10)        yes
+  W1b 10 whatshap  all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 whatshap  all   0.003  easy      x3 (-1.0000,0)        (0.3333,2)         yes
+  W1b 10 longphase all   0.0003 indel     x2 (0.6394,12)        none               yes
+  W1b 10 longphase all   0.0003 segdup    x2 none               none               yes
+  W1b 10 longphase all   0.0003 lowmap    x2 (0.2000,1)         (0.3333,2)         yes
+  W1b 10 longphase all   0.0003 tandem    x2 (0.4292,6)         (0.5218,8)         yes
+  W1b 10 longphase all   0.0003 difficult x2 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.0003 easy      x2 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.0003 indel     x3 (0.6394,12)        none               yes
+  W1b 10 longphase all   0.0003 segdup    x3 none               none               yes
+  W1b 10 longphase all   0.0003 lowmap    x3 (0.2000,1)         (0.4286,3)         yes
+  W1b 10 longphase all   0.0003 tandem    x3 (0.4292,6)         (0.5578,9)         yes
+  W1b 10 longphase all   0.0003 difficult x3 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.0003 easy      x3 (0.2000,1)         (0.3333,2)         yes
+  W1b 10 longphase all   0.001  indel     x2 (0.5186,14)        (0.5717,13)        yes
+  W1b 10 longphase all   0.001  segdup    x2 (0.5556,5)         (0.6000,6)         yes
+  W1b 10 longphase all   0.001  lowmap    x2 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 longphase all   0.001  tandem    x2 (0.2000,1)         (0.2943,4)         yes
+  W1b 10 longphase all   0.001  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 longphase all   0.001  easy      x2 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.001  indel     x3 (0.5186,14)        (0.6154,15)        yes
+  W1b 10 longphase all   0.001  segdup    x3 (0.5556,5)         (0.6000,6)         yes
+  W1b 10 longphase all   0.001  lowmap    x3 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 longphase all   0.001  tandem    x3 (0.2000,1)         (0.3913,10)        yes
+  W1b 10 longphase all   0.001  difficult x3 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 longphase all   0.001  easy      x3 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.003  indel     x2 (0.4031,8)         (0.4839,10)        yes
+  W1b 10 longphase all   0.003  segdup    x2 (0.3333,2)         (0.4187,13)        yes
+  W1b 10 longphase all   0.003  lowmap    x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 longphase all   0.003  tandem    x2 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.003  difficult x2 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 longphase all   0.003  easy      x2 (-1.0000,0)        (0.2000,1)         yes
+  W1b 10 longphase all   0.003  indel     x3 (0.4031,8)         (0.5168,11)        yes
+  W1b 10 longphase all   0.003  segdup    x3 (0.3333,2)         (0.4187,13)        yes
+  W1b 10 longphase all   0.003  lowmap    x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 longphase all   0.003  tandem    x3 (0.2000,1)         (0.2000,1)         yes
+  W1b 10 longphase all   0.003  difficult x3 (-1.0000,0)        (-1.0000,0)        yes
+  W1b 10 longphase all   0.003  easy      x3 (-1.0000,0)        (0.2000,1)         yes
+
+merged cells less conservative, all groups: 0 of 360
+L5: supported by (b): clustering in ['difficult', 'easy', 'indel', 'lowmap', 'segdup', 'tandem'], merged cells never looser there
+runtime 19614 s

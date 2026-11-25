@@ -1,0 +1,8 @@
+commit 7fb587a; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 16 replicates, seed 8000 + 17 * replicate, signal posterior, fragile rule P(wrong) > 0.05, acceptance stitched with window 50, 2 iterations, boost 2; simulated data
+profile  cap     exact  adaptive      diff          95% interval    wins
+------------------------------------------------------------------------
+    ont    3   0.01423   0.00798  -0.00624 [-0.00741, -0.00508]  16:0  
+    ont    5   0.00172   0.00069  -0.00103 [-0.00161, -0.00046]  11:0  
+  noisy    3   0.05416   0.04065  -0.01351 [-0.01634, -0.01068]  16:0  
+  noisy    5   0.01601   0.00957  -0.00644 [-0.00796, -0.00493]  16:0  

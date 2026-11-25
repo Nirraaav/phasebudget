@@ -1,0 +1,390 @@
+L7 (registered, docs/design/l7-na12878-plan.md): test NA12878 (phifi_NA12878) against the Pedigree truth; family key parents ('NA12891', 'NA12892') (1000 Genomes panel); depths ('30', '20', '10'); phasers ('whatshap', 'longphase'); betas (0.0003, 0.001, 0.003); delta 0.05; unit 100 kb; P1 a cell in ('segdup', 'lowmap', 'indel') violates at 4.630e-04 on all links; P2 0 violating key cells at 4.630e-04; P3 K1b pool, 0 violating at 1.389e-03, segdup at 0.001 trusted >= 0.5 for one phaser; P4 L2 pool, assembly arm, no violating cell at 0.05/4, 10-100 kb share at r 0.01 >= 0.7 for one phaser; P5 30x, share of wrong pairs outside HG001_GRCh38_1_22_v4.2.1_benchmark.bed >= 0.5 and outside/inside rate >= 3.0 for both phasers; all predictions
+  family key: assembly places 2332742, transmission labels 1933539 variants
+  P1/P2 10x whatshap done
+  P1/P2 10x longphase done
+  P1/P2 20x whatshap done
+  P1/P2 20x longphase done
+  P1/P2 30x whatshap done
+  P1/P2 30x longphase done
+
+== P1, P2: mode depth phaser beta group | units, wrong units, p, pairs, trusted, wrong trusted
+  all    30x whatshap  0.0003 lowmap    units  14444 wrong    8 p 7.35e-02 pairs   117777 trusted   115637 wrong trusted     8
+  all    30x whatshap  0.0003 difficult units  18074 wrong    5 p 6.30e-01 pairs   132921 trusted   132921 wrong trusted     5
+  all    30x whatshap  0.0003 tandem    units  17664 wrong    3 p 8.98e-01 pairs   217035 trusted   124153 wrong trusted     3
+  all    30x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   636496 trusted        0 wrong trusted     0
+  all    30x whatshap  0.0003 easy      units  23523 wrong    2 p 9.93e-01 pairs  1238814 trusted  1231915 wrong trusted     2
+  all    30x whatshap  0.0003 segdup    units   2995 wrong    7 p 4.27e-05 pairs   105163 trusted    75155 wrong trusted     7  VIOLATES
+  key    30x whatshap  0.0003 lowmap    units  11733 wrong    2 p 8.66e-01 pairs    68982 trusted    68459 wrong trusted     2
+  key    30x whatshap  0.0003 difficult units  15883 wrong    3 p 8.54e-01 pairs    98299 trusted    98299 wrong trusted     3
+  key    30x whatshap  0.0003 tandem    units  15365 wrong    1 p 9.90e-01 pairs   142586 trusted    87929 wrong trusted     1
+  key    30x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   399668 trusted        0 wrong trusted     0
+  key    30x whatshap  0.0003 easy      units  22519 wrong    0 p 1.00e+00 pairs   939089 trusted   934341 wrong trusted     0
+  key    30x whatshap  0.0003 segdup    units   2321 wrong    0 p 1.00e+00 pairs    46858 trusted    39155 wrong trusted     0
+  random 30x whatshap  0.0003 lowmap    units  13063 wrong    2 p 9.02e-01 pairs    69023 trusted    67725 wrong trusted     2
+  random 30x whatshap  0.0003 difficult units  17324 wrong    4 p 7.62e-01 pairs    98179 trusted    98179 wrong trusted     4
+  random 30x whatshap  0.0003 tandem    units  16655 wrong    2 p 9.59e-01 pairs   142572 trusted    81490 wrong trusted     2
+  random 30x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   399509 trusted        0 wrong trusted     0
+  random 30x whatshap  0.0003 easy      units  23222 wrong    2 p 9.92e-01 pairs   939725 trusted   934488 wrong trusted     2
+  random 30x whatshap  0.0003 segdup    units   2604 wrong    4 p 8.37e-03 pairs    47077 trusted    33723 wrong trusted     4
+  all    30x whatshap  0.001  lowmap    units  14532 wrong   20 p 1.00e-01 pairs   117777 trusted   116640 wrong trusted    26
+  all    30x whatshap  0.001  difficult units  18074 wrong    5 p 1.00e+00 pairs   132921 trusted   132921 wrong trusted     5
+  all    30x whatshap  0.001  tandem    units  19955 wrong    8 p 9.99e-01 pairs   217035 trusted   173615 wrong trusted     8
+  all    30x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   636496 trusted        0 wrong trusted     0
+  all    30x whatshap  0.001  easy      units  23787 wrong   22 p 6.71e-01 pairs  1238814 trusted  1238814 wrong trusted    25
+  all    30x whatshap  0.001  segdup    units   3336 wrong   13 p 4.66e-05 pairs   105163 trusted    92931 wrong trusted    20  VIOLATES
+  key    30x whatshap  0.001  lowmap    units  11792 wrong    2 p 1.00e+00 pairs    68982 trusted    68695 wrong trusted     2
+  key    30x whatshap  0.001  difficult units  15883 wrong    3 p 1.00e+00 pairs    98299 trusted    98299 wrong trusted     3
+  key    30x whatshap  0.001  tandem    units  17647 wrong    4 p 1.00e+00 pairs   142586 trusted   120279 wrong trusted     4
+  key    30x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   399668 trusted        0 wrong trusted     0
+  key    30x whatshap  0.001  easy      units  22797 wrong    9 p 1.00e+00 pairs   939089 trusted   939089 wrong trusted    11
+  key    30x whatshap  0.001  segdup    units   2559 wrong    0 p 1.00e+00 pairs    46858 trusted    45304 wrong trusted     0
+  random 30x whatshap  0.001  lowmap    units  13163 wrong   10 p 8.45e-01 pairs    69023 trusted    68341 wrong trusted    11
+  random 30x whatshap  0.001  difficult units  17324 wrong    4 p 1.00e+00 pairs    98179 trusted    98179 wrong trusted     4
+  random 30x whatshap  0.001  tandem    units  19114 wrong    6 p 1.00e+00 pairs   142572 trusted   114019 wrong trusted     6
+  random 30x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   399509 trusted        0 wrong trusted     0
+  random 30x whatshap  0.001  easy      units  23512 wrong   16 p 9.58e-01 pairs   939725 trusted   939725 wrong trusted    18
+  random 30x whatshap  0.001  segdup    units   2888 wrong    6 p 7.30e-02 pairs    47077 trusted    41642 wrong trusted     7
+  all    30x whatshap  0.003  lowmap    units  14646 wrong   87 p 6.14e-09 pairs   117777 trusted   117777 wrong trusted   184  VIOLATES
+  all    30x whatshap  0.003  difficult units  18074 wrong    5 p 1.00e+00 pairs   132921 trusted   132921 wrong trusted     5
+  all    30x whatshap  0.003  tandem    units  21147 wrong   52 p 9.37e-01 pairs   217035 trusted   213894 wrong trusted    55
+  all    30x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   636496 trusted        0 wrong trusted     0
+  all    30x whatshap  0.003  easy      units  23787 wrong   22 p 1.00e+00 pairs  1238814 trusted  1238814 wrong trusted    25
+  all    30x whatshap  0.003  segdup    units   3471 wrong   92 p 3.10e-12 pairs   105163 trusted   101819 wrong trusted   203  VIOLATES
+  key    30x whatshap  0.003  lowmap    units  11870 wrong    5 p 1.00e+00 pairs    68982 trusted    68982 wrong trusted     8
+  key    30x whatshap  0.003  difficult units  15883 wrong    3 p 1.00e+00 pairs    98299 trusted    98299 wrong trusted     3
+  key    30x whatshap  0.003  tandem    units  18768 wrong   16 p 1.00e+00 pairs   142586 trusted   141590 wrong trusted    16
+  key    30x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   399668 trusted        0 wrong trusted     0
+  key    30x whatshap  0.003  easy      units  22797 wrong    9 p 1.00e+00 pairs   939089 trusted   939089 wrong trusted    11
+  key    30x whatshap  0.003  segdup    units   2637 wrong    0 p 1.00e+00 pairs    46858 trusted    46610 wrong trusted     0
+  random 30x whatshap  0.003  lowmap    units  13293 wrong   64 p 2.59e-04 pairs    69023 trusted    69023 wrong trusted    98  VIOLATES
+  random 30x whatshap  0.003  difficult units  17324 wrong    4 p 1.00e+00 pairs    98179 trusted    98179 wrong trusted     4
+  random 30x whatshap  0.003  tandem    units  20411 wrong   34 p 1.00e+00 pairs   142572 trusted   140480 wrong trusted    35
+  random 30x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   399509 trusted        0 wrong trusted     0
+  random 30x whatshap  0.003  easy      units  23512 wrong   16 p 1.00e+00 pairs   939725 trusted   939725 wrong trusted    18
+  random 30x whatshap  0.003  segdup    units   3024 wrong   58 p 0.00e+00 pairs    47077 trusted    45613 wrong trusted    93  VIOLATES
+  all    30x longphase 0.0003 lowmap    units  14516 wrong    9 p 3.39e-02 pairs   117273 trusted   116379 wrong trusted    11
+  all    30x longphase 0.0003 difficult units  17965 wrong    0 p 1.00e+00 pairs   133427 trusted   132660 wrong trusted     0
+  all    30x longphase 0.0003 tandem    units  21202 wrong    9 p 1.92e-01 pairs   217674 trusted   215772 wrong trusted    12
+  all    30x longphase 0.0003 indel     units  23271 wrong   21 p 1.39e-05 pairs   598804 trusted   541276 wrong trusted    31  VIOLATES
+  all    30x longphase 0.0003 easy      units  23557 wrong    2 p 9.93e-01 pairs  1244565 trusted  1238696 wrong trusted     2
+  all    30x longphase 0.0003 segdup    units   3116 wrong    4 p 1.52e-02 pairs   104888 trusted    80097 wrong trusted     4
+  key    30x longphase 0.0003 lowmap    units  11796 wrong    0 p 1.00e+00 pairs    69052 trusted    68757 wrong trusted     0
+  key    30x longphase 0.0003 difficult units  15796 wrong    0 p 1.00e+00 pairs    98724 trusted    98281 wrong trusted     0
+  key    30x longphase 0.0003 tandem    units  18806 wrong    0 p 1.00e+00 pairs   143408 trusted   142701 wrong trusted     0
+  key    30x longphase 0.0003 indel     units  20853 wrong    0 p 1.00e+00 pairs   383603 trusted   355021 wrong trusted     0
+  key    30x longphase 0.0003 easy      units  22557 wrong    0 p 1.00e+00 pairs   943696 trusted   939643 wrong trusted     0
+  key    30x longphase 0.0003 segdup    units   2411 wrong    0 p 1.00e+00 pairs    46698 trusted    41599 wrong trusted     0
+  random 30x longphase 0.0003 lowmap    units  13151 wrong    7 p 1.05e-01 pairs    69101 trusted    68560 wrong trusted     8
+  random 30x longphase 0.0003 difficult units  17231 wrong    0 p 1.00e+00 pairs    98614 trusted    98039 wrong trusted     0
+  random 30x longphase 0.0003 tandem    units  20426 wrong    4 p 8.60e-01 pairs   143404 trusted   142156 wrong trusted     5
+  random 30x longphase 0.0003 indel     units  22725 wrong   13 p 2.25e-02 pairs   383543 trusted   346694 wrong trusted    16
+  random 30x longphase 0.0003 easy      units  23255 wrong    1 p 9.99e-01 pairs   944305 trusted   939831 wrong trusted     1
+  random 30x longphase 0.0003 segdup    units   2669 wrong    3 p 4.75e-02 pairs    46926 trusted    35760 wrong trusted     3
+  all    30x longphase 0.001  lowmap    units  14632 wrong   37 p 6.65e-07 pairs   117273 trusted   117273 wrong trusted    87  VIOLATES
+  all    30x longphase 0.001  difficult units  18098 wrong    7 p 9.99e-01 pairs   133427 trusted   133427 wrong trusted     7
+  all    30x longphase 0.001  tandem    units  21300 wrong   11 p 9.95e-01 pairs   217674 trusted   216825 wrong trusted    16
+  all    30x longphase 0.001  indel     units  23698 wrong   68 p 3.06e-11 pairs   598804 trusted   589387 wrong trusted   107  VIOLATES
+  all    30x longphase 0.001  easy      units  23557 wrong    2 p 1.00e+00 pairs  1244565 trusted  1238696 wrong trusted     2
+  all    30x longphase 0.001  segdup    units   3444 wrong   22 p 2.30e-11 pairs   104888 trusted    98514 wrong trusted    43  VIOLATES
+  key    30x longphase 0.001  lowmap    units  11877 wrong    5 p 9.92e-01 pairs    69052 trusted    69052 wrong trusted     5
+  key    30x longphase 0.001  difficult units  15910 wrong    4 p 1.00e+00 pairs    98724 trusted    98724 wrong trusted     4
+  key    30x longphase 0.001  tandem    units  18867 wrong    0 p 1.00e+00 pairs   143408 trusted   143114 wrong trusted     0
+  key    30x longphase 0.001  indel     units  21100 wrong    1 p 1.00e+00 pairs   383603 trusted   381212 wrong trusted     1
+  key    30x longphase 0.001  easy      units  22557 wrong    0 p 1.00e+00 pairs   943696 trusted   939643 wrong trusted     0
+  key    30x longphase 0.001  segdup    units   2619 wrong    0 p 1.00e+00 pairs    46698 trusted    46311 wrong trusted     0
+  random 30x longphase 0.001  lowmap    units  13280 wrong   26 p 1.29e-03 pairs    69101 trusted    69101 wrong trusted    55
+  random 30x longphase 0.001  difficult units  17363 wrong    6 p 9.99e-01 pairs    98614 trusted    98614 wrong trusted     6
+  random 30x longphase 0.001  tandem    units  20528 wrong    6 p 1.00e+00 pairs   143404 trusted   142843 wrong trusted     9
+  random 30x longphase 0.001  indel     units  23149 wrong   46 p 1.81e-05 pairs   383543 trusted   377574 wrong trusted    60  VIOLATES
+  random 30x longphase 0.001  easy      units  23255 wrong    1 p 1.00e+00 pairs   944305 trusted   939831 wrong trusted     1
+  random 30x longphase 0.001  segdup    units   2990 wrong   15 p 6.29e-07 pairs    46926 trusted    44020 wrong trusted    22  VIOLATES
+  all    30x longphase 0.003  lowmap    units  14632 wrong   37 p 8.70e-01 pairs   117273 trusted   117273 wrong trusted    87
+  all    30x longphase 0.003  difficult units  18098 wrong    7 p 1.00e+00 pairs   133427 trusted   133427 wrong trusted     7
+  all    30x longphase 0.003  tandem    units  21377 wrong   56 p 8.61e-01 pairs   217674 trusted   217674 wrong trusted    64
+  all    30x longphase 0.003  indel     units  23771 wrong   95 p 4.18e-03 pairs   598804 trusted   593572 wrong trusted   149
+  all    30x longphase 0.003  easy      units  23788 wrong   52 p 9.93e-01 pairs  1244565 trusted  1244565 wrong trusted    54
+  all    30x longphase 0.003  segdup    units   3488 wrong   60 p 0.00e+00 pairs   104888 trusted   100832 wrong trusted   129  VIOLATES
+  key    30x longphase 0.003  lowmap    units  11877 wrong    5 p 1.00e+00 pairs    69052 trusted    69052 wrong trusted     5
+  key    30x longphase 0.003  difficult units  15910 wrong    4 p 1.00e+00 pairs    98724 trusted    98724 wrong trusted     4
+  key    30x longphase 0.003  tandem    units  18909 wrong   13 p 1.00e+00 pairs   143408 trusted   143408 wrong trusted    13
+  key    30x longphase 0.003  indel     units  21129 wrong    3 p 1.00e+00 pairs   383603 trusted   382387 wrong trusted     4
+  key    30x longphase 0.003  easy      units  22798 wrong   25 p 1.00e+00 pairs   943696 trusted   943696 wrong trusted    25
+  key    30x longphase 0.003  segdup    units   2649 wrong    0 p 1.00e+00 pairs    46698 trusted    46545 wrong trusted     0
+  random 30x longphase 0.003  lowmap    units  13280 wrong   26 p 9.92e-01 pairs    69101 trusted    69101 wrong trusted    55
+  random 30x longphase 0.003  difficult units  17363 wrong    6 p 1.00e+00 pairs    98614 trusted    98614 wrong trusted     6
+  random 30x longphase 0.003  tandem    units  20611 wrong   33 p 1.00e+00 pairs   143404 trusted   143404 wrong trusted    36
+  random 30x longphase 0.003  indel     units  23232 wrong   68 p 5.97e-01 pairs   383543 trusted   380205 wrong trusted    87
+  random 30x longphase 0.003  easy      units  23505 wrong   40 p 1.00e+00 pairs   944305 trusted   944305 wrong trusted    40
+  random 30x longphase 0.003  segdup    units   3029 wrong   41 p 7.32e-13 pairs    46926 trusted    45083 wrong trusted    61  VIOLATES
+  all    20x whatshap  0.0003 lowmap    units  14424 wrong   18 p 7.48e-07 pairs   117648 trusted   115525 wrong trusted    22  VIOLATES
+  all    20x whatshap  0.0003 difficult units  18062 wrong    4 p 7.89e-01 pairs   132820 trusted   132820 wrong trusted     5
+  all    20x whatshap  0.0003 tandem    units  16143 wrong    1 p 9.92e-01 pairs   216874 trusted    97683 wrong trusted     1
+  all    20x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   635735 trusted        0 wrong trusted     0
+  all    20x whatshap  0.0003 easy      units  23572 wrong    3 p 9.72e-01 pairs  1238206 trusted  1232839 wrong trusted     3
+  all    20x whatshap  0.0003 segdup    units   2553 wrong    3 p 4.26e-02 pairs   104889 trusted    55624 wrong trusted     3
+  key    20x whatshap  0.0003 lowmap    units  11719 wrong    3 p 6.82e-01 pairs    68929 trusted    68377 wrong trusted     3
+  key    20x whatshap  0.0003 difficult units  15870 wrong    2 p 9.51e-01 pairs    98232 trusted    98232 wrong trusted     3
+  key    20x whatshap  0.0003 tandem    units  13771 wrong    0 p 1.00e+00 pairs   142513 trusted    69142 wrong trusted     0
+  key    20x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   399520 trusted        0 wrong trusted     0
+  key    20x whatshap  0.0003 easy      units  22575 wrong    0 p 1.00e+00 pairs   938698 trusted   934972 wrong trusted     0
+  key    20x whatshap  0.0003 segdup    units   1981 wrong    0 p 1.00e+00 pairs    46836 trusted    29927 wrong trusted     0
+  random 20x whatshap  0.0003 lowmap    units  12987 wrong   13 p 2.13e-04 pairs    68976 trusted    67724 wrong trusted    13  VIOLATES
+  random 20x whatshap  0.0003 difficult units  17303 wrong    3 p 8.91e-01 pairs    98115 trusted    98115 wrong trusted     3
+  random 20x whatshap  0.0003 tandem    units  14940 wrong    1 p 9.89e-01 pairs   142492 trusted    64318 wrong trusted     1
+  random 20x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   399405 trusted        0 wrong trusted     0
+  random 20x whatshap  0.0003 easy      units  23267 wrong    2 p 9.93e-01 pairs   939322 trusted   935254 wrong trusted     2
+  random 20x whatshap  0.0003 segdup    units   2158 wrong    2 p 1.38e-01 pairs    47062 trusted    24932 wrong trusted     2
+  all    20x whatshap  0.001  lowmap    units  14527 wrong   38 p 2.12e-07 pairs   117648 trusted   116656 wrong trusted    58  VIOLATES
+  all    20x whatshap  0.001  difficult units  18062 wrong    4 p 1.00e+00 pairs   132820 trusted   132820 wrong trusted     5
+  all    20x whatshap  0.001  tandem    units  19586 wrong    6 p 1.00e+00 pairs   216874 trusted   162028 wrong trusted     6
+  all    20x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   635735 trusted        0 wrong trusted     0
+  all    20x whatshap  0.001  easy      units  23763 wrong   23 p 5.90e-01 pairs  1238206 trusted  1238206 wrong trusted    28
+  all    20x whatshap  0.001  segdup    units   3285 wrong   16 p 3.97e-07 pairs   104889 trusted    89084 wrong trusted    23  VIOLATES
+  key    20x whatshap  0.001  lowmap    units  11787 wrong    4 p 9.97e-01 pairs    68929 trusted    68660 wrong trusted     4
+  key    20x whatshap  0.001  difficult units  15870 wrong    2 p 1.00e+00 pairs    98232 trusted    98232 wrong trusted     3
+  key    20x whatshap  0.001  tandem    units  17232 wrong    3 p 1.00e+00 pairs   142513 trusted   112269 wrong trusted     3
+  key    20x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   399520 trusted        0 wrong trusted     0
+  key    20x whatshap  0.001  easy      units  22771 wrong   11 p 9.98e-01 pairs   938698 trusted   938698 wrong trusted    13
+  key    20x whatshap  0.001  segdup    units   2520 wrong    0 p 1.00e+00 pairs    46836 trusted    44062 wrong trusted     0
+  random 20x whatshap  0.001  lowmap    units  13092 wrong   26 p 1.06e-03 pairs    68976 trusted    68385 wrong trusted    31
+  random 20x whatshap  0.001  difficult units  17303 wrong    3 p 1.00e+00 pairs    98115 trusted    98115 wrong trusted     3
+  random 20x whatshap  0.001  tandem    units  18608 wrong    6 p 1.00e+00 pairs   142492 trusted   106547 wrong trusted     6
+  random 20x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   399405 trusted        0 wrong trusted     0
+  random 20x whatshap  0.001  easy      units  23481 wrong   19 p 8.49e-01 pairs   939322 trusted   939322 wrong trusted    21
+  random 20x whatshap  0.001  segdup    units   2847 wrong    7 p 2.63e-02 pairs    47062 trusted    39953 wrong trusted     8
+  all    20x whatshap  0.003  lowmap    units  14622 wrong   92 p 1.31e-10 pairs   117648 trusted   117648 wrong trusted   192  VIOLATES
+  all    20x whatshap  0.003  difficult units  18062 wrong    4 p 1.00e+00 pairs   132820 trusted   132820 wrong trusted     5
+  all    20x whatshap  0.003  tandem    units  21110 wrong   53 p 9.17e-01 pairs   216874 trusted   213043 wrong trusted    58
+  all    20x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   635735 trusted        0 wrong trusted     0
+  all    20x whatshap  0.003  easy      units  23763 wrong   23 p 1.00e+00 pairs  1238206 trusted  1238206 wrong trusted    28
+  all    20x whatshap  0.003  segdup    units   3449 wrong   65 p 2.84e-12 pairs   104889 trusted   100404 wrong trusted   157  VIOLATES
+  key    20x whatshap  0.003  lowmap    units  11852 wrong    9 p 1.00e+00 pairs    68929 trusted    68929 wrong trusted    15
+  key    20x whatshap  0.003  difficult units  15870 wrong    2 p 1.00e+00 pairs    98232 trusted    98232 wrong trusted     3
+  key    20x whatshap  0.003  tandem    units  18742 wrong   14 p 1.00e+00 pairs   142513 trusted   141207 wrong trusted    14
+  key    20x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   399520 trusted        0 wrong trusted     0
+  key    20x whatshap  0.003  easy      units  22771 wrong   11 p 1.00e+00 pairs   938698 trusted   938698 wrong trusted    13
+  key    20x whatshap  0.003  segdup    units   2623 wrong    0 p 1.00e+00 pairs    46836 trusted    46444 wrong trusted     0
+  random 20x whatshap  0.003  lowmap    units  13192 wrong   60 p 1.47e-03 pairs    68976 trusted    68976 wrong trusted   108
+  random 20x whatshap  0.003  difficult units  17303 wrong    3 p 1.00e+00 pairs    98115 trusted    98115 wrong trusted     3
+  random 20x whatshap  0.003  tandem    units  20295 wrong   35 p 1.00e+00 pairs   142492 trusted   139948 wrong trusted    39
+  random 20x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   399405 trusted        0 wrong trusted     0
+  random 20x whatshap  0.003  easy      units  23481 wrong   19 p 1.00e+00 pairs   939322 trusted   939322 wrong trusted    21
+  random 20x whatshap  0.003  segdup    units   3008 wrong   42 p 1.88e-12 pairs    47062 trusted    45087 wrong trusted    75  VIOLATES
+  all    20x longphase 0.0003 lowmap    units  14519 wrong   12 p 1.85e-03 pairs   117322 trusted   116475 wrong trusted    17
+  all    20x longphase 0.0003 difficult units  17968 wrong    0 p 1.00e+00 pairs   133590 trusted   132986 wrong trusted     0
+  all    20x longphase 0.0003 tandem    units  21128 wrong    9 p 1.90e-01 pairs   217719 trusted   214741 wrong trusted    11
+  all    20x longphase 0.0003 indel     units  22978 wrong   25 p 8.04e-08 pairs   590538 trusted   489646 wrong trusted    36  VIOLATES
+  all    20x longphase 0.0003 easy      units  23569 wrong    2 p 9.93e-01 pairs  1246344 trusted  1240669 wrong trusted     2
+  all    20x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs   104935 trusted        0 wrong trusted     0
+  key    20x longphase 0.0003 lowmap    units  11799 wrong    0 p 1.00e+00 pairs    69146 trusted    68882 wrong trusted     0
+  key    20x longphase 0.0003 difficult units  15805 wrong    0 p 1.00e+00 pairs    98874 trusted    98539 wrong trusted     0
+  key    20x longphase 0.0003 tandem    units  18748 wrong    0 p 1.00e+00 pairs   143540 trusted   142387 wrong trusted     0
+  key    20x longphase 0.0003 indel     units  20605 wrong    1 p 9.98e-01 pairs   378718 trusted   323503 wrong trusted     1
+  key    20x longphase 0.0003 easy      units  22576 wrong    0 p 1.00e+00 pairs   945280 trusted   941359 wrong trusted     0
+  key    20x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    46885 trusted        0 wrong trusted     0
+  random 20x longphase 0.0003 lowmap    units  13125 wrong    9 p 1.95e-02 pairs    69206 trusted    68707 wrong trusted    11
+  random 20x longphase 0.0003 difficult units  17218 wrong    0 p 1.00e+00 pairs    98750 trusted    98304 wrong trusted     0
+  random 20x longphase 0.0003 tandem    units  20377 wrong    6 p 5.72e-01 pairs   143524 trusted   141590 wrong trusted     7
+  random 20x longphase 0.0003 indel     units  22392 wrong   16 p 1.61e-03 pairs   378692 trusted   313911 wrong trusted    19
+  random 20x longphase 0.0003 easy      units  23284 wrong    1 p 9.99e-01 pairs   945878 trusted   941604 wrong trusted     1
+  random 20x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    47107 trusted        0 wrong trusted     0
+  all    20x longphase 0.001  lowmap    units  14618 wrong   43 p 1.30e-09 pairs   117322 trusted   117322 wrong trusted   103  VIOLATES
+  all    20x longphase 0.001  difficult units  18085 wrong    7 p 9.99e-01 pairs   133590 trusted   133590 wrong trusted     7
+  all    20x longphase 0.001  tandem    units  21269 wrong   16 p 8.99e-01 pairs   217719 trusted   216813 wrong trusted    19
+  all    20x longphase 0.001  indel     units  23485 wrong   73 p 1.19e-11 pairs   590538 trusted   572583 wrong trusted   117  VIOLATES
+  all    20x longphase 0.001  easy      units  23569 wrong    2 p 1.00e+00 pairs  1246344 trusted  1240669 wrong trusted     2
+  all    20x longphase 0.001  segdup    units   3403 wrong   22 p 1.79e-11 pairs   104935 trusted    95854 wrong trusted    35  VIOLATES
+  key    20x longphase 0.001  lowmap    units  11864 wrong    3 p 9.99e-01 pairs    69146 trusted    69146 wrong trusted     3
+  key    20x longphase 0.001  difficult units  15900 wrong    4 p 1.00e+00 pairs    98874 trusted    98874 wrong trusted     4
+  key    20x longphase 0.001  tandem    units  18841 wrong    0 p 1.00e+00 pairs   143540 trusted   143186 wrong trusted     0
+  key    20x longphase 0.001  indel     units  20989 wrong    2 p 1.00e+00 pairs   378718 trusted   372989 wrong trusted     2
+  key    20x longphase 0.001  easy      units  22576 wrong    0 p 1.00e+00 pairs   945280 trusted   941359 wrong trusted     0
+  key    20x longphase 0.001  segdup    units   2604 wrong    0 p 1.00e+00 pairs    46885 trusted    46028 wrong trusted     0
+  random 20x longphase 0.001  lowmap    units  13233 wrong   33 p 3.41e-06 pairs    69206 trusted    69206 wrong trusted    64  VIOLATES
+  random 20x longphase 0.001  difficult units  17320 wrong    4 p 1.00e+00 pairs    98750 trusted    98750 wrong trusted     4
+  random 20x longphase 0.001  tandem    units  20511 wrong   11 p 9.92e-01 pairs   143524 trusted   142930 wrong trusted    12
+  random 20x longphase 0.001  indel     units  22952 wrong   55 p 9.77e-09 pairs   378692 trusted   367118 wrong trusted    69  VIOLATES
+  random 20x longphase 0.001  easy      units  23284 wrong    1 p 1.00e+00 pairs   945878 trusted   941604 wrong trusted     1
+  random 20x longphase 0.001  segdup    units   2935 wrong   18 p 2.47e-09 pairs    47107 trusted    43067 wrong trusted    23  VIOLATES
+  all    20x longphase 0.003  lowmap    units  14618 wrong   43 p 5.72e-01 pairs   117322 trusted   117322 wrong trusted   103
+  all    20x longphase 0.003  difficult units  18085 wrong    7 p 1.00e+00 pairs   133590 trusted   133590 wrong trusted     7
+  all    20x longphase 0.003  tandem    units  21357 wrong   61 p 6.66e-01 pairs   217719 trusted   217719 wrong trusted    70
+  all    20x longphase 0.003  indel     units  23671 wrong  121 p 4.10e-08 pairs   590538 trusted   583259 wrong trusted   199  VIOLATES
+  all    20x longphase 0.003  easy      units  23769 wrong   57 p 9.64e-01 pairs  1246344 trusted  1246344 wrong trusted    59
+  all    20x longphase 0.003  segdup    units   3490 wrong   78 p 0.00e+00 pairs   104935 trusted   100961 wrong trusted   185  VIOLATES
+  key    20x longphase 0.003  lowmap    units  11864 wrong    3 p 1.00e+00 pairs    69146 trusted    69146 wrong trusted     3
+  key    20x longphase 0.003  difficult units  15900 wrong    4 p 1.00e+00 pairs    98874 trusted    98874 wrong trusted     4
+  key    20x longphase 0.003  tandem    units  18897 wrong   12 p 1.00e+00 pairs   143540 trusted   143540 wrong trusted    12
+  key    20x longphase 0.003  indel     units  21061 wrong    6 p 1.00e+00 pairs   378718 trusted   376944 wrong trusted     7
+  key    20x longphase 0.003  easy      units  22776 wrong   26 p 1.00e+00 pairs   945280 trusted   945280 wrong trusted    26
+  key    20x longphase 0.003  segdup    units   2645 wrong    0 p 1.00e+00 pairs    46885 trusted    46736 wrong trusted     0
+  random 20x longphase 0.003  lowmap    units  13233 wrong   33 p 8.76e-01 pairs    69206 trusted    69206 wrong trusted    64
+  random 20x longphase 0.003  difficult units  17320 wrong    4 p 1.00e+00 pairs    98750 trusted    98750 wrong trusted     4
+  random 20x longphase 0.003  tandem    units  20589 wrong   45 p 9.89e-01 pairs   143524 trusted   143524 wrong trusted    50
+  random 20x longphase 0.003  indel     units  23159 wrong   96 p 1.46e-03 pairs   378692 trusted   373973 wrong trusted   125
+  random 20x longphase 0.003  easy      units  23504 wrong   40 p 1.00e+00 pairs   945878 trusted   945878 wrong trusted    40
+  random 20x longphase 0.003  segdup    units   3015 wrong   55 p 2.09e-12 pairs    47107 trusted    45326 wrong trusted    91  VIOLATES
+  all    10x whatshap  0.0003 lowmap    units  14068 wrong   17 p 2.28e-06 pairs   117366 trusted   111126 wrong trusted    21  VIOLATES
+  all    10x whatshap  0.0003 difficult units  18011 wrong    7 p 2.99e-01 pairs   132448 trusted   132448 wrong trusted    10
+  all    10x whatshap  0.0003 tandem    units      0 wrong    0 p 1.00e+00 pairs   216285 trusted        0 wrong trusted     0
+  all    10x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   631572 trusted        0 wrong trusted     0
+  all    10x whatshap  0.0003 easy      units  23566 wrong   10 p 1.77e-01 pairs  1236684 trusted  1230104 wrong trusted    10
+  all    10x whatshap  0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs   104005 trusted        0 wrong trusted     0
+  key    10x whatshap  0.0003 lowmap    units  11433 wrong    3 p 6.66e-01 pairs    68812 trusted    66366 wrong trusted     3
+  key    10x whatshap  0.0003 difficult units  15829 wrong    2 p 9.50e-01 pairs    98056 trusted    98056 wrong trusted     2
+  key    10x whatshap  0.0003 tandem    units      0 wrong    0 p 1.00e+00 pairs   142254 trusted        0 wrong trusted     0
+  key    10x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   397939 trusted        0 wrong trusted     0
+  key    10x whatshap  0.0003 easy      units  22567 wrong    4 p 9.05e-01 pairs   937640 trusted   933098 wrong trusted     4
+  key    10x whatshap  0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    46769 trusted        0 wrong trusted     0
+  random 10x whatshap  0.0003 lowmap    units  12656 wrong    7 p 9.06e-02 pairs    68861 trusted    65141 wrong trusted     8
+  random 10x whatshap  0.0003 difficult units  17230 wrong    4 p 7.58e-01 pairs    97948 trusted    97948 wrong trusted     4
+  random 10x whatshap  0.0003 tandem    units      0 wrong    0 p 1.00e+00 pairs   142231 trusted        0 wrong trusted     0
+  random 10x whatshap  0.0003 indel     units      0 wrong    0 p 1.00e+00 pairs   397825 trusted        0 wrong trusted     0
+  random 10x whatshap  0.0003 easy      units  23274 wrong    7 p 5.48e-01 pairs   938235 trusted   933254 wrong trusted     7
+  random 10x whatshap  0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    46989 trusted        0 wrong trusted     0
+  all    10x whatshap  0.001  lowmap    units  14464 wrong   45 p 1.05e-10 pairs   117366 trusted   116061 wrong trusted    76  VIOLATES
+  all    10x whatshap  0.001  difficult units  18011 wrong    7 p 9.99e-01 pairs   132448 trusted   132448 wrong trusted    10
+  all    10x whatshap  0.001  tandem    units  19228 wrong    7 p 1.00e+00 pairs   216285 trusted   148082 wrong trusted     7
+  all    10x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   631572 trusted        0 wrong trusted     0
+  all    10x whatshap  0.001  easy      units  23566 wrong   10 p 9.99e-01 pairs  1236684 trusted  1230104 wrong trusted    10
+  all    10x whatshap  0.001  segdup    units   2820 wrong   13 p 8.37e-06 pairs   104005 trusted    67502 wrong trusted    19  VIOLATES
+  key    10x whatshap  0.001  lowmap    units  11739 wrong    5 p 9.91e-01 pairs    68812 trusted    68412 wrong trusted     6
+  key    10x whatshap  0.001  difficult units  15829 wrong    2 p 1.00e+00 pairs    98056 trusted    98056 wrong trusted     2
+  key    10x whatshap  0.001  tandem    units  16760 wrong    3 p 1.00e+00 pairs   142254 trusted   102073 wrong trusted     3
+  key    10x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   397939 trusted        0 wrong trusted     0
+  key    10x whatshap  0.001  easy      units  22567 wrong    4 p 1.00e+00 pairs   937640 trusted   933098 wrong trusted     4
+  key    10x whatshap  0.001  segdup    units   2157 wrong    0 p 1.00e+00 pairs    46769 trusted    34557 wrong trusted     0
+  random 10x whatshap  0.001  lowmap    units  13057 wrong   32 p 6.67e-06 pairs    68861 trusted    68080 wrong trusted    45  VIOLATES
+  random 10x whatshap  0.001  difficult units  17230 wrong    4 p 1.00e+00 pairs    97948 trusted    97948 wrong trusted     4
+  random 10x whatshap  0.001  tandem    units  18245 wrong    6 p 1.00e+00 pairs   142231 trusted    97325 wrong trusted     6
+  random 10x whatshap  0.001  indel     units      0 wrong    0 p 1.00e+00 pairs   397825 trusted        0 wrong trusted     0
+  random 10x whatshap  0.001  easy      units  23274 wrong    7 p 1.00e+00 pairs   938235 trusted   933254 wrong trusted     7
+  random 10x whatshap  0.001  segdup    units   2415 wrong    7 p 1.19e-02 pairs    46989 trusted    30385 wrong trusted     9
+  all    10x whatshap  0.003  lowmap    units  14588 wrong  101 p 0.00e+00 pairs   117366 trusted   117366 wrong trusted   197  VIOLATES
+  all    10x whatshap  0.003  difficult units  18011 wrong    7 p 1.00e+00 pairs   132448 trusted   132448 wrong trusted    10
+  all    10x whatshap  0.003  tandem    units  20948 wrong   61 p 6.09e-01 pairs   216285 trusted   207368 wrong trusted    78
+  all    10x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   631572 trusted        0 wrong trusted     0
+  all    10x whatshap  0.003  easy      units  23710 wrong   34 p 1.00e+00 pairs  1236684 trusted  1236684 wrong trusted    46
+  all    10x whatshap  0.003  segdup    units   3301 wrong   63 p 0.00e+00 pairs   104005 trusted    92296 wrong trusted   124  VIOLATES
+  key    10x whatshap  0.003  lowmap    units  11826 wrong    8 p 1.00e+00 pairs    68812 trusted    68812 wrong trusted    13
+  key    10x whatshap  0.003  difficult units  15829 wrong    2 p 1.00e+00 pairs    98056 trusted    98056 wrong trusted     2
+  key    10x whatshap  0.003  tandem    units  18589 wrong   16 p 1.00e+00 pairs   142254 trusted   138146 wrong trusted    17
+  key    10x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   397939 trusted        0 wrong trusted     0
+  key    10x whatshap  0.003  easy      units  22719 wrong   20 p 1.00e+00 pairs   937640 trusted   937640 wrong trusted    21
+  key    10x whatshap  0.003  segdup    units   2527 wrong    2 p 9.96e-01 pairs    46769 trusted    44290 wrong trusted     3
+  random 10x whatshap  0.003  lowmap    units  13192 wrong   74 p 6.34e-07 pairs    68861 trusted    68861 wrong trusted   111  VIOLATES
+  random 10x whatshap  0.003  difficult units  17230 wrong    4 p 1.00e+00 pairs    97948 trusted    97948 wrong trusted     4
+  random 10x whatshap  0.003  tandem    units  20153 wrong   41 p 9.97e-01 pairs   142231 trusted   136348 wrong trusted    49
+  random 10x whatshap  0.003  indel     units      0 wrong    0 p 1.00e+00 pairs   397825 trusted        0 wrong trusted     0
+  random 10x whatshap  0.003  easy      units  23425 wrong   24 p 1.00e+00 pairs   938235 trusted   938235 wrong trusted    31
+  random 10x whatshap  0.003  segdup    units   2869 wrong   33 p 1.79e-10 pairs    46989 trusted    41584 wrong trusted    45  VIOLATES
+  all    10x longphase 0.0003 lowmap    units  14573 wrong   26 p 0.00e+00 pairs   117407 trusted   117132 wrong trusted    40  VIOLATES
+  all    10x longphase 0.0003 difficult units  18044 wrong    1 p 9.96e-01 pairs   133738 trusted   133698 wrong trusted     1
+  all    10x longphase 0.0003 tandem    units  20730 wrong    9 p 1.76e-01 pairs   217061 trusted   201134 wrong trusted    15
+  all    10x longphase 0.0003 indel     units  20760 wrong   10 p 1.00e-01 pairs   571334 trusted   283509 wrong trusted    14
+  all    10x longphase 0.0003 easy      units  23713 wrong    5 p 8.37e-01 pairs  1250134 trusted  1249896 wrong trusted     6
+  all    10x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs   105714 trusted        0 wrong trusted     0
+  key    10x longphase 0.0003 lowmap    units  11843 wrong    3 p 6.89e-01 pairs    69256 trusted    69231 wrong trusted     3
+  key    10x longphase 0.0003 difficult units  15868 wrong    1 p 9.91e-01 pairs    99066 trusted    99041 wrong trusted     1
+  key    10x longphase 0.0003 tandem    units  18390 wrong    0 p 1.00e+00 pairs   143336 trusted   134954 wrong trusted     0
+  key    10x longphase 0.0003 indel     units  18408 wrong    0 p 1.00e+00 pairs   366315 trusted   192312 wrong trusted     0
+  key    10x longphase 0.0003 easy      units  22726 wrong    3 p 9.66e-01 pairs   947829 trusted   947704 wrong trusted     3
+  key    10x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    47106 trusted        0 wrong trusted     0
+  random 10x longphase 0.0003 lowmap    units  13228 wrong   16 p 4.41e-06 pairs    69307 trusted    69141 wrong trusted    23  VIOLATES
+  random 10x longphase 0.0003 difficult units  17317 wrong    1 p 9.94e-01 pairs    98935 trusted    98910 wrong trusted     1
+  random 10x longphase 0.0003 tandem    units  19977 wrong    9 p 1.52e-01 pairs   143361 trusted   132829 wrong trusted    11
+  random 10x longphase 0.0003 indel     units  19992 wrong    8 p 2.56e-01 pairs   366350 trusted   181830 wrong trusted    10
+  random 10x longphase 0.0003 easy      units  23445 wrong    4 p 9.20e-01 pairs   948397 trusted   948213 wrong trusted     5
+  random 10x longphase 0.0003 segdup    units      0 wrong    0 p 1.00e+00 pairs    47339 trusted        0 wrong trusted     0
+  all    10x longphase 0.001  lowmap    units  14589 wrong   58 p 8.13e-12 pairs   117407 trusted   117407 wrong trusted   107  VIOLATES
+  all    10x longphase 0.001  difficult units  18049 wrong   13 p 9.10e-01 pairs   133738 trusted   133738 wrong trusted    13
+  all    10x longphase 0.001  tandem    units  21249 wrong   48 p 4.22e-07 pairs   217061 trusted   216458 wrong trusted    70  VIOLATES
+  all    10x longphase 0.001  indel     units  22728 wrong   40 p 6.53e-04 pairs   571334 trusted   461867 wrong trusted    55
+  all    10x longphase 0.001  easy      units  23713 wrong    5 p 1.00e+00 pairs  1250134 trusted  1249896 wrong trusted     6
+  all    10x longphase 0.001  segdup    units   3176 wrong   17 p 4.70e-08 pairs   105714 trusted    85141 wrong trusted    27  VIOLATES
+  key    10x longphase 0.001  lowmap    units  11847 wrong    7 p 9.50e-01 pairs    69256 trusted    69256 wrong trusted     7
+  key    10x longphase 0.001  difficult units  15872 wrong   10 p 9.54e-01 pairs    99066 trusted    99066 wrong trusted    10
+  key    10x longphase 0.001  tandem    units  18828 wrong    3 p 1.00e+00 pairs   143336 trusted   143147 wrong trusted     3
+  key    10x longphase 0.001  indel     units  20391 wrong    1 p 1.00e+00 pairs   366315 trusted   306496 wrong trusted     2
+  key    10x longphase 0.001  easy      units  22726 wrong    3 p 1.00e+00 pairs   947829 trusted   947704 wrong trusted     3
+  key    10x longphase 0.001  segdup    units   2437 wrong    0 p 1.00e+00 pairs    47106 trusted    42188 wrong trusted     0
+  random 10x longphase 0.001  lowmap    units  13242 wrong   42 p 2.41e-10 pairs    69307 trusted    69307 wrong trusted    72  VIOLATES
+  random 10x longphase 0.001  difficult units  17321 wrong    7 p 9.98e-01 pairs    98935 trusted    98935 wrong trusted     7
+  random 10x longphase 0.001  tandem    units  20510 wrong   38 p 3.45e-04 pairs   143361 trusted   142978 wrong trusted    48  VIOLATES
+  random 10x longphase 0.001  indel     units  22095 wrong   32 p 2.78e-02 pairs   366350 trusted   296177 wrong trusted    42
+  random 10x longphase 0.001  easy      units  23445 wrong    4 p 1.00e+00 pairs   948397 trusted   948213 wrong trusted     5
+  random 10x longphase 0.001  segdup    units   2767 wrong   14 p 1.33e-06 pairs    47339 trusted    38112 wrong trusted    16  VIOLATES
+  all    10x longphase 0.003  lowmap    units  14589 wrong   58 p 2.24e-02 pairs   117407 trusted   117407 wrong trusted   107
+  all    10x longphase 0.003  difficult units  18049 wrong   13 p 1.00e+00 pairs   133738 trusted   133738 wrong trusted    13
+  all    10x longphase 0.003  tandem    units  21249 wrong   48 p 9.83e-01 pairs   217061 trusted   216458 wrong trusted    70
+  all    10x longphase 0.003  indel     units  23291 wrong  141 p 3.19e-11 pairs   571334 trusted   539127 wrong trusted   213  VIOLATES
+  all    10x longphase 0.003  easy      units  23718 wrong   71 p 5.23e-01 pairs  1250134 trusted  1250134 wrong trusted    72
+  all    10x longphase 0.003  segdup    units   3436 wrong   71 p 0.00e+00 pairs   105714 trusted   100105 wrong trusted   139  VIOLATES
+  key    10x longphase 0.003  lowmap    units  11847 wrong    7 p 1.00e+00 pairs    69256 trusted    69256 wrong trusted     7
+  key    10x longphase 0.003  difficult units  15872 wrong   10 p 1.00e+00 pairs    99066 trusted    99066 wrong trusted    10
+  key    10x longphase 0.003  tandem    units  18828 wrong    3 p 1.00e+00 pairs   143336 trusted   143147 wrong trusted     3
+  key    10x longphase 0.003  indel     units  20858 wrong   11 p 1.00e+00 pairs   366315 trusted   352549 wrong trusted    18
+  key    10x longphase 0.003  easy      units  22728 wrong   37 p 1.00e+00 pairs   947829 trusted   947829 wrong trusted    37
+  key    10x longphase 0.003  segdup    units   2620 wrong    2 p 9.97e-01 pairs    47106 trusted    46707 wrong trusted     2
+  random 10x longphase 0.003  lowmap    units  13242 wrong   42 p 3.80e-01 pairs    69307 trusted    69307 wrong trusted    72
+  random 10x longphase 0.003  difficult units  17321 wrong    7 p 1.00e+00 pairs    98935 trusted    98935 wrong trusted     7
+  random 10x longphase 0.003  tandem    units  20510 wrong   38 p 9.99e-01 pairs   143361 trusted   142978 wrong trusted    48
+  random 10x longphase 0.003  indel     units  22722 wrong  105 p 2.04e-05 pairs   366350 trusted   345604 wrong trusted   134  VIOLATES
+  random 10x longphase 0.003  easy      units  23449 wrong   53 p 9.86e-01 pairs   948397 trusted   948397 wrong trusted    54
+  random 10x longphase 0.003  segdup    units   3005 wrong   48 p 0.00e+00 pairs    47339 trusted    44857 wrong trusted    68  VIOLATES
+  violating cells: {'all': 31, 'key': 0, 'random': 20}
+
+== P3: phaser beta group | certified, units, wrong units, p, trusted share
+  whatshap  0.0003 easy      cert units  23401 wrong   1 p 9.99e-01 share 0.9783
+  whatshap  0.0003 difficult cert units  17706 wrong   0 p 1.00e+00 share 0.9481
+  whatshap  0.0003 segdup    none units      0 wrong   0 p 1.00e+00 share 0.0000
+  whatshap  0.0003 lowmap    cert units  14149 wrong   1 p 9.86e-01 share 0.9346
+  whatshap  0.0003 tandem    cert units  20785 wrong   3 p 9.48e-01 share 0.9198
+  whatshap  0.0003 indel     cert units  22465 wrong   4 p 9.04e-01 share 0.8695
+  whatshap  0.001  easy      cert units  23401 wrong   1 p 1.00e+00 share 0.9783
+  whatshap  0.001  difficult cert units  17706 wrong   0 p 1.00e+00 share 0.9481
+  whatshap  0.001  segdup    cert units   3170 wrong   1 p 9.58e-01 share 0.7794
+  whatshap  0.001  lowmap    cert units  14149 wrong   1 p 1.00e+00 share 0.9346
+  whatshap  0.001  tandem    cert units  20785 wrong   3 p 1.00e+00 share 0.9198
+  whatshap  0.001  indel     cert units  22500 wrong  17 p 9.02e-01 share 0.8750
+  whatshap  0.003  easy      cert units  23401 wrong   1 p 1.00e+00 share 0.9783
+  whatshap  0.003  difficult cert units  17706 wrong   0 p 1.00e+00 share 0.9481
+  whatshap  0.003  segdup    cert units   3186 wrong   2 p 9.99e-01 share 0.7837
+  whatshap  0.003  lowmap    cert units  14149 wrong   1 p 1.00e+00 share 0.9346
+  whatshap  0.003  tandem    cert units  20785 wrong   3 p 1.00e+00 share 0.9198
+  whatshap  0.003  indel     cert units  22500 wrong  17 p 1.00e+00 share 0.8750
+  longphase 0.0003 easy      cert units  23303 wrong   0 p 1.00e+00 share 0.9767
+  longphase 0.0003 difficult cert units  17730 wrong   1 p 9.95e-01 share 0.9488
+  longphase 0.0003 segdup    none units      0 wrong   0 p 1.00e+00 share 0.0000
+  longphase 0.0003 lowmap    cert units  14148 wrong   0 p 1.00e+00 share 0.9381
+  longphase 0.0003 tandem    cert units  20799 wrong   3 p 9.48e-01 share 0.9245
+  longphase 0.0003 indel     cert units  22400 wrong   2 p 9.91e-01 share 0.8919
+  longphase 0.001  easy      cert units  23402 wrong  17 p 9.29e-01 share 0.9785
+  longphase 0.001  difficult cert units  17730 wrong   1 p 1.00e+00 share 0.9488
+  longphase 0.001  segdup    cert units   3186 wrong   1 p 9.59e-01 share 0.7791
+  longphase 0.001  lowmap    cert units  14148 wrong   0 p 1.00e+00 share 0.9381
+  longphase 0.001  tandem    cert units  20803 wrong   6 p 1.00e+00 share 0.9251
+  longphase 0.001  indel     cert units  22428 wrong  16 p 9.35e-01 share 0.8959
+  longphase 0.003  easy      cert units  23402 wrong  17 p 1.00e+00 share 0.9785
+  longphase 0.003  difficult cert units  17730 wrong   1 p 1.00e+00 share 0.9488
+  longphase 0.003  segdup    cert units   3212 wrong   4 p 9.87e-01 share 0.7904
+  longphase 0.003  lowmap    cert units  14148 wrong   0 p 1.00e+00 share 0.9381
+  longphase 0.003  tandem    cert units  20803 wrong   6 p 1.00e+00 share 0.9251
+  longphase 0.003  indel     cert units  22428 wrong  16 p 1.00e+00 share 0.8959
+
+== P4: phaser r | genes picked, wrong picks, p, 10-100 kb share
+  whatshap  0.001  picks  2437 wrong   0 p 1.00e+00 10-100 kb share 0.0000 (level 1.250e-02)
+  whatshap  0.01   picks  2465 wrong   1 p 1.00e+00 10-100 kb share 0.9041 (level 1.250e-02)
+  longphase 0.001  picks  2433 wrong   0 p 1.00e+00 10-100 kb share 0.0000 (level 1.250e-02)
+  longphase 0.01   picks  2462 wrong   2 p 1.00e+00 10-100 kb share 0.8927 (level 1.250e-02)
+
+== P5: 30x, inside = both variants in the GIAB HG001 v4.2.1 BED
+  whatshap  inside 664/1945556 = 3.41e-04; outside 7008/502650 = 1.39e-02; ratio 40.85; share of wrong outside 0.9135
+  longphase inside 161/1945001 = 8.28e-05; outside 899/471630 = 1.91e-03; ratio 23.03; share of wrong outside 0.8481
+
+P1: supported
+P2: supported
+P3: supported
+P4: supported
+P5: supported
+runtime 9325 s

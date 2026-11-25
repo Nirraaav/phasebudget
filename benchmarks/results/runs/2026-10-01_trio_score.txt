@@ -1,0 +1,11 @@
+trio run, chromosomes chr16, chr18, chr21, chr22; child sites dropped for parents outside their BED or with incompatible calls: 5785; truth GIAB v5.0q
+       run  switches     pairs  per 10k   N50 kb      DP s max active
+ thirds_15         4    164200    0.244    80171    3863.3         15
+  thirds_9         6    164198    0.365    80171      57.2          9
+  shared_9         8    164193    0.487    80171      58.4          9
+ shared_15         2    164198    0.122    80171    3470.0         15
+whatshap_thirds_15         2    164219    0.122    80171    2056.9         15
+whatshap_thirds_9         2    164219    0.122    80171      39.7          9
+P1 shared 9 vs thirds 15: discordant 4/0 of 164180 common pairs; difference per 10k +0.244 [+0.000, +0.641]; DP time ratio 0.015 -> not supported (rule: upper end below +0.5 and ratio at most 0.1)
+P2 shared 9 vs thirds 9: discordant 4/0, p 0.125 -> not supported (rule: significant for shared at 0.05)
+P4 exact thirds 15 vs WhatsHap thirds 15: discordant 2/0 of 164195 common pairs, p 0.5 -> not supported (rule: significant for exact selection at 0.05)

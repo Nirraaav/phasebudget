@@ -1,0 +1,7 @@
+exploratory gap weights, platform ont, chr20, full depth, truth GIAB v5.0q
+cap  3 whatshap: constant 41/44389 = 9.24; gap 38/44389 = 8.56 per 10k; common pairs 44389, only constant wrong 8, only gap wrong 5
+cap  3  optimal: constant 8/44113 = 1.81; gap 11/44186 = 2.49 per 10k; common pairs 43961, only constant wrong 7, only gap wrong 10
+cap  5 whatshap: constant 5/44439 = 1.13; gap 6/44439 = 1.35 per 10k; common pairs 44439, only constant wrong 2, only gap wrong 3
+cap  5  optimal: constant 5/44295 = 1.13; gap 6/44322 = 1.35 per 10k; common pairs 44228, only constant wrong 3, only gap wrong 4
+cap 15 whatshap: constant 0/44440 = 0.00; gap 0/44440 = 0.00 per 10k; common pairs 44440, only constant wrong 0, only gap wrong 0
+cap 15  optimal: constant 0/44414 = 0.00; gap 2/44422 = 0.45 per 10k; common pairs 44407, only constant wrong 0, only gap wrong 2

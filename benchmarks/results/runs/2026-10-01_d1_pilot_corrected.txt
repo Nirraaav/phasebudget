@@ -1,0 +1,107 @@
+504 pilot jobs to run
+D1 pilot (docs/design/error-optimal-selection.md): switch-model costs, allele error 0.00117, scales 1e2, 1e4, 1e6, caps (3, 5), depths full, 20, 15, 10; realign fragments, log-odds weights; CoverageDP phasing
+
+tuning, odd chromosomes chr1, chr3, chr5, chr7, chr9, chr11, chr13, chr15, chr17, chr19, chr21: pooled against the filtered truth; 'vs optimal' counts common pairs where only this pipeline / only optimal is wrong
+depth cap           pipeline    switch        sw/pairs  N50 kb  vs optimal         p
+ full   3            optimal  0.000031     25/801305       111                      
+ full   3          connected  0.000039     32/814594       230     6/5      1.00e+00
+ full   3           whatshap  0.000076     61/802940       102    40/12     1.28e-04
+ full   3  error_optimal_1e2  0.000038     31/814594       230     9/11     8.24e-01
+ full   3  error_optimal_1e4  0.000037     30/814593       230    10/13     6.78e-01
+ full   3  error_optimal_1e6  0.000038     31/814593       230    10/11     1.00e+00
+ full   5            optimal  0.000027     22/808290       165                      
+ full   5          connected  0.000029     24/814594       230     0/1      1.00e+00
+ full   5           whatshap  0.000031     25/814140       221     9/10     1.00e+00
+ full   5  error_optimal_1e2  0.000025     20/814594       230     3/8      2.27e-01
+ full   5  error_optimal_1e4  0.000022     18/814594       230     3/9      1.46e-01
+ full   5  error_optimal_1e6  0.000020     16/814594       230     1/9      2.15e-02
+   20   3            optimal  0.000041     33/804161       122                      
+   20   3          connected  0.000049     40/813980       221     7/6      1.00e+00
+   20   3           whatshap  0.000093     75/802314       101    56/18     1.11e-05
+   20   3  error_optimal_1e2  0.000042     34/813980       221    10/14     5.41e-01
+   20   3  error_optimal_1e4  0.000048     39/813979       221    17/18     1.00e+00
+   20   3  error_optimal_1e6  0.000047     38/813979       221    17/18     1.00e+00
+   20   5            optimal  0.000025     20/810030       178                      
+   20   5          connected  0.000031     25/813982       221     0/0      1.00e+00
+   20   5           whatshap  0.000023     19/813583       213     5/7      7.74e-01
+   20   5  error_optimal_1e2  0.000022     18/813984       221     1/5      2.19e-01
+   20   5  error_optimal_1e4  0.000020     16/813984       221     1/7      7.03e-02
+   20   5  error_optimal_1e6  0.000020     16/813985       221     1/7      7.03e-02
+   15   3            optimal  0.000035     28/805303       126                      
+   15   3          connected  0.000044     36/813429       212     3/1      6.25e-01
+   15   3           whatshap  0.000110     88/802259       101    70/17     8.35e-09
+   15   3  error_optimal_1e2  0.000043     35/813431       212     8/7      1.00e+00
+   15   3  error_optimal_1e4  0.000048     39/813434       212    15/10     4.24e-01
+   15   3  error_optimal_1e6  0.000043     35/813434       212    13/12     1.00e+00
+   15   5            optimal  0.000027     22/810369       178                      
+   15   5          connected  0.000032     26/813442       212     1/1      1.00e+00
+   15   5           whatshap  0.000034     28/813191       207    14/10     5.41e-01
+   15   5  error_optimal_1e2  0.000031     25/813446       212     3/4      1.00e+00
+   15   5  error_optimal_1e4  0.000026     21/813451       212     2/7      1.80e-01
+   15   5  error_optimal_1e6  0.000027     22/813450       212     4/8      3.88e-01
+   10   3            optimal  0.000056     45/805395       120                      
+   10   3          connected  0.000062     50/812199       196     5/6      1.00e+00
+   10   3           whatshap  0.000096     77/801731       100    55/28     4.04e-03
+   10   3  error_optimal_1e2  0.000065     53/812215       196    12/10     8.32e-01
+   10   3  error_optimal_1e4  0.000068     55/812241       197    20/15     5.00e-01
+   10   3  error_optimal_1e6  0.000070     57/812241       197    22/15     3.24e-01
+   10   5            optimal  0.000038     31/810100       166                      
+   10   5          connected  0.000042     34/812242       196     1/0      1.00e+00
+   10   5           whatshap  0.000043     35/812053       192    15/13     8.51e-01
+   10   5  error_optimal_1e2  0.000042     34/812255       197     2/1      1.00e+00
+   10   5  error_optimal_1e4  0.000034     28/812264       197     2/8      1.09e-01
+   10   5  error_optimal_1e6  0.000042     34/812263       197     6/6      1.00e+00
+tuning: pooled switch error by scale, caps 3 and 5, all depths: 1e2 0.0000384, 1e4 0.0000378, 1e6 0.0000383 -> 1e4
+
+test, even chromosomes chr2, chr4, chr6, chr8, chr10, chr12, chr14, chr16, chr18, chr22: pooled against the filtered truth; 'vs optimal' counts common pairs where only this pipeline / only optimal is wrong
+depth cap           pipeline    switch        sw/pairs  N50 kb  vs optimal         p
+ full   3            optimal  0.000026     20/775058       113                      
+ full   3          connected  0.000036     28/787228       236     5/3      7.27e-01
+ full   3           whatshap  0.000083     64/775455       101    53/15     4.12e-06
+ full   3  error_optimal_1e2  0.000038     30/787231       236    10/6      4.54e-01
+ full   3  error_optimal_1e4  0.000036     28/787231       236    10/9      1.00e+00
+ full   3  error_optimal_1e6  0.000030     24/787231       236     8/12     5.03e-01
+ full   5            optimal  0.000028     22/781447       169                      
+ full   5          connected  0.000033     26/787230       236     1/0      1.00e+00
+ full   5           whatshap  0.000028     22/786727       225    12/15     7.01e-01
+ full   5  error_optimal_1e2  0.000022     17/787232       236     3/10     9.23e-02
+ full   5  error_optimal_1e4  0.000022     17/787232       236     3/10     9.23e-02
+ full   5  error_optimal_1e6  0.000020     16/787232       236     0/8      7.81e-03
+   20   3            optimal  0.000031     24/777934       125                      
+   20   3          connected  0.000044     35/786619       226     3/4      1.00e+00
+   20   3           whatshap  0.000081     63/775725       102    49/17     1.01e-04
+   20   3  error_optimal_1e2  0.000064     50/786620       227    19/7      2.90e-02
+   20   3  error_optimal_1e4  0.000071     56/786619       227    27/8      1.88e-03
+   20   3  error_optimal_1e6  0.000066     52/786620       227    22/6      3.72e-03
+   20   5            optimal  0.000029     23/783159       182                      
+   20   5          connected  0.000034     27/786622       226     2/1      1.00e+00
+   20   5           whatshap  0.000045     35/786332       219    22/12     1.21e-01
+   20   5  error_optimal_1e2  0.000032     25/786626       227     3/4      1.00e+00
+   20   5  error_optimal_1e4  0.000027     21/786627       227     4/8      3.88e-01
+   20   5  error_optimal_1e6  0.000028     22/786626       227     8/9      1.00e+00
+   15   3            optimal  0.000044     34/778677       127                      
+   15   3          connected  0.000059     46/786102       219     7/2      1.80e-01
+   15   3           whatshap  0.000089     69/775517       102    53/23     7.65e-04
+   15   3  error_optimal_1e2  0.000067     53/786109       219    24/14     1.43e-01
+   15   3  error_optimal_1e4  0.000074     58/786108       219    27/12     2.37e-02
+   15   3  error_optimal_1e6  0.000073     57/786107       219    28/14     4.36e-02
+   15   5            optimal  0.000028     22/783548       184                      
+   15   5          connected  0.000032     25/786120       219     1/0      1.00e+00
+   15   5           whatshap  0.000027     21/785893       212     6/8      7.91e-01
+   15   5  error_optimal_1e2  0.000032     25/786126       219     3/2      1.00e+00
+   15   5  error_optimal_1e4  0.000031     24/786124       219     4/3      1.00e+00
+   15   5  error_optimal_1e6  0.000028     22/786126       219     6/7      1.00e+00
+   10   3            optimal  0.000049     38/778490       118                      
+   10   3          connected  0.000055     43/784821       196     7/4      5.49e-01
+   10   3           whatshap  0.000106     82/774582        99    60/19     4.19e-06
+   10   3  error_optimal_1e2  0.000062     49/784846       197    19/11     2.00e-01
+   10   3  error_optimal_1e4  0.000080     63/784875       198    32/10     9.41e-04
+   10   3  error_optimal_1e6  0.000078     61/784875       198    30/10     2.22e-03
+   10   5            optimal  0.000031     24/783005       166                      
+   10   5          connected  0.000031     24/784875       197     2/2      1.00e+00
+   10   5           whatshap  0.000028     22/784705       193     9/11     8.24e-01
+   10   5  error_optimal_1e2  0.000027     21/784885       197     4/7      5.49e-01
+   10   5  error_optimal_1e4  0.000027     21/784901       198     6/9      6.07e-01
+   10   5  error_optimal_1e6  0.000025     20/784904       198     6/10     4.54e-01
+
+gate, cap 3, error_optimal_1e4 vs optimal on the even chromosomes: discordant fullx 10/9, 20x 27/8, 15x 27/12, 10x 32/10; total 96/39, p 1.01e-06; fewer at every depth: False -> gate not met

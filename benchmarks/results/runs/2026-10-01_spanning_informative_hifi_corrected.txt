@@ -1,0 +1,50 @@
+errors by spanning-read count (informative); platform hifi, truth v5, 21 chromosomes; EXPLORATORY, after the results were seen
+depth cap  selector   s  boundaries   share    scored  wrong  per 10k
+   10   3   optimal   0       54394  0.0270       210      1    47.62
+   10   3   optimal   1       78273  0.0388     76416     26     3.40
+   10   3   optimal   2      385783  0.1914    378033     54     1.43
+   10   3   optimal   3     1497228  0.7428   1466958     56     0.38
+
+   10   3  whatshap   0       64122  0.0318       464      5   107.76
+   10   3  whatshap   1      193561  0.0960    189348     68     3.59
+   10   3  whatshap   2      687420  0.3410    673988    137     2.03
+   10   3  whatshap   3     1070575  0.5311   1048759     43     0.41
+
+   10   5   optimal   0       44534  0.0221        94      1   106.38
+   10   5   optimal   1       22915  0.0114     21999     14     6.36
+   10   5   optimal   2       63812  0.0317     62269     18     2.89
+   10   5   optimal   3      187844  0.0932    183980      9     0.49
+   10   5   optimal   4      538162  0.2670    527474     16     0.30
+   10   5   optimal   5     1158411  0.5747   1135300     20     0.18
+
+   10   5  whatshap   0       40729  0.0202       118      1    84.75
+   10   5  whatshap   1       27190  0.0135     26159     17     6.50
+   10   5  whatshap   2      120974  0.0600    117976     16     1.36
+   10   5  whatshap   3      344973  0.1711    337856     15     0.44
+   10   5  whatshap   4      707460  0.3510    694318     18     0.26
+   10   5  whatshap   5      774352  0.3842    758400     19     0.25
+
+ full   3   optimal   0       61503  0.0305         7      0     0.00
+ full   3   optimal   1       61681  0.0306     60501     10     1.65
+ full   3   optimal   2      231401  0.1148    227483     16     0.70
+ full   3   optimal   3     1661093  0.8241   1626204     51     0.31
+
+ full   3  whatshap   0       61598  0.0306       364      2    54.95
+ full   3  whatshap   1      155855  0.0773    152493     63     4.13
+ full   3  whatshap   2      552945  0.2743    542351     76     1.40
+ full   3  whatshap   3     1245280  0.6178   1219406     39     0.32
+
+ full   5   optimal   0       47533  0.0236         6      0     0.00
+ full   5   optimal   1       18613  0.0092     18097      3     1.66
+ full   5   optimal   2       37942  0.0188     37238      9     2.42
+ full   5   optimal   3       94851  0.0471     93256      4     0.43
+ full   5   optimal   4      289169  0.1435    284012      7     0.25
+ full   5   optimal   5     1527570  0.7578   1495282     41     0.27
+
+ full   5  whatshap   0       36048  0.0179        66      0     0.00
+ full   5  whatshap   1       16982  0.0084     16304     13     7.97
+ full   5  whatshap   2       86406  0.0429     84246     22     2.61
+ full   5  whatshap   3      252775  0.1254    247486      6     0.24
+ full   5  whatshap   4      593338  0.2944    582483     12     0.21
+ full   5  whatshap   5     1030129  0.5111   1008574     23     0.23
+

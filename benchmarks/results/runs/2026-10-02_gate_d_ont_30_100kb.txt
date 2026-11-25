@@ -1,0 +1,7 @@
+gate G-D, HG002 ont whatshap phase, depth 30; 100 kb bins; calibration 1001846 pairs (odd chromosomes), test 964992 pairs (even); delta 0.05
+    beta |              threshold | test bins wrong | test pair errors | pairs trusted
+   1e-04 |         none certified |
+   3e-04 |           (0.7369, 18) |      1/11953    |     1/909218     |        0.9422
+   1e-03 |            (0.4286, 3) |      5/12154    |     8/962818     |        0.9977
+   3e-03 |              (-1.0, 0) |     32/12194    |    50/964992     |        1.0000
+   1e-02 |              (-1.0, 0) |     32/12194    |    50/964992     |        1.0000

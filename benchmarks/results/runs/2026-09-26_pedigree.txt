@@ -1,0 +1,25 @@
+commit a0a9d5a; Linux 7.0.0-34-generic x86_64; Python 3.12.3; WhatsHap 2.8
+trio, 2000 segregating sites at 1e-3, depth 30 per member, quality spread 2, 16 replicates, seed 30000 + 17 * replicate, recombination 1.26 cM/Mb; profiles ont (10000 bp, error 0.05), noisy (10000 bp, error 0.1); simulated data
+switch error of the child, pooled over replicates (switches / pairs), with the worst replicate; trio = PedigreeDPTable on all three members at the per-member cap, alone = the child by itself at the same cap, counted inside read blocks
+profile  cap       selector      trio    worst     alone    worst trio pairs
+----------------------------------------------------------------------------
+    ont    3         random   0.00035  0.00194   0.06892  0.08746       1061
+    ont    3       whatshap   0.00059  0.00197   0.05808  0.07510       1061
+    ont    3        optimal   0.00000  0.00000   0.03318  0.04762       1061
+    ont    3  merge_optimal   0.00000  0.00000   0.01874  0.02697       1061
+
+    ont    5         random   0.00000  0.00000   0.02430  0.03211       1061
+    ont    5       whatshap   0.00000  0.00000   0.01833  0.02634       1061
+    ont    5        optimal   0.00000  0.00000   0.01334  0.02000       1061
+    ont    5  merge_optimal   0.00000  0.00000   0.01034  0.01480       1061
+
+  noisy    3         random   0.00283  0.00570   0.14999  0.17391       1061
+  noisy    3       whatshap   0.00259  0.00760   0.12212  0.14745       1061
+  noisy    3        optimal   0.00071  0.00192   0.08148  0.09812       1061
+  noisy    3  merge_optimal   0.00000  0.00000   0.03619  0.04294       1061
+
+  noisy    5         random   0.00035  0.00192   0.07112  0.08163       1061
+  noisy    5       whatshap   0.00000  0.00000   0.05247  0.06673       1061
+  noisy    5        optimal   0.00012  0.00186   0.03624  0.05000       1061
+  noisy    5  merge_optimal   0.00000  0.00000   0.01898  0.02688       1061
+

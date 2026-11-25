@@ -1,0 +1,21 @@
+switch error by GIAB v3.6 GRCh38 stratification, inside the v5.0q benchmark regions (post hoc)
+platform ont; depth 10; cap 15; weights logodds; chromosomes chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr21, chr22; pipelines whatshap phase, LongPhase, whatshap, optimal
+a pair is in a stratum when both its variants are; windows 1 Mb; sign-flip test 20000 resamples, seed 0, exact at <= 20 non-zero windows
+objective / certified optimum, pooled: whatshap phase n/a, LongPhase n/a, whatshap 0.9982, optimal 1.0000
+
+    stratum  v5 sites | whatshap pha    pairs    sw   /10k |    LongPhase    pairs    sw   /10k |     whatshap    pairs    sw   /10k |      optimal    pairs    sw   /10k
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        all   1973512 |               1961446   244   1.24 |               1948179   318   1.63 |               1961785   540   2.75 |               1961781   538   2.74
+    segdups     46887 |                 43544    17   3.90 |                 43200    20   4.63 |                 43553    23   5.28 |                 43553    23   5.28
+     lowmap     99975 |                 63917    15   2.35 |                 63167    19   3.01 |                 63943    31   4.85 |                 63943    31   4.85
+ TR+homopol    108861 |                 17182    21  12.22 |                 15907     3   1.89 |                 17208    31  18.01 |                 17207    31  18.02
+       easy   1634336 |               1452196   100   0.69 |               1446549   174   1.20 |               1452338   271   1.87 |               1452336   273   1.88
+
+paired on common pairs: first = whatshap phase, second = LongPhase; first/second = pairs where only that one is wrong
+    stratum    pairs  first second  both    sign p windows    flip p exact
+--------------------------------------------------------------------------
+        all  1947676     77    153    73  6.07e-07     165  5.00e-05    no
+    segdups    43136      6     12     4  2.38e-01       7  9.22e-01   yes
+     lowmap    63096      2     10     4  3.86e-02       3  1.00e+00   yes
+ TR+homopol    15892      9      2     0  6.54e-02      11  6.54e-02   yes
+       easy  1446310     30     71    49  5.53e-05      81  3.50e-04    no

@@ -1,0 +1,5 @@
+vote-model prediction (registered), platform hg005, e = 0.00011, q = 0.000220, chromosomes 21; whatshap minus optimal per 10,000 boundaries both selections call; no truth read
+  cap  3: fullx +0.45; 10x +0.46
+  cap  5: fullx +0.04; 10x +0.06
+  cap 10: fullx -0.01; 10x -0.00
+  cap 15: fullx -0.00; 10x -0.00

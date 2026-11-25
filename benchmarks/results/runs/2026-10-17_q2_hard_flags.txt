@@ -1,0 +1,646 @@
+# tmp/r6/q2/q2_hard_flags.py (worktree commit 4b0cf0c) on the KCDH server; 2026-10-18T01:14:18+05:30
+Q2 (development, docs/design/q2-hard-flags.md): flags from the sample's own reads; platforms hprc_HG002 ('30', '20', '10'), w4_grch38 ('30',), cal_v5 ('30', '20', '10'), hg001_v5 ('30', '20', '10'); phasers ('whatshap', 'longphase'); chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22, odd tune and calibrate, even scored; hard groups ('segdup', 'lowmap', 'tandem', 'difficult', 'indel'), easy never flagged; features ('depth', 'balance', 'mec', 'kmer') (depth |log2| against the chromosome median, allele balance -log10 binomial p, window MEC with 2 columns each side, k-mer 31-mer log2 copy excess from data/r6_q2/kmer on ('hprc_HG002', 'w4_grch38') only); tuning abstention 0.09; gate on hprc_HG002: recall >= 0.5 (confident wrong too where >= 10; confident = >= 10 reads, none disagreeing), abstention <= 0.1 per cell; LTT units 100 kb, delta 0.05, betas (0.0003, 0.001, 0.003), grid from 0.5 step 0.0025; transfer cal_v5 settings to hg001_v5
+
+hprc_HG002 30x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0362 odd recall 0.982 at 0.089 |    23074     87     7     0; flagged 0.086; recall 0.851 0.571 0.000; error 3.74e-02 / 6.16e-04; units 1652 / 1633
+             single features (even recall, flagged share): depth 0.448 0.061, balance 0.851 0.087, mec 0.851 0.076, kmer 0.253 0.103
+  lowmap     mec                      tau 0.0899 odd recall 0.885 at 0.090 |    53955     35     4     0; flagged 0.081; recall 0.914 0.500 0.000; error 7.36e-03 / 6.05e-05; units 7514 / 6803
+             single features (even recall, flagged share): depth 0.286 0.073, balance 0.857 0.089, mec 0.914 0.081, kmer 0.143 0.094
+  tandem     balance+mec              tau 0.0551 odd recall 0.873 at 0.090 |   103740    669    84    14; flagged 0.088; recall 0.851 1.000 1.000; error 6.20e-02 / 1.06e-03; units 11265 / 11023
+             single features (even recall, flagged share): depth 0.097 0.086, balance 0.786 0.089, mec 0.810 0.086, kmer 0.097 0.091
+  difficult  balance                  tau 0.0894 odd recall 1.000 at 0.089 |    65603      0     0     0; flagged 0.088; recall 0.000 0.000 0.000; error 0.00e+00 / 0.00e+00; units 9447 / 9227
+             single features (even recall, flagged share): depth 0.000 0.080, balance 0.000 0.088, mec 0.000 0.085, kmer 0.000 0.085
+  indel      balance+mec              tau 0.0561 odd recall 0.887 at 0.090 |   384562   6285   743   611; flagged 0.087; recall 0.885 0.948 0.936; error 1.67e-01 / 2.06e-03; units 12683 / 12519
+             single features (even recall, flagged share): depth 0.121 0.086, balance 0.837 0.089, mec 0.792 0.085, kmer 0.103 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9897 2/11575 8.61e-01 | yes 0.9897 2/11575 8.61e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9819 4/7009 9.19e-01 | yes 0.9170 2/6493 9.89e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.8938 3/10285 9.98e-01
+  beta 0.001   difficult  yes 1.0000 0/9119 1.00e+00 | yes 0.9117 0/8872 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9977 3/11709 9.99e-01 | yes 0.9977 3/11709 9.99e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.9121 5/1157 2.69e-01
+  beta 0.003   lowmap     yes 0.9953 7/7136 1.00e+00 | yes 0.9194 3/6522 1.00e+00
+  beta 0.003   tandem     yes 0.7836 21/9987 9.64e-01 | yes 0.9074 14/10355 1.00e+00
+  beta 0.003   difficult  yes 1.0000 0/9119 1.00e+00 | yes 0.9117 0/8872 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 14/11775 1.00e+00 | yes 1.0000 14/11775 1.00e+00
+
+hprc_HG002 30x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec+kmer   tau 0.0283 odd recall 0.986 at 0.090 |    22867     27     4     0; flagged 0.098; recall 0.778 0.250 0.000; error 9.37e-03 / 2.91e-04; units 1659 / 1637
+             single features (even recall, flagged share): depth 0.630 0.060, balance 0.704 0.090, mec 0.667 0.073, kmer 0.185 0.102
+  lowmap     balance+mec              tau 0.0476 odd recall 0.773 at 0.089 |    53954     23     2     0; flagged 0.084; recall 0.870 1.000 0.000; error 4.42e-03 / 6.07e-05; units 7527 / 7031
+             single features (even recall, flagged share): depth 0.348 0.074, balance 0.652 0.088, mec 0.826 0.083, kmer 0.000 0.094
+  tandem     balance+mec              tau 0.0502 odd recall 0.734 at 0.090 |   102450    147     4     0; flagged 0.089; recall 0.673 1.000 0.000; error 1.09e-02 / 5.14e-04; units 11242 / 10999
+             single features (even recall, flagged share): depth 0.245 0.086, balance 0.483 0.090, mec 0.605 0.084, kmer 0.102 0.090
+  difficult  balance                  tau 0.0893 odd recall 0.250 at 0.089 |    66064     13     0     0; flagged 0.088; recall 0.154 0.000 0.000; error 3.43e-04 / 1.83e-04; units 9476 / 9257
+             single features (even recall, flagged share): depth 0.077 0.081, balance 0.154 0.088, mec 0.308 0.085, kmer 0.231 0.085
+  indel      depth+balance+mec        tau 0.0350 odd recall 0.669 at 0.090 |   355516    504    13    10; flagged 0.086; recall 0.583 0.846 0.700; error 9.58e-03 / 6.47e-04; units 12554 / 12386
+             single features (even recall, flagged share): depth 0.224 0.083, balance 0.556 0.089, mec 0.514 0.085, kmer 0.101 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9952 0/11660 1.00e+00 | yes 0.9952 0/11660 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9954 5/7135 8.39e-01 | yes 0.9139 0/6703 1.00e+00
+  beta 0.001   tandem     yes 0.8486 2/10099 1.00e+00 | yes 0.9076 6/10360 9.45e-01
+  beta 0.001   difficult  yes 1.0000 13/9140 1.35e-01 | yes 0.9118 11/8897 2.82e-01
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | yes 0.6888 3/11194 9.99e-01
+  beta 0.001   easy       yes 0.9981 0/11722 1.00e+00 | yes 0.9981 0/11722 1.00e+00
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.9002 1/1164 9.70e-01
+  beta 0.003   lowmap     yes 0.9978 6/7158 1.00e+00 | yes 0.9161 3/6731 1.00e+00
+  beta 0.003   tandem     yes 0.9864 22/10534 9.70e-01 | yes 0.9092 13/10385 1.00e+00
+  beta 0.003   difficult  yes 1.0000 13/9140 9.99e-01 | yes 0.9118 11/8897 1.00e+00
+  beta 0.003   indel      yes 0.7309 16/11320 1.00e+00 | yes 0.9089 15/11735 1.00e+00
+  beta 0.003   easy       yes 0.9981 0/11722 1.00e+00 | yes 0.9981 0/11722 1.00e+00
+
+hprc_HG002 20x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0396 odd recall 0.957 at 0.090 |    22981    111     5     0; flagged 0.100; recall 0.883 1.000 0.000; error 4.25e-02 / 6.29e-04; units 1649 / 1626
+             single features (even recall, flagged share): depth 0.351 0.062, balance 0.784 0.092, mec 0.901 0.076, kmer 0.279 0.103
+  lowmap     mec                      tau 0.0898 odd recall 0.926 at 0.090 |    53933     43     1     0; flagged 0.081; recall 0.930 1.000 0.000; error 9.16e-03 / 6.05e-05; units 7501 / 6819
+             single features (even recall, flagged share): depth 0.279 0.085, balance 0.814 0.086, mec 0.930 0.081, kmer 0.116 0.094
+  tandem     balance+mec              tau 0.0537 odd recall 0.845 at 0.089 |   103599    649    60    17; flagged 0.085; recall 0.891 0.967 1.000; error 6.54e-02 / 7.49e-04; units 11260 / 11037
+             single features (even recall, flagged share): depth 0.108 0.083, balance 0.818 0.088, mec 0.812 0.085, kmer 0.083 0.091
+  difficult  balance                  tau 0.0895 odd recall 1.000 at 0.089 |    65566      0     0     0; flagged 0.093; recall 0.000 0.000 0.000; error 0.00e+00 / 0.00e+00; units 9441 / 9196
+             single features (even recall, flagged share): depth 0.000 0.088, balance 0.000 0.093, mec 0.000 0.084, kmer 0.000 0.085
+  indel      balance+mec              tau 0.0546 odd recall 0.873 at 0.090 |   383953   6464   682   588; flagged 0.087; recall 0.865 0.927 0.918; error 1.67e-01 / 2.50e-03; units 12677 / 12517
+             single features (even recall, flagged share): depth 0.120 0.082, balance 0.808 0.089, mec 0.750 0.085, kmer 0.097 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9953 3/11652 6.78e-01 | yes 0.9953 3/11652 6.78e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9794 2/7004 9.93e-01 | yes 0.9168 2/6505 9.89e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.8841 4/10264 9.92e-01
+  beta 0.001   difficult  yes 1.0000 0/9112 1.00e+00 | yes 0.9068 0/8852 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9977 3/11700 9.99e-01 | yes 0.9977 3/11700 9.99e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.8564 0/1117 1.00e+00
+  beta 0.003   lowmap     yes 0.9953 8/7124 1.00e+00 | yes 0.9191 3/6535 1.00e+00
+  beta 0.003   tandem     yes 0.6779 20/9660 9.67e-01 | yes 0.9088 13/10366 1.00e+00
+  beta 0.003   difficult  yes 1.0000 0/9112 1.00e+00 | yes 0.9068 0/8852 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 19/11763 9.99e-01 | yes 1.0000 19/11763 9.99e-01
+
+hprc_HG002 20x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0359 odd recall 0.940 at 0.090 |    22883     37     3     0; flagged 0.098; recall 0.865 1.000 0.000; error 1.43e-02 / 2.42e-04; units 1659 / 1635
+             single features (even recall, flagged share): depth 0.541 0.063, balance 0.757 0.089, mec 0.784 0.073, kmer 0.189 0.102
+  lowmap     depth+balance+mec        tau 0.0339 odd recall 0.792 at 0.090 |    54061     22     0     0; flagged 0.083; recall 0.682 0.000 0.000; error 3.33e-03 / 1.41e-04; units 7530 / 7109
+             single features (even recall, flagged share): depth 0.227 0.084, balance 0.500 0.090, mec 0.727 0.083, kmer 0.091 0.094
+  tandem     balance+mec              tau 0.0501 odd recall 0.670 at 0.090 |   102647    189     1     0; flagged 0.088; recall 0.688 1.000 0.000; error 1.44e-02 / 6.30e-04; units 11245 / 11012
+             single features (even recall, flagged share): depth 0.212 0.084, balance 0.598 0.093, mec 0.577 0.085, kmer 0.095 0.090
+  difficult  balance                  tau 0.0892 odd recall 0.250 at 0.089 |    66185      4     0     0; flagged 0.093; recall 0.000 0.000 0.000; error 0.00e+00 / 6.66e-05; units 9474 / 9227
+             single features (even recall, flagged share): depth 0.250 0.088, balance 0.000 0.093, mec 0.250 0.084, kmer 0.500 0.085
+  indel      depth+balance+mec        tau 0.0358 odd recall 0.632 at 0.089 |   350579    692    20    12; flagged 0.084; recall 0.587 0.800 0.667; error 1.38e-02 / 8.90e-04; units 12537 / 12382
+             single features (even recall, flagged share): depth 0.202 0.079, balance 0.553 0.090, mec 0.488 0.085, kmer 0.110 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9949 0/11653 1.00e+00 | yes 0.9949 0/11653 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9956 4/7134 9.25e-01 | yes 0.9152 0/6758 1.00e+00
+  beta 0.001   tandem     yes 0.7995 2/9990 9.99e-01 | yes 0.9074 6/10368 9.46e-01
+  beta 0.001   difficult  yes 0.9977 0/9094 1.00e+00 | yes 0.9049 0/8838 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | yes 0.6757 4/11139 9.96e-01
+  beta 0.001   easy       yes 0.9974 0/11702 1.00e+00 | yes 0.9974 0/11702 1.00e+00
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.8606 0/1119 1.00e+00
+  beta 0.003   lowmap     yes 0.9976 5/7160 1.00e+00 | yes 0.9167 7/6775 1.00e+00
+  beta 0.003   tandem     yes 0.9812 25/10512 8.99e-01 | yes 0.9101 16/10397 9.99e-01
+  beta 0.003   difficult  yes 1.0000 4/9132 1.00e+00 | yes 0.9069 4/8874 1.00e+00
+  beta 0.003   indel      yes 0.6987 21/11222 9.92e-01 | yes 0.9090 18/11690 9.99e-01
+  beta 0.003   easy       yes 0.9974 0/11702 1.00e+00 | yes 0.9974 0/11702 1.00e+00
+
+hprc_HG002 10x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     balance+mec              tau 0.0543 odd recall 0.920 at 0.090 |    22894    137     0     1; flagged 0.088; recall 0.679 0.000 1.000; error 4.63e-02 / 2.11e-03; units 1644 / 1597
+             single features (even recall, flagged share): depth 0.504 0.085, balance 0.314 0.081, mec 0.752 0.074, kmer 0.365 0.104
+  lowmap     depth+balance+mec        tau 0.0413 odd recall 0.900 at 0.088 |    53858     44     0     0; flagged 0.084; recall 0.886 0.000 0.000; error 8.61e-03 / 1.01e-04; units 7493 / 7027
+             single features (even recall, flagged share): depth 0.205 0.048, balance 0.659 0.089, mec 0.886 0.081, kmer 0.136 0.094
+  tandem     balance+mec              tau 0.0523 odd recall 0.785 at 0.088 |   103329    703    15    31; flagged 0.085; recall 0.815 1.000 0.968; error 6.56e-02 / 1.37e-03; units 11236 / 11026
+             single features (even recall, flagged share): depth 0.060 0.051, balance 0.694 0.088, mec 0.774 0.084, kmer 0.094 0.090
+  difficult  mec                      tau 0.0896 odd recall 0.917 at 0.090 |    65460      3     0     0; flagged 0.085; recall 0.667 0.000 0.000; error 3.60e-04 / 1.67e-05; units 9422 / 9025
+             single features (even recall, flagged share): depth 0.333 0.053, balance 0.333 0.093, mec 0.667 0.085, kmer 0.000 0.085
+  indel      balance+mec              tau 0.0513 odd recall 0.691 at 0.089 |   381424   7507   263   596; flagged 0.088; recall 0.711 0.928 0.903; error 1.59e-01 / 6.24e-03; units 12654 / 12486
+             single features (even recall, flagged share): depth 0.086 0.048, balance 0.620 0.087, mec 0.600 0.083, kmer 0.093 0.082
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9733 1/11559 9.69e-01 | yes 0.9733 1/11559 9.69e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.8734 1/6604 9.99e-01 | yes 0.9132 1/6695 9.99e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.8133 2/10077 1.00e+00
+  beta 0.001   difficult  yes 0.9999 0/9084 1.00e+00 | yes 0.9151 1/8685 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9964 3/11675 9.99e-01 | yes 0.9964 3/11675 9.99e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.7590 0/1016 1.00e+00
+  beta 0.003   lowmap     yes 0.9846 7/7058 1.00e+00 | yes 0.9159 5/6725 1.00e+00
+  beta 0.003   tandem     yes 0.6061 24/9409 8.12e-01 | yes 0.8613 4/10210 1.00e+00
+  beta 0.003   difficult  yes 1.0000 3/9085 1.00e+00 | yes 0.9151 1/8685 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 0.9999 5/11741 1.00e+00 | yes 0.9999 5/11741 1.00e+00
+
+hprc_HG002 10x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec+kmer   tau 0.0298 odd recall 0.868 at 0.085 |    22958     58     0     1; flagged 0.092; recall 0.638 0.000 1.000; error 1.75e-02 / 1.01e-03; units 1649 / 1607
+             single features (even recall, flagged share): depth 0.672 0.085, balance 0.190 0.088, mec 0.569 0.075, kmer 0.310 0.103
+  lowmap     depth+balance+mec        tau 0.0397 odd recall 0.788 at 0.086 |    54183     29     0     0; flagged 0.083; recall 0.621 0.000 0.000; error 3.98e-03 / 2.22e-04; units 7521 / 7119
+             single features (even recall, flagged share): depth 0.207 0.048, balance 0.448 0.087, mec 0.724 0.081, kmer 0.172 0.094
+  tandem     depth+balance+mec        tau 0.0372 odd recall 0.494 at 0.090 |   102589    313     1     3; flagged 0.086; recall 0.553 1.000 1.000; error 1.96e-02 / 1.49e-03; units 11216 / 11013
+             single features (even recall, flagged share): depth 0.144 0.051, balance 0.377 0.082, mec 0.422 0.084, kmer 0.089 0.090
+  difficult  balance+mec              tau 0.0477 odd recall 0.444 at 0.086 |    66402     11     0     0; flagged 0.082; recall 0.273 0.000 0.000; error 5.49e-04 / 1.31e-04; units 9458 / 9155
+             single features (even recall, flagged share): depth 0.091 0.053, balance 0.273 0.093, mec 0.273 0.085, kmer 0.273 0.085
+  indel      depth+balance+mec        tau 0.0405 odd recall 0.516 at 0.089 |   339018   1412     4    29; flagged 0.087; recall 0.539 1.000 0.897; error 2.57e-02 / 2.10e-03; units 12505 / 12345
+             single features (even recall, flagged share): depth 0.162 0.045, balance 0.414 0.085, mec 0.392 0.085, kmer 0.079 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.7066 0/11057 1.00e+00 | yes 0.7066 0/11057 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9662 2/6978 9.93e-01 | yes 0.9134 1/6762 9.99e-01
+  beta 0.001   tandem     yes 0.8138 12/10032 3.07e-01 | yes 0.8794 5/10214 9.75e-01
+  beta 0.001   difficult  yes 0.9996 0/9103 1.00e+00 | yes 0.9174 0/8805 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9997 1/11749 1.00e+00 | yes 0.9997 1/11749 1.00e+00
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.7685 0/1043 1.00e+00
+  beta 0.003   lowmap     yes 0.9992 13/7165 9.81e-01 | yes 0.9165 10/6803 9.96e-01
+  beta 0.003   tandem     yes 0.9321 22/10355 9.63e-01 | yes 0.9059 13/10329 1.00e+00
+  beta 0.003   difficult  yes 1.0000 9/9105 1.00e+00 | yes 0.9177 7/8809 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | yes 0.7523 18/11287 9.99e-01
+  beta 0.003   easy       yes 0.9997 1/11749 1.00e+00 | yes 0.9997 1/11749 1.00e+00
+
+w4_grch38 30x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec+kmer   tau 0.0278 odd recall 0.951 at 0.090 |    23044    114     7     0; flagged 0.095; recall 0.816 0.429 0.000; error 4.24e-02 / 1.01e-03; units 1652 / 1630
+             single features (even recall, flagged share): depth 0.298 0.050, balance 0.737 0.104, mec 0.842 0.074, kmer 0.316 0.103
+  lowmap     mec                      tau 0.0899 odd recall 0.943 at 0.090 |    53956     24     2     0; flagged 0.080; recall 0.875 0.500 0.000; error 4.88e-03 / 6.04e-05; units 7512 / 6779
+             single features (even recall, flagged share): depth 0.375 0.069, balance 0.917 0.088, mec 0.875 0.080, kmer 0.167 0.094
+  tandem     balance+mec              tau 0.0526 odd recall 0.872 at 0.090 |   103794    517    72     9; flagged 0.088; recall 0.857 1.000 1.000; error 4.86e-02 / 7.82e-04; units 11269 / 10997
+             single features (even recall, flagged share): depth 0.118 0.084, balance 0.791 0.089, mec 0.836 0.084, kmer 0.085 0.091
+  difficult  balance                  tau 0.0896 odd recall 1.000 at 0.090 |    65604      1     0     0; flagged 0.088; recall 1.000 0.000 0.000; error 1.74e-04 / 0.00e+00; units 9447 / 9232
+             single features (even recall, flagged share): depth 0.000 0.081, balance 1.000 0.088, mec 1.000 0.084, kmer 0.000 0.085
+  indel      balance+mec              tau 0.0545 odd recall 0.878 at 0.090 |   384705   5280   689   609; flagged 0.086; recall 0.886 0.964 0.961; error 1.41e-01 / 1.71e-03; units 12682 / 12515
+             single features (even recall, flagged share): depth 0.117 0.083, balance 0.820 0.089, mec 0.809 0.085, kmer 0.099 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9950 2/11647 8.64e-01 | yes 0.9950 2/11647 8.64e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9873 2/7052 9.93e-01 | yes 0.9203 3/6505 9.57e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.9034 0/10325 1.00e+00
+  beta 0.001   difficult  yes 1.0000 0/9118 1.00e+00 | yes 0.9124 0/8871 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9977 2/11710 1.00e+00 | yes 0.9977 2/11710 1.00e+00
+  beta 0.003   segdup     yes 0.8875 1/1086 9.62e-01 | yes 0.8992 3/1153 6.72e-01
+  beta 0.003   lowmap     yes 0.9983 11/7157 9.95e-01 | yes 0.9203 3/6505 1.00e+00
+  beta 0.003   tandem     yes 0.8238 18/10076 9.94e-01 | yes 0.9084 8/10356 1.00e+00
+  beta 0.003   difficult  yes 1.0000 0/9118 1.00e+00 | yes 0.9124 0/8871 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | yes 0.5516 23/11002 9.72e-01
+  beta 0.003   easy       yes 1.0000 15/11774 1.00e+00 | yes 1.0000 15/11774 1.00e+00
+
+w4_grch38 30x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+mec+kmer           tau 0.0335 odd recall 0.957 at 0.090 |    23006     29     7     0; flagged 0.077; recall 0.552 0.000 0.000; error 8.99e-03 / 6.12e-04; units 1664 / 1629
+             single features (even recall, flagged share): depth 0.483 0.042, balance 0.724 0.104, mec 0.552 0.074, kmer 0.103 0.104
+  lowmap     depth+mec                tau 0.0499 odd recall 0.750 at 0.090 |    53849      7     0     0; flagged 0.080; recall 0.714 0.000 0.000; error 1.16e-03 / 4.04e-05; units 7530 / 7016
+             single features (even recall, flagged share): depth 0.714 0.070, balance 0.714 0.088, mec 0.857 0.081, kmer 0.286 0.094
+  tandem     mec                      tau 0.0894 odd recall 0.708 at 0.089 |   104248     55     2     0; flagged 0.084; recall 0.582 1.000 0.000; error 3.68e-03 / 2.41e-04; units 11284 / 10995
+             single features (even recall, flagged share): depth 0.273 0.085, balance 0.418 0.090, mec 0.582 0.084, kmer 0.055 0.091
+  difficult  depth                    tau 0.0887 odd recall 0.250 at 0.089 |    66077      7     0     0; flagged 0.082; recall 0.143 0.000 0.000; error 1.85e-04 / 9.89e-05; units 9481 / 9282
+             single features (even recall, flagged share): depth 0.143 0.082, balance 0.143 0.088, mec 0.143 0.084, kmer 0.143 0.085
+  indel      depth+balance+mec        tau 0.0347 odd recall 0.577 at 0.090 |   360118    316     7     5; flagged 0.085; recall 0.456 0.714 0.200; error 4.72e-03 / 5.22e-04; units 12553 / 12397
+             single features (even recall, flagged share): depth 0.215 0.081, balance 0.389 0.088, mec 0.446 0.086, kmer 0.104 0.081
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | yes 0.5155 3/10794 6.28e-01
+  beta 0.0003  easy       yes 0.9953 0/11658 1.00e+00 | yes 0.9953 0/11658 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9981 2/7169 9.94e-01 | yes 0.9183 0/6637 1.00e+00
+  beta 0.001   tandem     yes 0.9867 8/10555 8.26e-01 | yes 0.9129 4/10345 9.92e-01
+  beta 0.001   difficult  yes 1.0000 7/9137 8.06e-01 | yes 0.9184 6/8965 8.82e-01
+  beta 0.001   indel      yes 0.5743 6/10957 9.62e-01 | yes 0.9080 8/11740 8.99e-01
+  beta 0.001   easy       yes 0.9981 0/11722 1.00e+00 | yes 0.9981 0/11722 1.00e+00
+  beta 0.003   segdup     yes 0.9534 2/1144 8.57e-01 | yes 0.9192 3/1149 6.70e-01
+  beta 0.003   lowmap     yes 1.0000 6/7191 1.00e+00 | yes 0.9202 2/6665 1.00e+00
+  beta 0.003   tandem     yes 0.9933 18/10613 9.97e-01 | yes 0.9165 21/10384 9.78e-01
+  beta 0.003   difficult  yes 1.0000 7/9137 1.00e+00 | yes 0.9184 6/8965 1.00e+00
+  beta 0.003   indel      yes 0.9419 17/11762 1.00e+00 | yes 0.9103 8/11757 1.00e+00
+  beta 0.003   easy       yes 0.9981 0/11722 1.00e+00 | yes 0.9981 0/11722 1.00e+00
+
+cal_v5 30x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0369 odd recall 0.925 at 0.090 |    23234     64     7     0; flagged 0.081; recall 0.938 1.000 0.000; error 3.21e-02 / 1.87e-04; units 1685 / 1635
+             single features (even recall, flagged share): depth 0.453 0.063, balance 0.781 0.082, mec 0.797 0.077
+  lowmap     balance+mec              tau 0.0479 odd recall 0.923 at 0.090 |    54265     50     3     0; flagged 0.089; recall 0.920 1.000 0.000; error 9.55e-03 / 8.09e-05; units 7595 / 7005
+             single features (even recall, flagged share): depth 0.220 0.073, balance 0.820 0.086, mec 0.900 0.081
+  tandem     balance+mec              tau 0.0519 odd recall 0.794 at 0.090 |   104546    870    86    19; flagged 0.085; recall 0.795 0.919 1.000; error 7.82e-02 / 1.86e-03; units 11366 / 11122
+             single features (even recall, flagged share): depth 0.102 0.083, balance 0.754 0.086, mec 0.664 0.084
+  difficult  mec                      tau 0.0900 odd recall 1.000 at 0.090 |    65982      5     0     0; flagged 0.086; recall 0.800 0.000 0.000; error 7.08e-04 / 1.66e-05; units 9516 / 9072
+             single features (even recall, flagged share): depth 0.200 0.082, balance 0.200 0.091, mec 0.800 0.086
+  indel      balance+mec              tau 0.0504 odd recall 0.371 at 0.090 |   383091  24730   740   896; flagged 0.084; recall 0.362 0.723 0.734; error 2.77e-01 / 4.50e-02; units 12759 / 12678
+             single features (even recall, flagged share): depth 0.087 0.080, balance 0.336 0.088, mec 0.318 0.083
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9865 1/11699 9.70e-01 | yes 0.9865 1/11699 9.70e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9793 4/7106 9.24e-01 | yes 0.9112 3/6695 9.63e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.7732 4/10040 9.90e-01
+  beta 0.001   difficult  yes 0.9978 0/9157 1.00e+00 | yes 0.9144 0/8740 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9976 2/11804 1.00e+00 | yes 0.9976 2/11804 1.00e+00
+  beta 0.003   segdup     yes 0.7560 1/1059 9.58e-01 | yes 0.9180 1/1156 9.69e-01
+  beta 0.003   lowmap     yes 0.9961 10/7203 9.98e-01 | yes 0.9112 3/6695 1.00e+00
+  beta 0.003   tandem     yes 0.6328 22/9667 9.24e-01 | yes 0.9016 20/10434 9.87e-01
+  beta 0.003   difficult  yes 1.0000 4/9197 1.00e+00 | yes 0.9144 0/8740 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 15/11884 1.00e+00 | yes 1.0000 15/11884 1.00e+00
+
+cal_v5 30x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0356 odd recall 0.909 at 0.090 |    23759     19     5     0; flagged 0.073; recall 0.895 1.000 0.000; error 9.77e-03 / 9.08e-05; units 1717 / 1684
+             single features (even recall, flagged share): depth 0.526 0.061, balance 0.684 0.076, mec 0.579 0.079
+  lowmap     balance                  tau 0.0881 odd recall 0.684 at 0.088 |    55791     21     0     0; flagged 0.085; recall 0.619 0.000 0.000; error 2.76e-03 / 1.57e-04; units 7694 / 7369
+             single features (even recall, flagged share): depth 0.286 0.073, balance 0.619 0.085, mec 0.571 0.082
+  tandem     depth+balance+mec        tau 0.0333 odd recall 0.677 at 0.090 |   106109    166     3     1; flagged 0.085; recall 0.590 1.000 1.000; error 1.09e-02 / 7.00e-04; units 11357 / 11112
+             single features (even recall, flagged share): depth 0.187 0.083, balance 0.590 0.089, mec 0.494 0.083
+  difficult  balance                  tau 0.0898 odd recall 0.167 at 0.090 |    68973      4     0     0; flagged 0.091; recall 0.000 0.000 0.000; error 0.00e+00 / 6.38e-05; units 9633 / 9399
+             single features (even recall, flagged share): depth 0.250 0.083, balance 0.000 0.091, mec 0.500 0.085
+  indel      balance+mec              tau 0.0508 odd recall 0.622 at 0.090 |   268065    448     9    12; flagged 0.086; recall 0.625 0.889 0.750; error 1.22e-02 / 6.85e-04; units 12449 / 12294
+             single features (even recall, flagged share): depth 0.134 0.079, balance 0.583 0.085, mec 0.424 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9852 0/11720 1.00e+00 | yes 0.9852 0/11720 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9957 4/7267 9.31e-01 | yes 0.9134 1/6991 9.99e-01
+  beta 0.001   tandem     yes 0.9061 5/10336 9.77e-01 | yes 0.9085 11/10467 4.75e-01
+  beta 0.001   difficult  yes 0.9978 0/9259 1.00e+00 | yes 0.9062 0/9005 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | yes 0.6521 2/11042 1.00e+00
+  beta 0.001   easy       yes 0.9974 0/11837 1.00e+00 | yes 0.9974 0/11837 1.00e+00
+  beta 0.003   segdup     yes 0.7590 1/1085 9.62e-01 | yes 0.9253 0/1189 1.00e+00
+  beta 0.003   lowmap     yes 0.9981 5/7295 1.00e+00 | yes 0.9155 8/7023 1.00e+00
+  beta 0.003   tandem     yes 0.9849 25/10613 9.08e-01 | yes 0.9134 23/10525 9.53e-01
+  beta 0.003   difficult  yes 1.0000 4/9293 1.00e+00 | yes 0.9086 4/9047 1.00e+00
+  beta 0.003   indel      yes 0.7859 14/11396 1.00e+00 | yes 0.8869 18/11538 9.99e-01
+  beta 0.003   easy       yes 0.9974 0/11837 1.00e+00 | yes 0.9974 0/11837 1.00e+00
+
+cal_v5 20x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0362 odd recall 0.923 at 0.088 |    23222     54     3     1; flagged 0.081; recall 0.852 1.000 1.000; error 2.43e-02 / 3.75e-04; units 1681 / 1626
+             single features (even recall, flagged share): depth 0.444 0.053, balance 0.667 0.072, mec 0.722 0.077
+  lowmap     mec                      tau 0.0897 odd recall 0.841 at 0.090 |    54287     52     3     1; flagged 0.080; recall 0.865 1.000 1.000; error 1.03e-02 / 1.40e-04; units 7591 / 6843
+             single features (even recall, flagged share): depth 0.231 0.067, balance 0.788 0.085, mec 0.865 0.080
+  tandem     balance+mec              tau 0.0517 odd recall 0.772 at 0.089 |   104559    908    74    19; flagged 0.083; recall 0.763 0.959 1.000; error 7.98e-02 / 2.24e-03; units 11359 / 11122
+             single features (even recall, flagged share): depth 0.091 0.076, balance 0.702 0.087, mec 0.648 0.083
+  difficult  mec                      tau 0.0893 odd recall 0.750 at 0.089 |    66018      3     0     0; flagged 0.085; recall 0.667 0.000 0.000; error 3.56e-04 / 1.66e-05; units 9507 / 9085
+             single features (even recall, flagged share): depth 0.333 0.074, balance 0.333 0.085, mec 0.667 0.085
+  indel      balance+mec              tau 0.0504 odd recall 0.363 at 0.090 |   381679  25126   629   833; flagged 0.085; recall 0.359 0.720 0.712; error 2.79e-01 / 4.61e-02; units 12754 / 12676
+             single features (even recall, flagged share): depth 0.086 0.074, balance 0.320 0.087, mec 0.308 0.083
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9281 1/11570 9.69e-01 | yes 0.9281 1/11570 9.69e-01
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     no  0.0000 0/0 1.00e+00 | yes 0.9180 1/6599 9.99e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.6271 0/9592 1.00e+00
+  beta 0.001   difficult  yes 1.0000 3/9192 9.95e-01 | yes 0.9148 1/8756 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9979 1/11818 1.00e+00 | yes 0.9979 1/11818 1.00e+00
+  beta 0.003   segdup     yes 0.6673 1/988 9.49e-01 | yes 0.9150 0/1153 1.00e+00
+  beta 0.003   lowmap     yes 0.9963 18/7206 8.11e-01 | yes 0.9197 5/6619 1.00e+00
+  beta 0.003   tandem     no  0.0000 0/0 1.00e+00 | yes 0.8947 19/10393 9.92e-01
+  beta 0.003   difficult  yes 1.0000 3/9192 1.00e+00 | yes 0.9148 1/8756 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 23/11875 9.90e-01 | yes 1.0000 23/11875 9.90e-01
+
+cal_v5 20x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0353 odd recall 0.725 at 0.088 |    23594     24     1     1; flagged 0.072; recall 0.750 1.000 1.000; error 1.06e-02 / 2.74e-04; units 1713 / 1678
+             single features (even recall, flagged share): depth 0.417 0.053, balance 0.417 0.067, mec 0.458 0.077
+  lowmap     balance+mec              tau 0.0476 odd recall 0.750 at 0.088 |    55741     27     1     0; flagged 0.082; recall 0.852 1.000 0.000; error 5.01e-03 / 7.82e-05; units 7682 / 7283
+             single features (even recall, flagged share): depth 0.111 0.068, balance 0.667 0.088, mec 0.593 0.081
+  tandem     depth+balance+mec        tau 0.0355 odd recall 0.638 at 0.087 |   105836    197     3     1; flagged 0.080; recall 0.645 1.000 1.000; error 1.50e-02 / 7.19e-04; units 11335 / 11108
+             single features (even recall, flagged share): depth 0.152 0.076, balance 0.579 0.084, mec 0.462 0.080
+  difficult  balance                  tau 0.0836 odd recall 0.273 at 0.084 |    68962      5     0     0; flagged 0.085; recall 0.200 0.000 0.000; error 1.70e-04 / 6.34e-05; units 9626 / 9399
+             single features (even recall, flagged share): depth 0.000 0.074, balance 0.200 0.085, mec 0.000 0.086
+  indel      depth+balance+mec        tau 0.0353 odd recall 0.524 at 0.083 |   269656    809    10    12; flagged 0.077; recall 0.482 0.900 0.750; error 1.89e-02 / 1.68e-03; units 12460 / 12311
+             single features (even recall, flagged share): depth 0.184 0.074, balance 0.465 0.085, mec 0.349 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9718 0/11691 1.00e+00 | yes 0.9718 0/11691 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9957 6/7267 7.32e-01 | yes 0.9159 0/6902 1.00e+00
+  beta 0.001   tandem     yes 0.8352 7/10155 8.79e-01 | yes 0.9134 8/10457 8.18e-01
+  beta 0.001   difficult  yes 0.9979 0/9245 1.00e+00 | yes 0.9129 0/9022 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | yes 0.6778 2/11115 1.00e+00
+  beta 0.001   easy       yes 0.9975 1/11836 1.00e+00 | yes 0.9975 1/11836 1.00e+00
+  beta 0.003   segdup     yes 0.7863 1/1080 9.61e-01 | yes 0.9269 0/1190 1.00e+00
+  beta 0.003   lowmap     yes 0.9984 9/7291 9.99e-01 | yes 0.9176 4/6931 1.00e+00
+  beta 0.003   tandem     yes 0.9781 25/10560 9.03e-01 | yes 0.9180 20/10505 9.89e-01
+  beta 0.003   difficult  yes 1.0000 5/9280 1.00e+00 | yes 0.9148 4/9058 1.00e+00
+  beta 0.003   indel      yes 0.7105 15/11230 1.00e+00 | yes 0.8109 18/11423 9.99e-01
+  beta 0.003   easy       yes 0.9975 1/11836 1.00e+00 | yes 0.9975 1/11836 1.00e+00
+
+cal_v5 10x whatshap: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     balance+mec              tau 0.0525 odd recall 0.911 at 0.088 |    23216    150     0     2; flagged 0.080; recall 0.713 0.000 1.000; error 5.73e-02 / 2.01e-03; units 1674 / 1594
+             single features (even recall, flagged share): depth 0.200 0.054, balance 0.627 0.109, mec 0.627 0.072
+  lowmap     mec                      tau 0.0899 odd recall 0.864 at 0.090 |    54282     56     1     2; flagged 0.085; recall 0.804 1.000 1.000; error 9.79e-03 / 2.21e-04; units 7574 / 6917
+             single features (even recall, flagged share): depth 0.179 0.083, balance 0.536 0.081, mec 0.804 0.085
+  tandem     balance+mec              tau 0.0504 odd recall 0.702 at 0.088 |   104545    981     8    39; flagged 0.084; recall 0.666 0.750 0.821; error 7.42e-02 / 3.43e-03; units 11328 / 11087
+             single features (even recall, flagged share): depth 0.061 0.041, balance 0.575 0.081, mec 0.564 0.083
+  difficult  depth+balance+mec        tau 0.0390 odd recall 0.714 at 0.090 |    66060     11     0     0; flagged 0.088; recall 0.455 0.000 0.000; error 8.56e-04 / 9.96e-05; units 9508 / 9191
+             single features (even recall, flagged share): depth 0.000 0.041, balance 0.182 0.083, mec 0.636 0.086
+  indel      balance+mec              tau 0.0500 odd recall 0.301 at 0.090 |   376634  28388   268  1240; flagged 0.087; recall 0.303 0.713 0.523; error 2.63e-01 / 5.75e-02; units 12728 / 12642
+             single features (even recall, flagged share): depth 0.050 0.038, balance 0.262 0.089, mec 0.273 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9338 0/11627 1.00e+00 | yes 0.9338 0/11627 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.5477 2/5092 9.63e-01 | yes 0.9116 0/6614 1.00e+00
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.5191 6/9062 8.88e-01
+  beta 0.001   difficult  yes 0.9998 1/9180 1.00e+00 | yes 0.9115 1/8860 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9964 1/11824 1.00e+00 | yes 0.9964 1/11824 1.00e+00
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.8300 0/1084 1.00e+00
+  beta 0.003   lowmap     yes 0.9930 15/7190 9.43e-01 | yes 0.9153 9/6645 9.98e-01
+  beta 0.003   tandem     no  0.0000 0/0 1.00e+00 | yes 0.7887 24/10098 8.95e-01
+  beta 0.003   difficult  yes 1.0000 11/9182 1.00e+00 | yes 0.9115 1/8860 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 0.9979 6/11827 1.00e+00 | yes 0.9979 6/11827 1.00e+00
+
+cal_v5 10x longphase: per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0375 odd recall 0.817 at 0.090 |    23774     58     0     2; flagged 0.071; recall 0.655 0.000 1.000; error 2.26e-02 / 9.05e-04; units 1707 / 1661
+             single features (even recall, flagged share): depth 0.259 0.055, balance 0.552 0.105, mec 0.655 0.070
+  lowmap     balance+mec              tau 0.0468 odd recall 0.679 at 0.085 |    55485     35     0     0; flagged 0.079; recall 0.543 0.000 0.000; error 4.33e-03 / 3.13e-04; units 7661 / 7266
+             single features (even recall, flagged share): depth 0.171 0.082, balance 0.286 0.080, mec 0.543 0.084
+  tandem     depth+balance+mec        tau 0.0391 odd recall 0.423 at 0.089 |   104801    399     1     4; flagged 0.085; recall 0.469 1.000 1.000; error 2.10e-02 / 2.21e-03; units 11295 / 11099
+             single features (even recall, flagged share): depth 0.125 0.040, balance 0.401 0.086, mec 0.323 0.082
+  difficult  depth+mec                tau 0.0454 odd recall 0.714 at 0.087 |    68744      9     0     0; flagged 0.079; recall 0.333 0.000 0.000; error 5.49e-04 / 9.48e-05; units 9604 / 9336
+             single features (even recall, flagged share): depth 0.111 0.040, balance 0.111 0.083, mec 0.222 0.087
+  indel      depth+balance            tau 0.0486 odd recall 0.325 at 0.089 |   272644   3297    13    80; flagged 0.085; recall 0.316 0.385 0.400; error 4.48e-02 / 9.04e-03; units 12499 / 12370
+             single features (even recall, flagged share): depth 0.112 0.037, balance 0.304 0.084, mec 0.246 0.085
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       yes 0.9333 0/11633 1.00e+00 | yes 0.9333 0/11633 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9672 3/7105 9.73e-01 | yes 0.9205 4/6913 9.14e-01
+  beta 0.001   tandem     yes 0.5717 4/9265 9.82e-01 | yes 0.8067 5/10114 9.73e-01
+  beta 0.001   difficult  yes 0.9996 1/9254 1.00e+00 | yes 0.9205 6/8980 8.83e-01
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9968 0/11842 1.00e+00 | yes 0.9968 0/11842 1.00e+00
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.9248 2/1172 8.66e-01
+  beta 0.003   lowmap     yes 0.9991 12/7266 9.92e-01 | yes 0.9210 14/6924 9.52e-01
+  beta 0.003   tandem     yes 0.8716 14/10264 1.00e+00 | yes 0.8942 13/10378 1.00e+00
+  beta 0.003   difficult  yes 1.0000 9/9258 1.00e+00 | yes 0.9205 6/8980 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 0.9997 4/11873 1.00e+00 | yes 0.9997 4/11873 1.00e+00
+
+hg001_v5 30x whatshap (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0369 odd recall transferred at 0.097 |    48216    303     5     3; flagged 0.070; recall 0.881 0.800 1.000; error 7.93e-02 / 8.03e-04; units 2088 / 2013
+             single features (even recall, flagged share): depth 0.432 0.075, balance 0.726 0.057, mec 0.818 0.076
+  lowmap     balance+mec              tau 0.0479 odd recall transferred at 0.085 |    60489    139     8     0; flagged 0.080; recall 0.928 0.875 0.000; error 2.68e-02 / 1.80e-04; units 7352 / 6944
+             single features (even recall, flagged share): depth 0.201 0.084, balance 0.878 0.091, mec 0.842 0.080
+  tandem     balance+mec              tau 0.0519 odd recall transferred at 0.094 |   109288    407    14     6; flagged 0.091; recall 0.885 1.000 1.000; error 3.61e-02 / 4.73e-04; units 10862 / 10645
+             single features (even recall, flagged share): depth 0.093 0.085, balance 0.865 0.091, mec 0.725 0.085
+  difficult  mec                      tau 0.0900 odd recall transferred at 0.090 |    67514      3     0     0; flagged 0.086; recall 1.000 0.000 0.000; error 5.19e-04 / 0.00e+00; units 9086 / 8665
+             single features (even recall, flagged share): depth 0.333 0.087, balance 1.000 0.096, mec 1.000 0.086
+  indel      balance+mec              tau 0.0504 odd recall transferred at 0.089 |   317877  11968   388   375; flagged 0.085; recall 0.437 0.835 0.851; error 1.95e-01 / 2.32e-02; units 12326 / 12205
+             single features (even recall, flagged share): depth 0.090 0.081, balance 0.375 0.086, mec 0.380 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.8881 3/7032 9.71e-01 | yes 0.9152 1/7021 9.99e-01
+  beta 0.001   tandem     yes 0.8148 10/10091 5.53e-01 | yes 0.9042 6/10486 9.49e-01
+  beta 0.001   difficult  yes 1.0000 2/9164 9.99e-01 | yes 0.9144 0/8801 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9976 0/11879 1.00e+00 | yes 0.9976 0/11879 1.00e+00
+  beta 0.003   segdup     yes 0.7809 2/1401 9.23e-01 | yes 0.9023 1/1463 9.88e-01
+  beta 0.003   lowmap     yes 0.9860 12/7364 9.93e-01 | yes 0.9204 8/7080 1.00e+00
+  beta 0.003   tandem     yes 0.9656 28/10532 7.63e-01 | yes 0.9070 11/10516 1.00e+00
+  beta 0.003   difficult  yes 1.0000 2/9164 1.00e+00 | yes 0.9144 0/8801 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 15/11975 1.00e+00 | yes 1.0000 15/11975 1.00e+00
+
+hg001_v5 30x longphase (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0356 odd recall transferred at 0.096 |    47858    146     1     3; flagged 0.063; recall 0.842 1.000 1.000; error 4.07e-02 / 5.13e-04; units 2107 / 2037
+             single features (even recall, flagged share): depth 0.705 0.071, balance 0.747 0.052, mec 0.788 0.076
+  lowmap     balance                  tau 0.0881 odd recall transferred at 0.086 |    60870     57     7     0; flagged 0.087; recall 0.509 0.857 0.000; error 5.49e-03 / 5.04e-04; units 7374 / 7121
+             single features (even recall, flagged share): depth 0.509 0.089, balance 0.544 0.089, mec 0.491 0.080
+  tandem     depth+balance+mec        tau 0.0333 odd recall transferred at 0.093 |   110182     44     1     1; flagged 0.088; recall 0.636 1.000 1.000; error 2.88e-03 / 1.59e-04; units 10855 / 10600
+             single features (even recall, flagged share): depth 0.250 0.084, balance 0.500 0.089, mec 0.409 0.084
+  difficult  balance                  tau 0.0898 odd recall transferred at 0.088 |    69394      3     0     0; flagged 0.094; recall 0.000 0.000 0.000; error 0.00e+00 / 4.77e-05; units 9133 / 8897
+             single features (even recall, flagged share): depth 0.000 0.088, balance 0.000 0.094, mec 0.000 0.085
+  indel      balance+mec              tau 0.0508 odd recall transferred at 0.091 |   246538    166     4     1; flagged 0.085; recall 0.560 0.750 0.000; error 4.42e-03 / 3.24e-04; units 12020 / 11855
+             single features (even recall, flagged share): depth 0.295 0.081, balance 0.542 0.087, mec 0.367 0.085
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9892 7/7360 6.03e-01 | yes 0.9110 5/7130 8.39e-01
+  beta 0.001   tandem     yes 0.9849 3/10589 9.98e-01 | yes 0.9096 0/10506 1.00e+00
+  beta 0.001   difficult  yes 0.9975 0/9172 1.00e+00 | yes 0.9041 0/8951 1.00e+00
+  beta 0.001   indel      yes 0.8582 9/11331 7.96e-01 | yes 0.8907 7/11424 9.37e-01
+  beta 0.001   easy       yes 0.9980 1/11919 1.00e+00 | yes 0.9980 1/11919 1.00e+00
+  beta 0.003   segdup     yes 0.7919 2/1404 9.23e-01 | yes 0.7750 0/1378 1.00e+00
+  beta 0.003   lowmap     yes 0.9979 16/7430 9.31e-01 | yes 0.9132 18/7163 8.03e-01
+  beta 0.003   tandem     yes 0.9978 13/10696 1.00e+00 | yes 0.9116 16/10542 9.99e-01
+  beta 0.003   difficult  yes 1.0000 3/9219 1.00e+00 | yes 0.9064 3/8997 1.00e+00
+  beta 0.003   indel      yes 0.9584 20/11534 9.97e-01 | yes 0.9126 13/11569 1.00e+00
+  beta 0.003   easy       yes 1.0000 18/11998 1.00e+00 | yes 1.0000 18/11998 1.00e+00
+
+hg001_v5 20x whatshap (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0362 odd recall transferred at 0.094 |    48143    371     2     4; flagged 0.075; recall 0.927 0.500 1.000; error 9.48e-02 / 6.07e-04; units 2082 / 2012
+             single features (even recall, flagged share): depth 0.404 0.082, balance 0.712 0.055, mec 0.822 0.078
+  lowmap     mec                      tau 0.0897 odd recall transferred at 0.090 |    60449    149     6     0; flagged 0.079; recall 0.866 0.167 0.000; error 2.69e-02 / 3.59e-04; units 7350 / 6844
+             single features (even recall, flagged share): depth 0.168 0.082, balance 0.826 0.086, mec 0.866 0.079
+  tandem     balance+mec              tau 0.0517 odd recall transferred at 0.094 |   109267    379    12     6; flagged 0.090; recall 0.823 1.000 1.000; error 3.18e-02 / 6.74e-04; units 10856 / 10658
+             single features (even recall, flagged share): depth 0.140 0.082, balance 0.776 0.088, mec 0.697 0.084
+  difficult  mec                      tau 0.0893 odd recall transferred at 0.089 |    67518      8     0     0; flagged 0.084; recall 0.875 0.000 0.000; error 1.23e-03 / 1.62e-05; units 9081 / 8661
+             single features (even recall, flagged share): depth 0.125 0.078, balance 0.750 0.084, mec 0.875 0.085
+  indel      balance+mec              tau 0.0504 odd recall transferred at 0.090 |   317128  12318   362   377; flagged 0.086; recall 0.423 0.851 0.857; error 1.92e-01 / 2.45e-02; units 12322 / 12210
+             single features (even recall, flagged share): depth 0.093 0.080, balance 0.343 0.086, mec 0.378 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.7613 1/6489 9.98e-01 | yes 0.9007 4/6817 9.08e-01
+  beta 0.001   tandem     yes 0.6111 5/9461 9.59e-01 | yes 0.8859 5/10374 9.77e-01
+  beta 0.001   difficult  yes 1.0000 6/9156 8.94e-01 | yes 0.9158 1/8789 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9982 3/11890 9.99e-01 | yes 0.9982 3/11890 9.99e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | yes 0.8636 1/1448 9.87e-01
+  beta 0.003   lowmap     yes 0.9789 12/7307 9.92e-01 | yes 0.9191 10/6952 9.97e-01
+  beta 0.003   tandem     yes 0.9476 20/10475 9.88e-01 | yes 0.9080 26/10507 8.60e-01
+  beta 0.003   difficult  yes 1.0000 6/9156 1.00e+00 | yes 0.9158 1/8789 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 1.0000 17/11966 1.00e+00 | yes 1.0000 17/11966 1.00e+00
+
+hg001_v5 20x longphase (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0353 odd recall transferred at 0.093 |    47930    131     1     2; flagged 0.069; recall 0.893 1.000 1.000; error 3.55e-02 / 3.14e-04; units 2103 / 2033
+             single features (even recall, flagged share): depth 0.603 0.078, balance 0.672 0.053, mec 0.748 0.078
+  lowmap     balance+mec              tau 0.0476 odd recall transferred at 0.090 |    60896     45     6     0; flagged 0.082; recall 0.556 0.833 0.000; error 5.00e-03 / 3.58e-04; units 7371 / 7058
+             single features (even recall, flagged share): depth 0.467 0.082, balance 0.467 0.086, mec 0.378 0.079
+  tandem     depth+balance+mec        tau 0.0355 odd recall transferred at 0.087 |   109975     53     1     1; flagged 0.084; recall 0.660 1.000 1.000; error 3.77e-03 / 1.79e-04; units 10843 / 10653
+             single features (even recall, flagged share): depth 0.321 0.081, balance 0.472 0.087, mec 0.453 0.084
+  difficult  balance                  tau 0.0836 odd recall transferred at 0.079 |    69395      3     0     0; flagged 0.077; recall 0.000 0.000 0.000; error 0.00e+00 / 4.68e-05; units 9126 / 8925
+             single features (even recall, flagged share): depth 0.000 0.079, balance 0.000 0.084, mec 0.000 0.085
+  indel      depth+balance+mec        tau 0.0353 odd recall transferred at 0.084 |   247541    325     6     4; flagged 0.080; recall 0.434 0.667 0.250; error 7.09e-03 / 8.08e-04; units 12018 / 11849
+             single features (even recall, flagged share): depth 0.225 0.080, balance 0.434 0.086, mec 0.338 0.086
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.9751 5/7272 8.51e-01 | yes 0.9160 4/7125 9.25e-01
+  beta 0.001   tandem     yes 0.9737 3/10530 9.98e-01 | yes 0.9116 1/10489 1.00e+00
+  beta 0.001   difficult  yes 0.9976 0/9169 1.00e+00 | yes 0.9207 0/8969 1.00e+00
+  beta 0.001   indel      yes 0.5725 5/10659 9.81e-01 | yes 0.7527 4/11127 9.96e-01
+  beta 0.001   easy       yes 0.9980 1/11899 1.00e+00 | yes 0.9980 1/11899 1.00e+00
+  beta 0.003   segdup     yes 0.8038 3/1400 7.90e-01 | yes 0.9085 1/1470 9.88e-01
+  beta 0.003   lowmap     yes 0.9977 14/7419 9.75e-01 | yes 0.9179 12/7151 9.90e-01
+  beta 0.003   tandem     yes 0.9987 25/10706 9.15e-01 | yes 0.9135 1/10508 1.00e+00
+  beta 0.003   difficult  yes 1.0000 3/9213 1.00e+00 | yes 0.9229 3/9011 1.00e+00
+  beta 0.003   indel      yes 0.8781 18/11389 9.99e-01 | yes 0.8984 39/11470 2.38e-01
+  beta 0.003   easy       yes 0.9980 1/11899 1.00e+00 | yes 0.9980 1/11899 1.00e+00
+
+hg001_v5 10x whatshap (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     balance+mec              tau 0.0525 odd recall transferred at 0.094 |    48005    374     2    15; flagged 0.076; recall 0.826 1.000 1.000; error 8.51e-02 / 1.46e-03; units 2070 / 1991
+             single features (even recall, flagged share): depth 0.321 0.088, balance 0.570 0.058, mec 0.749 0.077
+  lowmap     mec                      tau 0.0899 odd recall transferred at 0.089 |    60391    147     0     0; flagged 0.080; recall 0.769 0.000 0.000; error 2.34e-02 / 6.12e-04; units 7338 / 6893
+             single features (even recall, flagged share): depth 0.204 0.088, balance 0.639 0.072, mec 0.769 0.080
+  tandem     balance+mec              tau 0.0504 odd recall transferred at 0.092 |   109185    460     7    12; flagged 0.088; recall 0.730 1.000 0.917; error 3.48e-02 / 1.25e-03; units 10818 / 10621
+             single features (even recall, flagged share): depth 0.074 0.044, balance 0.643 0.086, mec 0.607 0.083
+  difficult  depth+balance+mec        tau 0.0390 odd recall transferred at 0.109 |    67510      6     0     0; flagged 0.112; recall 0.500 0.000 0.000; error 3.98e-04 / 5.00e-05; units 9066 / 8675
+             single features (even recall, flagged share): depth 0.000 0.043, balance 0.667 0.083, mec 0.500 0.085
+  indel      balance+mec              tau 0.0500 odd recall transferred at 0.089 |   313662  14525   119   415; flagged 0.084; recall 0.334 0.874 0.643; error 1.84e-01 / 3.37e-02; units 12291 / 12179
+             single features (even recall, flagged share): depth 0.133 0.090, balance 0.263 0.082, mec 0.336 0.084
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     no  0.0000 0/0 1.00e+00 | yes 0.8520 6/6626 6.49e-01
+  beta 0.001   tandem     no  0.0000 0/0 1.00e+00 | yes 0.8019 3/10102 9.97e-01
+  beta 0.001   difficult  yes 0.9999 2/9131 9.99e-01 | yes 0.8884 3/8775 9.93e-01
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9955 5/11861 9.92e-01 | yes 0.9955 5/11861 9.92e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   lowmap     yes 0.9132 10/7015 9.97e-01 | yes 0.9156 16/6957 8.84e-01
+  beta 0.003   tandem     yes 0.7834 18/10030 9.93e-01 | yes 0.8859 17/10377 9.98e-01
+  beta 0.003   difficult  yes 1.0000 5/9133 1.00e+00 | yes 0.8884 3/8775 1.00e+00
+  beta 0.003   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   easy       yes 0.9999 23/11930 9.91e-01 | yes 0.9999 23/11930 9.91e-01
+
+hg001_v5 10x longphase (settings from cal_v5): per hard group, what the tuning optimised (subset, tau, odd recall at odd flagged share) | even: pairs, wrong, confident wrong, wrong in the top half; flagged share; recall of wrong, confident wrong, top-half wrong; error flagged / unflagged; odd units all / unflagged
+  segdup     depth+balance+mec        tau 0.0375 odd recall transferred at 0.095 |    47879    233     2    13; flagged 0.082; recall 0.850 1.000 1.000; error 5.05e-02 / 7.96e-04; units 2086 / 2020
+             single features (even recall, flagged share): depth 0.425 0.085, balance 0.601 0.059, mec 0.738 0.074
+  lowmap     balance+mec              tau 0.0468 odd recall transferred at 0.088 |    60837     70     0     1; flagged 0.079; recall 0.371 0.000 1.000; error 5.41e-03 / 7.85e-04; units 7351 / 7032
+             single features (even recall, flagged share): depth 0.514 0.088, balance 0.257 0.086, mec 0.414 0.080
+  tandem     depth+balance+mec        tau 0.0391 odd recall transferred at 0.108 |   108848    145     1     5; flagged 0.106; recall 0.483 1.000 0.800; error 6.05e-03 / 7.71e-04; units 10798 / 10551
+             single features (even recall, flagged share): depth 0.166 0.042, balance 0.359 0.079, mec 0.345 0.083
+  difficult  depth+mec                tau 0.0454 odd recall transferred at 0.084 |    69337      6     0     0; flagged 0.082; recall 0.500 0.000 0.000; error 5.25e-04 / 4.71e-05; units 9106 / 8830
+             single features (even recall, flagged share): depth 0.000 0.043, balance 0.500 0.083, mec 0.500 0.085
+  indel      depth+balance            tau 0.0486 odd recall transferred at 0.087 |   247565   1469     2    33; flagged 0.084; recall 0.309 0.500 0.364; error 2.18e-02 / 4.48e-03; units 11983 / 11835
+             single features (even recall, flagged share): depth 0.359 0.091, balance 0.266 0.087, mec 0.243 0.085
+  LTT per beta and group: baseline | flagged: certified, trusted share of all even group pairs, wrong units/units, p_exceed
+  beta 0.0003  segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  lowmap     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  tandem     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  difficult  no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.0003  easy       no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   lowmap     yes 0.5419 1/5251 9.95e-01 | yes 0.9154 7/7091 5.64e-01
+  beta 0.001   tandem     yes 0.8873 5/10235 9.75e-01 | yes 0.8774 4/10329 9.92e-01
+  beta 0.001   difficult  yes 0.9997 1/9190 1.00e+00 | yes 0.9152 0/8929 1.00e+00
+  beta 0.001   indel      no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.001   easy       yes 0.9960 3/11875 9.99e-01 | yes 0.9960 3/11875 9.99e-01
+  beta 0.003   segdup     no  0.0000 0/0 1.00e+00 | no  0.0000 0/0 1.00e+00
+  beta 0.003   lowmap     yes 0.9930 15/7368 9.55e-01 | yes 0.9198 15/7138 9.40e-01
+  beta 0.003   tandem     yes 0.9751 22/10516 9.69e-01 | yes 0.8923 24/10441 9.24e-01
+  beta 0.003   difficult  yes 1.0000 5/9194 1.00e+00 | yes 0.9177 3/8968 1.00e+00
+  beta 0.003   indel      yes 0.5795 24/10687 9.41e-01 | yes 0.5797 14/10657 1.00e+00
+  beta 0.003   easy       yes 0.9998 14/11946 1.00e+00 | yes 0.9998 14/11946 1.00e+00
+
+Gate on hprc_HG002, even chromosomes, 6 cells; violation level 5.56e-04
+  (b) flagged violating cells 0 of 90 (baseline 0)
+  segdup     (a) recall 0.777 (cells 0.638 to 0.883), confident 0.684 of 19, abstention mean 0.094 worst 0.100 -> FAIL; (c) baseline certified nothing at 1e-3 in 6 cells, flagged certifies 0 of them -> FAIL
+  lowmap     (a) recall 0.837 (cells 0.621 to 0.930), confident 0.714 of 7 (not judged), abstention mean 0.083 worst 0.084 -> ok; (c) baseline certified nothing at 1e-3 in 0 cells, flagged certifies 0 of them -> FAIL
+  tandem     (a) recall 0.795 (cells 0.553 to 0.891), confident 0.988 of 165, abstention mean 0.087 worst 0.089 -> ok; (c) baseline certified nothing at 1e-3 in 3 cells, flagged certifies 3 of them -> ok
+  difficult  (a) recall 0.226 (cells 0.000 to 0.667), confident 0.000 of 0 (not judged), abstention mean 0.088 worst 0.093 -> FAIL; (c) baseline certified nothing at 1e-3 in 0 cells, flagged certifies 0 of them -> FAIL
+  indel      (a) recall 0.785 (cells 0.539 to 0.885), confident 0.934 of 1725, abstention mean 0.086 worst 0.088 -> ok; (c) baseline certified nothing at 1e-3 in 6 cells, flagged certifies 2 of them -> FAIL
+  (b) ok; groups meeting (a) and (c): tandem
+Q2 gate: passed
+
+hg001_v5 summary (reported, not gated), level 5.56e-04
+  segdup     recall 0.872 of 1558, confident 0.846 of 13, abstention mean 0.072 worst 0.082; flagged violating cells 0; uncertified at 1e-3 before 6, certified after 0
+  lowmap     recall 0.743 of 607, confident 0.704 of 27, abstention mean 0.081 worst 0.087; flagged violating cells 0; uncertified at 1e-3 before 1, certified after 1
+  tandem     recall 0.767 of 1488, confident 1.000 of 36, abstention mean 0.091 worst 0.106; flagged violating cells 0; uncertified at 1e-3 before 1, certified after 1
+  difficult  recall 0.552 of 29, confident 0.000 of 0, abstention mean 0.089 worst 0.112; flagged violating cells 0; uncertified at 1e-3 before 0, certified after 0
+  indel      recall 0.392 of 40771, confident 0.844 of 881, abstention mean 0.084 worst 0.086; flagged violating cells 0; uncertified at 1e-3 before 4, certified after 0
+
+cal_v5 summary (reported, not gated), level 5.56e-04
+  segdup     recall 0.775 of 369, confident 1.000 of 16, abstention mean 0.076 worst 0.081; flagged violating cells 0; uncertified at 1e-3 before 6, certified after 0
+  lowmap     recall 0.793 of 241, confident 1.000 of 8, abstention mean 0.083 worst 0.089; flagged violating cells 0; uncertified at 1e-3 before 1, certified after 1
+  tandem     recall 0.696 of 3521, confident 0.931 of 175, abstention mean 0.084 worst 0.085; flagged violating cells 0; uncertified at 1e-3 before 3, certified after 3
+  difficult  recall 0.405 of 37, confident 0.000 of 0, abstention mean 0.086 worst 0.091; flagged violating cells 0; uncertified at 1e-3 before 0, certified after 0
+  indel      recall 0.342 of 82798, confident 0.720 of 1669, abstention mean 0.084 worst 0.087; flagged violating cells 0; uncertified at 1e-3 before 6, certified after 2

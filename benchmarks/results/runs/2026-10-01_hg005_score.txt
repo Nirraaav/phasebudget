@@ -1,0 +1,116 @@
+genome-wide HG002 scoring (docs/design/genome-run-plan.md, amendment 1)
+platform hg005; primary truth: transmission (registered)
+confirmatory chromosomes 21: chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr21, chr22; chromosome 20 is the pilot and is not scored here
+depths full, 10; caps 3, 5, 10, 15; loop pipelines at caps 3, 5
+bootstrap: 1 Mb windows cut per chromosome and pooled, 2000 resamples, seed 0; sign tests exact, two-sided
+run status 2026-10-01 16:16:17: 1056 jobs done, 0 failed
+
+0. data
+ chr1 depth  34.7,  144664 het SNVs, filtered truth  115813 (removed  116), hifiasm  143322, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr2 depth  33.6,  157956 het SNVs, filtered truth  124541 (removed  173), hifiasm  157740, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr3 depth  33.4,  134216 het SNVs, filtered truth  109795 (removed  261), hifiasm  134011, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr4 depth  35.2,  142050 het SNVs, filtered truth  116521 (removed   72), hifiasm  142012, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr5 depth  33.2,  121180 het SNVs, filtered truth   96781 (removed   69), hifiasm  120908, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr6 depth  33.4,  127189 het SNVs, filtered truth  102649 (removed  204), hifiasm  126827, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr7 depth  33.7,  111328 het SNVs, filtered truth   88659 (removed   23), hifiasm  110784, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr8 depth  33.1,  103248 het SNVs, filtered truth   82428 (removed  292), hifiasm  102967, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+ chr9 depth  29.1,   78738 het SNVs, filtered truth   63424 (removed   36), hifiasm   77624, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr10 depth  35.2,   92668 het SNVs, filtered truth   74898 (removed  337), hifiasm   92382, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr11 depth  33.3,   87192 het SNVs, filtered truth   71371 (removed   22), hifiasm   86799, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr12 depth  34.3,   89536 het SNVs, filtered truth   72435 (removed   42), hifiasm   89450, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr13 depth  31.5,   66987 het SNVs, filtered truth   52880 (removed   52), hifiasm   66963, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr14 depth  28.5,   61791 het SNVs, filtered truth   51018 (removed   18), hifiasm   61690, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr15 depth  28.5,   54034 het SNVs, filtered truth   42468 (removed   44), hifiasm   53894, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr16 depth  33.9,   58847 het SNVs, filtered truth   48120 (removed   98), hifiasm   57969, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr17 depth  35.9,   46036 het SNVs, filtered truth   37957 (removed  125), hifiasm   45201, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr18 depth  32.6,   54748 het SNVs, filtered truth   44699 (removed   20), hifiasm   54503, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr19 depth  33.1,   40936 het SNVs, filtered truth   32429 (removed   44), hifiasm   40887, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr21 depth  36.2,   23716 het SNVs, filtered truth   19769 (removed    8), hifiasm   23698, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+chr22 depth  28.8,   23689 het SNVs, filtered truth   18566 (removed  144), hifiasm   23053, v5       0; v5 and transmission relations agree at 0/0 consecutive shared sites; skipped depths: none
+total 1820749 het SNVs; truth sites: filtered 1467221, transmission 1469421, hifiasm 1812684, v5 0; filter removed 2200
+per-chromosome rows: benchmarks/results/runs/2026-10-01_hg005_per_chromosome.tsv (882 rows)
+
+1. pooled over the confirmatory chromosomes; switch against the transmission truth, unfilt, hifiasm and filtered against the others; obj/opt is the pooled ratio and worst the lowest chromosome, n/a where reads are merged or for external tools
+depth  cap             pipeline  weights   switch        sw/pairs flips phased  N50 kb QAN50 kb obj/opt   worst   unfilt  hifiasm filtered  hours peak MB
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ full    3             whatshap  logodds 0.000072    102/1413814     30  0.985      98       98  0.9065  0.9019 0.000072 0.000086 0.000069   0.09    1278
+ full    3              optimal  logodds 0.000023     32/1406339      5  0.991      92       92  1.0000  1.0000 0.000023 0.000038 0.000020   0.02     855
+ full    3            two_level  logodds 0.000028     40/1431463      6  0.991     190      190  1.0000  1.0000 0.000028 0.000039 0.000025   0.03     855
+ full    3    merge_optimal_1e3  logodds 0.000019     27/1423136      6  0.990     136      136     n/a     n/a 0.000019 0.000026 0.000018   0.10     840
+ full    3            connected  logodds 0.000029     41/1432252      6  0.991     189      189  0.9992  0.9991 0.000029 0.000039 0.000026   0.03     935
+
+ full    5             whatshap  logodds 0.000030     43/1431466     14  0.991     181      181  0.9206  0.9175 0.000030 0.000034 0.000027   0.12    1310
+ full    5              optimal  logodds 0.000020     28/1419725      6  0.991     135      135  1.0000  1.0000 0.000020 0.000031 0.000017   0.04     860
+ full    5            two_level  logodds 0.000024     34/1431575      7  0.991     190      190  1.0000  1.0000 0.000024 0.000031 0.000021   0.04     858
+ full    5    merge_optimal_1e3  logodds 0.000015     21/1428535      5  0.991     175      175     n/a     n/a 0.000015 0.000016 0.000013   0.11     840
+ full    5            connected  logodds 0.000023     33/1432254      7  0.991     189      189  0.9996  0.9996 0.000023 0.000032 0.000020   0.04     931
+
+ full   10             whatshap  logodds 0.000021     30/1432257      9  0.991     189      189  0.9274  0.9249 0.000021 0.000028 0.000018   0.21    1331
+ full   10              optimal  logodds 0.000020     29/1428036      9  0.991     171      171  1.0000  1.0000 0.000020 0.000021 0.000018   0.06     854
+ full   10            two_level  logodds 0.000022     31/1431818      9  0.991     190      190  1.0000  1.0000 0.000022 0.000022 0.000019   0.07     853
+ full   10    merge_optimal_1e3  logodds 0.000017     25/1430643      7  0.991     185      185     n/a     n/a 0.000017 0.000015 0.000015   0.11     840
+ full   10            connected  logodds 0.000022     32/1432256      9  0.991     189      189  0.9999  0.9999 0.000022 0.000023 0.000020   0.07     932
+
+ full   15             whatshap  logodds 0.000019     27/1432257      8  0.991     189      189  0.9343  0.9326 0.000019 0.000021 0.000016   0.72    1403
+ full   15              optimal  logodds 0.000013     18/1430549      5  0.991     182      182  1.0000  1.0000 0.000013 0.000014 0.000010   0.72    1267
+ full   15            two_level  logodds 0.000014     20/1431976      5  0.991     190      189  1.0000  1.0000 0.000014 0.000014 0.000011   0.73    1267
+ full   15    merge_optimal_1e3  logodds 0.000017     24/1431500      7  0.991     188      188     n/a     n/a 0.000017 0.000014 0.000014   0.14    1017
+ full   15            connected  logodds 0.000015     21/1432256      5  0.991     189      189  1.0000  0.9999 0.000015 0.000015 0.000012   0.72    1291
+
+ full    -       whatshap phase     tool 0.000019     27/1432257      8  0.991     189      189     n/a     n/a 0.000019 0.000020 0.000016   2.52    1208
+
+   10    3             whatshap  logodds 0.000105    148/1410520     52  0.984      90       89  0.8971  0.8926 0.000105 0.000114 0.000103   0.04     467
+   10    3              optimal  logodds 0.000046     65/1413991     20  0.989     101      101  1.0000  1.0000 0.000046 0.000055 0.000044   0.01     310
+   10    3            two_level  logodds 0.000049     70/1426134     22  0.989     161      161  1.0000  1.0000 0.000049 0.000058 0.000047   0.02     306
+   10    3    merge_optimal_1e3  logodds 0.000034     48/1420286     13  0.989     123      123     n/a     n/a 0.000034 0.000036 0.000032   0.02     316
+   10    3            connected  logodds 0.000045     64/1427423     19  0.990     160      160  0.9973  0.9962 0.000045 0.000057 0.000043   0.01     419
+
+   10    5             whatshap  logodds 0.000034     48/1427211     13  0.990     158      158  0.9252  0.9197 0.000034 0.000040 0.000032   0.06     474
+   10    5              optimal  logodds 0.000028     40/1423504     11  0.989     137      137  1.0000  1.0000 0.000028 0.000036 0.000026   0.03     320
+   10    5            two_level  logodds 0.000029     41/1426919     11  0.989     162      161  1.0000  1.0000 0.000029 0.000037 0.000027   0.02     306
+   10    5    merge_optimal_1e3  logodds 0.000027     38/1426113     10  0.990     157      156     n/a     n/a 0.000027 0.000025 0.000025   0.03     320
+   10    5            connected  logodds 0.000028     40/1427517     10  0.990     161      161  0.9994  0.9993 0.000028 0.000033 0.000026   0.02     415
+
+   10   10             whatshap  logodds 0.000026     37/1427565     11  0.990     161      161  0.9736  0.9608 0.000026 0.000027 0.000024   0.11     478
+   10   10              optimal  logodds 0.000024     34/1427177     10  0.990     159      158  1.0000  1.0000 0.000024 0.000032 0.000022   0.03     348
+   10   10            two_level  logodds 0.000024     34/1427480     10  0.990     161      161  1.0000  1.0000 0.000024 0.000032 0.000022   0.04     348
+   10   10    merge_optimal_1e3  logodds 0.000026     37/1427484     10  0.990     161      161     n/a     n/a 0.000026 0.000025 0.000024   0.03     320
+   10   10            connected  logodds 0.000024     34/1427559     10  0.990     161      161  1.0000  0.9999 0.000024 0.000032 0.000022   0.04     420
+
+   10   15             whatshap  logodds 0.000024     34/1427565     10  0.990     161      161  0.9963  0.9911 0.000024 0.000027 0.000022   0.20     628
+   10   15              optimal  logodds 0.000024     34/1427536     10  0.990     161      161  1.0000  1.0000 0.000024 0.000027 0.000022   0.12     571
+   10   15            two_level  logodds 0.000024     34/1427556     10  0.990     161      161  1.0000  1.0000 0.000024 0.000027 0.000022   0.12     572
+   10   15    merge_optimal_1e3  logodds 0.000026     37/1427560     10  0.990     161      161     n/a     n/a 0.000026 0.000025 0.000024   0.04     406
+   10   15            connected  logodds 0.000024     34/1427565     10  0.990     161      161  1.0000  1.0000 0.000024 0.000027 0.000022   0.12     579
+
+   10    -       whatshap phase     tool 0.000025     35/1427562      9  0.990     161      161     n/a     n/a 0.000025 0.000024 0.000022   0.60     718
+
+2. paired sign tests on common pairs; first/second = pairs where only that pipeline is wrong; diff = first's rate minus second's per 10,000 common pairs, with its window-bootstrap interval (transmission truth); flip p = window sign-flip test (benchmarks/permutation.py, added after the mock review, no decision uses it); unfiltered truth beside
+             first    second depth cap    pairs  first second  both         p         diff per 10k [95%]    flip p | unfilt first/second         p
+          whatshap   optimal  full   3  1388111     77     20    10  4.59e-09       +0.41 [+0.25, +0.58]  5.00e-05 |        77/20         4.59e-09
+          whatshap   optimal    10   3  1397428    109     29    33  4.20e-12       +0.57 [+0.34, +0.82]  5.00e-05 |       109/29         4.20e-12
+          whatshap   optimal  full   5  1418937     21     11    17  1.10e-01       +0.07 [-0.02, +0.17]  2.00e-01 |        21/11         1.10e-01
+          whatshap   optimal    10   5  1423168     16     11    29  4.42e-01       +0.04 [-0.06, +0.13]  5.83e-01 |        16/11         4.42e-01
+          whatshap   optimal  full  10  1428036      3      5    24  7.27e-01       -0.01 [-0.06, +0.03]  7.81e-01 |         3/5          7.27e-01
+          whatshap   optimal    10  10  1427177      5      2    32  4.53e-01       +0.02 [-0.04, +0.11]  1.00e+00 |         5/2          4.53e-01
+          whatshap   optimal  full  15  1430549      8      2    16  1.09e-01       +0.04 [-0.01, +0.13]  5.00e-01 |         8/2          1.09e-01
+          whatshap   optimal    10  15  1427536      0      0    34  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+
+         two_level   optimal  full   3  1406339      0      0    32  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+         two_level   optimal    10   3  1413991      0      0    65  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+
+         connected   optimal  full   3  1406339      3      6    26  5.08e-01       -0.02 [-0.06, +0.02]  5.08e-01 |         3/6          5.08e-01
+         connected   optimal    10   3  1413988      3     10    55  9.23e-02       -0.05 [-0.12, +0.01]  2.19e-01 |         3/10         9.23e-02
+
+3. hypotheses
+H5-1 whatshap / certified optimum, full depth, cap 15: pooled 0.9343, worst chromosome 0.9326 -> supported (rule: below 0.95)
+H5-2 whatshap vs optimal, level 0.0125: cap 3 significant for optimal at full, 10; cap 5 significant at none -> supported (rule: both cap-3 tests for optimal, neither cap-5 test significant)
+descriptive two_level vs optimal, cap 3, block N50 ratio: fullx 2.06, 10x 1.60
+descriptive connected vs optimal, cap 3, block N50 ratio: fullx 2.05, 10x 1.60
+regime (descriptive), whatshap minus optimal per 10,000 common pairs:
+  cap  3: fullx +0.41 [+0.25, +0.58]; 10x +0.57 [+0.34, +0.82]
+  cap  5: fullx +0.07 [-0.02, +0.17]; 10x +0.04 [-0.06, +0.13]
+  cap 10: fullx -0.01 [-0.06, +0.03]; 10x +0.02 [-0.04, +0.11]
+  cap 15: fullx +0.04 [-0.01, +0.13]; 10x +0.00 [+0.00, +0.00]
+
+scored in 1.7 min

@@ -1,0 +1,6 @@
+gate G-D, HG002 HiFi whatshap phase cap 15; 10 kb bins; calibration 988962 pairs (odd chromosomes), test 952752 pairs (even); delta 0.05
+    beta |              threshold | test bins wrong | test pair errors | pairs trusted
+   1e-04 |            (0.4286, 3) |      1/89814    |     1/950954     |        0.9981
+   3e-04 |              (-1.0, 0) |      8/90607    |    15/952752     |        1.0000
+   1e-03 |              (-1.0, 0) |      8/90607    |    15/952752     |        1.0000
+   3e-03 |              (-1.0, 0) |      8/90607    |    15/952752     |        1.0000

@@ -1,0 +1,9 @@
+commit 28359e7; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 32 replicates, seed 20000 + 17 * replicate, signal posterior, fragile rule P(wrong) > 0.05, acceptance stitched with window 25, 4 iterations, boost 2, reads merged by HapCHAT's rule first (p 0.15, threshold 1e+06); unreported errors systematic_rate 0, systematic_strength 0.5, burst_rate 0, burst_length 5, burst_error 0.35; simulated data
+switch error, paired; N50 and QAN50 are means in kb, exact arm then adaptive arm
+profile  cap     exact  adaptive      diff          95% interval    wins  N50 ex  N50 ad QAN50 ex QAN50 ad
+----------------------------------------------------------------------------------------------------------
+    ont    3   0.00333   0.00113  -0.00220 [-0.00269, -0.00171]  32:0       366     441      263      383
+    ont    5   0.00056   0.00011  -0.00045 [-0.00064, -0.00026]  15:0      1387    1387     1097     1338
+  noisy    3   0.01590   0.00745  -0.00845 [-0.00948, -0.00741]  32:0       298     637      109      259
+  noisy    5   0.00393   0.00100  -0.00293 [-0.00356, -0.00230]  31:0      1124    1226      492      936

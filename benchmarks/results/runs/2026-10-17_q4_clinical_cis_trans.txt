@@ -1,0 +1,655 @@
+Q4 development gate, docs/design/q4-clinical-cis-trans.md (data seen; not registered)
+genomes cal_v5 cal_r10 hprc_HG002 hg001_v5; depths 30 20 10; phasers whatshap longphase; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22; calibration: two folds by chromosome parity within each genome (crossfit), and hg001_v5 with thresholds from cal_v5 on all chromosomes (transfer)
+beta grid (0.0001, 0.0003, 0.001, 0.003, 0.01); targets r (0.001, 0.01); certified when every link is trusted at b(m, r), the largest beta with m * beta <= r, m = distinct (group, 100 kb unit) cells of the chain's links; groups indel, segdup, lowmap, tandem, difficult, easy; delta 0.05; Learn then Test grid from 0.5 in steps of 0.0025
+pairs: truth-phased input variants in one protein-coding gene of GENCODE v50 basic whose ClinVar symbol has >= 10 P/LP alleles (chain_relations.clinical_symbols), at most 100000 bp apart; gene stats over genes with >= 10 pairs
+gate (a): per cell one certified call per gene (smallest CRC32 of gene:pos_i:pos_j), exact binomial P(X >= k | n, r) < 0.05/60 = 8.33e-04 violates; gate (b): hprc_HG002 30x r 0.01 crossfit certified share >= 0.8 for one phaser
+extraction done: 504 chromosome files (422 s)
+
+cell table (pairs: truth-phased, one listed gene, <= 100 kb; unique pairs)
+setting   genome      depth phaser     r      pairs      cert_share  certified  wrong  rate      mean_m  uncov_cert  uncov_wrong  unphased  break     no_beta  genes_n  genes_k  p_exceed  genes_all_cert  median_gene_share
+crossfit  cal_v5         30 whatshap   0.001   33055724      0.0215     710627      1  1.41e-06    1.01           0            0    181109    64286   112435     2474        0  1.00e+00     104/2714    0.0447
+crossfit  cal_v5         30 whatshap   0.01    33055724      0.0353    1167414    161  1.38e-04    1.41           0            0    181109    64286        0     2569        4  1.00e+00     193/2714    0.0749
+crossfit  cal_v5         30 longphase  0.001   33055724      0.0273     902496      2  2.22e-06    1.02           0            0   3897814    58231   102139     2523        1  9.20e-01     111/2714    0.0637
+crossfit  cal_v5         30 longphase  0.01    33055724      0.1460    4824749    202  4.19e-05    2.25           0            0   3897814    58231        0     2663        4  1.00e+00     349/2714    0.3148
+crossfit  cal_v5         20 whatshap   0.001   33055724      0.0210     693377      1  1.44e-06    1.01           0            0    223349    92951   113774     2472        0  1.00e+00     102/2714    0.0436
+crossfit  cal_v5         20 whatshap   0.01    33055724      0.0322    1065029    155  1.46e-04    1.32           0            0    223349    92951        0     2567        4  1.00e+00     180/2714    0.0704
+crossfit  cal_v5         20 longphase  0.001   33055724      0.0271     896805      0  0.00e+00    1.02           0            0   3830248    80042   102998     2517        0  1.00e+00     107/2714    0.0619
+crossfit  cal_v5         20 longphase  0.01    33055724      0.1302    4303806    179  4.16e-05    2.20           0            0   3830248    80042        0     2649        5  1.00e+00     329/2714    0.2699
+crossfit  cal_v5         10 whatshap   0.001   33055724      0.0207     685657      4  5.83e-06    1.02           0            0    379581   250334   113617     2466        0  1.00e+00     101/2714    0.0442
+crossfit  cal_v5         10 whatshap   0.01    33055724      0.0298     985711    143  1.45e-04    1.24           0            0    379581   250334        0     2546        2  1.00e+00     168/2714    0.0661
+crossfit  cal_v5         10 longphase  0.001   33055724      0.0263     867768      2  2.30e-06    1.02           0            0   3905047   232557   101613     2500        0  1.00e+00     103/2714    0.0571
+crossfit  cal_v5         10 longphase  0.01    33055724      0.0529    1749798    148  8.46e-05    1.58           0            0   3905047   232557        0     2603        2  1.00e+00     212/2714    0.1217
+crossfit  cal_r10        30 whatshap   0.001   33055724      0.0209     689812      1  1.45e-06    1.01           0            0    218879   110748   113701     2474        0  1.00e+00     103/2714    0.0441
+crossfit  cal_r10        30 whatshap   0.01    33055724      0.0299     987818    115  1.16e-04    1.24           0            0    218879   110748        0     2558        3  1.00e+00     172/2714    0.0667
+crossfit  cal_r10        30 longphase  0.001   33055724      0.0281     928059      0  0.00e+00    1.02           0            0   4333733    74432   101258     2530        0  1.00e+00     112/2714    0.0661
+crossfit  cal_r10        30 longphase  0.01    33055724      0.1390    4595799    236  5.14e-05    2.23           0            0   4333733    74432        0     2649        3  1.00e+00     320/2714    0.2876
+crossfit  cal_r10        20 whatshap   0.001   33055724      0.0210     692773      1  1.44e-06    1.01           0            0    262794   160350   113739     2474        0  1.00e+00     102/2714    0.0440
+crossfit  cal_r10        20 whatshap   0.01    33055724      0.0323    1066866    122  1.14e-04    1.32           0            0    262794   160350        0     2560        5  1.00e+00     179/2714    0.0692
+crossfit  cal_r10        20 longphase  0.001   33055724      0.0278     919758      1  1.09e-06    1.02           0            0   4220680   118505   100337     2512        0  1.00e+00     106/2714    0.0635
+crossfit  cal_r10        20 longphase  0.01    33055724      0.1180    3901814    254  6.51e-05    2.15           0            0   4220680   118505        0     2635        2  1.00e+00     288/2714    0.2337
+crossfit  cal_r10        10 whatshap   0.001   33055724      0.0212     699222      2  2.86e-06    1.02           0            0    518875   528459   113629     2467        0  1.00e+00      97/2714    0.0431
+crossfit  cal_r10        10 whatshap   0.01    33055724      0.0298     985349    202  2.05e-04    1.24           0            0    518875   528459        0     2546        6  1.00e+00     159/2714    0.0650
+crossfit  cal_r10        10 longphase  0.001   33055724      0.0262     865905      1  1.15e-06    1.02           0            0   4301347   439962   100179     2485        0  1.00e+00      97/2714    0.0562
+crossfit  cal_r10        10 longphase  0.01    33055724      0.0509    1681737    165  9.81e-05    1.59           0            0   4301347   439962        0     2568        1  1.00e+00     188/2714    0.1071
+crossfit  hprc_HG002     30 whatshap   0.001   33055724      0.0216     713210      4  5.61e-06    1.01           0            0     64112   793922   113853     2465        0  1.00e+00      90/2714    0.0433
+crossfit  hprc_HG002     30 whatshap   0.01    33055724      0.0371    1226398    114  9.30e-05    1.46           0            0     64112   793922        0     2549        4  1.00e+00     161/2714    0.0744
+crossfit  hprc_HG002     30 longphase  0.001   33055724      0.0234     774807      3  3.87e-06    1.02           0            0   1225268   727330   110162     2502        0  1.00e+00      94/2714    0.0515
+crossfit  hprc_HG002     30 longphase  0.01    33055724      0.1430    4728592    320  6.77e-05    2.26           0            0   1225268   727330        0     2665        1  1.00e+00     359/2714    0.2828
+crossfit  hprc_HG002     20 whatshap   0.001   33055724      0.0216     712735      5  7.02e-06    1.01           0            0     75217   932847   113801     2463        0  1.00e+00      89/2714    0.0432
+crossfit  hprc_HG002     20 whatshap   0.01    33055724      0.0359    1185505    106  8.94e-05    1.43           0            0     75217   932847        0     2544        3  1.00e+00     149/2714    0.0714
+crossfit  hprc_HG002     20 longphase  0.001   33055724      0.0236     779109      1  1.28e-06    1.02           0            0   1360840   826739   107919     2500        0  1.00e+00      93/2714    0.0516
+crossfit  hprc_HG002     20 longphase  0.01    33055724      0.1228    4058678    301  7.42e-05    2.19           0            0   1360840   826739        0     2662        0  1.00e+00     323/2714    0.2383
+crossfit  hprc_HG002     10 whatshap   0.001   33055724      0.0214     708624     40  5.64e-05    1.01           0            0    160890  1545717   113508     2455        1  9.14e-01      86/2714    0.0431
+crossfit  hprc_HG002     10 whatshap   0.01    33055724      0.0325    1073303    153  1.43e-04    1.34           0            0    160890  1545717        0     2535        4  1.00e+00     141/2714    0.0667
+crossfit  hprc_HG002     10 longphase  0.001   33055724      0.0236     779944      6  7.69e-06    1.01           0            0   1655810  1372488   108390     2490        0  1.00e+00      91/2714    0.0513
+crossfit  hprc_HG002     10 longphase  0.01    33055724      0.0667    2206232    279  1.26e-04    1.83           0            0   1655810  1372488        0     2623        4  1.00e+00     216/2714    0.1391
+crossfit  hg001_v5       30 whatshap   0.001   29760519      0.0263     781734      6  7.68e-06    1.01           0            0     84573    49166    98609     2474        0  1.00e+00     135/2664    0.0615
+crossfit  hg001_v5       30 whatshap   0.01    29760519      0.0514    1529449    381  2.49e-04    1.59           0            0     84573    49166        0     2573        0  1.00e+00     280/2664    0.1153
+crossfit  hg001_v5       30 longphase  0.001   29760519      0.0335     995984     18  1.81e-05    1.01           0            0   2231696    60588    94114     2585        0  1.00e+00     181/2664    0.0969
+crossfit  hg001_v5       30 longphase  0.01    29760519      0.3491   10388363    542  5.22e-05    3.50           0            0   2231696    60588        0     2640        5  1.00e+00     574/2664    0.6019
+crossfit  hg001_v5       20 whatshap   0.001   29760519      0.0260     774973     24  3.10e-05    1.01           0            0    103100    81329    98514     2469        0  1.00e+00     134/2664    0.0603
+crossfit  hg001_v5       20 whatshap   0.01    29760519      0.0509    1516132    398  2.63e-04    1.57           0            0    103100    81329        0     2570        1  1.00e+00     272/2664    0.1140
+crossfit  hg001_v5       20 longphase  0.001   29760519      0.0328     975781     12  1.23e-05    1.01           0            0   2220564    77006    94230     2567        0  1.00e+00     168/2664    0.0927
+crossfit  hg001_v5       20 longphase  0.01    29760519      0.2290    6815300    458  6.72e-05    2.85           0            0   2220564    77006        0     2637        6  1.00e+00     502/2664    0.4554
+crossfit  hg001_v5       10 whatshap   0.001   29760519      0.0247     736149     12  1.63e-05    1.01           0            0    192220   325017    98238     2448        0  1.00e+00     122/2664    0.0561
+crossfit  hg001_v5       10 whatshap   0.01    29760519      0.0473    1407488    235  1.67e-04    1.52           0            0    192220   325017        0     2533        1  1.00e+00     242/2664    0.1040
+crossfit  hg001_v5       10 longphase  0.001   29760519      0.0298     887014      2  2.25e-06    1.01           0            0   2322464   317604    92979     2492        0  1.00e+00     138/2664    0.0739
+crossfit  hg001_v5       10 longphase  0.01    29760519      0.0907    2700340    428  1.58e-04    1.93           0            0   2322464   317604        0     2589        1  1.00e+00     303/2664    0.2038
+transfer  hg001_v5       30 whatshap   0.001   29760519      0.0304     906104      3  3.31e-06    1.16           0            0     84573    49166    98609     2464        0  1.00e+00     162/2664    0.0666
+transfer  hg001_v5       30 whatshap   0.01    29760519      0.0456    1358349    438  3.22e-04    1.47           0            0     84573    49166        0     2568        1  1.00e+00     256/2664    0.1061
+transfer  hg001_v5       30 longphase  0.001   29760519      0.0409    1218199     27  2.22e-05    1.29           0            0   2231696    60588    94114     2519        0  1.00e+00     201/2664    0.0980
+transfer  hg001_v5       30 longphase  0.01    29760519      0.1809    5384313    379  7.04e-05    2.30           0            0   2231696    60588        0     2640        2  1.00e+00     457/2664    0.4021
+transfer  hg001_v5       20 whatshap   0.001   29760519      0.0300     891987      2  2.24e-06    1.16           0            0    103100    81329    98514     2460        0  1.00e+00     163/2664    0.0659
+transfer  hg001_v5       20 whatshap   0.01    29760519      0.0441    1312988    411  3.13e-04    1.44           0            0    103100    81329        0     2567        1  1.00e+00     245/2664    0.1025
+transfer  hg001_v5       20 longphase  0.001   29760519      0.0393    1169228     36  3.08e-05    1.25           0            0   2220564    77006    94230     2515        0  1.00e+00     192/2664    0.0950
+transfer  hg001_v5       20 longphase  0.01    29760519      0.1601    4765820    370  7.76e-05    2.24           0            0   2220564    77006        0     2630        3  1.00e+00     421/2664    0.3559
+transfer  hg001_v5       10 whatshap   0.001   29760519      0.0297     882572     32  3.63e-05    1.17           0            0    192220   325017    98238     2450        0  1.00e+00     159/2664    0.0659
+transfer  hg001_v5       10 whatshap   0.01    29760519      0.0370    1100777    403  3.66e-04    1.27           0            0    192220   325017        0     2550        2  1.00e+00     209/2664    0.0871
+transfer  hg001_v5       10 longphase  0.001   29760519      0.0388    1154991     25  2.16e-05    1.24           0            0   2322464   317604    92979     2502        0  1.00e+00     188/2664    0.0911
+transfer  hg001_v5       10 longphase  0.01    29760519      0.0654    1947251    283  1.45e-04    1.66           0            0   2322464   317604        0     2600        1  1.00e+00     283/2664    0.1630
+
+abstention by untrusted group (pairs with an untrusted link in the group; a pair can count in several)
+  crossfit  cal_v5       30x whatshap   r 0.001  indel 31348517, segdup 1421750, lowmap 14776174, tandem 27440893, difficult 21660167, easy 26072480
+  crossfit  cal_v5       30x whatshap   r 0.01   indel 31460952, segdup 1492255, lowmap 4502928, tandem 26106159, difficult 158935, easy 674149
+  crossfit  cal_v5       30x longphase  r 0.001  indel 27152612, segdup 1271176, lowmap 13259858, tandem 24201878, difficult 19549712, easy 22037309
+  crossfit  cal_v5       30x longphase  r 0.01   indel 24098319, segdup 1328395, lowmap 685161, tandem 10166556, difficult 102917, easy 346003
+  crossfit  cal_v5       20x whatshap   r 0.001  indel 31275018, segdup 1418846, lowmap 14764650, tandem 27374462, difficult 21613682, easy 27614614
+  crossfit  cal_v5       20x whatshap   r 0.01   indel 31388792, segdup 1494417, lowmap 9861241, tandem 26887712, difficult 117373, easy 598006
+  crossfit  cal_v5       20x longphase  r 0.001  indel 27213315, segdup 1276374, lowmap 13278218, tandem 24242170, difficult 19559247, easy 22327357
+  crossfit  cal_v5       20x longphase  r 0.01   indel 24676707, segdup 1331600, lowmap 306722, tandem 13151772, difficult 121879, easy 435482
+  crossfit  cal_v5       10x whatshap   r 0.001  indel 30948080, segdup 1410991, lowmap 14629622, tandem 27116087, difficult 21416284, easy 25490314
+  crossfit  cal_v5       10x whatshap   r 0.01   indel 31061697, segdup 1506811, lowmap 11760818, tandem 27196600, difficult 117206, easy 1733255
+  crossfit  cal_v5       10x longphase  r 0.001  indel 27012505, segdup 1267588, lowmap 13153877, tandem 24005021, difficult 19363310, easy 22323341
+  crossfit  cal_v5       10x longphase  r 0.01   indel 27046294, segdup 1344343, lowmap 4245516, tandem 16950288, difficult 101613, easy 747743
+  crossfit  cal_r10      30x whatshap   r 0.001  indel 31262660, segdup 1416997, lowmap 14770302, tandem 27385390, difficult 21600803, easy 26446601
+  crossfit  cal_r10      30x whatshap   r 0.01   indel 31376361, segdup 1509811, lowmap 9765006, tandem 27460877, difficult 113701, easy 696219
+  crossfit  cal_r10      30x longphase  r 0.001  indel 26631984, segdup 1258806, lowmap 13072979, tandem 23797221, difficult 19282713, easy 21558786
+  crossfit  cal_r10      30x longphase  r 0.01   indel 23878812, segdup 1334507, lowmap 421449, tandem 6446518, difficult 117370, easy 370504
+  crossfit  cal_r10      20x whatshap   r 0.001  indel 31162226, segdup 1411020, lowmap 14732885, tandem 27300466, difficult 21569656, easy 26964497
+  crossfit  cal_r10      20x whatshap   r 0.01   indel 31275965, segdup 1504023, lowmap 8903265, tandem 26772243, difficult 113739, easy 645426
+  crossfit  cal_r10      20x longphase  r 0.001  indel 26709516, segdup 1262023, lowmap 13127509, tandem 23865676, difficult 19317776, easy 21672266
+  crossfit  cal_r10      20x longphase  r 0.01   indel 24609694, segdup 1336612, lowmap 525057, tandem 11363286, difficult 135565, easy 580282
+  crossfit  cal_r10      10x whatshap   r 0.001  indel 30523861, segdup 1391605, lowmap 14428146, tandem 26734933, difficult 21149635, easy 25251232
+  crossfit  cal_r10      10x whatshap   r 0.01   indel 30637490, segdup 1487230, lowmap 7419087, tandem 26815555, difficult 120630, easy 3498287
+  crossfit  cal_r10      10x longphase  r 0.001  indel 26350170, segdup 1237142, lowmap 12916406, tandem 23476862, difficult 19022216, easy 21725280
+  crossfit  cal_r10      10x longphase  r 0.01   indel 26450349, segdup 1312924, lowmap 3700701, tandem 19383922, difficult 139060, easy 1716560
+  crossfit  hprc_HG002   30x whatshap   r 0.001  indel 30758729, segdup 1388875, lowmap 14536001, tandem 26906508, difficult 21255399, easy 25037897
+  crossfit  hprc_HG002   30x whatshap   r 0.01   indel 30872582, segdup 1482117, lowmap 539368, tandem 24684341, difficult 113853, easy 370397
+  crossfit  hprc_HG002   30x longphase  r 0.001  indel 29600909, segdup 1340437, lowmap 14034807, tandem 25882222, difficult 20622821, easy 23208293
+  crossfit  hprc_HG002   30x longphase  r 0.01   indel 26240809, segdup 1429130, lowmap 277396, tandem 7541556, difficult 131671, easy 320025
+  crossfit  hprc_HG002   20x whatshap   r 0.001  indel 30609208, segdup 1387520, lowmap 14461522, tandem 26758305, difficult 21149265, easy 25126523
+  crossfit  hprc_HG002   20x whatshap   r 0.01   indel 30723009, segdup 1480878, lowmap 536949, tandem 24990324, difficult 113801, easy 396911
+  crossfit  hprc_HG002   20x longphase  r 0.001  indel 29351747, segdup 1309577, lowmap 13991407, tandem 25700719, difficult 20494812, easy 23079001
+  crossfit  hprc_HG002   20x longphase  r 0.01   indel 26704552, segdup 1397996, lowmap 283362, tandem 8866068, difficult 132840, easy 293769
+  crossfit  hprc_HG002   10x whatshap   r 0.001  indel 29910411, segdup 1364447, lowmap 14117103, tandem 26112927, difficult 20586477, easy 25443606
+  crossfit  hprc_HG002   10x whatshap   r 0.01   indel 30023919, segdup 1457924, lowmap 2017503, tandem 25288442, difficult 113508, easy 357768
+  crossfit  hprc_HG002   10x longphase  r 0.001  indel 28466384, segdup 1306924, lowmap 13586696, tandem 24900366, difficult 19855884, easy 24132998
+  crossfit  hprc_HG002   10x longphase  r 0.01   indel 27719773, segdup 1393319, lowmap 1031478, tandem 13254048, difficult 139300, easy 184440
+  crossfit  hg001_v5     30x whatshap   r 0.001  indel 27923361, segdup 1885374, lowmap 13598131, tandem 24716429, difficult 19605706, easy 25306162
+  crossfit  hg001_v5     30x whatshap   r 0.01   indel 28021970, segdup 1909357, lowmap 4028909, tandem 16993008, difficult 98609, easy 383149
+  crossfit  hg001_v5     30x longphase  r 0.001  indel 25287613, segdup 1757107, lowmap 12660718, tandem 22846460, difficult 18348950, easy 23415824
+  crossfit  hg001_v5     30x longphase  r 0.01   indel 16242344, segdup 1772279, lowmap 2447516, tandem 732841, difficult 112192, easy 225995
+  crossfit  hg001_v5     20x whatshap   r 0.001  indel 27869516, segdup 1885230, lowmap 13579557, tandem 24676864, difficult 19570078, easy 25286263
+  crossfit  hg001_v5     20x whatshap   r 0.01   indel 27968030, segdup 1951530, lowmap 5246821, tandem 19405863, difficult 126672, easy 252236
+  crossfit  hg001_v5     20x longphase  r 0.001  indel 25309499, segdup 1777335, lowmap 12679186, tandem 22837706, difficult 18363972, easy 23413072
+  crossfit  hg001_v5     20x longphase  r 0.01   indel 20265534, segdup 1784076, lowmap 1753132, tandem 1497785, difficult 95103, easy 294694
+  crossfit  hg001_v5     10x whatshap   r 0.001  indel 27525522, segdup 1874218, lowmap 13463000, tandem 24400611, difficult 19350240, easy 25568575
+  crossfit  hg001_v5     10x whatshap   r 0.01   indel 27623760, segdup 1960626, lowmap 10300270, tandem 22234580, difficult 103446, easy 1662509
+  crossfit  hg001_v5     10x longphase  r 0.001  indel 25024868, segdup 1733726, lowmap 12475561, tandem 22519363, difficult 18100042, easy 23460720
+  crossfit  hg001_v5     10x longphase  r 0.01   indel 24257327, segdup 1813618, lowmap 7559245, tandem 7504475, difficult 93092, easy 1186852
+  transfer  hg001_v5     30x whatshap   r 0.001  indel 27923361, segdup 1885374, lowmap 13591076, tandem 24733993, difficult 18622083, easy 22601659
+  transfer  hg001_v5     30x whatshap   r 0.01   indel 28021970, segdup 1880599, lowmap 719029, tandem 23265911, difficult 0, easy 512699
+  transfer  hg001_v5     30x longphase  r 0.001  indel 25369091, segdup 1757107, lowmap 12176136, tandem 22849623, difficult 17340263, easy 20553209
+  transfer  hg001_v5     30x longphase  r 0.01   indel 21972124, segdup 1651446, lowmap 50429, tandem 4921266, difficult 0, easy 430291
+  transfer  hg001_v5     20x whatshap   r 0.001  indel 27869516, segdup 1885230, lowmap 13577016, tandem 24689716, difficult 18586306, easy 23054815
+  transfer  hg001_v5     20x whatshap   r 0.01   indel 27968030, segdup 1890850, lowmap 4096193, tandem 23551105, difficult 0, easy 431138
+  transfer  hg001_v5     20x longphase  r 0.001  indel 25368995, segdup 1777335, lowmap 12385402, tandem 22842767, difficult 17354112, easy 20547028
+  transfer  hg001_v5     20x longphase  r 0.01   indel 22611293, segdup 1648588, lowmap 180500, tandem 7596866, difficult 12146, easy 359439
+  transfer  hg001_v5     10x whatshap   r 0.001  indel 27525522, segdup 1874218, lowmap 13455790, tandem 24400611, difficult 18373902, easy 22518644
+  transfer  hg001_v5     10x whatshap   r 0.01   indel 27623760, segdup 1870159, lowmap 8901894, tandem 24460608, difficult 8816, easy 798859
+  transfer  hg001_v5     10x longphase  r 0.001  indel 25024868, segdup 1733726, lowmap 12165640, tandem 22528557, difficult 17095450, easy 20541855
+  transfer  hg001_v5     10x longphase  r 0.01   indel 25050447, segdup 1723374, lowmap 445807, tandem 13474144, difficult 3371, easy 208858
+
+post hoc, added after the smoke run on hprc_HG002 30x showed the indel group blocking most chains: pairs whose only untrusted links are indel links, and the certified share by distance bin (upper ends (1000, 10000, 100000) bp)
+  crossfit  cal_v5       30x whatshap   r 0.001  only indel 0.0494; by distance <= 1000: 0.4072 of 747049, <= 10000: 0.0751 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  cal_v5       30x whatshap   r 0.01   only indel 0.1531; by distance <= 1000: 0.5265 of 747049, <= 10000: 0.1369 of 5063083, <= 100000: 0.0030 of 27245592
+  crossfit  cal_v5       30x longphase  r 0.001  only indel 0.0433; by distance <= 1000: 0.4592 of 747049, <= 10000: 0.0994 of 5063083, <= 100000: 0.0021 of 27245592
+  crossfit  cal_v5       30x longphase  r 0.01   only indel 0.3960; by distance <= 1000: 0.8366 of 747049, <= 10000: 0.5302 of 5063083, <= 100000: 0.0556 of 27245592
+  crossfit  cal_v5       20x whatshap   r 0.001  only indel 0.0385; by distance <= 1000: 0.3946 of 747049, <= 10000: 0.0736 of 5063083, <= 100000: 0.0009 of 27245592
+  crossfit  cal_v5       20x whatshap   r 0.01   only indel 0.1245; by distance <= 1000: 0.5088 of 747049, <= 10000: 0.1221 of 5063083, <= 100000: 0.0025 of 27245592
+  crossfit  cal_v5       20x longphase  r 0.001  only indel 0.0422; by distance <= 1000: 0.4562 of 747049, <= 10000: 0.0988 of 5063083, <= 100000: 0.0020 of 27245592
+  crossfit  cal_v5       20x longphase  r 0.01   only indel 0.3310; by distance <= 1000: 0.8169 of 747049, <= 10000: 0.4871 of 5063083, <= 100000: 0.0450 of 27245592
+  crossfit  cal_v5       10x whatshap   r 0.001  only indel 0.0507; by distance <= 1000: 0.3853 of 747049, <= 10000: 0.0732 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  cal_v5       10x whatshap   r 0.01   only indel 0.1046; by distance <= 1000: 0.4907 of 747049, <= 10000: 0.1113 of 5063083, <= 100000: 0.0020 of 27245592
+  crossfit  cal_v5       10x longphase  r 0.001  only indel 0.0414; by distance <= 1000: 0.4408 of 747049, <= 10000: 0.0959 of 5063083, <= 100000: 0.0019 of 27245592
+  crossfit  cal_v5       10x longphase  r 0.01   only indel 0.2753; by distance <= 1000: 0.6217 of 747049, <= 10000: 0.2078 of 5063083, <= 100000: 0.0086 of 27245592
+  crossfit  cal_r10      30x whatshap   r 0.001  only indel 0.0462; by distance <= 1000: 0.3910 of 747049, <= 10000: 0.0733 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  cal_r10      30x whatshap   r 0.01   only indel 0.1079; by distance <= 1000: 0.4959 of 747049, <= 10000: 0.1110 of 5063083, <= 100000: 0.0020 of 27245592
+  crossfit  cal_r10      30x longphase  r 0.001  only indel 0.0426; by distance <= 1000: 0.4635 of 747049, <= 10000: 0.1025 of 5063083, <= 100000: 0.0023 of 27245592
+  crossfit  cal_r10      30x longphase  r 0.01   only indel 0.4894; by distance <= 1000: 0.8175 of 747049, <= 10000: 0.5092 of 5063083, <= 100000: 0.0516 of 27245592
+  crossfit  cal_r10      20x whatshap   r 0.001  only indel 0.0412; by distance <= 1000: 0.3923 of 747049, <= 10000: 0.0738 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  cal_r10      20x whatshap   r 0.01   only indel 0.1241; by distance <= 1000: 0.5091 of 747049, <= 10000: 0.1227 of 5063083, <= 100000: 0.0024 of 27245592
+  crossfit  cal_r10      20x longphase  r 0.001  only indel 0.0423; by distance <= 1000: 0.4594 of 747049, <= 10000: 0.1016 of 5063083, <= 100000: 0.0023 of 27245592
+  crossfit  cal_r10      20x longphase  r 0.01   only indel 0.3748; by distance <= 1000: 0.7893 of 747049, <= 10000: 0.4534 of 5063083, <= 100000: 0.0373 of 27245592
+  crossfit  cal_r10      10x whatshap   r 0.001  only indel 0.0496; by distance <= 1000: 0.3982 of 747049, <= 10000: 0.0742 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  cal_r10      10x whatshap   r 0.01   only indel 0.1065; by distance <= 1000: 0.4907 of 747049, <= 10000: 0.1112 of 5063083, <= 100000: 0.0020 of 27245592
+  crossfit  cal_r10      10x longphase  r 0.001  only indel 0.0406; by distance <= 1000: 0.4302 of 747049, <= 10000: 0.0971 of 5063083, <= 100000: 0.0019 of 27245592
+  crossfit  cal_r10      10x longphase  r 0.01   only indel 0.1999; by distance <= 1000: 0.5581 of 747049, <= 10000: 0.2030 of 5063083, <= 100000: 0.0087 of 27245592
+  crossfit  hprc_HG002   30x whatshap   r 0.001  only indel 0.0520; by distance <= 1000: 0.4123 of 747049, <= 10000: 0.0756 of 5063083, <= 100000: 0.0008 of 27245592
+  crossfit  hprc_HG002   30x whatshap   r 0.01   only indel 0.1794; by distance <= 1000: 0.5375 of 747049, <= 10000: 0.1463 of 5063083, <= 100000: 0.0031 of 27245592
+  crossfit  hprc_HG002   30x longphase  r 0.001  only indel 0.0554; by distance <= 1000: 0.4489 of 747049, <= 10000: 0.0812 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  hprc_HG002   30x longphase  r 0.01   only indel 0.5319; by distance <= 1000: 0.9047 of 747049, <= 10000: 0.5489 of 5063083, <= 100000: 0.0467 of 27245592
+  crossfit  hprc_HG002   20x whatshap   r 0.001  only indel 0.0503; by distance <= 1000: 0.4122 of 747049, <= 10000: 0.0755 of 5063083, <= 100000: 0.0008 of 27245592
+  crossfit  hprc_HG002   20x whatshap   r 0.01   only indel 0.1670; by distance <= 1000: 0.5314 of 747049, <= 10000: 0.1406 of 5063083, <= 100000: 0.0028 of 27245592
+  crossfit  hprc_HG002   20x longphase  r 0.001  only indel 0.0546; by distance <= 1000: 0.4488 of 747049, <= 10000: 0.0821 of 5063083, <= 100000: 0.0010 of 27245592
+  crossfit  hprc_HG002   20x longphase  r 0.01   only indel 0.5070; by distance <= 1000: 0.8808 of 747049, <= 10000: 0.4932 of 5063083, <= 100000: 0.0332 of 27245592
+  crossfit  hprc_HG002   10x whatshap   r 0.001  only indel 0.0431; by distance <= 1000: 0.4101 of 747049, <= 10000: 0.0751 of 5063083, <= 100000: 0.0008 of 27245592
+  crossfit  hprc_HG002   10x whatshap   r 0.01   only indel 0.1389; by distance <= 1000: 0.5131 of 747049, <= 10000: 0.1244 of 5063083, <= 100000: 0.0022 of 27245592
+  crossfit  hprc_HG002   10x longphase  r 0.001  only indel 0.0420; by distance <= 1000: 0.4443 of 747049, <= 10000: 0.0827 of 5063083, <= 100000: 0.0011 of 27245592
+  crossfit  hprc_HG002   10x longphase  r 0.01   only indel 0.4119; by distance <= 1000: 0.7232 of 747049, <= 10000: 0.2697 of 5063083, <= 100000: 0.0110 of 27245592
+  crossfit  hg001_v5     30x whatshap   r 0.001  only indel 0.0289; by distance <= 1000: 0.4586 of 687232, <= 10000: 0.0927 of 4614256, <= 100000: 0.0016 of 24459031
+  crossfit  hg001_v5     30x whatshap   r 0.01   only indel 0.3213; by distance <= 1000: 0.6001 of 687232, <= 10000: 0.2014 of 4614256, <= 100000: 0.0077 of 24459031
+  crossfit  hg001_v5     30x longphase  r 0.001  only indel 0.0204; by distance <= 1000: 0.5715 of 687232, <= 10000: 0.1170 of 4614256, <= 100000: 0.0026 of 24459031
+  crossfit  hg001_v5     30x longphase  r 0.01   only indel 0.4182; by distance <= 1000: 0.9106 of 687232, <= 10000: 0.7858 of 4614256, <= 100000: 0.2509 of 24459031
+  crossfit  hg001_v5     20x whatshap   r 0.001  only indel 0.0286; by distance <= 1000: 0.4527 of 687232, <= 10000: 0.0922 of 4614256, <= 100000: 0.0016 of 24459031
+  crossfit  hg001_v5     20x whatshap   r 0.01   only indel 0.2510; by distance <= 1000: 0.5992 of 687232, <= 10000: 0.2003 of 4614256, <= 100000: 0.0074 of 24459031
+  crossfit  hg001_v5     20x longphase  r 0.001  only indel 0.0212; by distance <= 1000: 0.5550 of 687232, <= 10000: 0.1153 of 4614256, <= 100000: 0.0025 of 24459031
+  crossfit  hg001_v5     20x longphase  r 0.01   only indel 0.5359; by distance <= 1000: 0.8957 of 687232, <= 10000: 0.6817 of 4614256, <= 100000: 0.1249 of 24459031
+  crossfit  hg001_v5     10x whatshap   r 0.001  only indel 0.0245; by distance <= 1000: 0.4193 of 687232, <= 10000: 0.0893 of 4614256, <= 100000: 0.0015 of 24459031
+  crossfit  hg001_v5     10x whatshap   r 0.01   only indel 0.1602; by distance <= 1000: 0.5782 of 687232, <= 10000: 0.1864 of 4614256, <= 100000: 0.0061 of 24459031
+  crossfit  hg001_v5     10x longphase  r 0.001  only indel 0.0210; by distance <= 1000: 0.4773 of 687232, <= 10000: 0.1083 of 4614256, <= 100000: 0.0024 of 24459031
+  crossfit  hg001_v5     10x longphase  r 0.01   only indel 0.3941; by distance <= 1000: 0.7370 of 687232, <= 10000: 0.3468 of 4614256, <= 100000: 0.0243 of 24459031
+  transfer  hg001_v5     30x whatshap   r 0.001  only indel 0.0738; by distance <= 1000: 0.4639 of 687232, <= 10000: 0.1147 of 4614256, <= 100000: 0.0024 of 24459031
+  transfer  hg001_v5     30x whatshap   r 0.01   only indel 0.1551; by distance <= 1000: 0.5826 of 687232, <= 10000: 0.1778 of 4614256, <= 100000: 0.0056 of 24459031
+  transfer  hg001_v5     30x longphase  r 0.001  only indel 0.0749; by distance <= 1000: 0.5315 of 687232, <= 10000: 0.1568 of 4614256, <= 100000: 0.0053 of 24459031
+  transfer  hg001_v5     30x longphase  r 0.01   only indel 0.5249; by distance <= 1000: 0.8958 of 687232, <= 10000: 0.6192 of 4614256, <= 100000: 0.0782 of 24459031
+  transfer  hg001_v5     20x whatshap   r 0.001  only indel 0.0682; by distance <= 1000: 0.4598 of 687232, <= 10000: 0.1131 of 4614256, <= 100000: 0.0022 of 24459031
+  transfer  hg001_v5     20x whatshap   r 0.01   only indel 0.1415; by distance <= 1000: 0.5759 of 687232, <= 10000: 0.1712 of 4614256, <= 100000: 0.0052 of 24459031
+  transfer  hg001_v5     20x longphase  r 0.001  only indel 0.0713; by distance <= 1000: 0.5256 of 687232, <= 10000: 0.1498 of 4614256, <= 100000: 0.0048 of 24459031
+  transfer  hg001_v5     20x longphase  r 0.01   only indel 0.4629; by distance <= 1000: 0.8766 of 687232, <= 10000: 0.5710 of 4614256, <= 100000: 0.0625 of 24459031
+  transfer  hg001_v5     10x whatshap   r 0.001  only indel 0.0700; by distance <= 1000: 0.4466 of 687232, <= 10000: 0.1122 of 4614256, <= 100000: 0.0024 of 24459031
+  transfer  hg001_v5     10x whatshap   r 0.01   only indel 0.1012; by distance <= 1000: 0.5387 of 687232, <= 10000: 0.1391 of 4614256, <= 100000: 0.0036 of 24459031
+  transfer  hg001_v5     10x longphase  r 0.001  only indel 0.0681; by distance <= 1000: 0.5146 of 687232, <= 10000: 0.1489 of 4614256, <= 100000: 0.0047 of 24459031
+  transfer  hg001_v5     10x longphase  r 0.01   only indel 0.3631; by distance <= 1000: 0.6761 of 687232, <= 10000: 0.2496 of 4614256, <= 100000: 0.0135 of 24459031
+
+thresholds per fold (score, reads) per beta (0.0001, 0.0003, 0.001, 0.003, 0.01), 30x only
+  crossfit cal_v5 whatshap fold 0: difficult none none 0.5556/5 -1.0000/0 -1.0000/0; easy none 0.8000/25 0.6158/11 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.8293/30 0.5556/5 -1.0000/0; segdup none none none none 0.5218/8; tandem none none none 0.8431/33 0.6667/18
+  crossfit cal_v5 whatshap fold 1: difficult none none 0.5556/5 0.0000/1 0.0000/1; easy none 0.7369/18 0.6158/11 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.7245/17 0.5000/4 -1.0000/0; segdup none none none 0.8293/30 0.4766/20; tandem none none none 0.8341/31 0.7152/27
+  crossfit cal_v5 longphase fold 0: difficult none none -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.5556/5 0.5556/5 0.5556/5 -1.0000/0; indel none none none 0.6431/32 0.4484/14; lowmap none none 0.7152/27 0.4286/3 -1.0000/0; segdup none none none none 0.2813/29; tandem none none 0.8128/27 0.5611/22 0.0918/2
+  crossfit cal_v5 longphase fold 1: difficult none none 0.5000/4 -1.0000/0 -1.0000/0; easy none 0.7369/18 0.5888/10 0.5888/10 -1.0000/0; indel none none none 0.6992/30 0.4484/14; lowmap none none 0.5578/9 0.4286/3 -1.0000/0; segdup none none none 0.8293/30 0.3333/2; tandem none none 0.7542/26 0.5459/12 0.0918/2
+  crossfit cal_r10 whatshap fold 0: difficult none none -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.7929/24 0.5556/5 0.5556/5 -1.0000/0; indel none none none none none; lowmap none none none 0.4795/7 -1.0000/0; segdup none none none none 0.5267/20; tandem none none none none 0.6667/8
+  crossfit cal_r10 whatshap fold 1: difficult none none -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.6512/17 0.5556/5 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.7682/21 0.4292/6 -1.0000/0; segdup none none none none 0.5947/14; tandem none none none none 0.6741/23
+  crossfit cal_r10 longphase fold 0: difficult none none 0.4286/3 -1.0000/0 -1.0000/0; easy none 0.5000/4 0.5000/4 0.5000/4 -1.0000/0; indel none none none 0.6347/20 0.5075/19; lowmap none none 0.5218/8 0.4062/19 -1.0000/0; segdup none none none none 0.3333/2; tandem none none 0.7059/21 0.5578/9 0.2000/1
+  crossfit cal_r10 longphase fold 1: difficult none none 0.4286/3 -1.0000/0 -1.0000/0; easy none 0.6604/13 0.5000/4 0.5000/4 -1.0000/0; indel none none none 0.6939/20 0.5000/4; lowmap none none 0.6000/6 0.3333/2 -1.0000/0; segdup none none none none 0.3913/10; tandem none none 0.6939/20 0.4393/16 0.0597/3
+  crossfit hprc_HG002 whatshap fold 0: difficult none none 0.2000/1 0.2000/1 0.2000/1; easy none 0.8333/20 0.5000/4 0.0000/1 0.0000/1; indel none none none none none; lowmap none none 0.7778/14 0.5000/4 -1.0000/0; segdup none none none none 0.7245/17; tandem none none none 0.8341/31 0.6524/33
+  crossfit hprc_HG002 whatshap fold 1: difficult none none 0.2000/1 0.2000/1 0.2000/1; easy none 0.7500/12 0.5000/4 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.7482/19 0.4919/13 -1.0000/0; segdup none none none none 0.6923/9; tandem none none none 0.8293/30 0.6710/27
+  crossfit hprc_HG002 longphase fold 0: difficult none none 0.3333/2 -1.0000/0 -1.0000/0; easy none 0.4286/3 0.4286/3 0.4286/3 -1.0000/0; indel none none none 0.6491/25 0.3453/31; lowmap none none 0.7482/19 0.3333/2 -1.0000/0; segdup none none none none 0.5717/13; tandem none none 0.7619/45 0.5000/16 0.0000/9
+  crossfit hprc_HG002 longphase fold 1: difficult none none -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.6364/7 0.4286/3 0.4286/3 -1.0000/0; indel none none none 0.7369/18 0.4365/29; lowmap none none 0.5000/4 0.3333/2 -1.0000/0; segdup none none none none 0.5556/5; tandem none none 0.8182/18 0.5000/4 0.0000/4
+  crossfit hg001_v5 whatshap fold 0: difficult none none 0.1513/19 0.1513/19 0.1513/19; easy none 0.5556/5 0.5556/5 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.8000/16 0.6044/25 0.2868/18; segdup none none none none 0.7183/42; tandem none none none 0.6960/25 0.4286/3
+  crossfit hg001_v5 whatshap fold 1: difficult none none 0.2000/1 0.2000/1 0.2000/1; easy none none 0.5556/5 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.7934/39 0.6000/6 0.2964/41; segdup none none none 0.8128/27 0.6699/39; tandem none none 0.8000/25 0.6394/12 0.4286/3
+  crossfit hg001_v5 longphase fold 0: difficult none none -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.6394/12 0.5000/4 -1.0000/0 -1.0000/0; indel none none 0.7667/34 0.5186/14 0.0000/31; lowmap none none 0.8187/28 0.5000/4 -1.0000/0; segdup none none none none 0.6790/14; tandem none none 0.5000/4 0.3007/8 -1.0000/0
+  crossfit hg001_v5 longphase fold 1: difficult none none 0.5000/4 -1.0000/0 -1.0000/0; easy none none 0.5000/4 -1.0000/0 -1.0000/0; indel none none 0.6698/31 0.5615/25 0.1917/26; lowmap none none 0.6364/7 0.3333/2 -1.0000/0; segdup none none none 0.8103/35 0.6604/26; tandem none none 0.6000/6 0.2623/9 -1.0000/0
+  transfer hg001_v5 whatshap fold 0: difficult none 0.5556/5 -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.7230/33 0.6158/11 -1.0000/0 -1.0000/0; indel none none none none none; lowmap none none 0.6790/14 0.3685/5 -1.0000/0; segdup none none none 0.8278/39 0.4725/36; tandem none none none 0.8341/31 0.6741/23
+  transfer hg001_v5 longphase fold 0: difficult none 0.5000/4 -1.0000/0 -1.0000/0 -1.0000/0; easy none 0.5578/9 0.5578/9 0.5578/9 -1.0000/0; indel none none none 0.6400/28 0.4286/3; lowmap none 0.7620/27 0.5884/27 0.4286/3 -1.0000/0; segdup none none none 0.7682/21 0.2459/7; tandem none none 0.7369/35 0.5000/16 0.0918/2
+
+abstaining genes at 30x, r = 1e-2: genes with >= 10 pairs and certified share below 0.5, lowest first (share, pairs; causes as shares of the gene's pairs: unphased u, break b, untrusted by group); D marks the GENCODE duplicated list
+  crossfit cal_v5 whatshap: 2236 genes
+    ABCC2 0.000 (10): u 0.00, b 0.00, indel 1.00
+    AHDC1 0.000 (10): u 0.00, b 0.60, indel 0.40
+    DDHD2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    ENG 0.000 (10): u 0.00, b 0.00, indel 0.70, tandem 0.70
+    FANCD2 D 0.000 (15): u 0.00, b 0.00, indel 1.00
+    HNRNPU 0.000 (10): u 0.40, b 0.00, indel 0.60
+    IGF1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    IKBKB 0.000 (10): u 0.00, b 0.00, indel 1.00
+    LCK 0.000 (36): u 0.00, b 0.00, indel 0.97, tandem 0.39
+    MSX2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    NDUFS1 0.000 (10): u 0.00, b 0.00, indel 0.90, tandem 0.60
+    NKX2-1 0.000 (21): u 0.00, b 0.00, indel 1.00
+    PKD2 0.000 (21): u 0.00, b 0.00, indel 1.00
+    POMGNT1 0.000 (36): u 0.00, b 0.00, indel 1.00
+    PPM1D 0.000 (15): u 0.00, b 0.00, indel 1.00
+    PUS1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PUS10 0.000 (21): u 0.00, b 0.00, indel 1.00
+    RAD51C 0.000 (21): u 0.29, b 0.00, indel 0.71
+    RMND1 0.000 (21): u 0.00, b 0.00, indel 0.95, tandem 0.48
+    RPGRIP1L 0.000 (15): u 0.00, b 0.00, indel 0.93, tandem 0.60
+    RXYLT1 0.000 (15): u 0.00, b 0.00, indel 1.00
+    SCN3A 0.000 (35): u 0.00, b 0.00, indel 1.00
+    TSPAN1 0.000 (28): u 0.00, b 0.00, indel 1.00
+    TUBGCP4 0.000 (10): u 0.00, b 0.00, indel 1.00
+    UBA2 0.000 (10): u 0.00, b 0.00, indel 1.00
+    WASHC4 0.000 (21): u 0.00, b 0.00, indel 1.00
+    WDR26 0.000 (55): u 0.00, b 0.00, indel 0.91, tandem 0.82
+    QRICH1 0.010 (1431): u 0.00, b 0.00, indel 0.99, tandem 0.28
+    SPINK5 0.011 (91): u 0.00, b 0.00, indel 0.99
+    BRCA1 D 0.011 (178): u 0.00, b 0.00, indel 0.99, segdup 0.21
+    LRP6 0.012 (18732): u 0.01, b 0.00, indel 0.98, segdup 0.43, tandem 0.79
+    MYO3A 0.012 (271232): u 0.00, b 0.00, indel 0.99, tandem 0.87
+    TBL1XR1 0.012 (18404): u 0.01, b 0.00, indel 0.98, segdup 0.06, tandem 0.81
+    ZNF148 0.012 (3221): u 0.00, b 0.00, indel 0.99, tandem 0.60
+    CPAMD8 0.013 (52024): u 0.01, b 0.00, indel 0.98, segdup 0.50, lowmap 0.71, tandem 0.88, difficult 0.21, easy 0.21
+    NT5C2 0.013 (27181): u 0.02, b 0.00, indel 0.96, tandem 0.79
+    SPG11 0.013 (78): u 0.00, b 0.00, indel 0.99
+    EDARADD 0.013 (136407): u 0.00, b 0.00, indel 0.98, lowmap 0.12, tandem 0.94
+    SETD2 0.014 (9728): u 0.00, b 0.00, indel 0.98, tandem 0.74
+    MED13 0.014 (210): u 0.00, b 0.00, indel 0.98, tandem 0.43
+  crossfit cal_v5 longphase: 1721 genes
+    AHDC1 0.000 (10): u 0.70, b 0.20, indel 0.10
+    TUBGCP4 0.000 (10): u 1.00, b 0.00
+    UBA2 0.000 (10): u 0.70, b 0.00, indel 0.30
+    TEX15 0.036 (55): u 0.82, b 0.00, indel 0.15
+    NKX2-1 0.048 (21): u 0.95, b 0.00
+    CFAP298-TCP10L 0.055 (46820): u 0.16, b 0.00, indel 0.69, segdup 0.74, tandem 0.40
+    TLK2 0.055 (4012): u 0.26, b 0.00, indel 0.57, segdup 0.67
+    SLC5A1 0.056 (36): u 0.42, b 0.00, indel 0.36, segdup 0.17, tandem 0.39
+    SPINT2 0.057 (105): u 0.94, b 0.00
+    SASH1 0.058 (61123): u 0.20, b 0.00, indel 0.75, tandem 0.33
+    AXDND1 0.064 (184114): u 0.11, b 0.00, indel 0.83, tandem 0.69
+    SDHA D 0.065 (48828): u 0.06, b 0.00, indel 0.20, segdup 0.88
+    TULP3 0.067 (29646): u 0.20, b 0.00, indel 0.73, tandem 0.40
+    RXYLT1 0.067 (15): u 0.93, b 0.00
+    SLCO1B3 0.067 (116090): u 0.06, b 0.00, indel 0.87
+    GPHN 0.068 (171366): u 0.23, b 0.00, indel 0.70, segdup 0.08, lowmap 0.02, tandem 0.05, difficult 0.02
+    TUSC3 0.068 (98626): u 0.12, b 0.00, indel 0.81, tandem 0.34, easy 0.02
+    PCDH15 0.069 (579278): u 0.09, b 0.00, indel 0.83, segdup 0.25, lowmap 0.04, tandem 0.45, difficult 0.04, easy 0.14
+    TDRD9 0.070 (20719): u 0.25, b 0.00, indel 0.68, segdup 0.20, tandem 0.43
+    CPAMD8 0.072 (52024): u 0.17, b 0.00, indel 0.75, segdup 0.42, lowmap 0.17, tandem 0.63, difficult 0.17
+    POTED 0.073 (6903): u 0.00, b 0.00, indel 0.58, segdup 0.93
+    MCPH1 0.074 (127342): u 0.09, b 0.00, indel 0.84, tandem 0.42
+    HBG2 0.075 (328724): u 0.03, b 0.00, indel 0.89, lowmap 0.33, tandem 0.50
+    EDARADD 0.076 (136407): u 0.15, b 0.00, indel 0.78, tandem 0.64
+    SEMA3A 0.078 (215550): u 0.11, b 0.00, indel 0.82, lowmap 0.25, tandem 0.45
+    SLCO1B3-SLCO1B7 0.079 (250241): u 0.07, b 0.00, indel 0.85
+    ACBD5 0.080 (41905): u 0.11, b 0.00, indel 0.81
+    CEP83 0.080 (9004): u 0.27, b 0.00, indel 0.65, tandem 0.30
+    DNAH8 0.080 (137908): u 0.11, b 0.00, indel 0.81
+    RSRC1 0.081 (183386): u 0.08, b 0.00, indel 0.83, segdup 0.14, lowmap 0.05, tandem 0.67, difficult 0.05
+    TMC1 0.081 (70577): u 0.20, b 0.00, indel 0.71, tandem 0.57
+    DNA2 0.081 (12720): u 0.19, b 0.00, indel 0.73, tandem 0.47
+    CSMD1 0.082 (1476508): u 0.05, b 0.01, indel 0.86, tandem 0.35, easy 0.03
+    VPS13B 0.083 (95073): u 0.19, b 0.00, indel 0.73, segdup 0.04, tandem 0.29
+    SPEF2 0.083 (64575): u 0.31, b 0.00, indel 0.61, tandem 0.48
+    GATM 0.083 (36): u 0.72, b 0.00, indel 0.19
+    PEX13 0.083 (36): u 0.92, b 0.00
+    CHD5 0.084 (13861): u 0.14, b 0.00, indel 0.78, tandem 0.53
+    MED13 0.086 (210): u 0.57, b 0.00, indel 0.35, tandem 0.16
+    EYS 0.086 (393176): u 0.08, b 0.00, indel 0.84, segdup 0.04, lowmap 0.01, tandem 0.25, difficult 0.01, easy 0.01
+  crossfit cal_r10 whatshap: 2255 genes
+    ABCC2 0.000 (10): u 0.00, b 0.00, indel 1.00
+    AHDC1 0.000 (10): u 0.00, b 0.60, indel 0.40
+    CCNH 0.000 (15): u 0.00, b 0.33, indel 0.60, tandem 0.40
+    CRYAA 0.000 (15): u 0.00, b 0.00, segdup 1.00
+    DDHD2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    ENG 0.000 (10): u 0.00, b 0.00, indel 0.70, tandem 0.70
+    FANCD2 D 0.000 (15): u 0.33, b 0.00, indel 0.67
+    HELLS 0.000 (66): u 0.17, b 0.00, indel 0.74, tandem 0.56
+    HNRNPU 0.000 (10): u 0.00, b 0.00, indel 1.00
+    IGF1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    IKBKB 0.000 (10): u 0.00, b 0.00, indel 1.00
+    LCK 0.000 (36): u 0.00, b 0.00, indel 0.97, tandem 0.39
+    MSX2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    NCAPD3 0.000 (21): u 0.00, b 0.00, indel 0.95, tandem 0.48
+    NDUFS1 0.000 (10): u 0.00, b 0.00, indel 0.90, tandem 0.60
+    NKX2-1 0.000 (21): u 0.29, b 0.00, indel 0.71
+    PKD2 0.000 (21): u 0.00, b 0.00, indel 1.00
+    POLH 0.000 (15): u 0.00, b 0.00, indel 0.93, segdup 0.60
+    POMGNT1 0.000 (36): u 0.00, b 0.00, indel 1.00
+    PPM1D 0.000 (15): u 0.00, b 0.00, indel 1.00
+    PRR12 0.000 (10): u 0.00, b 0.60, indel 0.10, tandem 0.30
+    PUS1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PUS10 0.000 (21): u 0.00, b 0.00, indel 1.00
+    RAD51C 0.000 (21): u 0.00, b 0.00, indel 1.00
+    RPGRIP1L 0.000 (15): u 0.00, b 0.00, indel 0.93, tandem 0.60
+    RXYLT1 0.000 (15): u 0.00, b 0.00, indel 1.00
+    SCN3A 0.000 (35): u 0.00, b 0.00, indel 1.00
+    STIL 0.000 (15): u 0.00, b 0.00, indel 0.93, tandem 0.60
+    TSPAN1 0.000 (28): u 0.00, b 0.00, indel 1.00
+    TUBGCP4 0.000 (10): u 0.00, b 0.00, indel 1.00
+    UBA2 0.000 (10): u 0.00, b 0.00, indel 1.00
+    WASHC4 0.000 (21): u 0.00, b 0.00, indel 1.00
+    ZFYVE26 0.000 (10): u 0.00, b 0.00, indel 0.90, tandem 0.40
+    TBL1XR1 0.009 (18404): u 0.01, b 0.00, indel 0.98, segdup 0.06, lowmap 0.17, tandem 0.85
+    MYO3A 0.010 (271232): u 0.01, b 0.00, indel 0.98, lowmap 0.07, tandem 0.92
+    SPAST 0.010 (17205): u 0.00, b 0.00, indel 0.99, tandem 0.86
+    LRP6 0.010 (18732): u 0.01, b 0.00, indel 0.98, segdup 0.43, tandem 0.84
+    QRICH1 0.010 (1431): u 0.00, b 0.00, indel 0.99, tandem 0.66
+    SPINK5 0.011 (91): u 0.00, b 0.00, indel 0.99
+    BRCA1 D 0.011 (178): u 0.00, b 0.13, indel 0.85, segdup 0.09
+  crossfit cal_r10 longphase: 1783 genes
+    IGF1 0.000 (10): u 0.90, b 0.00, tandem 0.10
+    IKBKB 0.000 (10): u 0.40, b 0.00, indel 0.60
+    UBA2 0.000 (10): u 1.00, b 0.00
+    SPG11 0.038 (78): u 0.81, b 0.00, indel 0.15
+    DBT 0.044 (45): u 0.53, b 0.00, indel 0.42
+    ANAPC1 D 0.045 (42822): u 0.21, b 0.00, indel 0.66, segdup 0.71
+    NKX2-1 0.048 (21): u 0.95, b 0.00
+    PUS10 0.048 (21): u 0.86, b 0.00, indel 0.10
+    CFAP298-TCP10L 0.051 (46820): u 0.29, b 0.00, indel 0.59, segdup 0.62, tandem 0.37
+    TULP3 0.051 (29646): u 0.17, b 0.00, indel 0.78, tandem 0.56
+    SCN3A 0.057 (35): u 0.00, b 0.00, indel 0.94
+    SPINT2 0.057 (105): u 0.94, b 0.00
+    NT5C2 0.062 (27181): u 0.29, b 0.00, indel 0.64, segdup 0.18
+    HBG2 0.062 (328724): u 0.04, b 0.00, indel 0.89, tandem 0.42
+    TLK2 0.063 (4012): u 0.28, b 0.00, indel 0.49, segdup 0.66
+    SASH1 0.063 (61123): u 0.22, b 0.00, indel 0.71, tandem 0.32
+    SLCO1B3-SLCO1B7 0.064 (250241): u 0.07, b 0.00, indel 0.86
+    GLB1 0.066 (25271): u 0.22, b 0.00, indel 0.72, tandem 0.42
+    PCDH15 0.066 (579278): u 0.09, b 0.00, indel 0.84, segdup 0.26, lowmap 0.04, tandem 0.33, difficult 0.04, easy 0.01
+    SDHA D 0.066 (48828): u 0.06, b 0.00, indel 0.37, segdup 0.88
+    PPM1D 0.067 (15): u 0.93, b 0.00
+    AXDND1 0.067 (184114): u 0.11, b 0.00, indel 0.82, tandem 0.37
+    SLCO1B3 0.067 (116090): u 0.06, b 0.00, indel 0.88
+    SEMA3A 0.070 (215550): u 0.22, b 0.00, indel 0.70, tandem 0.12, easy 0.00
+    RSRC1 0.070 (183386): u 0.09, b 0.00, indel 0.83, segdup 0.14, lowmap 0.05, tandem 0.09, difficult 0.05
+    TEX15 0.073 (55): u 0.73, b 0.00, indel 0.20
+    RYR2 0.073 (185689): u 0.16, b 0.00, indel 0.76, tandem 0.31, difficult 0.02, easy 0.00
+    POTED 0.074 (6903): u 0.02, b 0.00, indel 0.74, segdup 0.91
+    ODAD2 D 0.075 (18746): u 0.13, b 0.02, indel 0.75, segdup 0.68
+    CPAMD8 0.075 (52024): u 0.16, b 0.00, indel 0.75, segdup 0.43, lowmap 0.17, tandem 0.41, difficult 0.17
+    ACBD5 0.077 (41905): u 0.13, b 0.00, indel 0.80, tandem 0.26
+    SOS2 0.078 (4792): u 0.41, b 0.00, indel 0.51
+    CEP83 0.078 (9004): u 0.30, b 0.00, indel 0.62, tandem 0.29
+    LMF1 0.079 (38329): u 0.06, b 0.00, indel 0.86, tandem 0.43
+    ZNF148 0.079 (3221): u 0.36, b 0.00, indel 0.56
+    P3H2 0.079 (49348): u 0.11, b 0.00, indel 0.81, tandem 0.50
+    DNAH8 0.080 (137908): u 0.12, b 0.00, indel 0.80
+    ANK3 0.080 (212287): u 0.12, b 0.00, indel 0.80, segdup 0.11, tandem 0.37
+    DCC 0.080 (279003): u 0.09, b 0.00, indel 0.82, tandem 0.13, difficult 0.00, easy 0.00
+    CSMD1 0.081 (1476508): u 0.06, b 0.00, indel 0.86, lowmap 0.08, tandem 0.30, easy 0.04
+  crossfit hprc_HG002 whatshap: 2254 genes
+    ABCC2 0.000 (10): u 0.00, b 0.60, indel 0.40
+    AHDC1 0.000 (10): u 0.00, b 0.60, indel 0.40
+    CRYAA 0.000 (15): u 0.00, b 0.00, segdup 1.00
+    DDHD2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    FANCD2 D 0.000 (15): u 0.00, b 0.53, indel 0.47
+    GATM 0.000 (36): u 0.00, b 0.00, indel 0.97, tandem 0.56
+    HNRNPU 0.000 (10): u 0.00, b 0.00, indel 1.00
+    IGF1 0.000 (10): u 0.00, b 0.70, indel 0.30
+    IKBKB 0.000 (10): u 0.40, b 0.00, indel 0.60
+    KYNU D 0.000 (23): u 0.74, b 0.17, indel 0.09
+    MSX2 0.000 (15): u 0.00, b 0.00, indel 1.00
+    NDUFS1 0.000 (10): u 0.00, b 0.00, indel 0.90, tandem 0.60
+    NKX2-1 0.000 (21): u 0.00, b 0.00, indel 1.00
+    NTRK1 0.000 (10): u 0.00, b 0.60, indel 0.40
+    PKD2 0.000 (21): u 0.00, b 0.48, indel 0.52
+    POLH 0.000 (15): u 0.00, b 0.60, indel 0.40
+    POMGNT1 0.000 (36): u 0.00, b 0.00, indel 1.00
+    POMK 0.000 (10): u 0.00, b 0.40, indel 0.60
+    PPM1D 0.000 (15): u 0.33, b 0.27, indel 0.40
+    PUS1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PUS10 0.000 (21): u 0.29, b 0.38, indel 0.33
+    RAD51C 0.000 (21): u 0.00, b 0.00, indel 1.00
+    RMND1 0.000 (21): u 0.00, b 0.29, indel 0.67, tandem 0.38
+    RPGRIP1L 0.000 (15): u 0.00, b 0.60, indel 0.40
+    RXYLT1 0.000 (15): u 0.00, b 0.00, indel 1.00
+    SCN3A 0.000 (35): u 0.00, b 0.77, indel 0.23
+    SIK1 0.000 (66): u 0.00, b 0.00, indel 0.32, segdup 0.95
+    SPG11 0.000 (78): u 0.15, b 0.46, indel 0.38
+    TSPAN1 0.000 (28): u 0.00, b 0.00, indel 1.00
+    TUBGCP4 0.000 (10): u 0.00, b 0.00, indel 1.00
+    UBA2 0.000 (10): u 0.00, b 0.60, indel 0.40
+    WASHC4 0.000 (21): u 0.00, b 0.29, indel 0.71
+    ZFYVE26 0.000 (10): u 0.40, b 0.00, indel 0.50, tandem 0.30
+    QRICH1 0.010 (1431): u 0.00, b 0.00, indel 0.99, tandem 0.28
+    SPINK5 0.011 (91): u 0.00, b 0.56, indel 0.43
+    BRCA1 D 0.011 (178): u 0.00, b 0.58, indel 0.40, segdup 0.04
+    LRP6 0.011 (18732): u 0.00, b 0.00, indel 0.99, segdup 0.43, tandem 0.70
+    SPAST 0.011 (17205): u 0.00, b 0.00, indel 0.99, tandem 0.80
+    MYO3A 0.012 (271232): u 0.00, b 0.00, indel 0.99, tandem 0.88
+    NT5C2 0.012 (27181): u 0.00, b 0.00, indel 0.99, tandem 0.80
+  crossfit hprc_HG002 longphase: 1801 genes
+    CRYAA 0.000 (15): u 0.00, b 0.00, segdup 1.00
+    IGF1 0.000 (10): u 0.40, b 0.50, indel 0.10
+    NTRK1 0.000 (10): u 0.40, b 0.40, indel 0.20
+    VHL 0.000 (120): u 1.00, b 0.00
+    HGF 0.030 (4656): u 0.91, b 0.01, indel 0.05
+    ANAPC1 D 0.039 (42822): u 0.06, b 0.08, indel 0.74, segdup 0.77
+    PUS10 0.048 (21): u 0.95, b 0.00
+    SPAST 0.052 (17205): u 0.10, b 0.00, indel 0.84, tandem 0.61
+    SDHA D 0.057 (48828): u 0.17, b 0.00, indel 0.54, segdup 0.78
+    GPHN 0.058 (171366): u 0.02, b 0.00, indel 0.92, segdup 0.09, lowmap 0.02, tandem 0.37, difficult 0.02
+    NT5C2 0.058 (27181): u 0.02, b 0.00, indel 0.93, tandem 0.45
+    AXDND1 0.060 (184114): u 0.02, b 0.00, indel 0.92, tandem 0.60
+    SASH1 0.061 (61123): u 0.08, b 0.00, indel 0.86, tandem 0.49
+    SLCO1B3 0.061 (116090): u 0.02, b 0.00, indel 0.92, tandem 0.35
+    SLCO1B3-SLCO1B7 0.061 (250241): u 0.03, b 0.00, indel 0.91, tandem 0.48
+    TBCD 0.064 (55300): u 0.14, b 0.00, indel 0.80, tandem 0.33
+    CFAP298-TCP10L 0.066 (46820): u 0.02, b 0.00, indel 0.87, segdup 0.87, tandem 0.32
+    TDRD9 0.068 (20719): u 0.07, b 0.00, indel 0.86, segdup 0.24, tandem 0.52
+    DEPDC5 0.070 (9980): u 0.14, b 0.00, indel 0.79, tandem 0.22
+    EDARADD 0.071 (136407): u 0.08, b 0.00, indel 0.84, tandem 0.47
+    CNOT1 0.071 (32003): u 0.03, b 0.00, indel 0.90, tandem 0.59
+    ABCC1 0.072 (47270): u 0.05, b 0.00, indel 0.88, tandem 0.48
+    POTED 0.073 (6903): u 0.00, b 0.00, indel 0.41, segdup 0.93
+    EHMT1 0.074 (41041): u 0.07, b 0.00, indel 0.86, lowmap 0.27, tandem 0.28
+    PPFIBP1 0.074 (25261): u 0.02, b 0.00, indel 0.87, segdup 0.65, tandem 0.24
+    TLK2 0.076 (4012): u 0.12, b 0.00, indel 0.58, segdup 0.80
+    PCDH15 0.076 (579278): u 0.03, b 0.02, indel 0.85, segdup 0.26, lowmap 0.04, tandem 0.40, difficult 0.04
+    KAT6B 0.077 (13979): u 0.10, b 0.00, indel 0.83, tandem 0.04
+    DNAH8 0.077 (137908): u 0.03, b 0.00, indel 0.89, tandem 0.15
+    RSRC1 0.078 (183386): u 0.02, b 0.00, indel 0.90, segdup 0.15, lowmap 0.05, tandem 0.09, difficult 0.05
+    CEP83 0.078 (9004): u 0.13, b 0.00, indel 0.80, tandem 0.53
+    ENTPD5 0.078 (7140): u 0.02, b 0.00, indel 0.91, tandem 0.68
+    BMPR1A 0.078 (26593): u 0.14, b 0.00, indel 0.79, segdup 0.07, tandem 0.02
+    VPS13B 0.078 (95073): u 0.05, b 0.00, indel 0.87, segdup 0.04, tandem 0.34, easy 0.01
+    LHFPL5 0.079 (8911): u 0.10, b 0.00, indel 0.82, tandem 0.49
+    CA5A D 0.079 (3081): u 0.05, b 0.00, indel 0.53, segdup 0.83
+    FGD4 0.079 (70562): u 0.03, b 0.00, indel 0.89, tandem 0.57
+    TTN 0.080 (25): u 0.44, b 0.44, segdup 0.04
+    EIF2AK3 0.080 (2333): u 0.12, b 0.00, indel 0.80, tandem 0.25
+    SMG6 0.080 (66956): u 0.02, b 0.00, indel 0.89
+  crossfit hg001_v5 whatshap: 2109 genes
+    IFT122 D 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PPM1D 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PTCH1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    SMAD4 0.000 (10): u 0.00, b 0.00, indel 1.00
+    SNCA 0.000 (15): u 0.33, b 0.00, indel 0.67
+    KCNE1 0.006 (171): u 0.00, b 0.00, indel 0.65, segdup 0.96
+    INSR 0.015 (38768): u 0.00, b 0.00, indel 0.98, tandem 0.78, easy 0.35
+    PRORP 0.016 (20659): u 0.00, b 0.00, indel 0.98, tandem 0.50
+    BRCA1 D 0.017 (34799): u 0.00, b 0.00, indel 0.98, segdup 0.65, tandem 0.78
+    ASXL2 0.018 (14167): u 0.00, b 0.00, indel 0.98, segdup 0.52, lowmap 0.36, tandem 0.60, difficult 0.09, easy 0.09
+    TERT 0.018 (55): u 0.00, b 0.00, indel 0.96, segdup 0.55
+    LRIG2 0.020 (666): u 0.00, b 0.00, indel 0.98, tandem 0.68
+    CTNNA1 0.020 (66590): u 0.00, b 0.00, indel 0.98, lowmap 0.12, tandem 0.82
+    NT5C2 0.020 (28562): u 0.01, b 0.00, indel 0.97, lowmap 0.27, tandem 0.46
+    TPK1 0.021 (112411): u 0.01, b 0.00, indel 0.97, segdup 0.09, lowmap 0.01, tandem 0.86, difficult 0.01
+    ABR 0.022 (120579): u 0.00, b 0.00, indel 0.97, segdup 0.47, lowmap 0.37, tandem 0.90, difficult 0.10
+    XRCC4 0.023 (69661): u 0.01, b 0.00, indel 0.97, tandem 0.86
+    NSMCE2 0.023 (32809): u 0.02, b 0.00, indel 0.96, tandem 0.48
+    PIBF1 0.023 (26505): u 0.00, b 0.00, indel 0.98, tandem 0.79
+    ADAM17 0.024 (5460): u 0.00, b 0.00, indel 0.98, tandem 0.08
+    SUZ12 D 0.024 (14028): u 0.00, b 0.00, indel 0.98, segdup 0.89, tandem 0.24
+    TRPC6 0.024 (189589): u 0.01, b 0.00, indel 0.97, lowmap 0.06, tandem 0.85
+    DNAH12 0.024 (94277): u 0.01, b 0.00, indel 0.97, lowmap 0.23, tandem 0.89
+    ARHGEF18 0.024 (40159): u 0.01, b 0.00, indel 0.97, tandem 0.70
+    NALCN 0.024 (55185): u 0.00, b 0.00, indel 0.97, lowmap 0.28, tandem 0.79, easy 0.00
+    UNC13A 0.024 (14535): u 0.01, b 0.00, indel 0.96, tandem 0.74
+    LARS1 0.025 (32385): u 0.01, b 0.00, indel 0.97, tandem 0.75
+    ACBD5 0.025 (24090): u 0.02, b 0.00, indel 0.96, segdup 0.02, lowmap 0.00, tandem 0.42, difficult 0.00, easy 0.00
+    ZNF148 0.025 (2292): u 0.03, b 0.00, indel 0.94, tandem 0.38
+    TMEM260 0.025 (36365): u 0.01, b 0.00, indel 0.97, lowmap 0.07, tandem 0.32
+    ATG7 0.025 (17077): u 0.02, b 0.00, indel 0.94, segdup 0.54, lowmap 0.46, tandem 0.62
+    NFU1 0.025 (4465): u 0.00, b 0.00, indel 0.97, tandem 0.06
+    TRAPPC9 0.025 (104850): u 0.00, b 0.00, indel 0.97, segdup 0.18, lowmap 0.13, tandem 0.49, easy 0.00
+    COL18A1 0.025 (31732): u 0.00, b 0.00, indel 0.97, lowmap 0.29, tandem 0.89
+    KDM5B 0.026 (9870): u 0.00, b 0.00, indel 0.97, lowmap 0.22, tandem 0.76
+    PRKN 0.026 (504060): u 0.00, b 0.00, indel 0.97, lowmap 0.03, tandem 0.61, easy 0.01
+    CLTC 0.026 (5356): u 0.00, b 0.00, indel 0.97, tandem 0.58
+    PLD5 0.026 (102740): u 0.01, b 0.00, indel 0.97, segdup 0.40, lowmap 0.23, tandem 0.64, difficult 0.00
+    CCDC88A 0.026 (24478): u 0.01, b 0.00, indel 0.96, tandem 0.38
+    AFG2A 0.026 (157457): u 0.00, b 0.00, indel 0.97, segdup 0.15, lowmap 0.33, tandem 0.54, difficult 0.03, easy 0.03
+  crossfit hg001_v5 longphase: 889 genes
+    KCNE1 0.023 (171): u 0.11, b 0.00, indel 0.18, segdup 0.87
+    TSPEAR 0.074 (60276): u 0.05, b 0.00, indel 0.70, segdup 0.87, lowmap 0.06, tandem 0.06, difficult 0.06, easy 0.00
+    FBXW10B 0.091 (8128): u 0.15, b 0.00, indel 0.21, segdup 0.76
+    SUZ12 D 0.092 (14028): u 0.15, b 0.00, indel 0.48, segdup 0.75
+    RASA1 0.100 (10): u 0.70, b 0.20
+    FANCD2 D 0.103 (24976): u 0.11, b 0.00, indel 0.45, segdup 0.76
+    CLCNKB 0.109 (4371): u 0.04, b 0.00, indel 0.08, segdup 0.85
+    CFAP298-TCP10L 0.119 (19063): u 0.12, b 0.00, indel 0.62, segdup 0.70
+    ABR 0.119 (120579): u 0.09, b 0.00, indel 0.72, segdup 0.44, lowmap 0.48, tandem 0.09, difficult 0.09
+    COX10 0.126 (20827): u 0.08, b 0.00, indel 0.66, segdup 0.68
+    POTED 0.128 (5253): u 0.00, b 0.00, indel 0.40, segdup 0.87
+    KMT2C D 0.129 (1834): u 0.30, b 0.00, indel 0.41, segdup 0.51, lowmap 0.17
+    PGM5 D 0.130 (12304): u 0.08, b 0.00, indel 0.41, segdup 0.70
+    NXN 0.136 (52408): u 0.08, b 0.00, indel 0.73, segdup 0.27, lowmap 0.50, tandem 0.06
+    CEP170 D 0.137 (6549): u 0.07, b 0.00, indel 0.51, segdup 0.58
+    TRPC6 0.139 (189589): u 0.08, b 0.00, indel 0.77, lowmap 0.36
+    EHMT1 0.140 (51582): u 0.16, b 0.00, indel 0.65, lowmap 0.55
+    CBS 0.143 (1225): u 0.04, b 0.00, segdup 0.82
+    RSRC1 0.145 (74497): u 0.05, b 0.00, indel 0.78, segdup 0.19, lowmap 0.38, tandem 0.00, difficult 0.00
+    ATG7 0.145 (17077): u 0.09, b 0.00, indel 0.61, segdup 0.51, lowmap 0.43, tandem 0.00
+    CFH 0.145 (7258): u 0.07, b 0.00, indel 0.74, segdup 0.70
+    RANBP2 0.147 (7381): u 0.16, b 0.00, indel 0.64, segdup 0.61
+    UGT1A6 0.149 (8646): u 0.07, b 0.00, indel 0.07, segdup 0.77
+    CCDC144A 0.152 (66): u 0.00, b 0.17, indel 0.48, segdup 0.68
+    CTNNA1 0.153 (66590): u 0.17, b 0.00, indel 0.67, segdup 0.00, lowmap 0.31
+    TDRD9 0.156 (18206): u 0.16, b 0.00, indel 0.68, segdup 0.21, tandem 0.40
+    ADAMTS19 0.157 (24010): u 0.06, b 0.00, indel 0.78, lowmap 0.27
+    PLOD2 0.157 (23860): u 0.06, b 0.00, indel 0.77, lowmap 0.47
+    COL18A1 0.157 (31732): u 0.02, b 0.00, indel 0.82, lowmap 0.28, tandem 0.47
+    MYH14 0.160 (25620): u 0.09, b 0.00, indel 0.75
+    DYNC2H1 0.162 (94151): u 0.06, b 0.00, indel 0.77, segdup 0.20, lowmap 0.19, tandem 0.11, difficult 0.11
+    PMS2 D 0.163 (2211): u 0.09, b 0.00, segdup 0.75
+    RAP1GAP2 0.165 (47341): u 0.09, b 0.00, indel 0.72, lowmap 0.35, tandem 0.01
+    PDE4DIP D 0.168 (926): u 0.19, b 0.00, indel 0.13, segdup 0.64
+    ZBTB11 0.170 (171): u 0.47, b 0.00, indel 0.36
+    TPK1 0.170 (112411): u 0.08, b 0.00, indel 0.69, segdup 0.08, lowmap 0.25, tandem 0.01, difficult 0.01
+    RBM27-POU4F3 0.171 (12233): u 0.16, b 0.00, indel 0.67
+    ASXL2 0.174 (14167): u 0.20, b 0.00, indel 0.60, segdup 0.42, lowmap 0.06, tandem 0.06, difficult 0.06, easy 0.06
+    UGT1A5 0.175 (5356): u 0.04, b 0.00, indel 0.09, segdup 0.78
+    PI4KA D 0.176 (34863): u 0.10, b 0.00, indel 0.70, segdup 0.27
+  transfer hg001_v5 whatshap: 2132 genes
+    IFT122 D 0.000 (10): u 0.00, b 0.00, indel 1.00
+    OCLN D 0.000 (10): u 0.00, b 0.00, indel 0.40, segdup 0.60, tandem 0.70
+    PPM1D 0.000 (10): u 0.00, b 0.00, indel 1.00
+    PTCH1 0.000 (10): u 0.00, b 0.00, indel 1.00
+    SMAD4 0.000 (10): u 0.00, b 0.00, indel 1.00
+    SNCA 0.000 (15): u 0.33, b 0.00, indel 0.67
+    KCNE1 0.006 (171): u 0.00, b 0.00, indel 0.65, segdup 0.96
+    ASXL2 0.013 (14167): u 0.00, b 0.00, indel 0.98, segdup 0.52, lowmap 0.09, tandem 0.86
+    INSR 0.013 (38768): u 0.00, b 0.00, indel 0.98, tandem 0.80, easy 0.35
+    PRORP 0.015 (20659): u 0.00, b 0.00, indel 0.98, tandem 0.85
+    BRCA1 D 0.017 (34799): u 0.00, b 0.00, indel 0.98, segdup 0.64, tandem 0.79
+    LRIG2 0.018 (666): u 0.00, b 0.00, indel 0.98, tandem 0.68
+    TPK1 0.019 (112411): u 0.01, b 0.00, indel 0.97, segdup 0.09, lowmap 0.01, tandem 0.88
+    GATAD2B 0.020 (11535): u 0.01, b 0.00, indel 0.96, tandem 0.85
+    CTNNA1 0.020 (66590): u 0.00, b 0.00, indel 0.98, lowmap 0.12, tandem 0.84
+    ABR 0.020 (120579): u 0.00, b 0.00, indel 0.97, segdup 0.47, lowmap 0.10, tandem 0.91, easy 0.08
+    LARS1 0.020 (32385): u 0.01, b 0.00, indel 0.97, tandem 0.89
+    KDM5B 0.020 (9870): u 0.00, b 0.00, indel 0.97, tandem 0.80
+    PIBF1 0.021 (26505): u 0.00, b 0.00, indel 0.98, tandem 0.84
+    ADAM17 0.021 (5460): u 0.00, b 0.00, indel 0.98, tandem 0.71
+    ARHGEF18 0.021 (40159): u 0.01, b 0.00, indel 0.97, tandem 0.81
+    TRPC6 0.021 (189589): u 0.01, b 0.00, indel 0.97, tandem 0.85
+    TCF4 0.021 (14211): u 0.01, b 0.00, indel 0.96, tandem 0.72, easy 0.05
+    COL18A1 0.021 (31732): u 0.00, b 0.00, indel 0.97, tandem 0.91
+    NSMCE2 0.021 (32809): u 0.02, b 0.00, indel 0.96, tandem 0.82
+    NALCN 0.022 (55185): u 0.00, b 0.00, indel 0.97, tandem 0.83, easy 0.00
+    DNAH12 0.022 (94277): u 0.01, b 0.00, indel 0.97, tandem 0.91
+    GREB1L 0.022 (11207): u 0.01, b 0.00, indel 0.95, tandem 0.82, easy 0.00
+    XRCC4 0.022 (69661): u 0.01, b 0.00, indel 0.97, tandem 0.87
+    CDK13 0.022 (45): u 0.00, b 0.00, indel 0.96, tandem 0.53
+    TRAPPC9 0.022 (104850): u 0.00, b 0.00, indel 0.97, segdup 0.18, tandem 0.84, easy 0.00
+    ZNF148 0.022 (2292): u 0.03, b 0.00, indel 0.94, tandem 0.59
+    MED13L 0.022 (16719): u 0.00, b 0.00, indel 0.97, tandem 0.78
+    UNC13A 0.022 (14535): u 0.01, b 0.00, indel 0.96, tandem 0.78
+    TULP3 0.022 (18336): u 0.01, b 0.00, indel 0.96, tandem 0.80
+    PRKN 0.023 (504060): u 0.00, b 0.00, indel 0.97, tandem 0.89, easy 0.01
+    EDARADD 0.023 (53657): u 0.00, b 0.00, indel 0.97, tandem 0.81
+    SUZ12 D 0.023 (14028): u 0.00, b 0.00, indel 0.98, segdup 0.82, tandem 0.27
+    ARFGEF1 0.023 (3575): u 0.02, b 0.00, indel 0.95, tandem 0.68
+    MTMR2 0.024 (9854): u 0.00, b 0.00, indel 0.97, tandem 0.76
+  transfer hg001_v5 longphase: 1440 genes
+    SNCA 0.067 (15): u 0.33, b 0.00, indel 0.60
+    ABR 0.069 (120579): u 0.09, b 0.00, indel 0.84, segdup 0.43, lowmap 0.02, tandem 0.36
+    MAD1L1 0.078 (191820): u 0.02, b 0.00, indel 0.89, segdup 0.12, tandem 0.32
+    TDRD9 0.079 (18206): u 0.16, b 0.00, indel 0.76, segdup 0.21, tandem 0.49
+    NXN 0.080 (52408): u 0.08, b 0.00, indel 0.82, segdup 0.27, tandem 0.06
+    XRCC4 0.080 (69661): u 0.07, b 0.00, indel 0.85
+    DNAH12 0.082 (94277): u 0.07, b 0.00, indel 0.85, tandem 0.23
+    AFG2A 0.083 (157457): u 0.07, b 0.00, indel 0.85, segdup 0.13, tandem 0.18
+    TSPEAR 0.084 (60276): u 0.05, b 0.00, indel 0.85, segdup 0.84, lowmap 0.00, tandem 0.06, easy 0.01
+    EHMT1 0.085 (51582): u 0.16, b 0.00, indel 0.76, tandem 0.13
+    EYS 0.085 (606279): u 0.06, b 0.00, indel 0.86, segdup 0.13, lowmap 0.00, tandem 0.12, easy 0.00
+    COL18A1 0.087 (31732): u 0.02, b 0.00, indel 0.89, tandem 0.48
+    CNTN1 0.089 (38291): u 0.07, b 0.00, indel 0.84, segdup 0.22, tandem 0.39
+    LMF1 0.092 (47319): u 0.08, b 0.00, indel 0.80, segdup 0.63, tandem 0.38
+    CTNNA1 0.092 (66590): u 0.17, b 0.00, indel 0.74, segdup 0.00
+    DIP2C 0.093 (29042): u 0.12, b 0.00, indel 0.77, segdup 0.54, lowmap 0.01, tandem 0.02, easy 0.05
+    TPK1 0.094 (112411): u 0.08, b 0.00, indel 0.82, segdup 0.08, tandem 0.01
+    NT5C2 0.095 (28562): u 0.26, b 0.00, indel 0.64, segdup 0.18
+    RSRC1 0.096 (74497): u 0.05, b 0.00, indel 0.85, segdup 0.19, lowmap 0.00, tandem 0.14
+    VWF D 0.098 (47221): u 0.05, b 0.00, indel 0.84, segdup 0.46, tandem 0.38
+    SBF2 0.098 (124897): u 0.09, b 0.00, indel 0.81, tandem 0.21
+    TRPC6 0.099 (189589): u 0.08, b 0.00, indel 0.83
+    ASCC3 0.099 (58605): u 0.08, b 0.00, indel 0.82, segdup 0.01
+    IFT122 D 0.100 (10): u 0.40, b 0.00, indel 0.50
+    RASA1 0.100 (10): u 0.70, b 0.20
+    SMAD4 0.100 (10): u 0.00, b 0.00, indel 0.90
+    RBM27-POU4F3 0.101 (12233): u 0.16, b 0.00, indel 0.74
+    LRP1B 0.101 (481890): u 0.07, b 0.00, indel 0.82, tandem 0.23, easy 0.04
+    NUBPL 0.103 (124181): u 0.09, b 0.00, indel 0.81, tandem 0.44
+    PCDH15 0.103 (497619): u 0.05, b 0.00, indel 0.84, segdup 0.30, lowmap 0.00, tandem 0.28
+    CSMD1 0.104 (1346600): u 0.04, b 0.00, indel 0.85, tandem 0.32, easy 0.04
+    RAP1GAP2 0.105 (47341): u 0.09, b 0.00, indel 0.81, tandem 0.57
+    CTNNA3 0.105 (424934): u 0.05, b 0.03, indel 0.81, lowmap 0.00, tandem 0.29, easy 0.01
+    DNAH9 0.106 (63574): u 0.08, b 0.00, indel 0.81, tandem 0.25, easy 0.13
+    ASXL2 0.106 (14167): u 0.20, b 0.00, indel 0.69, segdup 0.42, lowmap 0.01, tandem 0.26
+    TULP3 0.106 (18336): u 0.12, b 0.00, indel 0.77
+    PIGN 0.107 (116985): u 0.05, b 0.00, indel 0.85, segdup 0.26, tandem 0.16
+    LRBA 0.107 (67346): u 0.12, b 0.00, indel 0.77, lowmap 0.10, tandem 0.27
+    PLOD2 0.107 (23860): u 0.06, b 0.00, indel 0.83
+    KDM5B 0.107 (9870): u 0.18, b 0.00, indel 0.71, tandem 0.35
+
+named paralog genes at 30x, r = 1e-2: certified share (pairs); '-' no pairs
+  crossfit cal_v5 whatshap: PMS2 -, SMN1 -, SMN2 -, GBA1 0.17 (231), CYP21A2 0.87 (105), HBA1 -, HBA2 -, STRC 0.67 (3), TNXB 0.10 (2211), NEB 0.06 (36102), CYP11B1 0.89 (406), CYP11B2 0.13 (1485), NCF1 -, PKD1 1.00 (3), CYP2D6 -, SDHA 0.05 (48828), CHEK2 0.29 (28), OTOA -, IKBKG -, HYDIN 0.06 (5300)
+  crossfit cal_v5 longphase: PMS2 -, SMN1 -, SMN2 -, GBA1 0.25 (231), CYP21A2 0.91 (105), HBA1 -, HBA2 -, STRC 0.67 (3), TNXB 0.22 (2211), NEB 0.12 (36102), CYP11B1 0.89 (406), CYP11B2 0.35 (1485), NCF1 -, PKD1 1.00 (3), CYP2D6 -, SDHA 0.07 (48828), CHEK2 0.75 (28), OTOA -, IKBKG -, HYDIN 0.15 (5300)
+  crossfit cal_r10 whatshap: PMS2 -, SMN1 -, SMN2 -, GBA1 0.17 (231), CYP21A2 0.87 (105), HBA1 -, HBA2 -, STRC 0.67 (3), TNXB 0.10 (2211), NEB 0.06 (36102), CYP11B1 0.87 (406), CYP11B2 0.13 (1485), NCF1 -, PKD1 0.33 (3), CYP2D6 -, SDHA 0.05 (48828), CHEK2 0.29 (28), OTOA -, IKBKG -, HYDIN 0.06 (5300)
+  crossfit cal_r10 longphase: PMS2 -, SMN1 -, SMN2 -, GBA1 0.59 (231), CYP21A2 0.88 (105), HBA1 -, HBA2 -, STRC 0.67 (3), TNXB 0.15 (2211), NEB 0.10 (36102), CYP11B1 0.87 (406), CYP11B2 0.14 (1485), NCF1 -, PKD1 0.33 (3), CYP2D6 -, SDHA 0.07 (48828), CHEK2 0.75 (28), OTOA -, IKBKG -, HYDIN 0.11 (5300)
+  crossfit hprc_HG002 whatshap: PMS2 -, SMN1 -, SMN2 -, GBA1 0.17 (231), CYP21A2 0.87 (105), HBA1 -, HBA2 -, STRC 0.33 (3), TNXB 0.10 (2211), NEB 0.06 (36102), CYP11B1 0.87 (406), CYP11B2 0.13 (1485), NCF1 -, PKD1 0.33 (3), CYP2D6 -, SDHA 0.05 (48828), CHEK2 0.57 (28), OTOA -, IKBKG -, HYDIN 0.06 (5300)
+  crossfit hprc_HG002 longphase: PMS2 -, SMN1 -, SMN2 -, GBA1 0.22 (231), CYP21A2 0.88 (105), HBA1 -, HBA2 -, STRC 0.33 (3), TNXB 0.12 (2211), NEB 0.08 (36102), CYP11B1 0.87 (406), CYP11B2 0.15 (1485), NCF1 -, PKD1 0.33 (3), CYP2D6 -, SDHA 0.06 (48828), CHEK2 0.75 (28), OTOA -, IKBKG -, HYDIN 0.10 (5300)
+  crossfit hg001_v5 whatshap: PMS2 0.11 (2211), SMN1 -, SMN2 -, GBA1 0.37 (171), CYP21A2 0.82 (55), HBA1 -, HBA2 -, STRC 0.25 (351), TNXB 0.17 (1326), NEB 0.23 (5222), CYP11B1 0.53 (630), CYP11B2 0.75 (630), NCF1 -, PKD1 -, CYP2D6 -, SDHA 0.27 (15), CHEK2 0.08 (1711), OTOA 0.10 (435), IKBKG -, HYDIN 0.07 (31576)
+  crossfit hg001_v5 longphase: PMS2 0.16 (2211), SMN1 -, SMN2 -, GBA1 0.80 (171), CYP21A2 1.00 (55), HBA1 -, HBA2 -, STRC 0.42 (351), TNXB 0.32 (1326), NEB 0.36 (5222), CYP11B1 0.72 (630), CYP11B2 1.00 (630), NCF1 -, PKD1 -, CYP2D6 -, SDHA 0.47 (15), CHEK2 0.24 (1711), OTOA 0.54 (435), IKBKG -, HYDIN 0.23 (31576)
+  transfer hg001_v5 whatshap: PMS2 0.10 (2211), SMN1 -, SMN2 -, GBA1 0.37 (171), CYP21A2 0.82 (55), HBA1 -, HBA2 -, STRC 0.27 (351), TNXB 0.17 (1326), NEB 0.21 (5222), CYP11B1 0.53 (630), CYP11B2 0.75 (630), NCF1 -, PKD1 -, CYP2D6 -, SDHA 0.27 (15), CHEK2 0.07 (1711), OTOA 0.05 (435), IKBKG -, HYDIN 0.06 (31576)
+  transfer hg001_v5 longphase: PMS2 0.40 (2211), SMN1 -, SMN2 -, GBA1 0.80 (171), CYP21A2 1.00 (55), HBA1 -, HBA2 -, STRC 0.93 (351), TNXB 0.40 (1326), NEB 0.40 (5222), CYP11B1 1.00 (630), CYP11B2 1.00 (630), NCF1 -, PKD1 -, CYP2D6 -, SDHA 1.00 (15), CHEK2 0.14 (1711), OTOA 0.43 (435), IKBKG -, HYDIN 0.32 (31576)
+
+duplicated genes (GENCODE pseudogene list) against the rest, 30x, r = 1e-2, genes with >= 10 pairs; one-sided Mann-Whitney, descriptive
+  crossfit cal_v5 whatshap: duplicated 72 genes median 0.073, other 2318 median 0.075, p 4.74e-01
+  crossfit cal_v5 longphase: duplicated 72 genes median 0.273, other 2318 median 0.318, p 5.49e-02
+  crossfit cal_r10 whatshap: duplicated 72 genes median 0.063, other 2318 median 0.067, p 5.18e-01
+  crossfit cal_r10 longphase: duplicated 72 genes median 0.254, other 2318 median 0.289, p 1.29e-02
+  crossfit hprc_HG002 whatshap: duplicated 72 genes median 0.067, other 2318 median 0.075, p 1.73e-01
+  crossfit hprc_HG002 longphase: duplicated 72 genes median 0.225, other 2318 median 0.286, p 4.30e-02
+  crossfit hg001_v5 whatshap: duplicated 71 genes median 0.116, other 2265 median 0.115, p 4.44e-01
+  crossfit hg001_v5 longphase: duplicated 71 genes median 0.400, other 2265 median 0.606, p 3.51e-06
+  transfer hg001_v5 whatshap: duplicated 71 genes median 0.104, other 2265 median 0.106, p 5.26e-01
+  transfer hg001_v5 longphase: duplicated 71 genes median 0.400, other 2265 median 0.403, p 1.59e-01
+
+(a) validity: 60 cells of 60 registered, level 8.33e-04, violating 0
+(b) usefulness: hprc_HG002 30x r 0.01 certified share whatshap 0.0371, longphase 0.1430; need >= 0.8 for one phaser: fails
+Q4 gate: DOES NOT PASS
+
+wall time 1790 s

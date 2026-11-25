@@ -1,0 +1,150 @@
+R3 (development, docs/design/r3-label-eligible.md): child HG005 (hg005_ont); labels from both replicates of the parents' Clair3 calls; filters ('agree', 'all', 'double'); calibrate on eligible odd-chromosome pairs against the labels, score even-chromosome pairs against GIAB trio transmission, eligible only and all; 100 kb units, delta 0.05; betas (0.0003, 0.001, 0.003); depths ('30', '20', '10'); phasers ('whatshap', 'longphase')
+
+30x whatshap: 1228542 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 1.51e-05; uninformative 0.000 2.00e-01; other 0.004 0.00e+00
+  difficult  eligible 0.995 9.92e-06; uninformative 0.000 0.00e+00; other 0.005 0.00e+00
+  lowmap     eligible 0.995 0.00e+00; uninformative 0.000 3.33e-01; other 0.005 0.00e+00
+  segdup     eligible 0.992 6.77e-05; uninformative 0.000 0.00e+00; other 0.008 1.93e-02
+  tandem     eligible 0.992 7.44e-05; uninformative 0.000 0.00e+00; other 0.007 1.64e-03
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+30x longphase: 1237963 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 4.07e-05; uninformative 0.000 2.00e-01; other 0.004 0.00e+00
+  difficult  eligible 0.996 2.95e-05; uninformative 0.000 0.00e+00; other 0.004 0.00e+00
+  lowmap     eligible 0.995 4.20e-05; uninformative 0.000 3.33e-01; other 0.005 2.71e-03
+  segdup     eligible 0.992 4.52e-05; uninformative 0.000 1.25e-01; other 0.008 8.45e-03
+  tandem     eligible 0.993 1.48e-04; uninformative 0.000 0.00e+00; other 0.007 0.00e+00
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+20x whatshap: 1227915 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 2.38e-05; uninformative 0.000 2.00e-01; other 0.004 0.00e+00
+  difficult  eligible 0.995 1.98e-05; uninformative 0.000 0.00e+00; other 0.005 0.00e+00
+  lowmap     eligible 0.995 1.41e-05; uninformative 0.000 3.33e-01; other 0.005 0.00e+00
+  segdup     eligible 0.992 4.52e-05; uninformative 0.000 0.00e+00; other 0.008 1.65e-02
+  tandem     eligible 0.992 7.45e-05; uninformative 0.000 0.00e+00; other 0.007 0.00e+00
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+20x longphase: 1238389 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 4.18e-05; uninformative 0.000 2.00e-01; other 0.004 4.81e-04
+  difficult  eligible 0.996 4.92e-05; uninformative 0.000 0.00e+00; other 0.004 0.00e+00
+  lowmap     eligible 0.995 5.60e-05; uninformative 0.000 3.33e-01; other 0.005 2.74e-03
+  segdup     eligible 0.992 9.04e-05; uninformative 0.000 1.25e-01; other 0.008 8.45e-03
+  tandem     eligible 0.993 1.11e-04; uninformative 0.000 0.00e+00; other 0.007 0.00e+00
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+10x whatshap: 1226060 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 4.65e-05; uninformative 0.000 2.00e-01; other 0.004 4.87e-04
+  difficult  eligible 0.996 4.97e-05; uninformative 0.000 0.00e+00; other 0.004 0.00e+00
+  lowmap     eligible 0.995 4.22e-05; uninformative 0.000 3.33e-01; other 0.005 0.00e+00
+  segdup     eligible 0.992 2.26e-05; uninformative 0.000 0.00e+00; other 0.008 1.40e-02
+  tandem     eligible 0.993 1.37e-04; uninformative 0.000 0.00e+00; other 0.007 8.31e-03
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+10x longphase: 1236060 pairs; per group, class: share of pairs, error against GIAB trio transmission
+  easy       eligible 0.996 7.40e-05; uninformative 0.000 2.00e-01; other 0.004 4.84e-04
+  difficult  eligible 0.996 4.92e-05; uninformative 0.000 0.00e+00; other 0.004 0.00e+00
+  lowmap     eligible 0.995 9.82e-05; uninformative 0.000 3.33e-01; other 0.005 0.00e+00
+  segdup     eligible 0.992 4.53e-05; uninformative 0.000 1.25e-01; other 0.008 5.62e-03
+  tandem     eligible 0.993 1.86e-04; uninformative 0.000 0.00e+00; other 0.007 3.68e-03
+  indel      eligible 0.000 0.00e+00; uninformative 0.000 0.00e+00; other 0.000 0.00e+00
+
+scored on eligible even-chromosome pairs; violation level 1.85e-04 over 270 cells; per filter, beta, group, pooled over depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  agree   0.0003  easy        6 of 6    0  8.58e-01  0.9971  3/69350 = 4.33e-05
+  agree   0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   easy        6 of 6    0  1.00e+00  0.9971  3/69350 = 4.33e-05
+  agree   0.001   difficult   6 of 6    0  9.86e-01  0.9999  7/47692 = 1.47e-04
+  agree   0.001   lowmap      6 of 6    0  6.61e-01  0.9993  9/33748 = 2.67e-04
+  agree   0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   tandem      6 of 6    0  9.89e-01  0.9991  6/49404 = 1.21e-04
+  agree   0.003   easy        6 of 6    0  9.92e-01  1.0000  83/69837 = 1.19e-03
+  agree   0.003   difficult   6 of 6    0  1.00e+00  1.0000  7/47692 = 1.47e-04
+  agree   0.003   lowmap      6 of 6    0  1.00e+00  1.0000  12/33799 = 3.55e-04
+  agree   0.003   segdup      6 of 6    0  4.38e-01  1.0000  13/6738 = 1.93e-03
+  agree   0.003   tandem      6 of 6    0  1.00e+00  1.0000  20/49469 = 4.04e-04
+  all     0.0003  easy        6 of 6    0  8.58e-01  0.9971  3/69357 = 4.33e-05
+  all     0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   easy        6 of 6    0  1.00e+00  0.9971  3/69357 = 4.33e-05
+  all     0.001   difficult   6 of 6    0  9.86e-01  0.9999  7/47729 = 1.47e-04
+  all     0.001   lowmap      6 of 6    0  6.62e-01  0.9993  10/33801 = 2.96e-04
+  all     0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   tandem      6 of 6    0  1.00e+00  0.9951  0/49236 = 0.00e+00
+  all     0.003   easy        6 of 6    0  9.92e-01  1.0000  83/69843 = 1.19e-03
+  all     0.003   difficult   6 of 6    0  1.00e+00  1.0000  7/47729 = 1.47e-04
+  all     0.003   lowmap      6 of 6    0  1.00e+00  1.0000  14/33852 = 4.14e-04
+  all     0.003   segdup      2 of 6    0  1.00e+00  0.2160  0/1649 = 0.00e+00
+  all     0.003   tandem      6 of 6    0  1.00e+00  1.0000  20/49535 = 4.04e-04
+  double  0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   easy        6 of 6    0  9.91e-01  0.9993  3/28543 = 1.05e-04
+  double  0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   easy        6 of 6    0  1.00e+00  1.0000  5/28555 = 1.75e-04
+  double  0.003   difficult   6 of 6    0  1.00e+00  0.9999  0/12984 = 0.00e+00
+  double  0.003   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   tandem      6 of 6    0  9.92e-01  0.9999  4/13705 = 2.92e-04
+
+scored on all even-chromosome pairs; violation level 1.85e-04 over 270 cells; per filter, beta, group, pooled over depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  agree   0.0003  easy        6 of 6    0  6.70e-01  0.9971  9/69385 = 1.30e-04
+  agree   0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   easy        6 of 6    0  9.99e-01  0.9971  9/69385 = 1.30e-04
+  agree   0.001   difficult   6 of 6    0  9.86e-01  0.9999  7/47755 = 1.47e-04
+  agree   0.001   lowmap      6 of 6    0  6.63e-01  0.9993  10/33849 = 2.95e-04
+  agree   0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  agree   0.001   tandem      6 of 6    0  9.89e-01  0.9991  6/49546 = 1.21e-04
+  agree   0.003   easy        6 of 6    0  9.86e-01  1.0000  90/69863 = 1.29e-03
+  agree   0.003   difficult   6 of 6    0  1.00e+00  1.0000  7/47755 = 1.47e-04
+  agree   0.003   lowmap      6 of 6    0  1.00e+00  1.0000  14/33900 = 4.13e-04
+  agree   0.003   segdup      6 of 6    0  1.30e-01  1.0000  24/6792 = 3.53e-03
+  agree   0.003   tandem      6 of 6    0  1.00e+00  1.0000  22/49611 = 4.43e-04
+  all     0.0003  easy        6 of 6    0  6.70e-01  0.9971  9/69385 = 1.30e-04
+  all     0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   easy        6 of 6    0  9.99e-01  0.9971  9/69385 = 1.30e-04
+  all     0.001   difficult   6 of 6    0  9.86e-01  0.9999  7/47755 = 1.47e-04
+  all     0.001   lowmap      6 of 6    0  6.63e-01  0.9993  10/33849 = 2.95e-04
+  all     0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  all     0.001   tandem      6 of 6    0  1.00e+00  0.9951  0/49302 = 0.00e+00
+  all     0.003   easy        6 of 6    0  9.86e-01  1.0000  90/69863 = 1.29e-03
+  all     0.003   difficult   6 of 6    0  1.00e+00  1.0000  7/47755 = 1.47e-04
+  all     0.003   lowmap      6 of 6    0  1.00e+00  1.0000  14/33900 = 4.13e-04
+  all     0.003   segdup      2 of 6    0  1.00e+00  0.2158  0/1655 = 0.00e+00
+  all     0.003   tandem      6 of 6    0  1.00e+00  1.0000  22/49611 = 4.43e-04
+  double  0.0003  easy        0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.0003  tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   easy        6 of 6    0  4.41e-03  0.9983  59/69659 = 8.47e-04
+  double  0.001   difficult   0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.001   tandem      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   easy        6 of 6    0  3.77e-01  1.0000  115/69868 = 1.65e-03
+  double  0.003   difficult   6 of 6    0  1.00e+00  0.9994  3/47715 = 6.29e-05
+  double  0.003   lowmap      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   segdup      0 of 6    0  1.00e+00  0.0000  0/0 = 0.00e+00
+  double  0.003   tandem      6 of 6    0  1.00e+00  0.9998  12/49596 = 2.42e-04
+
+R3 gate (agree): (a) valid on eligible pairs ok (0 violating of 90); (b) easy at 1e-3 certifies in 6 of 6 cells, trusted share of all easy pairs 0.9926 ok
+R3 gate: passed
+
+R3b (registered, level 4.630e-04 over 108 cells): 90 agree cells have pairs, min p 4.376e-01
+R3b-1 validity: supported
+R3b-2 usefulness: easy at 1e-3 certifies in 6 of 6 cells, trusted share of all even easy pairs 0.9926: supported

@@ -1,0 +1,20 @@
+12 variants, coverage 6, span 5, 20 replicates, seed 5500 + 29 * replicate, general model solved by dp; simulated data
+bip is read-bipartition error against the true origin, flip-invariant; switch is over consecutive truly heterozygous sites
+sw gen charges the general model at sites it declined to phase; sw gen* scores only the pairs it phased, and gen phas is that fraction
+the complementary model phases every site, so its fraction is 1.000
+the general model is a relaxation, so its cost is a lower bound
+simulated data; the general oracle enumerates 2^reads bipartitions
+
+  hom    err  miscall  cost cmp  cost gen  bip cmp  bip gen   sw cmp   sw gen  sw gen*  gen phas    n
+-----------------------------------------------------------------------------------------------------
+ 0.00   0.02     0.00     3.697     3.308   0.0000   0.0357   0.0409   0.0818   0.0000     0.723   20
+ 0.00   0.10     0.00    10.766     8.899   0.0750   0.1286   0.0864   0.1500   0.0100     0.573   20
+
+ 0.10   0.02     1.35     9.340     3.308   0.0071   0.0679   0.0357   0.0793   0.0000     0.737   20
+ 0.10   0.10     1.35    13.073     8.899   0.0929   0.1250   0.0800   0.1682   0.0155     0.565   20
+
+ 0.20   0.02     2.75    15.762     3.308   0.0536   0.0893   0.0481   0.0875   0.0000     0.727   20
+ 0.20   0.10     2.75    15.161     8.679   0.1179   0.1500   0.1029   0.2010   0.0171     0.551   20
+
+ 0.30   0.02     4.10    18.486     2.919   0.1071   0.1214   0.1075   0.1133   0.0583     0.709   20
+ 0.30   0.10     4.10    14.941     7.690   0.1536   0.1643   0.1346   0.2599   0.1053     0.527   20

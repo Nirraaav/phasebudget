@@ -1,0 +1,17 @@
+commit a644a74 plus working tree; Linux 7.0.0-34-generic x86_64; Python 3.12.3; PuLP 3.3.0 with CBC
+60 variants, depth 20, span 6, error 0.05, 20 replicates, seed 6100 + 19 * replicate; simulated data
+ratio is OPT_span / OPT_called under read_weights; span cov is the largest span coverage of the called optimum, the state count the DP would need
+ gaps  cap  hole share   ratio   worst  span cov  max
+-----------------------------------------------------
+ 0.00    3       0.000  1.0000  1.0000       3.0    3
+ 0.00    5       0.000  1.0000  1.0000       5.0    5
+ 0.00    8       0.000  1.0000  1.0000       8.0    8
+ 0.10    3       0.066  0.9825  0.9661       4.2    5
+ 0.10    5       0.066  0.9735  0.9492       6.5    7
+ 0.10    8       0.066  0.9628  0.9440      10.1   11
+ 0.20    3       0.125  0.9598  0.9382       4.5    5
+ 0.20    5       0.125  0.9477  0.9315       7.2    8
+ 0.20    8       0.125  0.9341  0.9156      11.0   12
+ 0.30    3       0.194  0.9243  0.8939       5.3    7
+ 0.30    5       0.194  0.9096  0.8851       8.2   10
+ 0.30    8       0.194  0.8932  0.8657      12.2   14

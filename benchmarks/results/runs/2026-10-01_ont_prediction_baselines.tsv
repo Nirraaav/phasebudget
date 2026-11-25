@@ -1,0 +1,21 @@
+# Baselines B0 to B2 of docs/design/ont-prediction.md amendment 3, computed 1 October 2026
+# from the corrected HiFi v5.0q scoring (2026-10-01_genome_score_v5_corrected.txt, G10),
+# before any ONT confirmatory chromosome was scored. ONT depth -> HiFi depth: full->full, 30->full, 20->20, 10->10.
+# B1 = 38.5 x B0 (q_ONT / q_HiFi = 0.010009 / 0.000260); B2 = 0. Units: whatshap minus optimal per 10,000.
+cap	ont_depth	B0	B1	B2
+3	full	+0.50	+19.25	+0.00
+3	30	+0.50	+19.25	+0.00
+3	20	+0.36	+13.86	+0.00
+3	10	+0.60	+23.10	+0.00
+5	full	+0.04	+1.54	+0.00
+5	30	+0.04	+1.54	+0.00
+5	20	+0.05	+1.93	+0.00
+5	10	+0.03	+1.16	+0.00
+10	full	-0.04	-1.54	+0.00
+10	30	-0.04	-1.54	+0.00
+10	20	-0.01	-0.39	+0.00
+10	10	+0.06	+2.31	+0.00
+15	full	-0.01	-0.39	+0.00
+15	30	-0.01	-0.39	+0.00
+15	20	+0.00	+0.00	+0.00
+15	10	-0.01	-0.39	+0.00

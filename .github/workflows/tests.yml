@@ -1,0 +1,88 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]  # macOS and Windows dropped on 27 Sep to save Actions minutes
+        python-version: ["3.10", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m pytest
+
+  solver:
+    # The ILP tests skip themselves without PuLP, so one job installs it. A
+    # third solver that nothing ever runs is not a third solver.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CBC, which PuLP 4 no longer bundles
+        run: sudo apt-get update && sudo apt-get install -y coinor-cbc
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev,ilp]"
+      - name: Refuse to pass if PuLP is missing
+        run: python -c "import pulp; print(pulp.__version__)"
+      - run: python -m pytest -q
+
+  native:
+    # The native tests skip without the library, so this job builds it. The
+    # differential tests against the Python pass only count if they run.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]  # macOS dropped on 27 Sep to save Actions minutes
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: make -C cpp
+      - name: Refuse to pass if the native library did not load
+        run: python -c "from phasebudget import _native; assert _native.available()"
+      - run: python -m pytest -q
+
+  whatshap:
+    # The live comparisons with WhatsHap and the fragment extractor's tests skip
+    # without it, so this job installs the release the port reproduces and runs
+    # the whole suite.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - name: Install CBC, since WhatsHap pulls in PuLP and the ILP tests then run
+        run: sudo apt-get update && sudo apt-get install -y coinor-cbc
+      - run: python -m pip install -e ".[dev,whatshap]"
+      - name: Refuse to pass if WhatsHap is missing
+        run: python -c "import whatshap; assert whatshap.__version__ == '2.8'"
+      - run: python -m pytest -q -rs

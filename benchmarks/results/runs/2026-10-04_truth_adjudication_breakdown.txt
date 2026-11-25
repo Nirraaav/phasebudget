@@ -1,0 +1,12 @@
+exploratory, after the registered output: each SNV of the wrong whatshap 30x pairs with an SNV outside GIAB, by its state in the Pedigree truth
+  2918 outside the high-quality regions
+  2341 adjudicable
+  1513 inside, no Pedigree record
+  148 inside, Pedigree GT 1|1
+  29 inside, Pedigree GT 0|0
+  12 inside, Pedigree GT 0|1
+  11 inside, Pedigree GT 1|0
+  3 inside, Pedigree GT 1|2
+  3 inside, Pedigree GT 0|2
+  1 inside, Pedigree GT 2|0
+  1 inside, Pedigree GT 4|1

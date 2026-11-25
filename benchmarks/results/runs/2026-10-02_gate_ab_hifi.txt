@@ -1,0 +1,4 @@
+gates G-A and G-B, HG002 HiFi full depth, stock whatshap phase cap 15, 21 chromosomes, v5.0q: 1941714 pairs, 32 wrong
+  margin: AUC 0.995; wrong left at coverage 1.000: 32, 0.999: 24, 0.995: 7, 0.990: 5, 0.980: 1, 0.950: 0
+conflict: AUC 0.999; wrong left at coverage 1.000: 32, 0.999: 5, 0.995: 4, 0.990: 1, 0.980: 0, 0.950: 0
+  wilson: AUC 0.998; wrong left at coverage 1.000: 32, 0.999: 28, 0.995: 2, 0.990: 1, 0.980: 0, 0.950: 0

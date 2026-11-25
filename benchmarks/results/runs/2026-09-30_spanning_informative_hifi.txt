@@ -1,0 +1,26 @@
+errors by spanning-read count (informative); platform hifi, truth v5, 21 chromosomes; EXPLORATORY, after the results were seen
+depth cap  selector   s  boundaries   share    scored  wrong  per 10k
+ full   3   optimal   0       61503  0.0305        25      8  3200.00
+ full   3   optimal   1       61681  0.0306     60501     10     1.65
+ full   3   optimal   2      231401  0.1148    227483     16     0.70
+ full   3   optimal   3     1661093  0.8241   1626204     51     0.31
+
+ full   3  whatshap   0       61598  0.0306       642    142  2211.84
+ full   3  whatshap   1      155855  0.0773    152493     63     4.13
+ full   3  whatshap   2      552945  0.2743    542351     76     1.40
+ full   3  whatshap   3     1245280  0.6178   1219406     39     0.32
+
+ full   5   optimal   0       47533  0.0236        22      8  3636.36
+ full   5   optimal   1       18613  0.0092     18097      3     1.66
+ full   5   optimal   2       37942  0.0188     37238      9     2.42
+ full   5   optimal   3       94851  0.0471     93256      4     0.43
+ full   5   optimal   4      289169  0.1435    284012      7     0.25
+ full   5   optimal   5     1527570  0.7578   1495282     41     0.27
+
+ full   5  whatshap   0       36048  0.0179       100     12  1200.00
+ full   5  whatshap   1       16982  0.0084     16304     13     7.97
+ full   5  whatshap   2       86406  0.0429     84246     22     2.61
+ full   5  whatshap   3      252775  0.1254    247486      6     0.24
+ full   5  whatshap   4      593338  0.2944    582483     12     0.21
+ full   5  whatshap   5     1030129  0.5111   1008574     23     0.23
+

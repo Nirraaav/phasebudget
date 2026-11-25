@@ -1,0 +1,60 @@
+R1 (development, docs/design/r1-truth-audit.md): latent class fit per group of the relation between consecutive variants every rater relates; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22; 100 bootstraps of 1 Mb blocks; error rates with 95% intervals; G2 against the fit; odd/even fits
+
+NA12878 (hg001_v5): main fit raters PED, PG17, KG, ONT; check rater HIFI NOT YET AVAILABLE
+group       relations  pi                           PED                      PG17                        KG                       ONT   G2 (df)  odd/even
+difficult      114376  0.768  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  5.25e-05 [8.6e-06,1.3e-04]  7.87e-05 [1.7e-05,1.3e-04]   2.9 (10)  PED 1.0e-12/1.0e-12; PG17 1.0e-12/1.0e-12; KG 7.0e-05/3.5e-05; ONT 5.3e-05/1.0e-04
+easy          1045795  0.783  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  2.58e-05 [1.5e-05,3.9e-05]  8.03e-05 [6.2e-05,1.0e-04]   57.6 (10)  PED 1.0e-12/1.0e-12; PG17 1.0e-12/1.0e-12; KG 2.3e-05/2.8e-05; ONT 9.5e-05/6.6e-05
+indel          410938  0.774  1.00e-12 [1.0e-12,1.0e-12]  4.87e-06 [1.0e-12,1.5e-05]  3.70e-04 [2.9e-04,4.7e-04]  2.37e-02 [2.3e-02,2.4e-02]   250.1 (10)  PED 1.0e-12/1.0e-12; PG17 9.7e-06/1.0e-12; KG 3.6e-04/3.8e-04; ONT 2.5e-02/2.2e-02
+      PED and PG17 agree against the rest 15 times, 3.6 expected under independence
+      KG and ONT agree against the rest 15 times, 3.6 expected under independence
+lowmap          75777  0.767  1.00e-12 [1.0e-12,1.0e-12]  1.32e-05 [1.0e-12,4.0e-05]  4.09e-04 [1.7e-04,6.3e-04]  3.30e-04 [1.6e-04,5.4e-04]   22.3 (10)  PED 1.0e-12/1.0e-12; PG17 2.7e-05/1.0e-12; KG 4.6e-04/3.6e-04; ONT 4.6e-04/2.1e-04
+segdup          55411  0.775  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  5.41e-04 [2.7e-04,8.5e-04]  2.69e-03 [1.8e-03,3.8e-03]   21.8 (10)  PED 1.0e-12/1.0e-12; PG17 1.0e-12/1.0e-12; KG 5.1e-04/5.9e-04; ONT 3.5e-03/1.6e-03
+tandem         145121  0.767  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  2.96e-04 [2.1e-04,3.9e-04]  5.37e-04 [4.2e-04,6.7e-04]   39.6 (10)  PED 1.0e-12/1.0e-12; PG17 1.0e-12/1.0e-12; KG 4.4e-04/1.5e-04; ONT 6.8e-04/3.9e-04
+leave-one-out (group: rater error rates without the named rater)
+  without PED: difficult PG17=1.0e-12,KG=5.2e-05,ONT=7.9e-05; easy PG17=1.0e-12,KG=2.6e-05,ONT=8.0e-05; indel PG17=2.6e-05,KG=3.5e-04,ONT=2.4e-02; lowmap PG17=2.6e-05,KG=4.0e-04,ONT=3.2e-04; segdup PG17=1.3e-05,KG=5.3e-04,ONT=2.7e-03; tandem PG17=1.0e-12,KG=3.0e-04,ONT=5.4e-04
+  without PG17: difficult PED=1.0e-12,KG=4.4e-05,ONT=6.2e-05; easy PED=1.0e-12,KG=2.9e-05,ONT=5.7e-05; indel PED=6.2e-05,KG=7.0e-04,ONT=3.5e-02; lowmap PED=1.1e-05,KG=8.8e-04,ONT=4.5e-04; segdup PED=5.2e-08,KG=1.4e-03,ONT=3.5e-03; tandem PED=1.0e-12,KG=6.5e-04,ONT=1.4e-03
+  without KG: difficult PED=1.0e-12,PG17=1.0e-12,ONT=3.7e-05; easy PED=1.0e-12,PG17=1.0e-12,ONT=6.3e-05; indel PED=1.9e-06,PG17=2.1e-05,ONT=2.5e-02; lowmap PED=1.0e-12,PG17=1.3e-04,ONT=4.2e-04; segdup PED=1.0e-12,PG17=8.2e-05,ONT=3.7e-03; tandem PED=1.0e-12,PG17=3.9e-05,ONT=7.0e-04
+  without ONT: difficult PED=1.0e-12,PG17=1.0e-12,KG=5.2e-05; easy PED=1.0e-12,PG17=1.0e-12,KG=2.6e-05; indel PED=1.0e-12,PG17=4.8e-06,KG=3.8e-04; lowmap PED=1.0e-12,PG17=2.6e-05,KG=4.1e-04; segdup PED=1.0e-12,PG17=1.0e-12,KG=5.4e-04; tandem PED=1.0e-12,PG17=1.0e-12,KG=3.0e-04
+
+HG002 (cal_v5): main fit raters V5, TRIO, HIFIASM, ONT; check rater HIFI present
+group       relations  pi                            V5                      TRIO                   HIFIASM                       ONT   G2 (df)  odd/even
+difficult      133976  0.764  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  4.40e-04 [3.2e-04,5.7e-04]  2.84e-04 [1.8e-04,3.9e-04]   11.8 (10)  V5 1.0e-12/1.0e-12; TRIO 1.0e-12/1.0e-12; HIFIASM 3.5e-04/5.4e-04; ONT 2.0e-04/3.7e-04
+easy          1208287  0.774  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  3.34e-04 [3.0e-04,3.9e-04]  2.99e-04 [2.6e-04,3.3e-04]   365.8 (10)  V5 1.0e-12/1.0e-12; TRIO 1.0e-12/1.0e-12; HIFIASM 3.3e-04/3.4e-04; ONT 3.0e-04/3.0e-04
+      V5 and TRIO agree against the rest 16 times, 0.1 expected under independence
+      HIFIASM and ONT agree against the rest 16 times, 0.1 expected under independence
+lowmap          93495  0.781  1.00e-12 [1.0e-12,1.0e-12]  2.14e-05 [1.0e-12,6.6e-05]  1.72e-03 [1.4e-03,2.1e-03]  2.67e-04 [1.8e-04,3.6e-04]   122.3 (10)  V5 1.0e-12/1.0e-12; TRIO 4.2e-05/1.0e-12; HIFIASM 1.7e-03/1.7e-03; ONT 3.1e-04/2.2e-04
+      V5 and TRIO agree against the rest 8 times, 0.0 expected under independence
+      HIFIASM and ONT agree against the rest 8 times, 0.0 expected under independence
+segdup          38010  0.784  1.00e-12 [1.0e-12,1.0e-12]  1.00e-12 [1.0e-12,1.0e-12]  1.21e-03 [7.8e-04,1.8e-03]  8.16e-04 [2.8e-04,1.6e-03]   22.0 (10)  V5 1.0e-12/1.0e-12; TRIO 1.0e-12/1.0e-12; HIFIASM 1.5e-03/8.1e-04; ONT 9.5e-04/6.1e-04
+tandem         143220  0.766  1.00e-12 [1.0e-12,1.0e-12]  1.40e-05 [1.0e-12,4.2e-05]  4.96e-04 [3.9e-04,6.4e-04]  4.40e-04 [3.1e-04,5.5e-04]   77.3 (10)  V5 1.0e-12/1.0e-12; TRIO 2.7e-05/1.0e-12; HIFIASM 4.9e-04/5.0e-04; ONT 3.8e-04/5.0e-04
+leave-one-out (group: rater error rates without the named rater)
+  without V5: difficult TRIO=1.0e-12,HIFIASM=4.4e-04,ONT=2.8e-04; easy TRIO=1.3e-05,HIFIASM=3.2e-04,ONT=2.9e-04; lowmap TRIO=1.1e-04,HIFIASM=1.6e-03,ONT=1.8e-04; segdup TRIO=5.2e-05,HIFIASM=1.2e-03,ONT=7.6e-04; tandem TRIO=3.5e-05,HIFIASM=4.7e-04,ONT=4.2e-04
+  without TRIO: difficult V5=7.2e-06,HIFIASM=4.9e-04,ONT=2.2e-04; easy V5=1.4e-05,HIFIASM=3.1e-04,ONT=2.1e-04; lowmap V5=7.4e-05,HIFIASM=1.5e-03,ONT=1.4e-04; segdup V5=6.4e-05,HIFIASM=9.6e-04,ONT=6.2e-04; tandem V5=2.8e-05,HIFIASM=6.6e-04,ONT=6.0e-04
+  without HIFIASM: difficult V5=1.0e-12,TRIO=1.0e-12,ONT=2.9e-04; easy V5=1.0e-12,TRIO=1.0e-12,ONT=3.0e-04; lowmap V5=1.0e-12,TRIO=2.1e-05,ONT=2.6e-04; segdup V5=1.0e-12,TRIO=1.0e-12,ONT=9.1e-04; tandem V5=1.0e-12,TRIO=1.4e-05,ONT=4.4e-04
+  without ONT: difficult V5=1.0e-12,TRIO=1.0e-12,HIFIASM=5.5e-04; easy V5=1.0e-12,TRIO=1.0e-12,HIFIASM=4.2e-04; lowmap V5=1.0e-12,TRIO=2.1e-05,HIFIASM=2.1e-03; segdup V5=1.0e-12,TRIO=1.0e-12,HIFIASM=1.5e-03; tandem V5=1.0e-12,TRIO=1.4e-05,HIFIASM=6.3e-04
+
+R1 gate (NA12878): (a) stable FAIL; (b) truth error >= 1e-3 in a hard group FAIL (); (c) HiFi agrees with the fit on 0 of 0 flagged relations PENDING
+R1 gate: not passed (part c waits for phifi_NA12878)
+	Command being timed: ".venv/bin/python -u benchmarks/r1_truth_audit.py"
+	User time (seconds): 360.31
+	System time (seconds): 24.01
+	Percent of CPU this job got: 115%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:32.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3403452
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5
+	Minor (reclaiming a frame) page faults: 4288142
+	Voluntary context switches: 22576
+	Involuntary context switches: 313451
+	Swaps: 0
+	File system inputs: 723232
+	File system outputs: 341976
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

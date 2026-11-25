@@ -1,0 +1,102 @@
+commit fd7f5b0; Linux 7.0.0-34-generic x86_64; Python 3.12.3; native library built; 20 logical CPUs
+variants 500 2000 8000, caps 5 10 15 20, depth 30, heterozygosity 0.001, quality spread 2, ont profile (10000 bp, error 0.05), seed 8000; one instance per length; simulated data
+unchecked native pass skipped above 6 GB of table; Python pass only at cap <= 10 and <= 2000 variants
+peak MB is the rise of VmHWM over VmRSS at the start of the step, in its own process
+variants  reads  cap active                 step   prep s   total s   peak MB
+-----------------------------------------------------------------------------
+     500   1454    5      5       select_optimal     0.00      0.01       0.5
+     500   1454    5      5      select_whatshap     0.00      0.08       0.9
+     500   1454    5      5    native_sqrt_solve     0.01      0.01       1.7
+     500   1454    5      5  native_sqrt_margins     0.00      0.01       1.8
+     500   1454    5      5    native_full_solve     0.00      0.01       1.9
+     500   1454    5      5  native_full_margins     0.00      0.01       2.0
+     500   1454    5      5         python_solve     0.00      0.06       2.2
+
+     500   1454   10     10       select_optimal     0.00      0.02       0.5
+     500   1454   10     10      select_whatshap     0.00      0.13       0.9
+     500   1454   10     10    native_sqrt_solve     0.01      0.03       2.3
+     500   1454   10     10  native_sqrt_margins     0.01      0.06       2.5
+     500   1454   10     10    native_full_solve     0.01      0.04       9.3
+     500   1454   10     10  native_full_margins     0.01      0.07       9.4
+     500   1454   10     10         python_solve     0.00      2.88      75.1
+
+     500   1454   15     15       select_optimal     0.00      0.02       0.5
+     500   1454   15     15      select_whatshap     0.00      0.16       0.9
+     500   1454   15     15    native_sqrt_solve     0.01      0.85      26.1
+     500   1454   15     15  native_sqrt_margins     0.01      1.62      27.8
+     500   1454   15     15    native_full_solve     0.01      1.03     241.8
+     500   1454   15     15  native_full_margins     0.01      1.76     244.2
+     500          15                python_solve  skipped
+
+     500   1454   20     20       select_optimal     0.00      0.02       0.5
+     500   1454   20     20      select_whatshap     0.00      0.19       0.9
+     500   1454   20     20    native_sqrt_solve     0.01     37.89     729.2
+     500   1454   20     20  native_sqrt_margins     0.01     64.04     793.2
+     500   1454   20     20    native_full_solve     0.01     35.30    6923.0
+     500   1454   20     20  native_full_margins     0.01     59.49    6995.3
+     500          20                python_solve  skipped
+
+    2000   5876    5      5       select_optimal     0.00      0.04       2.3
+    2000   5876    5      5      select_whatshap     0.00      0.37       3.7
+    2000   5876    5      5    native_sqrt_solve     0.01      0.02       2.3
+    2000   5876    5      5  native_sqrt_margins     0.02      0.04       2.4
+    2000   5876    5      5    native_full_solve     0.01      0.02       3.2
+    2000   5876    5      5  native_full_margins     0.02      0.03       3.3
+    2000   5876    5      5         python_solve     0.00      0.28       8.6
+
+    2000   5876   10     10       select_optimal     0.00      0.07       2.3
+    2000   5876   10     10      select_whatshap     0.00      0.58       4.0
+    2000   5876   10     10    native_sqrt_solve     0.02      0.13       3.8
+    2000   5876   10     10  native_sqrt_margins     0.02      0.24       3.7
+    2000   5876   10     10    native_full_solve     0.03      0.19      33.0
+    2000   5876   10     10  native_full_margins     0.02      0.25      33.3
+    2000   5876   10     10         python_solve     0.00     12.70     299.9
+
+    2000   5876   15     15       select_optimal     0.00      0.10       2.3
+    2000   5876   15     15      select_whatshap     0.00      0.75       4.0
+    2000   5876   15     15    native_sqrt_solve     0.04      3.51      49.6
+    2000   5876   15     15  native_sqrt_margins     0.03      6.49      51.6
+    2000   5876   15     15    native_full_solve     0.03      4.17     951.1
+    2000   5876   15     15  native_full_margins     0.03      7.18     953.4
+    2000          15                python_solve  skipped
+
+    2000   5876   20     20       select_optimal     0.00      0.10       2.3
+    2000   5876   20     20      select_whatshap     0.00      0.87       4.0
+    2000   5876   20     20    native_sqrt_solve     0.04    128.98    1358.8
+    2000   5876   20     20  native_sqrt_margins     0.05    221.68    1447.0
+    2000          20           native_full_solve  skipped
+    2000          20         native_full_margins  skipped
+    2000          20                python_solve  skipped
+
+    8000  23791    5      5       select_optimal     0.00      0.15       8.6
+    8000  23791    5      5      select_whatshap     0.00      1.37      14.6
+    8000  23791    5      5    native_sqrt_solve     0.05      0.08       4.1
+    8000  23791    5      5  native_sqrt_margins     0.06      0.11       4.8
+    8000  23791    5      5    native_full_solve     0.05      0.08       7.6
+    8000  23791    5      5  native_full_margins     0.05      0.10       8.3
+    8000           5                python_solve  skipped
+
+    8000  23791   10     10       select_optimal     0.00      0.25       8.8
+    8000  23791   10     10      select_whatshap     0.00      2.39      15.8
+    8000  23791   10     10    native_sqrt_solve     0.09      0.53       7.7
+    8000  23791   10     10  native_sqrt_margins     0.08      0.84       8.4
+    8000  23791   10     10    native_full_solve     0.09      0.57     128.1
+    8000  23791   10     10  native_full_margins     0.10      0.93     128.4
+    8000          10                python_solve  skipped
+
+    8000  23791   15     15       select_optimal     0.00      0.33       8.5
+    8000  23791   15     15      select_whatshap     0.00      3.31      15.7
+    8000  23791   15     15    native_sqrt_solve     0.12     12.91      97.3
+    8000  23791   15     15  native_sqrt_margins     0.12     22.85      99.3
+    8000  23791   15     15    native_full_solve     0.13     15.36    3784.4
+    8000  23791   15     15  native_full_margins     0.12     24.94    3786.5
+    8000          15                python_solve  skipped
+
+    8000  23791   20     20       select_optimal     0.00      0.41       8.8
+    8000  23791   20     20      select_whatshap     0.00      4.10      15.8
+    8000  23791   20     20    native_sqrt_solve     0.16    442.30    2665.3
+    8000  23791   20     20  native_sqrt_margins     0.16    756.38    2714.7
+    8000          20           native_full_solve  skipped
+    8000          20         native_full_margins  skipped
+    8000          20                python_solve  skipped
+

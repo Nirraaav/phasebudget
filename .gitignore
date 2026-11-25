@@ -1,0 +1,72 @@
+# Python bytecode and native extensions
+__pycache__/
+*.py[cod]
+*.so
+*.dylib
+
+# Packaging and build output
+build/
+dist/
+*.egg-info/
+_skbuild/
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+
+# Virtual environments and test caches
+.venv/
+venv/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local data, alignments, and benchmark output
+data/
+# New run outputs; the committed ones are tracked with git add -f.
+benchmarks/results/
+*.bam
+*.bai
+*.cram
+*.vcf
+*.vcf.gz
+*.tbi
+*.fasta
+*.fa.gz
+
+# ...but the tiny hand-checked fixtures are evidence and must be tracked.
+!tests/fixtures/*.vcf
+!tests/fixtures/*.json
+
+# Solver artefacts
+*.lp
+*.mps
+*.sol
+
+# Local configuration, credentials, and logs
+.env
+.env.*
+*.log
+*.tmp
+tmp/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# LaTeX build files
+*.aux
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.synctex.gz

@@ -1,0 +1,169 @@
+# start 2026-10-15T02:07:52+05:30 4bc34f4
+W3 pooled (development): genomes cal_v5, hg001_v5, ped_NA12879, ped_NA12881, ped_NA12882, ped_NA12885, ped_NA12886; model trains on ('chr1', 'chr2', 'chr3', 'chr4', 'chr5', 'chr6') of all genomes; per held-out genome, calibrate on chr7 to chr22 of the others pooled, score the held-out genome's; 100 kb units, delta 0.05, betas (0.0003, 0.001, 0.003)
+  30x whatshap done
+  10x whatshap done
+  20x longphase done
+  30x longphase done
+  10x longphase done
+  20x whatshap done
+
+per depth, phaser, beta, group, pooled over held-out genomes: certifying cells (frozen, learned), trusted share (frozen, learned), wrong units/units (frozen, learned); violation level 3.31e-05
+  30x whatshap  0.0003  easy       7/7 7/7  0.9976 0.9975  4/91873 1/91919
+  30x whatshap  0.0003  difficult  7/7 7/7  0.9979 0.9979  8/69202 7/69220
+  30x whatshap  0.0003  lowmap     7/7 7/7  0.7267 0.9621  8/51402 9/55426
+  30x whatshap  0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x whatshap  0.0003  tandem     0/7 7/7  0.0000 0.8723  0/0 17/80497
+  30x whatshap  0.0003  indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x whatshap  0.001   easy       7/7 7/7  0.9979 0.9978  28/91935 27/91976
+  30x whatshap  0.001   difficult  7/7 7/7  1.0000 1.0000  14/69292 14/69292
+  30x whatshap  0.001   lowmap     7/7 7/7  0.9443 0.9820  41/55229 41/55806
+  30x whatshap  0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x whatshap  0.001   tandem     1/7 7/7  0.1169 0.9370  76/11510 68/81822
+  30x whatshap  0.001   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x whatshap  0.003   easy       7/7 7/7  1.0000 1.0000  91/92185 91/92185
+  30x whatshap  0.003   difficult  7/7 7/7  1.0000 1.0000  14/69292 14/69292
+  30x whatshap  0.003   lowmap     7/7 7/7  0.9867 0.9907  136/55913 112/56033
+  30x whatshap  0.003   segdup     0/7 7/7  0.0000 0.8153  0/0 34/14433
+  30x whatshap  0.003   tandem     7/7 7/7  0.8602 0.9703  221/80481 223/82439
+  30x whatshap  0.003   indel      0/7 3/7  0.0000 0.2246  0/0 141/37303
+  30x longphase 0.0003  easy       7/7 7/7  0.9976 0.9975  1/92155 1/92283
+  30x longphase 0.0003  difficult  7/7 7/7  0.9986 0.9983  11/70019 10/70012
+  30x longphase 0.0003  lowmap     7/7 7/7  0.7764 0.9576  8/52821 9/55462
+  30x longphase 0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x longphase 0.0003  tandem     7/7 7/7  0.8154 0.9599  25/79202 23/81467
+  30x longphase 0.0003  indel      0/7 7/7  0.0000 0.5216  0/0 16/80971
+  30x longphase 0.001   easy       7/7 7/7  0.9979 0.9978  54/92238 53/92345
+  30x longphase 0.001   difficult  7/7 7/7  1.0000 1.0000  13/70045 12/70045
+  30x longphase 0.001   lowmap     7/7 7/7  0.9909 0.9950  41/56174 31/56267
+  30x longphase 0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  30x longphase 0.001   tandem     7/7 7/7  0.9917 0.9954  69/82136 52/82219
+  30x longphase 0.001   indel      7/7 7/7  0.7471 0.7879  70/85964 70/86178
+  30x longphase 0.003   easy       7/7 7/7  1.0000 1.0000  96/92524 95/92524
+  30x longphase 0.003   difficult  7/7 7/7  1.0000 1.0000  13/70045 12/70045
+  30x longphase 0.003   lowmap     7/7 7/7  0.9978 0.9975  80/56368 58/56352
+  30x longphase 0.003   segdup     7/7 7/7  0.6325 0.8699  32/13791 38/14581
+  30x longphase 0.003   tandem     7/7 7/7  0.9986 0.9984  181/82399 175/82392
+  30x longphase 0.003   indel      7/7 7/7  0.9399 0.9541  239/88740 235/88740
+  20x whatshap  0.0003  easy       7/7 7/7  0.9976 0.9975  10/91884 2/91894
+  20x whatshap  0.0003  difficult  7/7 7/7  0.9977 0.9975  4/69145 0/69224
+  20x whatshap  0.0003  lowmap     6/7 7/7  0.4645 0.9298  7/38308 9/54759
+  20x whatshap  0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x whatshap  0.0003  tandem     0/7 7/7  0.0000 0.8556  0/0 16/80076
+  20x whatshap  0.0003  indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x whatshap  0.001   easy       7/7 7/7  0.9976 0.9975  10/91884 2/91894
+  20x whatshap  0.001   difficult  7/7 7/7  1.0000 1.0000  18/69289 17/69289
+  20x whatshap  0.001   lowmap     7/7 7/7  0.9091 0.9745  40/54664 37/55674
+  20x whatshap  0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x whatshap  0.001   tandem     1/7 7/7  0.1096 0.9185  70/11371 64/81359
+  20x whatshap  0.001   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x whatshap  0.003   easy       7/7 7/7  1.0000 1.0000  110/92158 110/92158
+  20x whatshap  0.003   difficult  7/7 7/7  1.0000 1.0000  18/69289 17/69289
+  20x whatshap  0.003   lowmap     7/7 7/7  0.9811 0.9897  135/55789 136/55998
+  20x whatshap  0.003   segdup     0/7 7/7  0.0000 0.7835  0/0 35/14358
+  20x whatshap  0.003   tandem     7/7 7/7  0.8456 0.9579  225/80169 210/82201
+  20x whatshap  0.003   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x longphase 0.0003  easy       7/7 7/7  0.9976 0.9974  3/92152 6/91997
+  20x longphase 0.0003  difficult  7/7 7/7  0.9981 0.9978  10/69908 9/69966
+  20x longphase 0.0003  lowmap     7/7 7/7  0.7841 0.9600  7/52421 9/55426
+  20x longphase 0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x longphase 0.0003  tandem     7/7 7/7  0.6755 0.9312  20/75635 20/80479
+  20x longphase 0.0003  indel      0/7 7/7  0.0000 0.5411  0/0 16/81169
+  20x longphase 0.001   easy       7/7 7/7  0.9980 0.9981  72/92224 75/92114
+  20x longphase 0.001   difficult  7/7 7/7  1.0000 1.0000  17/70018 15/70016
+  20x longphase 0.001   lowmap     7/7 7/7  0.9849 0.9927  42/56028 36/56186
+  20x longphase 0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  20x longphase 0.001   tandem     7/7 7/7  0.9670 0.9908  69/81553 67/81990
+  20x longphase 0.001   indel      7/7 7/7  0.6349 0.7607  63/84022 70/85883
+  20x longphase 0.003   easy       7/7 7/7  1.0000 1.0000  123/92486 122/92485
+  20x longphase 0.003   difficult  7/7 7/7  1.0000 1.0000  17/70018 15/70016
+  20x longphase 0.003   lowmap     7/7 7/7  0.9975 0.9975  91/56333 73/56347
+  20x longphase 0.003   segdup     1/7 7/7  0.0859 0.8559  11/1937 35/14751
+  20x longphase 0.003   tandem     7/7 7/7  0.9976 0.9974  150/82234 130/82216
+  20x longphase 0.003   indel      7/7 7/7  0.8205 0.8877  230/87241 231/87867
+  10x whatshap  0.0003  easy       7/7 7/7  0.9743 0.9825  17/91502 17/91602
+  10x whatshap  0.0003  difficult  7/7 7/7  0.9946 0.9951  7/69133 4/69163
+  10x whatshap  0.0003  lowmap     0/7 7/7  0.0000 0.8238  0/0 9/51780
+  10x whatshap  0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x whatshap  0.0003  tandem     0/7 7/7  0.0000 0.6553  0/0 15/74852
+  10x whatshap  0.0003  indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x whatshap  0.001   easy       7/7 7/7  0.9923 0.9949  63/91848 52/91869
+  10x whatshap  0.001   difficult  7/7 7/7  0.9995 0.9974  46/69260 16/69232
+  10x whatshap  0.001   lowmap     7/7 7/7  0.7772 0.9270  33/50586 40/54583
+  10x whatshap  0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x whatshap  0.001   tandem     0/7 7/7  0.0000 0.8015  0/0 64/78829
+  10x whatshap  0.001   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x whatshap  0.003   easy       7/7 7/7  0.9977 0.9975  193/91895 115/92022
+  10x whatshap  0.003   difficult  7/7 7/7  1.0000 1.0000  65/69275 65/69275
+  10x whatshap  0.003   lowmap     7/7 7/7  0.9305 0.9711  123/54638 141/55534
+  10x whatshap  0.003   segdup     0/7 5/7  0.0000 0.3885  0/0 26/8244
+  10x whatshap  0.003   tandem     7/7 7/7  0.6971 0.8863  208/76046 212/80749
+  10x whatshap  0.003   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x longphase 0.0003  easy       7/7 7/7  0.9976 0.9972  15/92145 15/92138
+  10x longphase 0.0003  difficult  7/7 7/7  0.9990 0.9975  11/69764 4/69691
+  10x longphase 0.0003  lowmap     7/7 7/7  0.5531 0.8155  7/42126 8/50627
+  10x longphase 0.0003  segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x longphase 0.0003  tandem     0/7 7/7  0.0000 0.7752  0/0 13/75594
+  10x longphase 0.0003  indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x longphase 0.001   easy       7/7 7/7  0.9976 0.9975  15/92145 15/92142
+  10x longphase 0.001   difficult  7/7 7/7  0.9999 0.9996  48/69814 48/69805
+  10x longphase 0.001   lowmap     7/7 7/7  0.9004 0.9672  39/54060 38/55301
+  10x longphase 0.001   segdup     0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x longphase 0.001   tandem     7/7 7/7  0.8110 0.9077  55/78252 65/79717
+  10x longphase 0.001   indel      0/7 0/7  0.0000 0.0000  0/0 0/0
+  10x longphase 0.003   easy       7/7 7/7  0.9980 0.9979  118/92189 115/92186
+  10x longphase 0.003   difficult  7/7 7/7  1.0000 1.0000  50/69816 50/69816
+  10x longphase 0.003   lowmap     7/7 7/7  0.9931 0.9945  125/55986 137/56033
+  10x longphase 0.003   segdup     0/7 1/7  0.0000 0.0898  0/0 10/1749
+  10x longphase 0.003   tandem     7/7 7/7  0.9552 0.9794  193/81083 210/81461
+  10x longphase 0.003   indel      0/7 7/7  0.0000 0.6066  0/0 222/82962
+
+violating cells: 23
+  30x whatshap held out cal_v5 beta 0.001 frozen tandem p 7.53e-12 (76/11510)
+  30x whatshap held out cal_v5 beta 0.003 frozen tandem p 0.00e+00 (122/11806)
+  30x whatshap held out cal_v5 beta 0.003 learned tandem p 1.09e-07 (71/11871)
+  30x whatshap held out cal_v5 beta 0.003 learned indel p 1.03e-09 (81/12720)
+  30x longphase held out cal_v5 beta 0.0003 frozen tandem p 1.38e-09 (20/11812)
+  30x longphase held out cal_v5 beta 0.001 frozen easy p 0.00e+00 (54/13154)
+  30x longphase held out cal_v5 beta 0.001 frozen tandem p 4.39e-10 (39/11931)
+  30x longphase held out cal_v5 beta 0.003 frozen tandem p 0.00e+00 (137/11996)
+  30x longphase held out cal_v5 beta 0.0003 learned tandem p 2.29e-07 (17/11849)
+  30x longphase held out cal_v5 beta 0.001 learned easy p 0.00e+00 (53/13154)
+  30x longphase held out cal_v5 beta 0.001 learned tandem p 1.99e-05 (29/11921)
+  30x longphase held out cal_v5 beta 0.003 learned tandem p 0.00e+00 (136/11996)
+  20x whatshap held out cal_v5 beta 0.001 frozen tandem p 0.00e+00 (70/11371)
+  20x whatshap held out cal_v5 beta 0.003 frozen tandem p 0.00e+00 (125/11758)
+  20x longphase held out cal_v5 beta 0.0003 frozen tandem p 4.30e-06 (15/11681)
+  20x longphase held out cal_v5 beta 0.001 frozen easy p 0.00e+00 (71/13142)
+  20x longphase held out cal_v5 beta 0.001 frozen tandem p 1.25e-08 (36/11855)
+  20x longphase held out cal_v5 beta 0.003 frozen easy p 3.70e-06 (71/13142)
+  20x longphase held out cal_v5 beta 0.001 learned easy p 0.00e+00 (71/13142)
+  20x longphase held out cal_v5 beta 0.003 learned easy p 3.70e-06 (71/13142)
+  10x whatshap held out cal_v5 beta 0.003 frozen tandem p 1.20e-12 (107/11490)
+  10x longphase held out cal_v5 beta 0.003 frozen easy p 1.67e-11 (106/13102)
+  10x longphase held out cal_v5 beta 0.003 learned easy p 1.67e-11 (103/13102)
+gate conditions: 30x whatshap easy ok; 30x whatshap segdup FAIL; 30x whatshap indel FAIL; 30x longphase easy ok; 30x longphase segdup FAIL; 30x longphase indel FAIL; 20x whatshap easy ok; 20x whatshap segdup FAIL; 20x whatshap indel FAIL; 20x longphase easy ok; 20x longphase segdup FAIL; 20x longphase indel FAIL
+gate: not passed
+	Command being timed: ".venv-w3/bin/python -u benchmarks/w3_pooled.py"
+	User time (seconds): 356466.17
+	System time (seconds): 1761.52
+	Percent of CPU this job got: 6537%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:31:19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 13238968
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 17
+	Minor (reclaiming a frame) page faults: 288655812
+	Voluntary context switches: 39353325
+	Involuntary context switches: 124032308
+	Swaps: 0
+	File system inputs: 448272
+	File system outputs: 72
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+# end 2026-10-15T03:39:12+05:30

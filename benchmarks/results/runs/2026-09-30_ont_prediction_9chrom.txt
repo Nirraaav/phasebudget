@@ -1,0 +1,5 @@
+vote-model prediction, platform ont, e = 0.00503, q = 0.010009, chromosomes 9; whatshap minus optimal per 10,000 boundaries both selections call; no truth read
+  cap  3: fullx +7.59; 30x +13.65; 20x +15.92; 10x +16.88
+  cap  5: fullx +0.45; 30x +1.56; 20x +2.24; 10x +3.70
+  cap 10: fullx -0.25; 30x -0.17; 20x -0.11; 10x +0.00
+  cap 15: fullx -0.13; 30x -0.07; 20x -0.03; 10x -0.00

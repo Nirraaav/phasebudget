@@ -1,0 +1,238 @@
+variants 45053; primary truth phases 36345; hifiasm PATMAT phases 45030, of which 8704 are unphased by the primary; discordant where both phase: 12 of 36326
+bootstrap: 1 Mb windows, 2000 resamples, seed 0
+run files 90, pipeline commits b56eb5c, c7b5d31, dcccb55
+
+1. every pipeline against the transmission truth; MEC full is under log-odds weights, n/a for external tools; obj/opt only where the reads are not merged
+depth  cap           pipeline weights   switch     sw/pairs flips phased  N50 kb QAN50 kb obj/opt  MEC full rounds     sec peak MB
+----------------------------------------------------------------------------------------------------------------------------------
+ full    3           whatshap logodds  0.00020     7/35206      1  0.989     103      103  0.9089     98055      1    13.9     283
+ full    3            optimal logodds  0.00006     2/35003      0  0.993     102      102  1.0000     64323      1     9.7     237
+ full    3      merge_optimal logodds  0.00009     3/35269      0  0.993     114      114     n/a     22551      1    50.0     238
+ full    3  merge_optimal_1e3 logodds  0.00006     2/35409      0  0.993     146      146     n/a     14104      1    38.8     233
+ full    3               loop logodds  0.00049    17/35003      0  0.993     102      101  1.0000     58376      2    23.1     243
+ full    3               loop   phred  0.00057    20/34903      0  0.993      77       77  1.0000     82515      3    43.0     227
+ full    3         merge_loop logodds  0.00014     5/35270      0  0.993     114      114     n/a     20990      4    49.3     256
+ full    3         merge_loop   phred  0.00014     5/35292      1  0.993     116      116     n/a     18227      4    45.3     252
+ full    3     merge_loop_1e3 logodds  0.00008     3/35409      0  0.993     146      146     n/a     12688      2    47.1     238
+ full    3           shuffled logodds  0.00049    17/35007      0  0.993     103      103  1.0000     57492      4    35.5     253
+ full    3           shuffled   phred  0.00057    20/34903      0  0.993      77       77  1.0000     82487      4    28.3     240
+ full    3   whatshap phase *    tool  0.00009     3/35196      0  0.989     103      103     n/a       n/a           88.3     319
+
+ full    5           whatshap logodds  0.00014     5/35591      1  0.993     203      203  0.9238      5940      1    36.4     286
+ full    5            optimal logodds  0.00006     2/35326      0  0.993     146      145  1.0000     20824      1    18.3     241
+ full    5            optimal   phred  0.00006     2/35295      0  0.993     148      148  1.0000     28525      1     6.9     221
+ full    5      merge_optimal logodds  0.00006     2/35452      0  0.993     164      164     n/a      6700      1    20.1     238
+ full    5  merge_optimal_1e3 logodds  0.00006     2/35518      0  0.993     181      180     n/a      4151      1    22.9     232
+ full    5               loop logodds  0.00006     2/35326      0  0.993     146      145  1.0000     20824      1    10.7     236
+ full    5               loop   phred  0.00006     2/35295      0  0.993     148      148  1.0000     28525      1     7.5     221
+ full    5         merge_loop logodds  0.00006     2/35452      0  0.993     164      164     n/a      6700      1    30.3     241
+ full    5         merge_loop   phred  0.00006     2/35457      0  0.993     172      172     n/a      6216      1    55.4     227
+ full    5     merge_loop_1e3 logodds  0.00006     2/35518      0  0.993     181      180     n/a      4151      1    33.6     234
+ full    5           shuffled logodds  0.00006     2/35326      0  0.993     146      145  1.0000     20824      1    12.0     237
+ full    5           shuffled   phred  0.00006     2/35295      0  0.993     148      148  1.0000     28525      1     7.7     224
+ full    5   whatshap phase *    tool  0.00014     5/35590      1  0.993     203      203     n/a       n/a           95.1     318
+
+ full   10           whatshap logodds  0.00006     2/35599      0  0.993     203      203  0.9307      1747      1   113.8     288
+ full   10            optimal logodds  0.00006     2/35507      0  0.993     188      182  1.0000      6023      1    88.7     248
+ full   10      merge_optimal logodds  0.00006     2/35529      0  0.993     182      179     n/a      3826      1    38.4     242
+ full   10  merge_optimal_1e3 logodds  0.00006     2/35560      0  0.993     203      203     n/a      2956      1    39.4     232
+ full   10               loop logodds  0.00006     2/35507      0  0.993     188      182  1.0000      6023      1    88.8     252
+ full   10               loop   phred  0.00006     2/35498      0  0.993     177      176  1.0000      5802      1    56.6     232
+ full   10         merge_loop logodds  0.00006     2/35529      0  0.993     182      179     n/a      3826      1    60.5     246
+ full   10         merge_loop   phred  0.00006     2/35529      0  0.993     187      182     n/a      3833      1    73.4     227
+ full   10     merge_loop_1e3 logodds  0.00006     2/35560      0  0.993     203      203     n/a      2956      1    41.0     234
+ full   10           shuffled logodds  0.00006     2/35507      0  0.993     188      182  1.0000      6023      1    78.0     252
+ full   10           shuffled   phred  0.00006     2/35498      0  0.993     177      176  1.0000      5802      1    75.0     233
+ full   10   whatshap phase *    tool  0.00006     2/35599      0  0.993     203      203     n/a       n/a          123.7     319
+
+ full   15           whatshap logodds  0.00006     2/35599      0  0.993     203      203  0.9366      1747      1  1171.9     444
+ full   15            optimal logodds  0.00006     2/35560      0  0.993     203      203  1.0000      2728      1  1756.7     459
+ full   15      merge_optimal logodds  0.00006     2/35562      0  0.993     196      194     n/a      2500      1    68.7     366
+ full   15  merge_optimal_1e3 logodds  0.00006     2/35578      0  0.993     203      203     n/a      2341      1    29.0     340
+ full   15               loop logodds  0.00006     2/35560      0  0.993     203      203  1.0000      2728      1  1603.0     465
+ full   15               loop   phred  0.00006     2/35558      0  0.993     203      203  1.0000      2707      1  1690.9     448
+ full   15         merge_loop logodds  0.00006     2/35562      0  0.993     196      194     n/a      2500      1   165.8     371
+ full   15         merge_loop   phred  0.00006     2/35563      0  0.993     197      196     n/a      2562      1   407.1     354
+ full   15     merge_loop_1e3 logodds  0.00006     2/35578      0  0.993     203      203     n/a      2341      1    61.4     346
+ full   15           shuffled logodds  0.00006     2/35560      0  0.993     203      203  1.0000      2728      1  1453.3     466
+ full   15           shuffled   phred  0.00006     2/35558      0  0.993     203      203  1.0000      2707      1  1186.2     448
+ full    -   HapCUT2 (no cap)    tool  0.00006     2/35601      0  0.993     203      203     n/a       n/a          190.3     303
+ full   15     whatshap phase    tool  0.00006     2/35599      0  0.993     203      203     n/a       n/a          698.6     464
+
+ half    3           whatshap logodds  0.00014     5/35177      1  0.989     103      102  0.8996     41586      1     7.7     158
+ half    3            optimal logodds  0.00011     4/35208      1  0.993     111      111  1.0000     15899      1     4.5     136
+ half    3      merge_optimal logodds  0.00006     2/35264      0  0.992     115      115     n/a      9110      1    20.6     142
+ half    3  merge_optimal_1e3 logodds  0.00006     2/35391      0  0.992     153      149     n/a      4275      1    17.3     134
+ half    3               loop logodds  0.00034    12/35208      1  0.993     111      111  0.9999     14732      3    13.3     149
+ half    3               loop   phred  0.00023     8/35195      1  0.993     111      111  0.9999     15934      3    22.0     145
+ half    3         merge_loop logodds  0.00014     5/35264      0  0.992     115      115     n/a      8924      2    11.2     153
+ half    3         merge_loop   phred  0.00014     5/35286      0  0.992     123      123     n/a      8675      2    22.0     150
+ half    3     merge_loop_1e3 logodds  0.00008     3/35391      0  0.992     153      149     n/a      4013      3    25.6     150
+ half    3           shuffled logodds  0.00034    12/35208      1  0.993     111      111  1.0000     14732      4    29.8     159
+ half    3           shuffled   phred  0.00023     8/35195      1  0.993     111      111  1.0000     15934      4    21.6     156
+ half    3   whatshap phase *    tool  0.00006     2/35173      0  0.989     103      102     n/a       n/a           53.4     255
+
+ half    5           whatshap logodds  0.00006     2/35545      0  0.993     183      180  0.9184      3364      1    28.3     161
+ half    5            optimal logodds  0.00006     2/35420      0  0.993     160      158  1.0000      3999      1    18.8     140
+ half    5            optimal   phred  0.00006     2/35418      0  0.993     161      160  1.0000      4282      1    17.5     125
+ half    5      merge_optimal logodds  0.00006     2/35461      0  0.993     172      164     n/a      2473      1    18.5     142
+ half    5  merge_optimal_1e3 logodds  0.00006     2/35505      0  0.993     177      177     n/a      1354      1    15.5     135
+ half    5               loop logodds  0.00008     3/35420      0  0.993     160      158  1.0000      3861      3    17.1     152
+ half    5               loop   phred  0.00008     3/35418      0  0.993     161      160  1.0000      4165      3    22.8     146
+ half    5         merge_loop logodds  0.00006     2/35461      0  0.993     172      164     n/a      2473      1     9.2     144
+ half    5         merge_loop   phred  0.00006     2/35459      0  0.993     167      164     n/a      2742      1    21.4     138
+ half    5     merge_loop_1e3 logodds  0.00006     2/35505      0  0.993     177      177     n/a      1354      1    11.2     138
+ half    5           shuffled logodds  0.00008     3/35420      0  0.993     160      158  1.0000      3861      4    36.5     164
+ half    5           shuffled   phred  0.00008     3/35418      0  0.993     161      160  1.0000      4165      4    34.0     160
+ half    5   whatshap phase *    tool  0.00006     2/35545      0  0.993     183      180     n/a       n/a           51.5     256
+
+ half   10           whatshap logodds  0.00006     2/35559      0  0.993     191      187  0.9400       780      1    75.5     161
+ half   10            optimal logodds  0.00006     2/35531      0  0.993     182      180  1.0000      1071      1    70.5     154
+ half   10      merge_optimal logodds  0.00006     2/35532      0  0.993     180      177     n/a      1029      1    33.9     142
+ half   10  merge_optimal_1e3 logodds  0.00006     2/35544      0  0.993     183      182     n/a      1008      1    14.4     135
+ half   10               loop logodds  0.00006     2/35531      0  0.993     182      180  1.0000      1071      1    37.7     158
+ half   10               loop   phred  0.00006     2/35531      0  0.993     182      179  1.0000      1091      1    40.6     140
+ half   10         merge_loop logodds  0.00006     2/35532      0  0.993     180      177     n/a      1029      1    21.4     149
+ half   10         merge_loop   phred  0.00006     2/35532      0  0.993     180      177     n/a      1029      1    27.7     142
+ half   10     merge_loop_1e3 logodds  0.00006     2/35544      0  0.993     183      182     n/a      1008      1    16.2     140
+ half   10           shuffled logodds  0.00006     2/35531      0  0.993     182      180  1.0000      1071      1    53.2     155
+ half   10           shuffled   phred  0.00006     2/35531      0  0.993     182      179  1.0000      1091      1    42.9     142
+ half   10   whatshap phase *    tool  0.00006     2/35559      0  0.993     191      187     n/a       n/a           68.1     255
+
+ half   15           whatshap logodds  0.00006     2/35559      0  0.993     191      187  0.9706       780      1   623.7     314
+ half   15            optimal logodds  0.00006     2/35555      0  0.993     191      187  1.0000       801      1  1013.2     324
+ half   15      merge_optimal logodds  0.00006     2/35554      0  0.993     191      187     n/a       808      1    20.6     258
+ half   15  merge_optimal_1e3 logodds  0.00006     2/35556      0  0.993     191      187     n/a       801      1    11.0     230
+ half   15               loop logodds  0.00006     2/35555      0  0.993     191      187  1.0000       801      1   743.2     326
+ half   15               loop   phred  0.00006     2/35555      0  0.993     191      187  1.0000       815      1  1249.0     309
+ half   15         merge_loop logodds  0.00006     2/35554      0  0.993     191      187     n/a       808      1    80.5     263
+ half   15         merge_loop   phred  0.00006     2/35555      0  0.993     191      187     n/a       808      1    78.3     256
+ half   15     merge_loop_1e3 logodds  0.00006     2/35556      0  0.993     191      187     n/a       801      1    27.8     237
+ half   15           shuffled logodds  0.00006     2/35555      0  0.993     191      187  1.0000       801      1   938.6     325
+ half   15           shuffled   phred  0.00006     2/35555      0  0.993     191      187  1.0000       815      1   845.6     308
+ half    -   HapCUT2 (no cap)    tool  0.00006     2/35559      0  0.993     191      187     n/a       n/a           89.1     300
+ half   15     whatshap phase    tool  0.00006     2/35559      0  0.993     191      187     n/a       n/a          372.6     355
+
+* not registered: whatshap phase with --internal-downsampling other than its default of 15 (WhatsHap 2.8 ignores --max-coverage)
+
+2. hypotheses, full depth unless stated, log-odds weights (amendment 3); the registered unscaled weights follow where they differ
+-- depth full
+H1 whatshap / optimum objective at cap 15: 0.9366 -> supported (rule: below 0.95)
+H2 cap  3 switch whatshap / optimal: 3.480 [0.745, 6.467], undefined in 718
+H2 cap  5 switch whatshap / optimal: 2.481 [0.992, 4.470], undefined in 718
+H2 cap 15 switch whatshap / optimal: 0.999 [0.998, 0.999], undefined in 718
+H2 decision: refuted (caps 3 and 5 above 1: False; cap 15 contains 1: False)
+H3 [logodds] cap 3 switch optimal / merge_loop: 0.403 [0.000, 1.006], undefined in 38
+H3 [logodds] cap 5 switch optimal / merge_loop: 1.004 [1.002, 1.005], undefined in 718
+H3 [logodds] decision: not supported, not refuted
+H4 [logodds] cap 3 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000] -> kept, as on simulation; but the loop raised switch error, from 0.00006 to 0.00049, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H4 [logodds] cap 5: undefined, the loop and static selection have the same switch error
+H3 [phred] cap 3 switch optimal / merge_loop: 0.403 [0.000, 1.009], undefined in 101
+H3 [phred] cap 5 switch optimal / merge_loop: 1.004 [1.003, 1.005], undefined in 718
+H3 [phred] decision: not supported, not refuted
+H4 [phred] cap 3 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000] -> kept, as on simulation; but the loop raised switch error, from 0.00006 to 0.00057, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H4 [phred] cap 5 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000], undefined in 721 -> kept, as on simulation (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H5 [logodds] cap 5 optimal, 32849 truth-phased spanned boundaries: observed wrong 0, predicted 0.20; observed / predicted 0.00 [0.00, 0.00] -> not supported
+H6 [logodds] cap 5 AUC of the posterior margin for a wrong call: nan -> not supported (rule: above 0.6); MEC margin nan
+H5 [phred] cap 5 optimal, 32823 truth-phased spanned boundaries: observed wrong 0, predicted 0.00; observed / predicted 0.00 [0.00, 0.00] -> not supported
+H6 [phred] cap 5 AUC of the posterior margin for a wrong call: nan -> not supported (rule: above 0.6); MEC margin nan
+-- depth half
+H1 whatshap / optimum objective at cap 15: 0.9706 -> not supported (rule: below 0.95)
+H2 cap  3 switch whatshap / optimal: 1.251 [0.000, 3.993], undefined in 269
+H2 cap  5 switch whatshap / optimal: 0.996 [0.996, 0.997], undefined in 718
+H2 cap 15 switch whatshap / optimal: 1.000 [1.000, 1.000], undefined in 718
+H2 decision: not supported, not refuted (caps 3 and 5 above 1: False; cap 15 contains 1: False)
+H3 [logodds] cap 3 switch optimal / merge_loop: 0.801 [0.000, 3.007], undefined in 89
+H3 [logodds] cap 5 switch optimal / merge_loop: 1.001 [1.001, 1.002], undefined in 718
+H3 [logodds] decision: not supported, not refuted
+H4 [logodds] cap 3 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000], undefined in 1 -> kept, as on simulation; but the loop raised switch error, from 0.00011 to 0.00034, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H4 [logodds] cap 5 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000], undefined in 751 -> kept, as on simulation; but the loop raised switch error, from 0.00006 to 0.00008, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H3 [phred] cap 3 switch optimal / merge_loop: 0.802 [0.000, 3.009], undefined in 89
+H3 [phred] cap 5 switch optimal / merge_loop: 1.001 [1.001, 1.002], undefined in 718
+H3 [phred] decision: not supported, not refuted
+H4 [phred] cap 3 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000], undefined in 3 -> kept, as on simulation; but the loop raised switch error, from 0.00011 to 0.00023, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H4 [phred] cap 5 (optimal - shuffled) / (optimal - loop): 1.000 [1.000, 1.000], undefined in 302 -> kept, as on simulation; but the loop raised switch error, from 0.00006 to 0.00008, so there was no reduction to keep and the rule's premise fails (rule: at least 0.8; below 0.5 at both caps reopens OQ-13)
+H5 [logodds] cap 5 optimal, 32926 truth-phased spanned boundaries: observed wrong 0, predicted 1.22; observed / predicted 0.00 [0.00, 0.00] -> not supported
+H6 [logodds] cap 5 AUC of the posterior margin for a wrong call: nan -> not supported (rule: above 0.6); MEC margin nan
+H5 [phred] cap 5 optimal, 32922 truth-phased spanned boundaries: observed wrong 0, predicted 1.00; observed / predicted 0.00 [0.00, 0.00] -> not supported
+H6 [phred] cap 5 AUC of the posterior margin for a wrong call: nan -> not supported (rule: above 0.6); MEC margin nan
+
+3. against the hifiasm phase transfer (PATMAT sites; not a hypothesis test)
+ full    3               loop  0.00048    21/43620 
+ full    5               loop  0.00005     2/43956 
+ full   10               loop  0.00005     2/44143 
+ full   15               loop  0.00005     2/44198 
+ full    3         merge_loop  0.00011     5/43893 
+ full    5         merge_loop  0.00000     0/44090 
+ full   10         merge_loop  0.00000     0/44166 
+ full   15         merge_loop  0.00000     0/44200 
+ full    3     merge_loop_1e3  0.00007     3/44037 
+ full    5     merge_loop_1e3  0.00000     0/44155 
+ full   10     merge_loop_1e3  0.00000     0/44198 
+ full   15     merge_loop_1e3  0.00000     0/44217 
+ full    3      merge_optimal  0.00007     3/43892 
+ full    5      merge_optimal  0.00000     0/44090 
+ full   10      merge_optimal  0.00000     0/44166 
+ full   15      merge_optimal  0.00000     0/44200 
+ full    3  merge_optimal_1e3  0.00007     3/44037 
+ full    5  merge_optimal_1e3  0.00000     0/44155 
+ full   10  merge_optimal_1e3  0.00000     0/44198 
+ full   15  merge_optimal_1e3  0.00000     0/44217 
+ full    3            optimal  0.00005     2/43620 
+ full    5            optimal  0.00005     2/43956 
+ full   10            optimal  0.00005     2/44143 
+ full   15            optimal  0.00005     2/44198 
+ full    3           shuffled  0.00048    21/43624 
+ full    5           shuffled  0.00005     2/43956 
+ full   10           shuffled  0.00005     2/44143 
+ full   15           shuffled  0.00005     2/44198 
+ full    3           whatshap  0.00018     8/43805 
+ full    5           whatshap  0.00011     5/44229 
+ full   10           whatshap  0.00005     2/44238 
+ full   15           whatshap  0.00005     2/44238 
+ half    3               loop  0.00030    13/43831 
+ half    5               loop  0.00007     3/44051 
+ half   10               loop  0.00005     2/44169 
+ half   15               loop  0.00005     2/44193 
+ half    3         merge_loop  0.00011     5/43888 
+ half    5         merge_loop  0.00002     1/44095 
+ half   10         merge_loop  0.00000     0/44169 
+ half   15         merge_loop  0.00000     0/44192 
+ half    3     merge_loop_1e3  0.00007     3/44023 
+ half    5     merge_loop_1e3  0.00000     0/44139 
+ half   10     merge_loop_1e3  0.00000     0/44182 
+ half   15     merge_loop_1e3  0.00000     0/44194 
+ half    3      merge_optimal  0.00007     3/43888 
+ half    5      merge_optimal  0.00002     1/44095 
+ half   10      merge_optimal  0.00000     0/44169 
+ half   15      merge_optimal  0.00000     0/44192 
+ half    3  merge_optimal_1e3  0.00005     2/44023 
+ half    5  merge_optimal_1e3  0.00000     0/44139 
+ half   10  merge_optimal_1e3  0.00000     0/44182 
+ half   15  merge_optimal_1e3  0.00000     0/44194 
+ half    3            optimal  0.00011     5/43831 
+ half    5            optimal  0.00007     3/44051 
+ half   10            optimal  0.00005     2/44169 
+ half   15            optimal  0.00005     2/44193 
+ half    3           shuffled  0.00030    13/43831 
+ half    5           shuffled  0.00007     3/44051 
+ half   10           shuffled  0.00005     2/44169 
+ half   15           shuffled  0.00005     2/44193 
+ half    3           whatshap  0.00016     7/43784 
+ half    5           whatshap  0.00002     1/44183 
+ half   10           whatshap  0.00000     0/44197 
+ half   15           whatshap  0.00000     0/44197 
+ full    -            HapCUT2  0.00000     0/44240 
+ full    3     whatshap phase  0.00009     4/43792 
+ full    5     whatshap phase  0.00011     5/44228 
+ full   10     whatshap phase  0.00005     2/44238 
+ full   15     whatshap phase  0.00005     2/44238 
+ half    -            HapCUT2  0.00000     0/44197 
+ half    3     whatshap phase  0.00000     0/43775 
+ half    5     whatshap phase  0.00002     1/44183 
+ half   10     whatshap phase  0.00000     0/44197 
+ half   15     whatshap phase  0.00000     0/44197 
+
+4. switch sites shared by at least half of the 74 phasings, and whether hifiasm gives the same phase relation as the transmission truth between the site and the previous site both phase
+variant  10793 at  12558514:  74 phasings; OPPOSITE relation
+variant  10821 at  12573808:  72 phasings; OPPOSITE relation

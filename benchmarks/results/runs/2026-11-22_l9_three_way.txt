@@ -1,0 +1,68 @@
+L9 (development, rules stated first, docs/design/l9-three-way-calls.md): L2's cached tables (30x), arms ('whatshap+asm', 'longphase+asm', 'three-way') (three-way = whatshap, LongPhase and the assembly all relate the pair, each in one block or contig, with one relation); pool HG002 (hprc_HG002), NA12879 (phifi_NA12879), NA12881 (phifi_NA12881), NA12882 (phifi_NA12882), NA12885 (phifi_NA12885), NA12886 (phifi_NA12886); tests NA12877 (phifi_NA12877), HG005 (k1_hg005); 21 chromosomes; pairs in one clinical gene at most 100000 bp apart; groups (bin (1000, 10000, 100000), easy/hard); one CRC32 pick per (pool genome, gene, group); certified at r when P(X <= k | n, r) <= 0.05; targets (0.001, 0.01); test level 6.250e-03; L9-1 both 10-100 kb groups certify three-way at 0.001; L9-2 NA12877 10-100 kb share >= 0.5 three-way at 0.001; L9-3 no three-way test cell below the level
+
+pool: arm, group: called pairs, wrong, picks n, wrong picks k, certified at r
+  whatshap+asm   <=   1 kb easy called   1975887 wrong     0 picks  11729 wrong picks   0 certified at [0.001, 0.01]
+  whatshap+asm   <=   1 kb hard called   1806680 wrong    36 picks  12275 wrong picks   1 certified at [0.001, 0.01]
+  whatshap+asm   <=  10 kb easy called  13333863 wrong     0 picks  12890 wrong picks   0 certified at [0.001, 0.01]
+  whatshap+asm   <=  10 kb hard called  12636200 wrong   288 picks  13247 wrong picks   0 certified at [0.001, 0.01]
+  whatshap+asm   <= 100 kb easy called  68805568 wrong 20322 picks  11482 wrong picks   9 certified at [0.01]
+  whatshap+asm   <= 100 kb hard called  64920153 wrong 20709 picks  11675 wrong picks  14 certified at [0.01]
+  longphase+asm  <=   1 kb easy called   1972739 wrong     0 picks  11725 wrong picks   0 certified at [0.001, 0.01]
+  longphase+asm  <=   1 kb hard called   1762000 wrong     0 picks  12202 wrong picks   0 certified at [0.001, 0.01]
+  longphase+asm  <=  10 kb easy called  13310788 wrong     0 picks  12883 wrong picks   0 certified at [0.001, 0.01]
+  longphase+asm  <=  10 kb hard called  12335297 wrong     1 picks  13188 wrong picks   0 certified at [0.001, 0.01]
+  longphase+asm  <= 100 kb easy called  68670059 wrong 20721 picks  11474 wrong picks  13 certified at [0.01]
+  longphase+asm  <= 100 kb hard called  63319561 wrong 16184 picks  11642 wrong picks  12 certified at [0.01]
+  three-way      <=   1 kb easy called   1972616 wrong     0 picks  11725 wrong picks   0 certified at [0.001, 0.01]
+  three-way      <=   1 kb hard called   1756438 wrong     0 picks  12195 wrong picks   0 certified at [0.001, 0.01]
+  three-way      <=  10 kb easy called  13309429 wrong     0 picks  12883 wrong picks   0 certified at [0.001, 0.01]
+  three-way      <=  10 kb hard called  12298886 wrong     1 picks  13183 wrong picks   0 certified at [0.001, 0.01]
+  three-way      <= 100 kb easy called  68613835 wrong 14817 picks  11472 wrong picks   6 certified at [0.01]
+  three-way      <= 100 kb hard called  63070817 wrong 10877 picks  11632 wrong picks   6 certified at [0.01]
+
+== test NA12877: pairs 30229944 (<= 1 kb 705093, <= 10 kb 4734365, <= 100 kb 24790486)
+  whatshap+asm   r 0.001  certified   4892200 share 0.1618 wrong certified     7 genes picked  2183 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.8763, <= 10 kb 0.9028, <= 100 kb 0.0000
+      genes: all bins 2672 genes, with a certified pair 0.8170, median per-gene share 0.2337; 10-100 kb 2298 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  whatshap+asm   r 0.01   certified  27091504 share 0.8962 wrong certified   498 genes picked  2200 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.8763, <= 10 kb 0.9028, <= 100 kb 0.8955
+      genes: all bins 2672 genes, with a certified pair 0.8234, median per-gene share 0.9630; 10-100 kb 2298 genes, with a certified pair 0.8238, median per-gene share 0.9565
+  longphase+asm  r 0.001  certified   4830609 share 0.1598 wrong certified     0 genes picked  2176 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.8662, <= 10 kb 0.8913, <= 100 kb 0.0000
+      genes: all bins 2672 genes, with a certified pair 0.8144, median per-gene share 0.2272; 10-100 kb 2298 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  longphase+asm  r 0.01   certified  26736457 share 0.8844 wrong certified  2081 genes picked  2193 wrong picks   2 p 1.00e+00
+      by distance: <= 1 kb 0.8662, <= 10 kb 0.8913, <= 100 kb 0.8836
+      genes: all bins 2672 genes, with a certified pair 0.8207, median per-gene share 0.9306; 10-100 kb 2298 genes, with a certified pair 0.8233, median per-gene share 0.9264
+  three-way      r 0.001  certified   4824706 share 0.1596 wrong certified     0 genes picked  2176 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.8650, <= 10 kb 0.8903, <= 100 kb 0.0000
+      genes: all bins 2672 genes, with a certified pair 0.8144, median per-gene share 0.2269; 10-100 kb 2298 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  three-way      r 0.01   certified  26680286 share 0.8826 wrong certified    88 genes picked  2193 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.8650, <= 10 kb 0.8903, <= 100 kb 0.8816
+      genes: all bins 2672 genes, with a certified pair 0.8207, median per-gene share 0.9289; 10-100 kb 2298 genes, with a certified pair 0.8225, median per-gene share 0.9244
+
+== test HG005: pairs 12203402 (<= 1 kb 303373, <= 10 kb 2015941, <= 100 kb 9884088)
+  whatshap+asm   r 0.001  certified   2301020 share 0.1886 wrong certified     0 genes picked  2363 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.9925, <= 10 kb 0.9921, <= 100 kb 0.0000
+      genes: all bins 2498 genes, with a certified pair 0.9460, median per-gene share 0.3333; 10-100 kb 2131 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  whatshap+asm   r 0.01   certified  11602627 share 0.9508 wrong certified    31 genes picked  2418 wrong picks   1 p 1.00e+00
+      by distance: <= 1 kb 0.9925, <= 10 kb 0.9921, <= 100 kb 0.9411
+      genes: all bins 2498 genes, with a certified pair 0.9680, median per-gene share 1.0000; 10-100 kb 2131 genes, with a certified pair 0.9273, median per-gene share 1.0000
+  longphase+asm  r 0.001  certified   2292265 share 0.1878 wrong certified     0 genes picked  2362 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.9887, <= 10 kb 0.9883, <= 100 kb 0.0000
+      genes: all bins 2498 genes, with a certified pair 0.9456, median per-gene share 0.3333; 10-100 kb 2131 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  longphase+asm  r 0.01   certified  11567636 share 0.9479 wrong certified    11 genes picked  2417 wrong picks   1 p 1.00e+00
+      by distance: <= 1 kb 0.9887, <= 10 kb 0.9883, <= 100 kb 0.9384
+      genes: all bins 2498 genes, with a certified pair 0.9676, median per-gene share 1.0000; 10-100 kb 2131 genes, with a certified pair 0.9263, median per-gene share 1.0000
+  three-way      r 0.001  certified   2292167 share 0.1878 wrong certified     0 genes picked  2362 wrong picks   0 p 1.00e+00
+      by distance: <= 1 kb 0.9887, <= 10 kb 0.9882, <= 100 kb 0.0000
+      genes: all bins 2498 genes, with a certified pair 0.9456, median per-gene share 0.3333; 10-100 kb 2131 genes, with a certified pair 0.0000, median per-gene share 0.0000
+  three-way      r 0.01   certified  11544549 share 0.9460 wrong certified     7 genes picked  2417 wrong picks   1 p 1.00e+00
+      by distance: <= 1 kb 0.9887, <= 10 kb 0.9882, <= 100 kb 0.9361
+      genes: all bins 2498 genes, with a certified pair 0.9676, median per-gene share 1.0000; 10-100 kb 2131 genes, with a certified pair 0.9263, median per-gene share 1.0000
+
+10-100 kb share at r 1e-3: NA12877 whatshap+asm 0.0000, NA12877 longphase+asm 0.0000, NA12877 three-way 0.0000, HG005 whatshap+asm 0.0000, HG005 longphase+asm 0.0000, HG005 three-way 0.0000; worst three-way 0.0000
+L9-1 pool, both 10-100 kb groups certify three-way at 0.001: fails
+L9-2 NA12877 10-100 kb three-way share at 0.001 >= 0.5: fails
+L9-3 validity: holds
+L9: does not succeed
+runtime 364 s

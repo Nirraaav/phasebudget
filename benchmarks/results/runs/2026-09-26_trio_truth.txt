@@ -1,0 +1,18 @@
+chromosome chr20; data directory data/giab
+child HG002_chr20_v4.2.1.vcf.gz; father HG003_chr20_v4.2.1.vcf.gz; mother HG004_chr20_v4.2.1.vcf.gz
+father BED HG003_chr20_v4.2.1.bed; mother BED HG004_chr20_v4.2.1.bed
+rules: docs/design/truth-sets.md; GIAB v4.2.1 benchmark calls
+
+child heterozygous biallelic SNVs: 46344
+  phased                                     36860   79.5%
+  ambiguous, both parents heterozygous        8053   17.4%
+  parent outside benchmark                    1364    2.9%
+  inconsistent                                  61    0.1%
+  parent representation differs                  6    0.0%
+
+phased file                                    compared  discordant     rate  not oriented  unphased/absent
+-----------------------------------------------------------------------------------------------------------
+HG002_chr20_StrandSeqANDTrio.vcf.gz               32837           0  0.0000%             0             4023
+HG002_chr20_hifiasm_phasetransfer.vcf.gz          36834          13  0.0353%            10               16
+
+wrote 36860 phased sites to data/giab/HG002_chr20_trio_truth.vcf.gz

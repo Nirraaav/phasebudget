@@ -1,0 +1,121 @@
+# dry run of benchmarks/third_score.py on cal_r10 (odd calibrates, even stands in); 2026-10-13T12:45:53+05:30
+third test scoring (DRY RUN: cal_r10 only); calibration cal_r10, test cal_r10; units 100 kb per group; betas (0.0003, 0.001, 0.003); delta 0.05; depths ('30', '20', '10'); phasers ('whatshap', 'longphase')
+
+calibration  depth phaser     beta    group      units  wrong  p_exceed  pairs     trusted  wrong  wrong_trusted
+cal_r10         30 whatshap   0.0003  lowmap          0      0  1.00e+00     54249        0     51              0
+cal_r10         30 whatshap   0.0003  difficult       0      0  1.00e+00     65952        0      2              0
+cal_r10         30 whatshap   0.0003  tandem          0      0  1.00e+00    104486        0    944              0
+cal_r10         30 whatshap   0.0003  easy        11748      2  8.67e-01    623240   618428     29              3
+cal_r10         30 whatshap   0.0003  indel           0      0  1.00e+00    381854        0  28035              0
+cal_r10         30 whatshap   0.0003  segdup          0      0  1.00e+00     23238        0     89              0
+cal_r10         30 whatshap   0.001   lowmap       6804      2  9.91e-01     54249    46931     51              2
+cal_r10         30 whatshap   0.001   difficult    9177      2  9.99e-01     65952    65952      2              2
+cal_r10         30 whatshap   0.001   tandem          0      0  1.00e+00    104486        0    944              0
+cal_r10         30 whatshap   0.001   easy        11800      3  9.99e-01    623240   621832     29              4
+cal_r10         30 whatshap   0.001   indel           0      0  1.00e+00    381854        0  28035              0
+cal_r10         30 whatshap   0.001   segdup          0      0  1.00e+00     23238        0     89              0
+cal_r10         30 whatshap   0.003   lowmap       7191      9  9.99e-01     54249    54017     51             13
+cal_r10         30 whatshap   0.003   difficult    9177      2  1.00e+00     65952    65952      2              2
+cal_r10         30 whatshap   0.003   tandem          0      0  1.00e+00    104486        0    944              0
+cal_r10         30 whatshap   0.003   easy        11866     26  9.61e-01    623240   623240     29             29
+cal_r10         30 whatshap   0.003   indel           0      0  1.00e+00    381854        0  28035              0
+cal_r10         30 whatshap   0.003   segdup          0      0  1.00e+00     23238        0     89              0
+cal_r10         30 longphase  0.0003  lowmap          0      0  1.00e+00     55780        0     17              0
+cal_r10         30 longphase  0.0003  difficult       0      0  1.00e+00     69219        0     13              0
+cal_r10         30 longphase  0.0003  tandem          0      0  1.00e+00    106459        0    232              0
+cal_r10         30 longphase  0.0003  easy        11764      0  1.00e+00    653896   647791     84              0
+cal_r10         30 longphase  0.0003  indel           0      0  1.00e+00    256260        0    645              0
+cal_r10         30 longphase  0.0003  segdup          0      0  1.00e+00     23810        0     30              0
+cal_r10         30 longphase  0.001   lowmap       7230      2  9.94e-01     55780    55281     17              2
+cal_r10         30 longphase  0.001   difficult    9253      0  1.00e+00     69219    69067     13              0
+cal_r10         30 longphase  0.001   tandem      10386      6  9.46e-01    106459    97910    232              8
+cal_r10         30 longphase  0.001   easy        11830      0  1.00e+00    653896   652519     84              0
+cal_r10         30 longphase  0.001   indel           0      0  1.00e+00    256260        0    645              0
+cal_r10         30 longphase  0.001   segdup          0      0  1.00e+00     23810        0     30              0
+cal_r10         30 longphase  0.003   lowmap       7280      5  1.00e+00     55780    55696     17              5
+cal_r10         30 longphase  0.003   difficult    9282     13  9.99e-01     69219    69219     13             13
+cal_r10         30 longphase  0.003   tandem      10640     39  1.23e-01    106459   105091    232             52
+cal_r10         30 longphase  0.003   easy        11830      0  1.00e+00    653896   652519     84              0
+cal_r10         30 longphase  0.003   indel       11226     12  1.00e+00    256260   191798    645             16
+cal_r10         30 longphase  0.003   segdup          0      0  1.00e+00     23810        0     30              0
+cal_r10         20 whatshap   0.0003  lowmap          0      0  1.00e+00     54272        0     63              0
+cal_r10         20 whatshap   0.0003  difficult       0      0  1.00e+00     66003        0      4              0
+cal_r10         20 whatshap   0.0003  tandem          0      0  1.00e+00    104502        0    987              0
+cal_r10         20 whatshap   0.0003  easy        11720      3  6.82e-01    623447   615569     40              4
+cal_r10         20 whatshap   0.0003  indel           0      0  1.00e+00    380050        0  28705              0
+cal_r10         20 whatshap   0.0003  segdup          0      0  1.00e+00     23262        0    110              0
+cal_r10         20 whatshap   0.001   lowmap       6971      3  9.70e-01     54272    50559     63              3
+cal_r10         20 whatshap   0.001   difficult    9174      4  9.81e-01     66003    66003      4              4
+cal_r10         20 whatshap   0.001   tandem          0      0  1.00e+00    104502        0    987              0
+cal_r10         20 whatshap   0.001   easy        11803      3  9.99e-01    623447   622265     40              4
+cal_r10         20 whatshap   0.001   indel           0      0  1.00e+00    380050        0  28705              0
+cal_r10         20 whatshap   0.001   segdup          0      0  1.00e+00     23262        0    110              0
+cal_r10         20 whatshap   0.003   lowmap       7186     18  8.07e-01     54272    54036     63             22
+cal_r10         20 whatshap   0.003   difficult    9174      4  1.00e+00     66003    66003      4              4
+cal_r10         20 whatshap   0.003   tandem          0      0  1.00e+00    104502        0    987              0
+cal_r10         20 whatshap   0.003   easy        11803      3  1.00e+00    623447   622265     40              4
+cal_r10         20 whatshap   0.003   indel           0      0  1.00e+00    380050        0  28705              0
+cal_r10         20 whatshap   0.003   segdup          0      0  1.00e+00     23262        0    110              0
+cal_r10         20 longphase  0.0003  lowmap          0      0  1.00e+00     55750        0     25              0
+cal_r10         20 longphase  0.0003  difficult       0      0  1.00e+00     69195        0     16              0
+cal_r10         20 longphase  0.0003  tandem          0      0  1.00e+00    105903        0    274              0
+cal_r10         20 longphase  0.0003  easy        11730      0  1.00e+00    653519   644632     87              0
+cal_r10         20 longphase  0.0003  indel           0      0  1.00e+00    258444        0   1273              0
+cal_r10         20 longphase  0.0003  segdup          0      0  1.00e+00     23735        0     41              0
+cal_r10         20 longphase  0.001   lowmap       7218      2  9.94e-01     55750    55244     25              2
+cal_r10         20 longphase  0.001   difficult    9235      0  1.00e+00     69195    69060     16              0
+cal_r10         20 longphase  0.001   tandem      10154      5  9.74e-01    105903    87555    274              8
+cal_r10         20 longphase  0.001   easy        11815      0  1.00e+00    653519   651953     87              0
+cal_r10         20 longphase  0.001   indel           0      0  1.00e+00    258444        0   1273              0
+cal_r10         20 longphase  0.001   segdup          0      0  1.00e+00     23735        0     41              0
+cal_r10         20 longphase  0.003   lowmap       7266      9  9.99e-01     55750    55634     25              9
+cal_r10         20 longphase  0.003   difficult    9265     16  9.94e-01     69195    69195     16             16
+cal_r10         20 longphase  0.003   tandem      10518     25  8.99e-01    105903   101962    274             34
+cal_r10         20 longphase  0.003   easy        11815      0  1.00e+00    653519   651953     87              0
+cal_r10         20 longphase  0.003   indel       11022     16  1.00e+00    258444   170437   1273             21
+cal_r10         20 longphase  0.003   segdup          0      0  1.00e+00     23735        0     41              0
+cal_r10         10 whatshap   0.0003  lowmap          0      0  1.00e+00     54257        0     76              0
+cal_r10         10 whatshap   0.0003  difficult       0      0  1.00e+00     66065        0      9              0
+cal_r10         10 whatshap   0.0003  tandem          0      0  1.00e+00    104322        0   1105              0
+cal_r10         10 whatshap   0.0003  easy        11632      0  1.00e+00    624329   576932     57              0
+cal_r10         10 whatshap   0.0003  indel           0      0  1.00e+00    372828        0  33110              0
+cal_r10         10 whatshap   0.0003  segdup          0      0  1.00e+00     23184        0     79              0
+cal_r10         10 whatshap   0.001   lowmap       6165      2  9.85e-01     54257    39977     76              2
+cal_r10         10 whatshap   0.001   difficult    9157      4  9.81e-01     66065    66048      9              4
+cal_r10         10 whatshap   0.001   tandem          0      0  1.00e+00    104322        0   1105              0
+cal_r10         10 whatshap   0.001   easy        11776      3  9.99e-01    624329   618179     57              3
+cal_r10         10 whatshap   0.001   indel           0      0  1.00e+00    372828        0  33110              0
+cal_r10         10 whatshap   0.001   segdup          0      0  1.00e+00     23184        0     79              0
+cal_r10         10 whatshap   0.003   lowmap       7047     10  9.97e-01     54257    52488     76             11
+cal_r10         10 whatshap   0.003   difficult    9161      9  1.00e+00     66065    66065      9              9
+cal_r10         10 whatshap   0.003   tandem          0      0  1.00e+00    104322        0   1105              0
+cal_r10         10 whatshap   0.003   easy        11779      6  1.00e+00    624329   619699     57              7
+cal_r10         10 whatshap   0.003   indel           0      0  1.00e+00    372828        0  33110              0
+cal_r10         10 whatshap   0.003   segdup          0      0  1.00e+00     23184        0     79              0
+cal_r10         10 longphase  0.0003  lowmap          0      0  1.00e+00     55414        0     44              0
+cal_r10         10 longphase  0.0003  difficult       0      0  1.00e+00     68820        0     24              0
+cal_r10         10 longphase  0.0003  tandem          0      0  1.00e+00    104278        0    493              0
+cal_r10         10 longphase  0.0003  easy        11731      0  1.00e+00    649438   629982    169              0
+cal_r10         10 longphase  0.0003  indel           0      0  1.00e+00    261448        0   4763              0
+cal_r10         10 longphase  0.0003  segdup          0      0  1.00e+00     23758        0     46              0
+cal_r10         10 longphase  0.001   lowmap       6233      0  1.00e+00     55414    41209     44              0
+cal_r10         10 longphase  0.001   difficult    9236      3  9.95e-01     68820    68776     24              3
+cal_r10         10 longphase  0.001   tandem          0      0  1.00e+00    104278        0    493              0
+cal_r10         10 longphase  0.001   easy        11796      2  1.00e+00    649438   644785    169              2
+cal_r10         10 longphase  0.001   indel           0      0  1.00e+00    261448        0   4763              0
+cal_r10         10 longphase  0.001   segdup          0      0  1.00e+00     23758        0     46              0
+cal_r10         10 longphase  0.003   lowmap       7209      8  1.00e+00     55414    55032     44             10
+cal_r10         10 longphase  0.003   difficult    9236      3  1.00e+00     68820    68776     24              3
+cal_r10         10 longphase  0.003   tandem      10012     14  1.00e+00    104278    81043    493             14
+cal_r10         10 longphase  0.003   easy        11852     12  1.00e+00    649438   649003    169             12
+cal_r10         10 longphase  0.003   indel           0      0  1.00e+00    261448        0   4763              0
+cal_r10         10 longphase  0.003   segdup          0      0  1.00e+00     23758        0     46              0
+
+V1 (easy): 18 cells with test pairs of 18 registered, 18 certifying, level 2.78e-03, violating 0, smallest p 0.682
+V2 (difficult and indel groups): 90 cells with test pairs of 90 registered, 31 certifying, level 5.56e-04, violating 0, smallest p 0.123
+V3 (easy, beta 0.001, depths ('30', '20')): 4 of 4 cells succeed
+V4 (per-group trusts more than pooled, beta 1e-3): 30x whatshap 0.5864 vs 0.0000; 30x longphase 0.7506 vs 0.5422; 20x whatshap 0.5903 vs 0.0000; 20x longphase 0.7405 vs 0.0000; 4 of 4 cells
+V5 abstention (share of pairs in groups certifying nothing), beta 1e-3: 30x whatshap 0.407; 30x longphase 0.240; 20x whatshap 0.406; 20x longphase 0.242; 10x whatshap 0.402; 10x longphase 0.335
+V6 (whatshap worse on shared indel pairs, 30x, level 0.05): cal_r10 shared 236782 only-whatshap 2045 only-LongPhase 136 p 0.00e+00
+
+V1 supported; V2 supported; V3 supported; V4 supported; V6 supported

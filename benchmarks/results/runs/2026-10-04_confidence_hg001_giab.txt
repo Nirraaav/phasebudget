@@ -1,0 +1,61 @@
+exploratory, after the registered test was scored: HG001 ONT sup against Platinum, only pairs whose two SNVs are GIAB HG001 v4.2.1 het SNVs inside its benchmark BED (how the HG002 calibration variants were chosen); same calibration, units, grid, delta 0.05, E1 level 0.05/36
+  hg001_ont 30x whatshap: dropped wrong pairs 3889, 3490 with an SNV outside the GIAB BED, 399 inside it but not a GIAB het SNV
+  hg001_ont 30x whatshap: kept 1797378 of 2046598 pairs; wrong pairs on lone flipped sites 13 of 61 (all pairs: 1586 of 3950)
+  hg001_ont 30x whatshap in GIAB: 1797378 pairs, 61 wrong; 25007 units, 48 wrong (base rate 1.92e-03)
+    beta 3e-04: trusted 0.9915 of pairs; units wrong 2/24713 = 8.09e-05; P(X >= k) 0.995; wrong trusted pairs 3 of 61; untrusted wrong pairs by stratum segdups 1, lowmap 4, TR+homopol 6, easy 23, total 58
+    beta 1e-03: trusted 0.9973 of pairs; units wrong 9/24868 = 3.62e-04; P(X >= k) 1; wrong trusted pairs 11 of 61; untrusted wrong pairs by stratum segdups 1, lowmap 3, TR+homopol 3, easy 22, total 50
+    beta 3e-03: trusted 1.0000 of pairs; units wrong 48/25007 = 1.92e-03; P(X >= k) 1; wrong trusted pairs 61 of 61; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.02, 0.98: 0.02, 0.99: 0.02, 1.00: 0.34
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation
+  hg001_ont 30x longphase: dropped wrong pairs 2190, 2107 with an SNV outside the GIAB BED, 83 inside it but not a GIAB het SNV
+  hg001_ont 30x longphase: kept 1792932 of 2030771 pairs; wrong pairs on lone flipped sites 6 of 67 (all pairs: 881 of 2257)
+  hg001_ont 30x longphase in GIAB: 1792932 pairs, 67 wrong; 24997 units, 58 wrong (base rate 2.32e-03)
+    beta 3e-04: trusted 0.9943 of pairs; units wrong 2/24759 = 8.08e-05; P(X >= k) 0.995; wrong trusted pairs 3 of 67; untrusted wrong pairs by stratum segdups 0, lowmap 2, TR+homopol 1, easy 31, total 64
+    beta 1e-03: trusted 0.9973 of pairs; units wrong 2/24859 = 8.05e-05; P(X >= k) 1; wrong trusted pairs 3 of 67; untrusted wrong pairs by stratum segdups 0, lowmap 2, TR+homopol 1, easy 31, total 64
+    beta 3e-03: trusted 0.9973 of pairs; units wrong 2/24859 = 8.05e-05; P(X >= k) 1; wrong trusted pairs 3 of 67; untrusted wrong pairs by stratum segdups 0, lowmap 2, TR+homopol 1, easy 31, total 64
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.01, 0.98: 0.01, 0.99: 0.01, 1.00: 0.37
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation
+  hg001_ont 20x whatshap: dropped wrong pairs 3901, 3526 with an SNV outside the GIAB BED, 375 inside it but not a GIAB het SNV
+  hg001_ont 20x whatshap: kept 1796246 of 2044990 pairs; wrong pairs on lone flipped sites 14 of 74 (all pairs: 1606 of 3975)
+  hg001_ont 20x whatshap in GIAB: 1796246 pairs, 74 wrong; 24979 units, 60 wrong (base rate 2.40e-03)
+    beta 3e-04: trusted 0.9782 of pairs; units wrong 2/24557 = 8.14e-05; P(X >= k) 0.995; wrong trusted pairs 3 of 74; untrusted wrong pairs by stratum segdups 2, lowmap 8, TR+homopol 6, easy 28, total 71
+    beta 1e-03: trusted 0.9979 of pairs; units wrong 11/24881 = 4.42e-04; P(X >= k) 0.999; wrong trusted pairs 15 of 74; untrusted wrong pairs by stratum segdups 2, lowmap 7, TR+homopol 3, easy 26, total 59
+    beta 3e-03: trusted 1.0000 of pairs; units wrong 60/24979 = 2.40e-03; P(X >= k) 0.967; wrong trusted pairs 74 of 74; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.02, 0.98: 0.02, 0.99: 0.03, 1.00: 0.41
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation
+  hg001_ont 20x longphase: dropped wrong pairs 2293, 2220 with an SNV outside the GIAB BED, 73 inside it but not a GIAB het SNV
+  hg001_ont 20x longphase: kept 1792160 of 2030665 pairs; wrong pairs on lone flipped sites 4 of 76 (all pairs: 913 of 2369)
+  hg001_ont 20x longphase in GIAB: 1792160 pairs, 76 wrong; 24964 units, 69 wrong (base rate 2.76e-03)
+    beta 3e-04: trusted 0.9958 of pairs; units wrong 2/24789 = 8.07e-05; P(X >= k) 0.995; wrong trusted pairs 3 of 76; untrusted wrong pairs by stratum segdups 1, lowmap 3, TR+homopol 1, easy 37, total 73
+    beta 1e-03: trusted 0.9979 of pairs; units wrong 3/24866 = 1.21e-04; P(X >= k) 1; wrong trusted pairs 4 of 76; untrusted wrong pairs by stratum segdups 1, lowmap 3, TR+homopol 1, easy 36, total 72
+    beta 3e-03: trusted 0.9979 of pairs; units wrong 3/24866 = 1.21e-04; P(X >= k) 1; wrong trusted pairs 4 of 76; untrusted wrong pairs by stratum segdups 1, lowmap 3, TR+homopol 1, easy 36, total 72
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.02, 0.98: 0.02, 0.99: 0.02, 1.00: 0.42
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation
+  hg001_ont 10x whatshap: dropped wrong pairs 3885, 3526 with an SNV outside the GIAB BED, 359 inside it but not a GIAB het SNV
+  hg001_ont 10x whatshap: kept 1792073 of 2038968 pairs; wrong pairs on lone flipped sites 59 of 218 (all pairs: 1619 of 4103)
+  hg001_ont 10x whatshap in GIAB: 1792073 pairs, 218 wrong; 24919 units, 159 wrong (base rate 6.38e-03)
+    beta 3e-04: trusted 0.8482 of pairs; units wrong 2/24049 = 8.32e-05; P(X >= k) 0.994; wrong trusted pairs 2 of 218; untrusted wrong pairs by stratum segdups 7, lowmap 30, TR+homopol 8, easy 93, total 216
+    beta 1e-03: trusted 0.9880 of pairs; units wrong 18/24751 = 7.27e-04; P(X >= k) 0.934; wrong trusted pairs 23 of 218; untrusted wrong pairs by stratum segdups 6, lowmap 21, TR+homopol 6, easy 88, total 195
+    beta 3e-03: trusted 0.9905 of pairs; units wrong 23/24755 = 9.29e-04; P(X >= k) 1; wrong trusted pairs 30 of 218; untrusted wrong pairs by stratum segdups 6, lowmap 19, TR+homopol 6, easy 88, total 188
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.05, 0.98: 0.10, 0.99: 0.16, 1.00: 1.22
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation
+  hg001_ont 10x longphase: dropped wrong pairs 2507, 2359 with an SNV outside the GIAB BED, 148 inside it but not a GIAB het SNV
+  hg001_ont 10x longphase: kept 1783403 of 2020903 pairs; wrong pairs on lone flipped sites 24 of 227 (all pairs: 1022 of 2734)
+  hg001_ont 10x longphase in GIAB: 1783403 pairs, 227 wrong; 24910 units, 200 wrong (base rate 8.03e-03)
+    beta 3e-04: trusted 0.9721 of pairs; units wrong 2/24571 = 8.14e-05; P(X >= k) 0.995; wrong trusted pairs 3 of 227; untrusted wrong pairs by stratum segdups 4, lowmap 2, TR+homopol 3, easy 140, total 224
+    beta 1e-03: trusted 0.9901 of pairs; units wrong 5/24742 = 2.02e-04; P(X >= k) 1; wrong trusted pairs 7 of 227; untrusted wrong pairs by stratum segdups 4, lowmap 2, TR+homopol 3, easy 137, total 220
+    beta 3e-03: trusted 0.9901 of pairs; units wrong 5/24742 = 2.02e-04; P(X >= k) 1; wrong trusted pairs 7 of 227; untrusted wrong pairs by stratum segdups 4, lowmap 2, TR+homopol 3, easy 137, total 220
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.02, 0.98: 0.02, 0.99: 0.04, 1.00: 1.27
+    beta 3e-04: no violation
+    beta 1e-03: no violation
+    beta 3e-03: no violation

@@ -1,0 +1,13 @@
+provenance: commit 85654d7, whatshap 2.8, machine Linux 7.0.0-34-generic x86_64, bam HG002_chr20_ccs11kb.bam, vcf HG002_chr20_v4.2.1.vcf.gz, bed HG002_chr20_v4.2.1.bed, reference chr20.fa, chromosome chr20, sample HG002, mapq 20, het_snvs 45053, seconds 161.8
+variants 45053; reads 137593; calling two or more 117325; span 88108 to 64283344
+span coverage per variant, all reads (5% 25% 50% 75% 95% max): 21 28 32 36 43 56; mean 32.1; variants with none 45
+span coverage per variant, two or more (5% 25% 50% 75% 95% max): 20 27 32 36 43 54; mean 31.6; variants with none 293
+variants called per read (5% 25% 50% 75% 95% max): 2 5 10 16 29 120; mean 12.1
+variants spanned per read (5% 25% 50% 75% 95% max): 2 5 10 16 29 120
+reads with a hole: 0.033; holes per read, mean 0.04
+allele quality (5% 25% 50% 75% 95% max): 30 30 30 30 30 30; zero 0 of 1420694
+cap 3: fits the state limit of 22 yes; share of variants whose coverage the cap binds: 0.992
+cap 5: fits the state limit of 22 yes; share of variants whose coverage the cap binds: 0.992
+cap 10: fits the state limit of 22 yes; share of variants whose coverage the cap binds: 0.989
+cap 15: fits the state limit of 22 yes; share of variants whose coverage the cap binds: 0.981
+blocks with every read: 509; variants in no block: 293

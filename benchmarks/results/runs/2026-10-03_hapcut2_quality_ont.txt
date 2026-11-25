@@ -1,0 +1,10 @@
+development: HapCUT2 quality against the read-support score, platform ont, 21 chromosomes, HapCUT2 phasings
+  30x: 1965036 pairs, 417 wrong
+     support: AUC 1.000; wrong left at share trusted 0.95: 0, 0.98: 1, 0.99: 1, 0.995: 2, 0.999: 31, 1.0: 417
+     hapcut2: AUC 0.839; wrong left at share trusted 0.95: 128, 0.98: 134, 0.99: 134, 0.995: 134, 0.999: 135, 1.0: 417
+  20x: 1964014 pairs, 477 wrong
+     support: AUC 1.000; wrong left at share trusted 0.95: 1, 0.98: 1, 0.99: 2, 0.995: 2, 0.999: 35, 1.0: 477
+     hapcut2: AUC 0.864; wrong left at share trusted 0.95: 125, 0.98: 128, 0.99: 128, 0.995: 129, 0.999: 181, 1.0: 477
+  10x: 1959811 pairs, 757 wrong
+     support: AUC 0.997; wrong left at share trusted 0.95: 3, 0.98: 14, 0.99: 24, 0.995: 86, 0.999: 117, 1.0: 757
+     hapcut2: AUC 0.925; wrong left at share trusted 0.95: 105, 0.98: 140, 0.99: 169, 0.995: 319, 0.999: 429, 1.0: 757

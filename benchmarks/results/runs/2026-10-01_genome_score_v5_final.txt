@@ -1,0 +1,422 @@
+genome-wide HG002 scoring (docs/design/genome-run-plan.md, amendment 1)
+platform hifi; primary truth: v5 (POST HOC, beside the registered analysis)
+confirmatory chromosomes 21: chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr21, chr22; chromosome 20 is the pilot and is not scored here
+depths full, 20, 15, 10; caps 3, 5, 10, 15; loop pipelines at caps 3, 5
+bootstrap: 1 Mb windows cut per chromosome and pooled, 2000 resamples, seed 0; sign tests exact, two-sided
+run status 2026-10-01 05:10:27: 4495 jobs done, 0 failed
+
+0. data
+ chr1 depth  34.5,  159676 het SNVs, filtered truth  131134 (removed  101), hifiasm  158861, v5  156854; v5 and transmission relations agree at 129644/129646 consecutive shared sites; skipped depths: none
+ chr2 depth  34.7,  160574 het SNVs, filtered truth  131356 (removed  354), hifiasm  160050, v5  159226; v5 and transmission relations agree at 131037/131037 consecutive shared sites; skipped depths: none
+ chr3 depth  35.4,  147032 het SNVs, filtered truth  120550 (removed  268), hifiasm  146066, v5  145375; v5 and transmission relations agree at 119719/119719 consecutive shared sites; skipped depths: none
+ chr4 depth  38.5,  151440 het SNVs, filtered truth  123476 (removed  111), hifiasm  151241, v5  149837; v5 and transmission relations agree at 122371/122371 consecutive shared sites; skipped depths: none
+ chr5 depth  35.0,  142323 het SNVs, filtered truth  112935 (removed   38), hifiasm  142065, v5  141673; v5 and transmission relations agree at 112677/112677 consecutive shared sites; skipped depths: none
+ chr6 depth  35.2,  137314 het SNVs, filtered truth  110274 (removed   62), hifiasm  136468, v5  133695; v5 and transmission relations agree at 107820/107820 consecutive shared sites; skipped depths: none
+ chr7 depth  34.2,  123048 het SNVs, filtered truth   97508 (removed  142), hifiasm  122139, v5  116323; v5 and transmission relations agree at 92832/92832 consecutive shared sites; skipped depths: none
+ chr8 depth  34.6,  119173 het SNVs, filtered truth   98459 (removed   37), hifiasm  118649, v5  112422; v5 and transmission relations agree at 92856/92856 consecutive shared sites; skipped depths: none
+ chr9 depth  28.8,   91806 het SNVs, filtered truth   75423 (removed  144), hifiasm   90090, v5   89278; v5 and transmission relations agree at 74566/74566 consecutive shared sites; skipped depths: none
+chr10 depth  35.4,  106313 het SNVs, filtered truth   85472 (removed   44), hifiasm  105526, v5  103881; v5 and transmission relations agree at 83821/83821 consecutive shared sites; skipped depths: none
+chr11 depth  33.8,   97780 het SNVs, filtered truth   77931 (removed   25), hifiasm   97490, v5   97286; v5 and transmission relations agree at 77593/77593 consecutive shared sites; skipped depths: none
+chr12 depth  34.5,  100264 het SNVs, filtered truth   81011 (removed  639), hifiasm   99835, v5   99313; v5 and transmission relations agree at 80887/80887 consecutive shared sites; skipped depths: none
+chr13 depth  30.7,   77161 het SNVs, filtered truth   64504 (removed  114), hifiasm   76893, v5   76425; v5 and transmission relations agree at 64025/64025 consecutive shared sites; skipped depths: none
+chr14 depth  28.9,   68281 het SNVs, filtered truth   54277 (removed   50), hifiasm   68091, v5   66897; v5 and transmission relations agree at 53133/53133 consecutive shared sites; skipped depths: none
+chr15 depth  27.7,   60978 het SNVs, filtered truth   48079 (removed   30), hifiasm   60490, v5   59580; v5 and transmission relations agree at 47642/47642 consecutive shared sites; skipped depths: none
+chr16 depth  32.0,   62420 het SNVs, filtered truth   50677 (removed   94), hifiasm   61574, v5   61309; v5 and transmission relations agree at 50047/50047 consecutive shared sites; skipped depths: none
+chr17 depth  32.9,   52839 het SNVs, filtered truth   43297 (removed   23), hifiasm   52455, v5   49358; v5 and transmission relations agree at 40334/40334 consecutive shared sites; skipped depths: none
+chr18 depth  34.2,   56720 het SNVs, filtered truth   46280 (removed   11), hifiasm   56659, v5   56063; v5 and transmission relations agree at 45801/45801 consecutive shared sites; skipped depths: none
+chr19 depth  29.1,   47133 het SNVs, filtered truth   37907 (removed   15), hifiasm   46601, v5   46598; v5 and transmission relations agree at 37612/37612 consecutive shared sites; skipped depths: none
+chr21 depth  32.0,   26545 het SNVs, filtered truth   21063 (removed   66), hifiasm   26513, v5   26461; v5 and transmission relations agree at 21085/21085 consecutive shared sites; skipped depths: none
+chr22 depth  28.0,   26879 het SNVs, filtered truth   21013 (removed   10), hifiasm   26186, v5   25658; v5 and transmission relations agree at 20174/20174 consecutive shared sites; skipped depths: none
+total 2015699 het SNVs; truth sites: filtered 1632626, transmission 1635004, hifiasm 2003942, v5 1973512; filter removed 2378
+recalibration fitted on chr1, chr3, chr5, chr7, chr9, chr11, chr13, chr15, chr17, chr19, chr21: 91 bins
+  quality  93-93  alleles   15245861 wrong   3280 error 0.000215 weight 8.444
+  quality  92-92  alleles     175612 wrong     93 error 0.000535 weight 7.532
+  quality  91-91  alleles     176350 wrong    117 error 0.000669 weight 7.309
+  quality  90-90  alleles     175787 wrong     98 error 0.000563 weight 7.481
+  quality  89-89  alleles     176541 wrong    101 error 0.000578 weight 7.456
+  quality  88-88  alleles     174511 wrong    105 error 0.000607 weight 7.406
+  quality  87-87  alleles     174746 wrong    112 error 0.000647 weight 7.343
+  quality  86-86  alleles     175561 wrong    122 error 0.000701 weight 7.263
+  quality  85-85  alleles     177609 wrong    114 error 0.000647 weight 7.342
+  quality  84-84  alleles     178928 wrong    116 error 0.000654 weight 7.332
+  quality  83-83  alleles     181337 wrong    132 error 0.000733 weight 7.217
+  quality  82-82  alleles     184957 wrong    147 error 0.000800 weight 7.130
+  quality  81-81  alleles     187359 wrong    135 error 0.000726 weight 7.227
+  quality  80-80  alleles     191632 wrong    137 error 0.000720 weight 7.235
+  quality  79-79  alleles     196608 wrong    150 error 0.000768 weight 7.171
+  quality  78-78  alleles     201633 wrong    142 error 0.000709 weight 7.251
+  quality  77-77  alleles     199161 wrong    156 error 0.000788 weight 7.145
+  quality  76-76  alleles     198192 wrong    175 error 0.000888 weight 7.026
+  quality  75-75  alleles     195436 wrong    189 error 0.000972 weight 6.935
+  quality  74-74  alleles     191335 wrong    183 error 0.000962 weight 6.946
+  quality  73-73  alleles     188345 wrong    187 error 0.000998 weight 6.909
+  quality  72-72  alleles     184301 wrong    178 error 0.000971 weight 6.936
+  quality  71-71  alleles     183603 wrong    174 error 0.000953 weight 6.955
+  quality  70-70  alleles     184041 wrong    217 error 0.001185 weight 6.737
+  quality  69-69  alleles     188016 wrong    216 error 0.001154 weight 6.763
+  quality  68-68  alleles     192835 wrong    235 error 0.001224 weight 6.705
+  quality  67-67  alleles     201630 wrong    201 error 0.001002 weight 6.905
+  quality  66-66  alleles     210330 wrong    241 error 0.001151 weight 6.766
+  quality  65-65  alleles     213858 wrong    233 error 0.001094 weight 6.817
+  quality  64-64  alleles     216771 wrong    249 error 0.001153 weight 6.764
+  quality  63-63  alleles     215285 wrong    267 error 0.001245 weight 6.687
+  quality  62-62  alleles     209572 wrong    280 error 0.001341 weight 6.613
+  quality  61-61  alleles     205021 wrong    274 error 0.001341 weight 6.613
+  quality  60-60  alleles     196661 wrong    284 error 0.001449 weight 6.535
+  quality  59-59  alleles     190566 wrong    277 error 0.001459 weight 6.529
+  quality  58-58  alleles     185281 wrong    259 error 0.001403 weight 6.568
+  quality  57-57  alleles     181474 wrong    294 error 0.001626 weight 6.420
+  quality  56-56  alleles     180509 wrong    310 error 0.001723 weight 6.362
+  quality  55-55  alleles     180455 wrong    285 error 0.001585 weight 6.446
+  quality  54-54  alleles     183653 wrong    304 error 0.001661 weight 6.399
+  quality  53-53  alleles     186087 wrong    309 error 0.001666 weight 6.396
+  quality  52-52  alleles     189014 wrong    332 error 0.001762 weight 6.340
+  quality  51-51  alleles     183513 wrong    330 error 0.001804 weight 6.316
+  quality  50-50  alleles     173519 wrong    353 error 0.002040 weight 6.193
+  quality  49-49  alleles     165994 wrong    328 error 0.001982 weight 6.222
+  quality  48-48  alleles     160743 wrong    351 error 0.002190 weight 6.122
+  quality  47-47  alleles     153940 wrong    357 error 0.002326 weight 6.061
+  quality  46-46  alleles     147819 wrong    321 error 0.002178 weight 6.127
+  quality  45-45  alleles     147092 wrong    351 error 0.002393 weight 6.033
+  quality  44-44  alleles     146406 wrong    330 error 0.002261 weight 6.090
+  quality  43-43  alleles     144107 wrong    310 error 0.002158 weight 6.136
+  quality  42-42  alleles     138333 wrong    350 error 0.002537 weight 5.974
+  quality  41-41  alleles     131485 wrong    329 error 0.002510 weight 5.985
+  quality  40-40  alleles     123874 wrong    338 error 0.002737 weight 5.898
+  quality  39-39  alleles     116418 wrong    330 error 0.002843 weight 5.860
+  quality  38-38  alleles     109239 wrong    293 error 0.002691 weight 5.915
+  quality  37-37  alleles     102993 wrong    335 error 0.003262 weight 5.722
+  quality  36-36  alleles      97837 wrong    290 error 0.002974 weight 5.815
+  quality  35-35  alleles      91297 wrong    302 error 0.003319 weight 5.705
+  quality  34-34  alleles      86224 wrong    277 error 0.003224 weight 5.734
+  quality  33-33  alleles      82458 wrong    278 error 0.003383 weight 5.685
+  quality  32-32  alleles      79504 wrong    290 error 0.003660 weight 5.607
+  quality  31-31  alleles      73064 wrong    252 error 0.003463 weight 5.662
+  quality  30-30  alleles      68951 wrong    247 error 0.003597 weight 5.624
+  quality  29-29  alleles      64220 wrong    280 error 0.004375 weight 5.427
+  quality  28-28  alleles      61579 wrong    258 error 0.004206 weight 5.467
+  quality  27-27  alleles      58340 wrong    291 error 0.005005 weight 5.292
+  quality  26-26  alleles      55125 wrong    273 error 0.004970 weight 5.299
+  quality  25-25  alleles      51617 wrong    239 error 0.004649 weight 5.366
+  quality  24-24  alleles      48254 wrong    270 error 0.005616 weight 5.177
+  quality  23-23  alleles      44892 wrong    240 error 0.005368 weight 5.222
+  quality  22-22  alleles      41192 wrong    245 error 0.005972 weight 5.115
+  quality  21-21  alleles      38485 wrong    274 error 0.007145 weight 4.934
+  quality  20-20  alleles      35621 wrong    290 error 0.008169 weight 4.799
+  quality  19-19  alleles      33318 wrong    325 error 0.009784 weight 4.617
+  quality  18-18  alleles      30911 wrong    299 error 0.009705 weight 4.625
+  quality  17-17  alleles      28801 wrong    325 error 0.011318 weight 4.470
+  quality  16-16  alleles      26901 wrong    325 error 0.012118 weight 4.401
+  quality  15-15  alleles      24726 wrong    334 error 0.013547 weight 4.288
+  quality  14-14  alleles      23186 wrong    372 error 0.016086 weight 4.114
+  quality  13-13  alleles      21433 wrong    383 error 0.017915 weight 4.004
+  quality  12-12  alleles      20315 wrong    438 error 0.021608 weight 3.813
+  quality  11-11  alleles      18679 wrong    441 error 0.023660 weight 3.720
+  quality  10-10  alleles      17616 wrong    514 error 0.029231 weight 3.503
+  quality   9-9   alleles      16854 wrong    585 error 0.034765 weight 3.324
+  quality   8-8   alleles      15919 wrong    685 error 0.043088 weight 3.100
+  quality   7-7   alleles      15413 wrong    743 error 0.048265 weight 2.982
+  quality   6-6   alleles      14969 wrong    873 error 0.058380 weight 2.781
+  quality   5-5   alleles      15084 wrong   1091 error 0.072385 weight 2.551
+  quality   4-4   alleles      16168 wrong   1458 error 0.090229 weight 2.311
+  quality   2-3   alleles       9428 wrong    990 error 0.105090 weight 2.142
+per-chromosome rows: benchmarks/results/runs/2026-10-01_genome_per_chromosome_v5_final.tsv (4200 rows)
+
+1. pooled over the confirmatory chromosomes; switch against the v5 truth, unfilt, hifiasm and filtered against the others; obj/opt is the pooled ratio and worst the lowest chromosome, n/a where reads are merged or for external tools
+depth  cap             pipeline  weights   switch        sw/pairs flips phased  N50 kb QAN50 kb obj/opt   worst   unfilt  hifiasm filtered  hours peak MB
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ full    3             whatshap  logodds 0.000096    184/1916244     74  0.987     102      101  0.9025  0.8975 0.000082 0.000108 0.000079   0.13    1305
+ full    3              optimal  logodds 0.000043     82/1915608     28  0.993     112      112  1.0000  1.0000 0.000032 0.000051 0.000029   0.03     870
+ full    3        merge_optimal  logodds 0.000034     66/1926164     21  0.993     133      133     n/a     n/a 0.000031 0.000039 0.000028   0.15     870
+ full    3    merge_optimal_1e3  logodds 0.000026     51/1932348     17  0.993     165      165     n/a     n/a 0.000030 0.000037 0.000026   0.14     854
+ full    3            two_level  logodds 0.000042     82/1940954     28  0.993     234      233  1.0000  1.0000 0.000032 0.000051 0.000029   0.05     870
+ full    3   whatshap_two_level  logodds 0.000098    189/1928685     79  0.987     233      230  0.9025  0.8975 0.000085 0.000110 0.000081   0.14    1306
+ full    3  merge_two_level_1e3  logodds 0.000027     53/1939589     19  0.993     233      233     n/a     n/a 0.000031 0.000038 0.000027   0.14     850
+ full    3            connected  logodds 0.000048     94/1941716     29  0.994     233      232  0.9993  0.9990 0.000042 0.000060 0.000037   0.04     939
+ full    3                 loop  logodds 0.000227    435/1915758     30  0.993     113      112  0.9999  0.9991 0.000222 0.000237 0.000218   0.10     876
+ full    3        loop_oriented  logodds 0.000049     93/1915758     30  0.993     113      112  0.9999  0.9991 0.000044 0.000060 0.000040   0.77    2782
+ full    3       merge_loop_1e3  logodds 0.000071    137/1932379     21  0.993     165      165     n/a     n/a 0.000077 0.000081 0.000073   0.18     854
+ full    3             shuffled  logodds 0.000226    433/1915764     30  0.993     113      113  1.0000  0.9999 0.000215 0.000233 0.000212   0.13     910
+ full    3              optimal    recal 0.000074    142/1924971     43  0.993     134      133  1.0000  1.0000 0.000068 0.000081 0.000064   0.03     822
+ full    3             whatshap    recal 0.000343    657/1916293    254  0.987     101      100  0.8493  0.8430 0.000322 0.000364 0.000318   0.12    1140
+
+ full    5             whatshap  logodds 0.000040     78/1940716     30  0.993     223      222  0.9189  0.9146 0.000033 0.000049 0.000029   0.16    1331
+ full    5              optimal  logodds 0.000035     67/1929354     24  0.993     167      167  1.0000  1.0000 0.000031 0.000043 0.000028   0.06     873
+ full    5        merge_optimal  logodds 0.000024     47/1934598     17  0.993     188      188     n/a     n/a 0.000027 0.000031 0.000023   0.16     860
+ full    5    merge_optimal_1e3  logodds 0.000018     34/1937839     14  0.993     214      213     n/a     n/a 0.000021 0.000023 0.000018   0.13     854
+ full    5            two_level  logodds 0.000035     67/1941053     24  0.993     234      233  1.0000  1.0000 0.000032 0.000043 0.000028   0.05     871
+ full    5   whatshap_two_level  logodds 0.000040     78/1941167     30  0.993     233      232  0.9189  0.9146 0.000033 0.000049 0.000029   0.16    1331
+ full    5  merge_two_level_1e3  logodds 0.000018     34/1940921     14  0.993     234      233     n/a     n/a 0.000021 0.000023 0.000017   0.14     850
+ full    5            connected  logodds 0.000038     74/1941718     24  0.994     233      232  0.9997  0.9995 0.000036 0.000046 0.000031   0.05     937
+ full    5                 loop  logodds 0.000066    127/1929479     20  0.993     168      168  1.0000  0.9998 0.000066 0.000075 0.000062   0.12     880
+ full    5        loop_oriented  logodds 0.000028     54/1929479     20  0.993     168      168  1.0000  0.9998 0.000027 0.000036 0.000023   0.76    2571
+ full    5       merge_loop_1e3  logodds 0.000017     32/1937842     14  0.993     214      214     n/a     n/a 0.000019 0.000021 0.000016   0.17     850
+ full    5             shuffled  logodds 0.000073    140/1929401     25  0.993     168      167  1.0000  1.0000 0.000068 0.000081 0.000065   0.16     924
+ full    5              optimal    recal 0.000039     75/1934257     20  0.993     188      188  1.0000  1.0000 0.000043 0.000045 0.000038   0.05     821
+ full    5             whatshap    recal 0.000067    130/1940626     42  0.993     220      219  0.8681  0.8627 0.000072 0.000082 0.000069   0.17    1162
+
+ full   10             whatshap  logodds 0.000021     41/1941720     17  0.994     233      232  0.9257  0.9225 0.000022 0.000028 0.000019   0.27    1356
+ full   10              optimal  logodds 0.000025     48/1937453     18  0.993     212      212  1.0000  1.0000 0.000026 0.000031 0.000022   0.08     868
+ full   10        merge_optimal  logodds 0.000022     42/1938635     16  0.993     214      214     n/a     n/a 0.000024 0.000026 0.000021   0.19     874
+ full   10    merge_optimal_1e3  logodds 0.000019     37/1939960     15  0.993     228      228     n/a     n/a 0.000021 0.000024 0.000017   0.14     854
+ full   10            two_level  logodds 0.000025     48/1941260     18  0.993     233      233  1.0000  1.0000 0.000026 0.000030 0.000022   0.08     873
+ full   10   whatshap_two_level  logodds 0.000021     41/1941720     17  0.994     233      232  0.9257  0.9225 0.000022 0.000028 0.000019   0.28    1355
+ full   10  merge_two_level_1e3  logodds 0.000019     37/1941260     15  0.993     233      233     n/a     n/a 0.000021 0.000024 0.000017   0.15     854
+ full   10            connected  logodds 0.000026     50/1941718     17  0.994     233      232  0.9999  0.9999 0.000027 0.000031 0.000023   0.09     951
+ full   10              optimal    recal 0.000026     50/1939199     12  0.994     220      219  1.0000  1.0000 0.000033 0.000039 0.000029   0.08     820
+ full   10             whatshap    recal 0.000026     50/1941740     15  0.994     233      232  0.8813  0.8774 0.000033 0.000036 0.000029   0.27    1193
+
+ full   15             whatshap  logodds 0.000019     36/1941720     16  0.994     233      232  0.9327  0.9306 0.000021 0.000024 0.000017   0.95    1419
+ full   15              optimal  logodds 0.000020     38/1939899     15  0.994     225      224  1.0000  1.0000 0.000023 0.000026 0.000019   1.11    1284
+ full   15        merge_optimal  logodds 0.000019     37/1940188     14  0.994     224      224     n/a     n/a 0.000024 0.000024 0.000021   0.31    1109
+ full   15    merge_optimal_1e3  logodds 0.000019     37/1940822     15  0.994     232      231     n/a     n/a 0.000022 0.000024 0.000018   0.18    1037
+ full   15            two_level  logodds 0.000020     38/1941431     15  0.994     233      233  1.0000  1.0000 0.000024 0.000026 0.000020   0.99    1284
+ full   15   whatshap_two_level  logodds 0.000019     36/1941720     16  0.994     233      232  0.9327  0.9306 0.000021 0.000024 0.000017   0.92    1419
+ full   15  merge_two_level_1e3  logodds 0.000019     37/1941440     15  0.994     233      233     n/a     n/a 0.000022 0.000024 0.000018   0.18    1036
+ full   15            connected  logodds 0.000021     40/1941719     15  0.994     233      232  1.0000  0.9999 0.000025 0.000028 0.000021   1.03    1312
+ full   15              optimal    recal 0.000022     42/1940695     11  0.994     228      227  1.0000  1.0000 0.000031 0.000031 0.000027   0.93    1216
+ full   15             whatshap    recal 0.000021     40/1941740     11  0.994     233      232  0.8977  0.8944 0.000031 0.000027 0.000027   0.99    1361
+
+ full    -       whatshap phase     tool 0.000016     32/1941714     14  0.994     233      233     n/a     n/a 0.000022 0.000022 0.000018   6.28    1217
+ full    -              HapCUT2     tool 0.000082    160/1941687     70  0.994     232      232     n/a     n/a 0.000060 0.000081 0.000057   1.75     619
+
+   20    3             whatshap  logodds 0.000097    185/1915949     71  0.987     102      101  0.8940  0.8877 0.000091 0.000116 0.000087   0.08     800
+   20    3              optimal  logodds 0.000058    111/1921536     44  0.993     123      123  1.0000  1.0000 0.000040 0.000068 0.000036   0.02     528
+   20    3        merge_optimal  logodds 0.000040     77/1925883     31  0.992     131      131     n/a     n/a 0.000035 0.000051 0.000031   0.07     553
+   20    3    merge_optimal_1e3  logodds 0.000029     56/1931662     21  0.992     163      163     n/a     n/a 0.000028 0.000037 0.000024   0.07     512
+   20    3            two_level  logodds 0.000058    113/1939593     44  0.993     225      224  1.0000  1.0000 0.000041 0.000068 0.000038   0.03     528
+   20    3   whatshap_two_level  logodds 0.000098    189/1927745     75  0.987     224      220  0.8940  0.8877 0.000093 0.000117 0.000089   0.09     800
+   20    3  merge_two_level_1e3  logodds 0.000030     59/1938368     22  0.992     225      224     n/a     n/a 0.000031 0.000039 0.000028   0.07     515
+   20    3            connected  logodds 0.000061    119/1940444     39  0.993     224      223  0.9989  0.9985 0.000051 0.000074 0.000047   0.03     631
+   20    3                 loop  logodds 0.000203    390/1921702     47  0.993     124      124  0.9999  0.9994 0.000194 0.000213 0.000191   0.09     539
+   20    3        loop_oriented  logodds 0.000062    119/1921702     47  0.993     124      124  0.9999  0.9994 0.000050 0.000073 0.000046   0.47    2436
+   20    3       merge_loop_1e3  logodds 0.000070    135/1931720     29  0.992     163      163     n/a     n/a 0.000072 0.000079 0.000068   0.11     575
+   20    3             shuffled  logodds 0.000202    389/1921769     48  0.993     125      124  1.0000  0.9997 0.000189 0.000211 0.000185   0.11     606
+   20    3              optimal    recal 0.000102    197/1926523     67  0.993     137      136  1.0000  1.0000 0.000104 0.000115 0.000100   0.02     490
+   20    3             whatshap    recal 0.000367    704/1916163    271  0.987     102      100  0.8492  0.8433 0.000337 0.000397 0.000335   0.09     702
+
+   20    5             whatshap  logodds 0.000038     74/1939752     29  0.993     217      216  0.9131  0.9085 0.000037 0.000048 0.000034   0.12     811
+   20    5              optimal  logodds 0.000033     63/1932865     21  0.993     180      180  1.0000  1.0000 0.000031 0.000040 0.000027   0.05     529
+   20    5        merge_optimal  logodds 0.000027     53/1934748     19  0.993     185      184     n/a     n/a 0.000029 0.000033 0.000026   0.08     553
+   20    5    merge_optimal_1e3  logodds 0.000021     40/1937313     14  0.993     208      207     n/a     n/a 0.000027 0.000027 0.000023   0.07     518
+   20    5            two_level  logodds 0.000033     64/1939799     21  0.993     225      224  1.0000  1.0000 0.000032 0.000041 0.000029   0.03     527
+   20    5   whatshap_two_level  logodds 0.000038     74/1940051     29  0.993     224      223  0.9131  0.9085 0.000037 0.000048 0.000034   0.13     813
+   20    5  merge_two_level_1e3  logodds 0.000021     41/1939741     14  0.993     225      224     n/a     n/a 0.000028 0.000028 0.000024   0.08     518
+   20    5            connected  logodds 0.000038     73/1940448     22  0.993     224      223  0.9996  0.9994 0.000036 0.000046 0.000032   0.04     633
+   20    5                 loop  logodds 0.000044     85/1932901     21  0.993     180      180  1.0000  0.9997 0.000043 0.000050 0.000039   0.12     550
+   20    5        loop_oriented  logodds 0.000029     57/1932901     21  0.993     180      180  1.0000  0.9997 0.000028 0.000036 0.000024   0.49    2274
+   20    5       merge_loop_1e3  logodds 0.000018     35/1937315     13  0.993     208      207     n/a     n/a 0.000024 0.000025 0.000020   0.10     559
+   20    5             shuffled  logodds 0.000047     91/1932920     21  0.993     181      180  1.0000  0.9999 0.000046 0.000055 0.000042   0.14     616
+   20    5              optimal    recal 0.000045     88/1935061     21  0.993     189      188  1.0000  1.0000 0.000056 0.000054 0.000052   0.04     493
+   20    5             whatshap    recal 0.000085    165/1939798     57  0.993     216      214  0.8739  0.8693 0.000087 0.000098 0.000083   0.12     717
+
+   20   10             whatshap  logodds 0.000024     46/1940460     18  0.993     224      224  0.9296  0.9256 0.000027 0.000027 0.000024   0.20     830
+   20   10              optimal  logodds 0.000024     47/1938669     17  0.993     213      213  1.0000  1.0000 0.000024 0.000030 0.000020   0.06     570
+   20   10        merge_optimal  logodds 0.000020     39/1938855     15  0.993     213      213     n/a     n/a 0.000024 0.000025 0.000020   0.09     553
+   20   10    merge_optimal_1e3  logodds 0.000020     39/1939599     14  0.993     223      223     n/a     n/a 0.000025 0.000026 0.000021   0.07     516
+   20   10            two_level  logodds 0.000024     47/1940127     17  0.993     224      224  1.0000  1.0000 0.000024 0.000030 0.000021   0.07     570
+   20   10   whatshap_two_level  logodds 0.000024     46/1940460     18  0.993     224      224  0.9296  0.9256 0.000027 0.000027 0.000024   0.21     829
+   20   10  merge_two_level_1e3  logodds 0.000020     39/1940167     14  0.993     224      224     n/a     n/a 0.000025 0.000026 0.000021   0.08     518
+   20   10            connected  logodds 0.000025     48/1940458     17  0.993     224      224  0.9999  0.9999 0.000025 0.000030 0.000021   0.08     635
+   20   10              optimal    recal 0.000037     72/1939267     17  0.993     214      213  1.0000  1.0000 0.000047 0.000048 0.000044   0.06     527
+   20   10             whatshap    recal 0.000029     57/1940488     13  0.993     224      224  0.9048  0.8927 0.000037 0.000038 0.000033   0.22     731
+
+   20   15             whatshap  logodds 0.000020     38/1940460     15  0.993     224      224  0.9530  0.9406 0.000023 0.000024 0.000019   0.73    1019
+   20   15              optimal  logodds 0.000020     38/1939940     15  0.993     219      219  1.0000  1.0000 0.000022 0.000025 0.000019   0.70     933
+   20   15        merge_optimal  logodds 0.000019     36/1940041     15  0.993     221      221     n/a     n/a 0.000024 0.000024 0.000021   0.17     771
+   20   15    merge_optimal_1e3  logodds 0.000018     35/1940218     14  0.993     224      224     n/a     n/a 0.000024 0.000024 0.000020   0.09     723
+   20   15            two_level  logodds 0.000020     38/1940314     15  0.993     224      224  1.0000  1.0000 0.000023 0.000025 0.000019   0.72     933
+   20   15   whatshap_two_level  logodds 0.000020     38/1940460     15  0.993     224      224  0.9530  0.9406 0.000023 0.000024 0.000019   0.72    1016
+   20   15  merge_two_level_1e3  logodds 0.000018     35/1940341     14  0.993     224      224     n/a     n/a 0.000024 0.000024 0.000020   0.10     723
+   20   15            connected  logodds 0.000020     39/1940458     15  0.993     224      223  1.0000  1.0000 0.000024 0.000026 0.000020   0.76     942
+   20   15              optimal    recal 0.000029     56/1940139     12  0.993     220      219  1.0000  1.0000 0.000042 0.000034 0.000039   0.69     873
+   20   15             whatshap    recal 0.000028     54/1940488     12  0.993     224      224  0.9400  0.9202 0.000036 0.000031 0.000032   0.84     956
+
+   20    -       whatshap phase     tool 0.000019     37/1940456     15  0.993     224      224     n/a     n/a 0.000023 0.000022 0.000019   4.88     967
+   20    -              HapCUT2     tool 0.000112    217/1940416     98  0.993     224      221     n/a     n/a 0.000084 0.000114 0.000081   1.11     529
+
+   15    3             whatshap  logodds 0.000105    201/1915700     78  0.987     101      101  0.8906  0.8835 0.000103 0.000131 0.000100   0.07     635
+   15    3              optimal  logodds 0.000059    114/1923431     42  0.993     126      126  1.0000  1.0000 0.000043 0.000075 0.000039   0.02     410
+   15    3        merge_optimal  logodds 0.000047     90/1925725     30  0.992     130      130     n/a     n/a 0.000042 0.000053 0.000038   0.06     444
+   15    3    merge_optimal_1e3  logodds 0.000041     79/1931066     26  0.992     162      162     n/a     n/a 0.000037 0.000047 0.000033   0.05     410
+   15    3            two_level  logodds 0.000060    116/1938384     42  0.993     217      215  1.0000  1.0000 0.000046 0.000076 0.000042   0.02     416
+   15    3   whatshap_two_level  logodds 0.000108    208/1926848     85  0.987     215      212  0.8906  0.8835 0.000107 0.000134 0.000103   0.07     635
+   15    3  merge_two_level_1e3  logodds 0.000042     81/1937290     26  0.992     216      215     n/a     n/a 0.000039 0.000047 0.000035   0.05     410
+   15    3            connected  logodds 0.000063    122/1939335     42  0.993     215      214  0.9984  0.9976 0.000055 0.000081 0.000051   0.02     530
+   15    3                 loop  logodds 0.000165    318/1923530     40  0.993     126      126  0.9998  0.9982 0.000156 0.000183 0.000153   0.09     507
+   15    3        loop_oriented  logodds 0.000057    110/1923530     40  0.993     126      126  0.9998  0.9982 0.000042 0.000076 0.000039   0.43    2338
+   15    3       merge_loop_1e3  logodds 0.000082    159/1931163     42  0.992     162      162     n/a     n/a 0.000074 0.000088 0.000070   0.10     502
+   15    3             shuffled  logodds 0.000172    330/1923781     46  0.993     128      127  0.9998  0.9993 0.000163 0.000187 0.000159   0.10     515
+   15    3              optimal    recal 0.000132    254/1926225     93  0.993     132      131  1.0000  1.0000 0.000129 0.000150 0.000124   0.02     381
+   15    3             whatshap    recal 0.000433    830/1915933    342  0.987     102      100  0.8532  0.8479 0.000406 0.000457 0.000404   0.08     562
+
+   15    5             whatshap  logodds 0.000042     82/1938843     30  0.993     210      209  0.9133  0.9090 0.000034 0.000053 0.000031   0.10     649
+   15    5              optimal  logodds 0.000033     64/1933609     20  0.993     181      180  1.0000  1.0000 0.000031 0.000044 0.000028   0.04     423
+   15    5        merge_optimal  logodds 0.000034     65/1934582     21  0.993     183      183     n/a     n/a 0.000033 0.000039 0.000029   0.06     448
+   15    5    merge_optimal_1e3  logodds 0.000030     58/1936910     17  0.993     204      203     n/a     n/a 0.000031 0.000036 0.000028   0.05     412
+   15    5            two_level  logodds 0.000034     65/1938733     20  0.993     216      215  1.0000  1.0000 0.000032 0.000045 0.000029   0.03     419
+   15    5   whatshap_two_level  logodds 0.000042     82/1939087     30  0.993     215      215  0.9133  0.9090 0.000034 0.000053 0.000031   0.11     649
+   15    5  merge_two_level_1e3  logodds 0.000030     58/1938773     17  0.993     217      216     n/a     n/a 0.000031 0.000036 0.000028   0.06     410
+   15    5            connected  logodds 0.000037     72/1939369     21  0.993     215      215  0.9995  0.9993 0.000036 0.000047 0.000032   0.03     541
+   15    5                 loop  logodds 0.000038     73/1933640     20  0.993     181      181  1.0000  0.9997 0.000040 0.000049 0.000036   0.11     502
+   15    5        loop_oriented  logodds 0.000030     58/1933640     20  0.993     181      181  1.0000  0.9997 0.000033 0.000041 0.000029   0.42    2194
+   15    5       merge_loop_1e3  logodds 0.000028     54/1936922     17  0.993     204      203     n/a     n/a 0.000029 0.000034 0.000026   0.10     502
+   15    5             shuffled  logodds 0.000041     80/1933660     20  0.993     181      181  1.0000  0.9998 0.000038 0.000052 0.000035   0.13     517
+   15    5              optimal    recal 0.000050     97/1934801     26  0.993     184      184  1.0000  1.0000 0.000058 0.000071 0.000055   0.04     386
+   15    5             whatshap    recal 0.000100    194/1938923     70  0.993     210      208  0.8831  0.8760 0.000100 0.000113 0.000096   0.10     579
+
+   15   10             whatshap  logodds 0.000024     46/1939394     17  0.993     215      215  0.9426  0.9318 0.000026 0.000031 0.000022   0.18     661
+   15   10              optimal  logodds 0.000024     47/1938314     16  0.993     208      208  1.0000  1.0000 0.000029 0.000032 0.000025   0.06     463
+   15   10        merge_optimal  logodds 0.000027     53/1938505     19  0.993     210      210     n/a     n/a 0.000029 0.000033 0.000025   0.07     446
+   15   10    merge_optimal_1e3  logodds 0.000024     46/1938934     16  0.993     215      215     n/a     n/a 0.000027 0.000029 0.000023   0.06     410
+   15   10            two_level  logodds 0.000024     47/1939144     16  0.993     216      215  1.0000  1.0000 0.000029 0.000031 0.000026   0.06     461
+   15   10   whatshap_two_level  logodds 0.000024     46/1939394     17  0.993     215      215  0.9426  0.9318 0.000026 0.000031 0.000022   0.18     661
+   15   10  merge_two_level_1e3  logodds 0.000024     46/1939207     16  0.993     216      215     n/a     n/a 0.000027 0.000029 0.000023   0.06     411
+   15   10            connected  logodds 0.000025     48/1939387     16  0.993     215      215  0.9999  0.9999 0.000029 0.000032 0.000026   0.07     530
+   15   10              optimal    recal 0.000036     70/1938611     17  0.993     208      208  1.0000  1.0000 0.000049 0.000047 0.000045   0.06     412
+   15   10             whatshap    recal 0.000035     68/1939424     18  0.993     216      215  0.9277  0.9116 0.000041 0.000045 0.000038   0.20     588
+
+   15   15             whatshap  logodds 0.000021     40/1939394     14  0.993     215      215  0.9759  0.9604 0.000023 0.000027 0.000019   0.56     847
+   15   15              optimal  logodds 0.000021     41/1939188     14  0.993     214      214  1.0000  1.0000 0.000026 0.000027 0.000022   0.46     764
+   15   15        merge_optimal  logodds 0.000025     49/1939262     17  0.993     215      214     n/a     n/a 0.000029 0.000030 0.000026   0.11     656
+   15   15    merge_optimal_1e3  logodds 0.000025     48/1939318     16  0.993     215      215     n/a     n/a 0.000027 0.000030 0.000024   0.07     617
+   15   15            two_level  logodds 0.000021     41/1939329     14  0.993     216      215  1.0000  1.0000 0.000026 0.000027 0.000022   0.46     764
+   15   15   whatshap_two_level  logodds 0.000021     40/1939394     14  0.993     215      215  0.9759  0.9604 0.000023 0.000027 0.000019   0.57     848
+   15   15  merge_two_level_1e3  logodds 0.000025     48/1939353     16  0.993     216      215     n/a     n/a 0.000027 0.000030 0.000024   0.08     618
+   15   15            connected  logodds 0.000021     41/1939393     14  0.993     215      215  1.0000  1.0000 0.000026 0.000027 0.000022   0.45     779
+   15   15              optimal    recal 0.000035     67/1939269     16  0.993     214      213  1.0000  1.0000 0.000044 0.000042 0.000041   0.44     718
+   15   15             whatshap    recal 0.000036     69/1939424     19  0.993     216      215  0.9705  0.9499 0.000046 0.000046 0.000042   0.58     794
+
+   15    -       whatshap phase     tool 0.000019     36/1939385     13  0.993     215      215     n/a     n/a 0.000022 0.000023 0.000019   3.57     813
+   15    -              HapCUT2     tool 0.000139    269/1939322    117  0.993     216      213     n/a     n/a 0.000094 0.000140 0.000091   0.87     529
+
+   10    3             whatshap  logodds 0.000138    265/1914251    109  0.986     100      100  0.8925  0.8890 0.000105 0.000163 0.000101   0.06     471
+   10    3              optimal  logodds 0.000076    146/1923156     58  0.992     119      118  1.0000  1.0000 0.000056 0.000088 0.000052   0.02     311
+   10    3        merge_optimal  logodds 0.000053    102/1924571     37  0.991     123      123     n/a     n/a 0.000042 0.000064 0.000038   0.04     338
+   10    3    merge_optimal_1e3  logodds 0.000043     83/1929279     28  0.991     152      152     n/a     n/a 0.000038 0.000054 0.000035   0.03     317
+   10    3            two_level  logodds 0.000078    151/1935343     58  0.992     197      197  1.0000  1.0000 0.000060 0.000090 0.000056   0.02     310
+   10    3   whatshap_two_level  logodds 0.000142    273/1924532    117  0.986     197      193  0.8925  0.8890 0.000108 0.000166 0.000104   0.06     471
+   10    3  merge_two_level_1e3  logodds 0.000044     86/1934685     28  0.991     197      197     n/a     n/a 0.000042 0.000056 0.000038   0.04     319
+   10    3            connected  logodds 0.000076    147/1936640     56  0.992     196      195  0.9974  0.9965 0.000062 0.000091 0.000058   0.02     420
+   10    3                 loop  logodds 0.000179    345/1923353     65  0.992     120      119  0.9999  0.9998 0.000170 0.000192 0.000167   0.09     392
+   10    3        loop_oriented  logodds 0.000083    159/1923353     65  0.992     120      119  0.9999  0.9998 0.000070 0.000097 0.000066   0.29    2245
+   10    3       merge_loop_1e3  logodds 0.000084    163/1929342     40  0.991     152      152     n/a     n/a 0.000078 0.000095 0.000074   0.08     411
+   10    3             shuffled  logodds 0.000184    353/1923527     63  0.992     121      120  0.9998  0.9991 0.000170 0.000191 0.000166   0.09     409
+   10    3              optimal    recal 0.000193    372/1924161    138  0.992     120      119  1.0000  1.0000 0.000178 0.000206 0.000175   0.02     268
+   10    3             whatshap    recal 0.000484    926/1914664    378  0.986     100       98  0.8668  0.8565 0.000440 0.000505 0.000437   0.06     417
+
+   10    5             whatshap  logodds 0.000046     89/1936364     33  0.992     193      192  0.9228  0.9158 0.000039 0.000053 0.000036   0.08     476
+   10    5              optimal  logodds 0.000043     83/1932656     29  0.992     166      166  1.0000  1.0000 0.000038 0.000050 0.000035   0.04     324
+   10    5        merge_optimal  logodds 0.000038     73/1933712     25  0.992     176      175     n/a     n/a 0.000031 0.000045 0.000027   0.04     338
+   10    5    merge_optimal_1e3  logodds 0.000030     59/1935330     18  0.992     192      191     n/a     n/a 0.000029 0.000036 0.000025   0.03     317
+   10    5            two_level  logodds 0.000043     84/1936183     29  0.992     197      197  1.0000  1.0000 0.000039 0.000050 0.000036   0.02     309
+   10    5   whatshap_two_level  logodds 0.000046     89/1936596     33  0.992     197      197  0.9228  0.9158 0.000039 0.000053 0.000036   0.08     476
+   10    5  merge_two_level_1e3  logodds 0.000031     60/1936412     18  0.992     197      197     n/a     n/a 0.000029 0.000037 0.000026   0.04     319
+   10    5            connected  logodds 0.000044     86/1936746     29  0.992     197      196  0.9994  0.9992 0.000040 0.000051 0.000036   0.03     418
+   10    5                 loop  logodds 0.000050     96/1932730     29  0.992     166      166  0.9999  0.9992 0.000047 0.000059 0.000043   0.11     413
+   10    5        loop_oriented  logodds 0.000043     83/1932730     29  0.992     166      166  0.9999  0.9992 0.000040 0.000052 0.000036   0.30    2113
+   10    5       merge_loop_1e3  logodds 0.000029     57/1935338     18  0.992     192      191     n/a     n/a 0.000028 0.000034 0.000024   0.09     420
+   10    5             shuffled  logodds 0.000051     98/1932713     29  0.992     166      166  0.9999  0.9995 0.000046 0.000058 0.000043   0.12     428
+   10    5              optimal    recal 0.000083    160/1933233     45  0.992     168      168  1.0000  1.0000 0.000092 0.000092 0.000088   0.04     282
+   10    5             whatshap    recal 0.000138    268/1936415     96  0.992     193      191  0.9048  0.8919 0.000133 0.000145 0.000130   0.09     429
+
+   10   10             whatshap  logodds 0.000037     71/1936822     23  0.992     197      197  0.9723  0.9570 0.000031 0.000040 0.000027   0.14     478
+   10   10              optimal  logodds 0.000031     60/1936393     20  0.992     193      193  1.0000  1.0000 0.000032 0.000036 0.000028   0.04     336
+   10   10        merge_optimal  logodds 0.000031     61/1936569     20  0.992     196      195     n/a     n/a 0.000031 0.000037 0.000027   0.04     338
+   10   10    merge_optimal_1e3  logodds 0.000032     62/1936717     20  0.992     197      197     n/a     n/a 0.000029 0.000037 0.000026   0.04     318
+   10   10            two_level  logodds 0.000031     60/1936727     20  0.992     197      197  1.0000  1.0000 0.000032 0.000036 0.000028   0.05     345
+   10   10   whatshap_two_level  logodds 0.000037     71/1936822     23  0.992     197      197  0.9723  0.9570 0.000031 0.000040 0.000027   0.14     479
+   10   10  merge_two_level_1e3  logodds 0.000032     62/1936771     20  0.992     197      197     n/a     n/a 0.000029 0.000037 0.000026   0.05     320
+   10   10            connected  logodds 0.000031     60/1936816     20  0.992     197      197  1.0000  0.9999 0.000032 0.000036 0.000028   0.05     422
+   10   10              optimal    recal 0.000062    120/1936501     33  0.992     194      193  1.0000  1.0000 0.000067 0.000067 0.000063   0.04     314
+   10   10             whatshap    recal 0.000065    126/1936869     35  0.993     197      197  0.9662  0.9473 0.000067 0.000070 0.000063   0.16     432
+
+   10   15             whatshap  logodds 0.000031     61/1936822     20  0.992     197      197  0.9960  0.9899 0.000030 0.000036 0.000026   0.25     626
+   10   15              optimal  logodds 0.000032     62/1936793     20  0.992     197      197  1.0000  1.0000 0.000031 0.000037 0.000027   0.16     568
+   10   15        merge_optimal  logodds 0.000031     61/1936812     20  0.992     197      197     n/a     n/a 0.000031 0.000037 0.000027   0.07     516
+   10   15    merge_optimal_1e3  logodds 0.000032     62/1936816     20  0.992     197      197     n/a     n/a 0.000029 0.000037 0.000026   0.05     391
+   10   15            two_level  logodds 0.000032     62/1936817     20  0.992     197      197  1.0000  1.0000 0.000031 0.000037 0.000027   0.16     570
+   10   15   whatshap_two_level  logodds 0.000031     61/1936822     20  0.992     197      197  0.9960  0.9899 0.000030 0.000036 0.000026   0.27     627
+   10   15  merge_two_level_1e3  logodds 0.000032     62/1936818     20  0.992     197      197     n/a     n/a 0.000029 0.000037 0.000026   0.06     391
+   10   15            connected  logodds 0.000032     62/1936822     20  0.992     197      197  1.0000  1.0000 0.000031 0.000037 0.000027   0.18     579
+   10   15              optimal    recal 0.000058    112/1936844     29  0.993     197      197  1.0000  1.0000 0.000064 0.000064 0.000061   0.17     541
+   10   15             whatshap    recal 0.000057    111/1936869     29  0.993     197      197  0.9950  0.9870 0.000065 0.000064 0.000061   0.30     600
+
+   10    -       whatshap phase     tool 0.000027     52/1936812     17  0.992     197      197     n/a     n/a 0.000026 0.000027 0.000022   1.54     731
+   10    -              HapCUT2     tool 0.000201    390/1936731    173  0.992     197      195     n/a     n/a 0.000134 0.000199 0.000131   0.60     529
+
+2. paired sign tests on common pairs; first/second = pairs where only that pipeline is wrong; diff = first's rate minus second's per 10,000 common pairs, with its window-bootstrap interval (v5 truth); flip p = window sign-flip test (benchmarks/permutation.py, added after the mock review, no decision uses it); unfiltered truth beside
+             first    second depth cap    pairs  first second  both         p         diff per 10k [95%]    flip p | unfilt first/second         p
+          whatshap   optimal  full   3  1890253    141     47    35  4.16e-12       +0.50 [+0.31, +0.70]  5.00e-05 |        93/27         1.11e-09
+          whatshap   optimal    20   3  1897123    143     75    32  4.81e-06       +0.36 [+0.15, +0.58]  1.00e-03 |       105/35         2.56e-09
+          whatshap   optimal    15   3  1899876    158     77    36  1.37e-07       +0.43 [+0.21, +0.63]  1.00e-04 |       123/40         5.07e-11
+          whatshap   optimal    10   3  1900987    190     76    70  1.95e-12       +0.60 [+0.37, +0.84]  5.00e-05 |       115/47         9.23e-08
+          whatshap   optimal  full   5  1928350     48     40    27  4.56e-01       +0.04 [-0.11, +0.19]  6.37e-01 |        21/25         6.59e-01
+          whatshap   optimal    20   5  1932158     46     37    26  3.80e-01       +0.05 [-0.07, +0.17]  4.99e-01 |        27/19         3.02e-01
+          whatshap   optimal    15   5  1933060     42     27    37  9.12e-02       +0.08 [-0.03, +0.20]  2.18e-01 |        20/18         8.71e-01
+          whatshap   optimal    10   5  1932206     40     35    48  6.44e-01       +0.03 [-0.09, +0.14]  7.32e-01 |        24/24         1.00e+00
+          whatshap   optimal  full  10  1937453     10     17    31  2.48e-01       -0.04 [-0.11, +0.03]  3.76e-01 |         6/12         2.38e-01
+          whatshap   optimal    20  10  1938669     13     14    33  1.00e+00       -0.01 [-0.09, +0.07]  1.00e+00 |         9/4          2.67e-01
+          whatshap   optimal    15  10  1938314      4      5    42  1.00e+00       -0.01 [-0.05, +0.04]  1.00e+00 |         3/9          1.46e-01
+          whatshap   optimal    10  10  1936393     16      5    55  2.66e-02       +0.06 [+0.00, +0.12]  1.09e-01 |         3/5          7.27e-01
+          whatshap   optimal  full  15  1939899     10     12    26  8.32e-01       -0.01 [-0.06, +0.04]  8.49e-01 |         9/13         5.23e-01
+          whatshap   optimal    20  15  1939940      3      3    35  1.00e+00       +0.00 [-0.04, +0.03]  1.00e+00 |         3/3          1.00e+00
+          whatshap   optimal    15  15  1939188      4      5    36  1.00e+00       -0.01 [-0.05, +0.04]  1.00e+00 |         2/6          2.89e-01
+          whatshap   optimal    10  15  1936793      0      1    61  1.00e+00       -0.01 [-0.02, +0.00]  1.00e+00 |         0/1          1.00e+00
+
+ merge_optimal_1e3   optimal  full   3  1911143     28     54    21  5.44e-03       -0.14 [-0.26, -0.02]  3.29e-02 |        28/31         7.95e-01
+ merge_optimal_1e3   optimal    20   3  1917035     32     84    22  1.48e-06       -0.27 [-0.43, -0.12]  1.20e-03 |        17/37         9.07e-03
+ merge_optimal_1e3   optimal    15   3  1919059     39     75    35  9.59e-04       -0.19 [-0.34, -0.03]  2.23e-02 |        14/32         1.14e-02
+ merge_optimal_1e3   optimal    10   3  1918920     37     96    42  3.19e-07       -0.31 [-0.48, -0.15]  2.00e-04 |        15/46         8.84e-05
+ merge_optimal_1e3   optimal  full   5  1928352      5     39    28  1.41e-07       -0.18 [-0.30, -0.07]  7.50e-04 |         8/27         1.88e-03
+ merge_optimal_1e3   optimal    20   5  1931868     10     33    30  6.06e-04       -0.12 [-0.21, -0.03]  9.50e-03 |        10/17         2.48e-01
+ merge_optimal_1e3   optimal    15   5  1932827     22     30    34  3.32e-01       -0.04 [-0.14, +0.06]  4.80e-01 |        12/16         5.72e-01
+ merge_optimal_1e3   optimal    10   5  1932191     16     40    42  1.84e-03       -0.12 [-0.24, -0.02]  2.64e-02 |         7/23         5.22e-03
+
+         two_level   optimal  full   3  1915608      0      0    82  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+         two_level   optimal    20   3  1921536      0      0   111  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+         two_level   optimal    15   3  1923431      0      0   114  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+         two_level   optimal    10   3  1923156      0      0   146  1.00e+00       +0.00 [+0.00, +0.00]  1.00e+00 |         0/0          1.00e+00
+
+         connected   optimal  full   3  1915608     13     12    70  1.00e+00       +0.01 [-0.06, +0.07]  1.00e+00 |        11/8          6.48e-01
+         connected   optimal    20   3  1921536     19     26    85  3.71e-01       -0.04 [-0.15, +0.07]  5.85e-01 |        10/10         1.00e+00
+         connected   optimal    15   3  1923427     14     14   100  1.00e+00       +0.00 [-0.08, +0.07]  1.00e+00 |        10/3          9.23e-02
+         connected   optimal    10   3  1923148     12     18   128  3.62e-01       -0.03 [-0.13, +0.06]  6.07e-01 |        12/10         8.32e-01
+
+     loop_oriented      loop  full   3  1915758      0    342    93 2.23e-103       -1.79 [-2.01, -1.58]  5.00e-05 |         1/282        3.65e-83
+     loop_oriented      loop    20   3  1921702      0    271   119  5.27e-82       -1.41 [-1.58, -1.25]  5.00e-05 |         0/229        2.32e-69
+     loop_oriented      loop    15   3  1923530      0    208   110  4.86e-63       -1.08 [-1.23, -0.93]  5.00e-05 |         0/181        6.53e-55
+     loop_oriented      loop    10   3  1923353      0    186   159  2.04e-56       -0.97 [-1.11, -0.83]  5.00e-05 |         0/159        2.74e-48
+
+              loop   optimal  full   3  1915608    349      5    77  2.49e-96       +1.80 [+1.59, +2.03]  5.00e-05 |       289/3          1.04e-81
+              loop   optimal    20   3  1921536    277     13    98  1.32e-65       +1.37 [+1.20, +1.55]  5.00e-05 |       235/8          3.93e-59
+              loop   optimal    15   3  1923431    216     24    90  8.32e-40       +1.00 [+0.84, +1.16]  5.00e-05 |       188/18         6.97e-37
+              loop   optimal    10   3  1923156    200     39   107  2.95e-27       +0.84 [+0.67, +1.01]  5.00e-05 |       170/25         1.07e-27
+              loop   optimal  full   5  1929354     73     14    53  8.58e-11       +0.31 [+0.18, +0.42]  5.00e-05 |        62/8          1.83e-11
+              loop   optimal    20   5  1932865     28      8    55  1.19e-03       +0.10 [+0.04, +0.17]  1.75e-03 |        23/6          2.32e-03
+              loop   optimal    15   5  1933604     17     14    50  7.20e-01       +0.02 [-0.05, +0.08]  7.63e-01 |        13/5          9.63e-02
+              loop   optimal    10   5  1932656     26     20    63  4.61e-01       +0.03 [-0.07, +0.14]  6.62e-01 |        15/8          2.10e-01
+
+3. hypotheses
+G1 whatshap / certified optimum, full depth, cap 15: pooled 0.9327, worst chromosome 0.9306 -> supported (rule: below 0.95)
+G2 whatshap vs optimal, caps 3 and 5, level 0.00625: significant for optimal at fullx c3, 20x c3, 15x c3, 10x c3 -> not supported, not refuted (rule: all four tests at 10- and 15-fold for optimal; refuted if none significant)
+G3 merge_optimal_1e3 vs optimal, caps 3 and 5, level 0.00625: significant for merge at fullx c3, fullx c5, 20x c3, 20x c5, 15x c3, 10x c3, 10x c5; significant for optimal at  -> not supported
+G4 two_level vs optimal, cap 3: block N50 ratio fullx 2.09, 20x 1.82, 15x 1.72, 10x 1.66; sign tests for optimal at level 0.0125: none -> supported (rule: N50 up at least 25 per cent at every depth, no test for optimal)
+G5 connected vs optimal, cap 3: block N50 ratio fullx 2.08, 20x 1.81, 15x 1.70, 10x 1.65; sign tests for optimal at level 0.0125: none -> supported (rule: N50 up at least 25 per cent at every depth, no test for optimal)
+G6 loop_oriented vs loop, cap 3, level 0.0125: significant for the repair at full, 20, 15, 10 -> supported (rule: at 10- and 15-fold)
+G6 report, loop vs optimal two-sided at level 0.00625: loop better at none; loop worse at fullx c3, fullx c5, 20x c3, 20x c5, 15x c3, 10x c3
+G7 without its premise: loop is not significantly better than optimal at any cap and depth
+G8 recalibrated optimal, full depth, cap 5, even chromosomes: 948435 boundaries, observed wrong 41, predicted 9.0; observed / predicted +4.57 [+2.81, +7.42]; ECE 0.00003 -> not calibrated (rule: interval contains 1 and ECE below 0.01)
+  predicted in [0.0, 0.1):  948418 boundaries, observed rate 0.00003, mean predicted 0.00000
+  predicted in [0.1, 0.2):       5 boundaries, observed rate 0.20000, mean predicted 0.14522
+  predicted in [0.2, 0.3):       2 boundaries, observed rate 0.50000, mean predicted 0.26455
+  predicted in [0.4, 0.5):       2 boundaries, observed rate 1.00000, mean predicted 0.49608
+  predicted in [0.5, 0.6):       8 boundaries, observed rate 1.00000, mean predicted 0.50003
+G9 AUC of the posterior margin for a wrong call: 0.997 over 41 wrong and 948394 right calls -> supported (rule: above 0.6); MEC margin 0.997
+G10 whatshap minus optimal, error per 10,000 common pairs, by depth (descriptive):
+  cap  3: fullx +0.50 [+0.31, +0.70]; 20x +0.36 [+0.15, +0.58]; 15x +0.43 [+0.21, +0.63]; 10x +0.60 [+0.37, +0.84]
+  cap  5: fullx +0.04 [-0.11, +0.19]; 20x +0.05 [-0.07, +0.17]; 15x +0.08 [-0.03, +0.20]; 10x +0.03 [-0.09, +0.14]
+  cap 10: fullx -0.04 [-0.11, +0.03]; 20x -0.01 [-0.09, +0.07]; 15x -0.01 [-0.05, +0.04]; 10x +0.06 [+0.00, +0.12]
+  cap 15: fullx -0.01 [-0.06, +0.04]; 20x +0.00 [-0.04, +0.03]; 15x -0.01 [-0.05, +0.04]; 10x -0.01 [-0.02, +0.00]
+
+scored in 8.8 min

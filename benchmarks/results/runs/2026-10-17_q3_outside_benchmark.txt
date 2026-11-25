@@ -1,0 +1,430 @@
+Q3 (development, docs/design/q3-outside-benchmark.md): HG002 HPRC HiFi, minimap2 2.31 GRCh38 (data/w4/HG002_grch38_mm2.bam), 30x slice drawn as confidence_run (seed 0, trim seed 3); variants Q100 dipcall GRCh38_HG2-T2TQ100-V1.1_dipcall-z2k.dip.vcf.gz biallelic heterozygous SNVs and indels <= 50 bp inside GRCh38_HG2-T2TQ100-V1.1_dipcall-z2k.dip.bed, phase removed; phasers whatshap phase 2.8 (defaults, --reference, --ignore-read-groups) and LongPhase 2.0.2 (--pb --indels -t 1); truth Q100 phase; inside = both variants in HG002_GRCh38_v5.0q_smvar.benchmark.bed; groups indel, segdup, lowmap, tandem, difficult, easy (indel first, then GIAB v3.6 stratum); unit 100 kb; gate per-pair ratio >= 3 and share outside >= 0.2 for both phasers; certificates calibrated on w4_grch38 30x rows (v5.0q, 21 chromosomes) with learn_then_test_by_group, betas (0.0003, 0.001, 0.003), delta 0.05; cause window 10 variants per side, WhatsHap selection port at cap 15, exact CoverageDP boundary costs; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22
+  rows whatshap chr11 in 77 s
+  rows whatshap chr12 in 78 s
+  rows whatshap chr9 in 86 s
+  rows whatshap chr10 in 92 s
+  rows whatshap chr8 in 96 s
+  rows whatshap chr5 in 104 s
+  rows whatshap chr7 in 104 s
+  rows whatshap chr2 in 115 s
+  rows whatshap chr6 in 120 s
+  rows whatshap chr3 in 125 s
+  rows whatshap chr4 in 138 s
+  rows whatshap chr13 in 64 s
+  rows whatshap chr1 in 143 s
+  rows whatshap chr21 in 29 s
+  rows whatshap chr15 in 63 s
+  rows whatshap chr22 in 31 s
+  rows whatshap chr18 in 49 s
+  rows whatshap chr16 in 62 s
+  rows whatshap chr17 in 60 s
+  rows whatshap chr14 in 92 s
+  rows longphase chr1 in 49 s
+  rows longphase chr4 in 34 s
+  rows longphase chr2 in 38 s
+  rows longphase chr5 in 36 s
+  rows whatshap chr19 in 78 s
+  rows longphase chr3 in 44 s
+  rows longphase chr6 in 36 s
+  rows longphase chr7 in 34 s
+  rows longphase chr8 in 32 s
+  rows longphase chr9 in 38 s
+  rows longphase chr11 in 23 s
+  rows longphase chr10 in 41 s
+  rows longphase chr13 in 23 s
+  rows longphase chr21 in 14 s
+  rows longphase chr12 in 25 s
+  rows longphase chr22 in 9 s
+  rows longphase chr17 in 18 s
+  rows longphase chr16 in 22 s
+  rows longphase chr18 in 19 s
+  rows longphase chr15 in 26 s
+  rows longphase chr14 in 33 s
+  rows longphase chr19 in 28 s
+
+1. Consecutive relations against Q100: pairs, wrong, error per pair; 100 kb units, wrong units, wrong unit share
+  whatshap  all       inside    pairs   2556197 wrong  12655 rate 4.951e-03  units  25186 wrong  5484 share 0.2177
+  whatshap  all       outside   pairs    192393 wrong  14052 rate 7.304e-02  units  10371 wrong  2253 share 0.2172
+  whatshap  all         one in  pairs     26137 wrong   1406 rate 5.379e-02  units   9627 wrong  1060 share 0.1101
+  whatshap  all         none in pairs    166256 wrong  12646 rate 7.606e-02  units   6904 wrong  1855 share 0.2687
+  whatshap  all       outside/inside per pair 14.75, per unit 1.00; share of wrong outside 0.526
+  whatshap  indel     inside    pairs    794732 wrong  11160 rate 1.404e-02  units  24708 wrong  5276 share 0.2135
+  whatshap  indel     outside   pairs     60106 wrong   5575 rate 9.275e-02  units   8459 wrong  2040 share 0.2412
+  whatshap  indel       one in  pairs     12701 wrong   1182 rate 9.306e-02  units   7056 wrong   918 share 0.1301
+  whatshap  indel       none in pairs     47405 wrong   4393 rate 9.267e-02  units   5763 wrong  1642 share 0.2849
+  whatshap  indel     outside/inside per pair 6.61, per unit 1.13; share of wrong outside 0.333
+  whatshap  segdup    inside    pairs     58226 wrong    330 rate 5.668e-03  units   2822 wrong    57 share 0.0202
+  whatshap  segdup    outside   pairs     58256 wrong   3838 rate 6.588e-02  units   1067 wrong   200 share 0.1874
+  whatshap  segdup      one in  pairs       782 wrong     42 rate 5.371e-02  units    418 wrong    26 share 0.0622
+  whatshap  segdup      none in pairs     57474 wrong   3796 rate 6.605e-02  units    925 wrong   194 share 0.2097
+  whatshap  segdup    outside/inside per pair 11.62, per unit 9.28; share of wrong outside 0.921
+  whatshap  lowmap    inside    pairs    110175 wrong     60 rate 5.446e-04  units  14659 wrong    47 share 0.0032
+  whatshap  lowmap    outside   pairs     26988 wrong   3738 rate 1.385e-01  units   2347 wrong   267 share 0.1138
+  whatshap  lowmap      one in  pairs      2063 wrong     50 rate 2.424e-02  units   1413 wrong    45 share 0.0318
+  whatshap  lowmap      none in pairs     24925 wrong   3688 rate 1.480e-01  units   1867 wrong   241 share 0.1291
+  whatshap  lowmap    outside/inside per pair 254.33, per unit 35.48; share of wrong outside 0.984
+  whatshap  tandem    inside    pairs    211261 wrong   1068 rate 5.055e-03  units  21907 wrong   728 share 0.0332
+  whatshap  tandem    outside   pairs     25969 wrong    890 rate 3.427e-02  units   5099 wrong   455 share 0.0892
+  whatshap  tandem      one in  pairs      5787 wrong    131 rate 2.264e-02  units   3775 wrong   125 share 0.0331
+  whatshap  tandem      none in pairs     20182 wrong    759 rate 3.761e-02  units   3565 wrong   373 share 0.1046
+  whatshap  tandem    outside/inside per pair 6.78, per unit 2.69; share of wrong outside 0.455
+  whatshap  difficult inside    pairs    133835 wrong      5 rate 3.736e-05  units  18548 wrong     5 share 0.0003
+  whatshap  difficult outside   pairs      2502 wrong      0 rate 0.000e+00  units    996 wrong     0 share 0.0000
+  whatshap  difficult   one in  pairs       925 wrong      0 rate 0.000e+00  units    742 wrong     0 share 0.0000
+  whatshap  difficult   none in pairs      1577 wrong      0 rate 0.000e+00  units    402 wrong     0 share 0.0000
+  whatshap  difficult outside/inside per pair 0.00, per unit 0.00; share of wrong outside 0.000
+  whatshap  easy      inside    pairs   1247968 wrong     32 rate 2.564e-05  units  24089 wrong    28 share 0.0012
+  whatshap  easy      outside   pairs     18572 wrong     11 rate 5.923e-04  units   3021 wrong     5 share 0.0017
+  whatshap  easy        one in  pairs      3879 wrong      1 rate 2.578e-04  units   2574 wrong     1 share 0.0004
+  whatshap  easy        none in pairs     14693 wrong     10 rate 6.806e-04  units   1068 wrong     4 share 0.0037
+  whatshap  easy      outside/inside per pair 23.10, per unit 1.42; share of wrong outside 0.256
+  longphase all       inside    pairs   2515697 wrong   1111 rate 4.416e-04  units  25142 wrong   743 share 0.0296
+  longphase all       outside   pairs    200420 wrong  16655 rate 8.310e-02  units   9798 wrong   613 share 0.0626
+  longphase all         one in  pairs     24357 wrong    322 rate 1.322e-02  units   9035 wrong   254 share 0.0281
+  longphase all         none in pairs    176063 wrong  16333 rate 9.277e-02  units   6401 wrong   466 share 0.0728
+  longphase all       outside/inside per pair 188.17, per unit 2.12; share of wrong outside 0.937
+  longphase indel     inside    pairs    742943 wrong    706 rate 9.503e-04  units  24486 wrong   560 share 0.0229
+  longphase indel     outside   pairs     50454 wrong   1607 rate 3.185e-02  units   7530 wrong   433 share 0.0575
+  longphase indel       one in  pairs     10534 wrong    197 rate 1.870e-02  units   6142 wrong   169 share 0.0275
+  longphase indel       none in pairs     39920 wrong   1410 rate 3.532e-02  units   5023 wrong   320 share 0.0637
+  longphase indel     outside/inside per pair 33.52, per unit 2.51; share of wrong outside 0.695
+  longphase segdup    inside    pairs     58455 wrong    187 rate 3.199e-03  units   2842 wrong    36 share 0.0127
+  longphase segdup    outside   pairs     55808 wrong   2861 rate 5.127e-02  units   1072 wrong   142 share 0.1325
+  longphase segdup      one in  pairs       781 wrong     27 rate 3.457e-02  units    418 wrong    20 share 0.0478
+  longphase segdup      none in pairs     55027 wrong   2834 rate 5.150e-02  units    925 wrong   134 share 0.1449
+  longphase segdup    outside/inside per pair 16.03, per unit 10.46; share of wrong outside 0.939
+  longphase lowmap    inside    pairs    110175 wrong     18 rate 1.634e-04  units  14699 wrong    16 share 0.0011
+  longphase lowmap    outside   pairs     48779 wrong  11801 rate 2.419e-01  units   2331 wrong   159 share 0.0682
+  longphase lowmap      one in  pairs      2117 wrong     30 rate 1.417e-02  units   1440 wrong    26 share 0.0181
+  longphase lowmap      none in pairs     46662 wrong  11771 rate 2.523e-01  units   1833 wrong   137 share 0.0747
+  longphase lowmap    outside/inside per pair 1480.80, per unit 62.66; share of wrong outside 0.998
+  longphase tandem    inside    pairs    212367 wrong    120 rate 5.651e-04  units  21938 wrong   106 share 0.0048
+  longphase tandem    outside   pairs     24654 wrong    382 rate 1.549e-02  units   5023 wrong   156 share 0.0311
+  longphase tandem      one in  pairs      6042 wrong     66 rate 1.092e-02  units   3838 wrong    58 share 0.0151
+  longphase tandem      none in pairs     18612 wrong    316 rate 1.698e-02  units   3409 wrong   117 share 0.0343
+  longphase tandem    outside/inside per pair 27.42, per unit 6.43; share of wrong outside 0.761
+  longphase difficult inside    pairs    134882 wrong      9 rate 6.672e-05  units  18599 wrong     9 share 0.0005
+  longphase difficult outside   pairs      2473 wrong      1 rate 4.044e-04  units   1000 wrong     1 share 0.0010
+  longphase difficult   one in  pairs       937 wrong      1 rate 1.067e-03  units    747 wrong     1 share 0.0013
+  longphase difficult   none in pairs      1536 wrong      0 rate 0.000e+00  units    400 wrong     0 share 0.0000
+  longphase difficult outside/inside per pair 6.06, per unit 2.07; share of wrong outside 0.100
+  longphase easy      inside    pairs   1256875 wrong     71 rate 5.649e-05  units  24108 wrong    70 share 0.0029
+  longphase easy      outside   pairs     18252 wrong      3 rate 1.644e-04  units   3027 wrong     2 share 0.0007
+  longphase easy        one in  pairs      3946 wrong      1 rate 2.534e-04  units   2594 wrong     1 share 0.0004
+  longphase easy        none in pairs     14306 wrong      2 rate 1.398e-04  units   1055 wrong     1 share 0.0009
+  longphase easy      outside/inside per pair 2.91, per unit 0.23; share of wrong outside 0.041
+
+2. Certificates: thresholds from w4_grch38 30x (v5.0q) per group, applied to Q100-scored relations inside and outside; cell = units, wrong trusted units, P(X >= k | n, beta), pairs, trusted, wrong, wrong trusted
+  whatshap  beta 0.0003 inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs   794732 trusted        0 wrong  11160 wrong trusted     0
+  whatshap  beta 0.0003 inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58226 trusted        0 wrong    330 wrong trusted     0
+  whatshap  beta 0.0003 inside  lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs   110175 trusted        0 wrong     60 wrong trusted     0
+  whatshap  beta 0.0003 inside  tandem    threshold none             units      0 wrong    0 p 1.00e+00 pairs   211261 trusted        0 wrong   1068 wrong trusted     0
+  whatshap  beta 0.0003 inside  difficult threshold (0.4286, 3)      units  18481 wrong    0 p 1.00e+00 pairs   133835 trusted   133560 wrong      5 wrong trusted     0
+  whatshap  beta 0.0003 inside  easy      threshold (0.6667, 8)      units  23863 wrong    2 p 9.94e-01 pairs  1247968 trusted  1242026 wrong     32 wrong trusted     3
+  whatshap  beta 0.0003 outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    60106 trusted        0 wrong   5575 wrong trusted     0
+  whatshap  beta 0.0003 outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58256 trusted        0 wrong   3838 wrong trusted     0
+  whatshap  beta 0.0003 outside lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs    26988 trusted        0 wrong   3738 wrong trusted     0
+  whatshap  beta 0.0003 outside tandem    threshold none             units      0 wrong    0 p 1.00e+00 pairs    25969 trusted        0 wrong    890 wrong trusted     0
+  whatshap  beta 0.0003 outside difficult threshold (0.4286, 3)      units    984 wrong    0 p 1.00e+00 pairs     2502 trusted     2489 wrong      0 wrong trusted     0
+  whatshap  beta 0.0003 outside easy      threshold (0.6667, 8)      units   2906 wrong    1 p 5.82e-01 pairs    18572 trusted    18252 wrong     11 wrong trusted     2
+  whatshap  beta 0.001  inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs   794732 trusted        0 wrong  11160 wrong trusted     0
+  whatshap  beta 0.001  inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58226 trusted        0 wrong    330 wrong trusted     0
+  whatshap  beta 0.001  inside  lowmap    threshold (0.6667, 8)      units  14475 wrong    6 p 9.96e-01 pairs   110175 trusted   109115 wrong     60 wrong trusted     6
+  whatshap  beta 0.001  inside  tandem    threshold (0.8667, 26)     units  18426 wrong   10 p 9.88e-01 pairs   211261 trusted   109981 wrong   1068 wrong trusted    19
+  whatshap  beta 0.001  inside  difficult threshold (0.0000, 1)      units  18548 wrong    5 p 1.00e+00 pairs   133835 trusted   133835 wrong      5 wrong trusted     5
+  whatshap  beta 0.001  inside  easy      threshold (0.5000, 4)      units  23977 wrong    3 p 1.00e+00 pairs  1247968 trusted  1245252 wrong     32 wrong trusted     5
+  whatshap  beta 0.001  outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    60106 trusted        0 wrong   5575 wrong trusted     0
+  whatshap  beta 0.001  outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58256 trusted        0 wrong   3838 wrong trusted     0
+  whatshap  beta 0.001  outside lowmap    threshold (0.6667, 8)      units   2140 wrong   48 p 4.08e-13 pairs    26988 trusted    15404 wrong   3738 wrong trusted   196
+  whatshap  beta 0.001  outside tandem    threshold (0.8667, 26)     units   2144 wrong    6 p 2.23e-02 pairs    25969 trusted     8195 wrong    890 wrong trusted    11
+  whatshap  beta 0.001  outside difficult threshold (0.0000, 1)      units    996 wrong    0 p 1.00e+00 pairs     2502 trusted     2502 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  outside easy      threshold (0.5000, 4)      units   2973 wrong    2 p 7.97e-01 pairs    18572 trusted    18454 wrong     11 wrong trusted     8
+  whatshap  beta 0.003  inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs   794732 trusted        0 wrong  11160 wrong trusted     0
+  whatshap  beta 0.003  inside  segdup    threshold (0.7682, 21)     units   2713 wrong    4 p 9.62e-01 pairs    58226 trusted    53790 wrong    330 wrong trusted     7
+  whatshap  beta 0.003  inside  lowmap    threshold (0.3333, 2)      units  14626 wrong   27 p 9.98e-01 pairs   110175 trusted   109999 wrong     60 wrong trusted    33
+  whatshap  beta 0.003  inside  tandem    threshold (0.8128, 27)     units  20823 wrong   47 p 9.82e-01 pairs   211261 trusted   178884 wrong   1068 wrong trusted    63
+  whatshap  beta 0.003  inside  difficult threshold (0.0000, 1)      units  18548 wrong    5 p 1.00e+00 pairs   133835 trusted   133835 wrong      5 wrong trusted     5
+  whatshap  beta 0.003  inside  easy      threshold (-1.0000, 0)     units  24089 wrong   28 p 1.00e+00 pairs  1247968 trusted  1247968 wrong     32 wrong trusted    32
+  whatshap  beta 0.003  outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    60106 trusted        0 wrong   5575 wrong trusted     0
+  whatshap  beta 0.003  outside segdup    threshold (0.7682, 21)     units    949 wrong   42 p 0.00e+00 pairs    58256 trusted    39504 wrong   3838 wrong trusted   352
+  whatshap  beta 0.003  outside lowmap    threshold (0.3333, 2)      units   2310 wrong  185 p 1.51e-12 pairs    26988 trusted    22758 wrong   3738 wrong trusted  1816
+  whatshap  beta 0.003  outside tandem    threshold (0.8128, 27)     units   3707 wrong   13 p 3.24e-01 pairs    25969 trusted    15664 wrong    890 wrong trusted    23
+  whatshap  beta 0.003  outside difficult threshold (0.0000, 1)      units    996 wrong    0 p 1.00e+00 pairs     2502 trusted     2502 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  outside easy      threshold (-1.0000, 0)     units   3021 wrong    5 p 9.47e-01 pairs    18572 trusted    18572 wrong     11 wrong trusted    11
+  longphase beta 0.0003 inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs   742943 trusted        0 wrong    706 wrong trusted     0
+  longphase beta 0.0003 inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58455 trusted        0 wrong    187 wrong trusted     0
+  longphase beta 0.0003 inside  lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs   110175 trusted        0 wrong     18 wrong trusted     0
+  longphase beta 0.0003 inside  tandem    threshold (0.7771, 22)     units  21199 wrong    2 p 9.87e-01 pairs   212367 trusted   194341 wrong    120 wrong trusted     2
+  longphase beta 0.0003 inside  difficult threshold (0.3333, 2)      units  18549 wrong    0 p 1.00e+00 pairs   134882 trusted   134674 wrong      9 wrong trusted     0
+  longphase beta 0.0003 inside  easy      threshold (0.4286, 3)      units  24016 wrong    1 p 9.99e-01 pairs  1256875 trusted  1254614 wrong     71 wrong trusted     1
+  longphase beta 0.0003 outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    50454 trusted        0 wrong   1607 wrong trusted     0
+  longphase beta 0.0003 outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    55808 trusted        0 wrong   2861 wrong trusted     0
+  longphase beta 0.0003 outside lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs    48779 trusted        0 wrong  11801 wrong trusted     0
+  longphase beta 0.0003 outside tandem    threshold (0.7771, 22)     units   4168 wrong   10 p 8.24e-07 pairs    24654 trusted    18522 wrong    382 wrong trusted    17
+  longphase beta 0.0003 outside difficult threshold (0.3333, 2)      units    993 wrong    0 p 1.00e+00 pairs     2473 trusted     2464 wrong      1 wrong trusted     0
+  longphase beta 0.0003 outside easy      threshold (0.4286, 3)      units   2989 wrong    0 p 1.00e+00 pairs    18252 trusted    18157 wrong      3 wrong trusted     0
+  longphase beta 0.001  inside  indel     threshold (0.7895, 15)     units  22764 wrong   12 p 9.95e-01 pairs   742943 trusted   445767 wrong    706 wrong trusted    15
+  longphase beta 0.001  inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    58455 trusted        0 wrong    187 wrong trusted     0
+  longphase beta 0.001  inside  lowmap    threshold (0.3333, 2)      units  14652 wrong    3 p 1.00e+00 pairs   110175 trusted   109981 wrong     18 wrong trusted     4
+  longphase beta 0.001  inside  tandem    threshold (0.4464, 9)      units  21744 wrong   13 p 9.83e-01 pairs   212367 trusted   209774 wrong    120 wrong trusted    13
+  longphase beta 0.001  inside  difficult threshold (-1.0000, 0)     units  18599 wrong    9 p 9.95e-01 pairs   134882 trusted   134882 wrong      9 wrong trusted     9
+  longphase beta 0.001  inside  easy      threshold (0.4286, 3)      units  24016 wrong    1 p 1.00e+00 pairs  1256875 trusted  1254614 wrong     71 wrong trusted     1
+  longphase beta 0.001  outside indel     threshold (0.7895, 15)     units   4950 wrong   48 p 0.00e+00 pairs    50454 trusted    23964 wrong   1607 wrong trusted    83
+  longphase beta 0.001  outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs    55808 trusted        0 wrong   2861 wrong trusted     0
+  longphase beta 0.001  outside lowmap    threshold (0.3333, 2)      units   2252 wrong   81 p 0.00e+00 pairs    48779 trusted    20650 wrong  11801 wrong trusted  1250
+  longphase beta 0.001  outside tandem    threshold (0.4464, 9)      units   4853 wrong   65 p 2.92e-12 pairs    24654 trusted    23270 wrong    382 wrong trusted   117
+  longphase beta 0.001  outside difficult threshold (-1.0000, 0)     units   1000 wrong    1 p 6.32e-01 pairs     2473 trusted     2473 wrong      1 wrong trusted     1
+  longphase beta 0.001  outside easy      threshold (0.4286, 3)      units   2989 wrong    0 p 1.00e+00 pairs    18252 trusted    18157 wrong      3 wrong trusted     0
+  longphase beta 0.003  inside  indel     threshold (0.5310, 23)     units  24214 wrong   55 p 9.86e-01 pairs   742943 trusted   713806 wrong    706 wrong trusted    87
+  longphase beta 0.003  inside  segdup    threshold (0.7458, 25)     units   2741 wrong    3 p 9.89e-01 pairs    58455 trusted    54984 wrong    187 wrong trusted     8
+  longphase beta 0.003  inside  lowmap    threshold (-1.0000, 0)     units  14699 wrong   16 p 1.00e+00 pairs   110175 trusted   110175 wrong     18 wrong trusted    18
+  longphase beta 0.003  inside  tandem    threshold (0.2000, 1)      units  21899 wrong   47 p 9.93e-01 pairs   212367 trusted   211514 wrong    120 wrong trusted    53
+  longphase beta 0.003  inside  difficult threshold (-1.0000, 0)     units  18599 wrong    9 p 1.00e+00 pairs   134882 trusted   134882 wrong      9 wrong trusted     9
+  longphase beta 0.003  inside  easy      threshold (0.4286, 3)      units  24016 wrong    1 p 1.00e+00 pairs  1256875 trusted  1254614 wrong     71 wrong trusted     1
+  longphase beta 0.003  outside indel     threshold (0.5310, 23)     units   6895 wrong  171 p 0.00e+00 pairs    50454 trusted    42016 wrong   1607 wrong trusted   403
+  longphase beta 0.003  outside segdup    threshold (0.7458, 25)     units    960 wrong   45 p 1.30e-13 pairs    55808 trusted    41004 wrong   2861 wrong trusted   448
+  longphase beta 0.003  outside lowmap    threshold (-1.0000, 0)     units   2331 wrong  159 p 1.61e-13 pairs    48779 trusted    48779 wrong  11801 wrong trusted 11801
+  longphase beta 0.003  outside tandem    threshold (0.2000, 1)      units   4967 wrong  117 p 2.77e-12 pairs    24654 trusted    24086 wrong    382 wrong trusted   231
+  longphase beta 0.003  outside difficult threshold (-1.0000, 0)     units   1000 wrong    1 p 9.50e-01 pairs     2473 trusted     2473 wrong      1 wrong trusted     1
+  longphase beta 0.003  outside easy      threshold (0.4286, 3)      units   2989 wrong    0 p 1.00e+00 pairs    18252 trusted    18157 wrong      3 wrong trusted     0
+  outside cells with a threshold and a unit: 25; violating at 0.05/25 = 2.00e-03: 11; at 0.05: 12
+    whatshap beta 0.001 lowmap: 48 of 2140 units, p 4.08e-13
+    whatshap beta 0.001 tandem: 6 of 2144 units, p 2.23e-02
+    whatshap beta 0.003 segdup: 42 of 949 units, p 0.00e+00
+    whatshap beta 0.003 lowmap: 185 of 2310 units, p 1.51e-12
+    longphase beta 0.0003 tandem: 10 of 4168 units, p 8.24e-07
+    longphase beta 0.001 indel: 48 of 4950 units, p 0.00e+00
+    longphase beta 0.001 lowmap: 81 of 2252 units, p 0.00e+00
+    longphase beta 0.001 tandem: 65 of 4853 units, p 2.92e-12
+    longphase beta 0.003 indel: 171 of 6895 units, p 0.00e+00
+    longphase beta 0.003 segdup: 45 of 960 units, p 1.30e-13
+    longphase beta 0.003 lowmap: 159 of 2331 units, p 1.61e-13
+    longphase beta 0.003 tandem: 117 of 4967 units, p 2.77e-12
+
+3. Causes of wrong relations: none = no read calls both variants (i); data = spanning majority backs the wrong relation or ties, window optimum not right (ii); search = window optimum (cap 15) strictly right (iii); other = majority right, optimum wrong or tied
+  whatshap  inside  all       wrong  12655: none 54 (0.004), data 8345 (0.659), search 2788 (0.220), other 1468 (0.116)
+      majority x optimum: none/right 6, none/tie 6, none/wrong 42, right/right 1629, right/tie 175, right/wrong 1293, tie/right 184, tie/tie 144, tie/wrong 376, wrong/right 975, wrong/tie 221, wrong/wrong 7604
+  whatshap  inside  indel     wrong  11160: none 29 (0.003), data 7351 (0.659), search 2500 (0.224), other 1280 (0.115)
+  whatshap  inside  segdup    wrong    330: none 2 (0.006), data 204 (0.618), search 102 (0.309), other 22 (0.067)
+  whatshap  inside  lowmap    wrong     60: none 0 (0.000), data 35 (0.583), search 14 (0.233), other 11 (0.183)
+  whatshap  inside  tandem    wrong   1068: none 23 (0.022), data 741 (0.694), search 165 (0.154), other 139 (0.130)
+  whatshap  inside  difficult wrong      5: none 0 (0.000), data 3 (0.600), search 0 (0.000), other 2 (0.400)
+  whatshap  inside  easy      wrong     32: none 0 (0.000), data 11 (0.344), search 7 (0.219), other 14 (0.438)
+  whatshap  outside all       wrong  14052: none 47 (0.003), data 10207 (0.726), search 2538 (0.181), other 1260 (0.090)
+      majority x optimum: none/right 1, none/tie 7, none/wrong 39, right/right 1577, right/tie 122, right/wrong 1138, tie/right 141, tie/tie 68, tie/wrong 271, wrong/right 820, wrong/tie 147, wrong/wrong 9721
+  whatshap  outside indel     wrong   5575: none 16 (0.003), data 3740 (0.671), search 1134 (0.203), other 685 (0.123)
+  whatshap  outside segdup    wrong   3838: none 4 (0.001), data 2745 (0.715), search 817 (0.213), other 272 (0.071)
+  whatshap  outside lowmap    wrong   3738: none 4 (0.001), data 3227 (0.863), search 360 (0.096), other 147 (0.039)
+  whatshap  outside tandem    wrong    890: none 23 (0.026), data 491 (0.552), search 221 (0.248), other 155 (0.174)
+  whatshap  outside easy      wrong     11: none 0 (0.000), data 4 (0.364), search 6 (0.545), other 1 (0.091)
+  longphase inside  all       wrong   1111: none 255 (0.230), data 501 (0.451), search 302 (0.272), other 53 (0.048)
+      majority x optimum: none/right 2, none/tie 250, none/wrong 3, right/right 264, right/tie 7, right/wrong 46, tie/right 10, tie/tie 25, tie/wrong 6, wrong/right 28, wrong/tie 19, wrong/wrong 451
+  longphase inside  indel     wrong    706: none 118 (0.167), data 364 (0.516), search 193 (0.273), other 31 (0.044)
+  longphase inside  segdup    wrong    187: none 34 (0.182), data 87 (0.465), search 57 (0.305), other 9 (0.048)
+  longphase inside  lowmap    wrong     18: none 7 (0.389), data 6 (0.333), search 4 (0.222), other 1 (0.056)
+  longphase inside  tandem    wrong    120: none 30 (0.250), data 43 (0.358), search 39 (0.325), other 8 (0.067)
+  longphase inside  difficult wrong      9: none 8 (0.889), data 0 (0.000), search 1 (0.111), other 0 (0.000)
+  longphase inside  easy      wrong     71: none 58 (0.817), data 1 (0.014), search 8 (0.113), other 4 (0.056)
+  longphase outside all       wrong  16655: none 10354 (0.622), data 5146 (0.309), search 1017 (0.061), other 138 (0.008)
+      majority x optimum: none/right 4, none/tie 10337, none/wrong 13, right/right 700, right/tie 28, right/wrong 110, tie/right 35, tie/tie 110, tie/wrong 45, wrong/right 282, wrong/tie 54, wrong/wrong 4937
+  longphase outside indel     wrong   1607: none 469 (0.292), data 818 (0.509), search 285 (0.177), other 35 (0.022)
+  longphase outside segdup    wrong   2861: none 477 (0.167), data 1889 (0.660), search 432 (0.151), other 63 (0.022)
+  longphase outside lowmap    wrong  11801: none 9305 (0.788), data 2240 (0.190), search 234 (0.020), other 22 (0.002)
+  longphase outside tandem    wrong    382: none 101 (0.264), data 199 (0.521), search 64 (0.168), other 18 (0.047)
+  longphase outside difficult wrong      1: none 1 (1.000), data 0 (0.000), search 0 (0.000), other 0 (0.000)
+  longphase outside easy      wrong      3: none 1 (0.333), data 0 (0.000), search 2 (0.667), other 0 (0.000)
+
+4. Outside-BED wrong relations against v5.0q's VCF (all records, BED ignored): both variants the same heterozygous call in v5.0q, and then whether v5.0q's phase gives the same relation as Q100
+  whatshap  outside wrong 14052: genotype differs 0, same genotype, same relation 14052, same genotype, other relation 0, same genotype, v5.0q unphased 0
+  longphase outside wrong 16655: genotype differs 0, same genotype, same relation 16655, same genotype, other relation 0, same genotype, v5.0q unphased 0
+
+whatshap: per pair outside/inside 14.75 (>= 3), share of wrong outside 0.526 (>= 0.2): holds; per unit 1.00 (reported)
+longphase: per pair outside/inside 188.17 (>= 3), share of wrong outside 0.937 (>= 0.2): holds; per unit 2.12 (reported)
+Q3 gate: finds a gap
+runtime 451 s
+Q3 (development, docs/design/q3-outside-benchmark.md): HG002 HPRC HiFi, minimap2 2.31 GRCh38 (data/w4/HG002_grch38_mm2.bam), 30x slice drawn as confidence_run (seed 0, trim seed 3); variants Q100 dipcall GRCh38_HG2-T2TQ100-V1.1_dipcall-z2k.dip.vcf.gz biallelic heterozygous SNVs and indels <= 50 bp inside GRCh38_HG2-T2TQ100-V1.1_dipcall-z2k.dip.bed, phase removed; phasers whatshap phase 2.8 (defaults, --reference, --ignore-read-groups) and LongPhase 2.0.2 (--pb --indels -t 1); truth Q100 phase; inside = both variants in HG002_GRCh38_v5.0q_smvar.benchmark.bed; groups indel, segdup, lowmap, tandem, difficult, easy (indel first, then GIAB v3.6 stratum); unit 100 kb; gate per-pair ratio >= 3 and share outside >= 0.2 for both phasers; certificates calibrated on w4_grch38 30x rows (v5.0q, 21 chromosomes) with learn_then_test_by_group, betas (0.0003, 0.001, 0.003), delta 0.05; cause window 10 variants per side, WhatsHap selection port at cap 15, exact CoverageDP boundary costs; chromosomes chr20 (DESCRIPTIVE, not the gate)
+
+1. Consecutive relations against Q100: pairs, wrong, error per pair; 100 kb units, wrong units, wrong unit share
+  whatshap  all       inside    pairs     57423 wrong    285 rate 4.963e-03  units    566 wrong   127 share 0.2244
+  whatshap  all       outside   pairs      6887 wrong    346 rate 5.024e-02  units    276 wrong    54 share 0.1957
+  whatshap  all         one in  pairs       758 wrong     31 rate 4.090e-02  units    245 wrong    24 share 0.0980
+  whatshap  all         none in pairs      6129 wrong    315 rate 5.140e-02  units    190 wrong    44 share 0.2316
+  whatshap  all       outside/inside per pair 10.12, per unit 0.87; share of wrong outside 0.548
+  whatshap  indel     inside    pairs     17907 wrong    257 rate 1.435e-02  units    557 wrong   124 share 0.2226
+  whatshap  indel     outside   pairs      2042 wrong    124 rate 6.072e-02  units    229 wrong    49 share 0.2140
+  whatshap  indel       one in  pairs       355 wrong     27 rate 7.606e-02  units    187 wrong    22 share 0.1176
+  whatshap  indel       none in pairs      1687 wrong     97 rate 5.750e-02  units    167 wrong    39 share 0.2335
+  whatshap  indel     outside/inside per pair 4.23, per unit 0.96; share of wrong outside 0.325
+  whatshap  segdup    inside    pairs       701 wrong      0 rate 0.000e+00  units     56 wrong     0 share 0.0000
+  whatshap  segdup    outside   pairs      2446 wrong     71 rate 2.903e-02  units     36 wrong     7 share 0.1944
+  whatshap  segdup      one in  pairs        15 wrong      0 rate 0.000e+00  units     11 wrong     0 share 0.0000
+  whatshap  segdup      none in pairs      2431 wrong     71 rate 2.921e-02  units     31 wrong     7 share 0.2258
+  whatshap  segdup    outside/inside per pair inf, per unit 194444444444.44; share of wrong outside 1.000
+  whatshap  lowmap    inside    pairs      1994 wrong      3 rate 1.505e-03  units    295 wrong     2 share 0.0068
+  whatshap  lowmap    outside   pairs      1069 wrong    130 rate 1.216e-01  units     70 wrong     8 share 0.1143
+  whatshap  lowmap      one in  pairs        56 wrong      0 rate 0.000e+00  units     38 wrong     0 share 0.0000
+  whatshap  lowmap      none in pairs      1013 wrong    130 rate 1.283e-01  units     56 wrong     8 share 0.1429
+  whatshap  lowmap    outside/inside per pair 80.83, per unit 16.86; share of wrong outside 0.977
+  whatshap  tandem    inside    pairs      4750 wrong     25 rate 5.263e-03  units    499 wrong    19 share 0.0381
+  whatshap  tandem    outside   pairs      1067 wrong     21 rate 1.968e-02  units    151 wrong     9 share 0.0596
+  whatshap  tandem      one in  pairs       209 wrong      4 rate 1.914e-02  units    113 wrong     4 share 0.0354
+  whatshap  tandem      none in pairs       858 wrong     17 rate 1.981e-02  units    106 wrong     7 share 0.0660
+  whatshap  tandem    outside/inside per pair 3.74, per unit 1.57; share of wrong outside 0.457
+  whatshap  difficult inside    pairs      2715 wrong      0 rate 0.000e+00  units    399 wrong     0 share 0.0000
+  whatshap  difficult outside   pairs        47 wrong      0 rate 0.000e+00  units     24 wrong     0 share 0.0000
+  whatshap  difficult   one in  pairs        26 wrong      0 rate 0.000e+00  units     22 wrong     0 share 0.0000
+  whatshap  difficult   none in pairs        21 wrong      0 rate 0.000e+00  units      9 wrong     0 share 0.0000
+  whatshap  difficult outside/inside per pair inf, per unit 0.00; share of wrong outside 0.000
+  whatshap  easy      inside    pairs     29356 wrong      0 rate 0.000e+00  units    546 wrong     0 share 0.0000
+  whatshap  easy      outside   pairs       216 wrong      0 rate 0.000e+00  units     81 wrong     0 share 0.0000
+  whatshap  easy        one in  pairs        97 wrong      0 rate 0.000e+00  units     65 wrong     0 share 0.0000
+  whatshap  easy        none in pairs       119 wrong      0 rate 0.000e+00  units     38 wrong     0 share 0.0000
+  whatshap  easy      outside/inside per pair inf, per unit 0.00; share of wrong outside 0.000
+  longphase all       inside    pairs     56344 wrong     36 rate 6.389e-04  units    566 wrong    24 share 0.0424
+  longphase all       outside   pairs      6411 wrong    401 rate 6.255e-02  units    257 wrong    11 share 0.0428
+  longphase all         one in  pairs       701 wrong      4 rate 5.706e-03  units    228 wrong     3 share 0.0132
+  longphase all         none in pairs      5710 wrong    397 rate 6.953e-02  units    179 wrong     9 share 0.0503
+  longphase all       outside/inside per pair 97.90, per unit 1.01; share of wrong outside 0.918
+  longphase indel     inside    pairs     16550 wrong     31 rate 1.873e-03  units    555 wrong    21 share 0.0378
+  longphase indel     outside   pairs      1753 wrong     48 rate 2.738e-02  units    202 wrong     8 share 0.0396
+  longphase indel       one in  pairs       284 wrong      3 rate 1.056e-02  units    157 wrong     3 share 0.0191
+  longphase indel       none in pairs      1469 wrong     45 rate 3.063e-02  units    151 wrong     6 share 0.0397
+  longphase indel     outside/inside per pair 14.62, per unit 1.05; share of wrong outside 0.608
+  longphase segdup    inside    pairs       695 wrong      0 rate 0.000e+00  units     55 wrong     0 share 0.0000
+  longphase segdup    outside   pairs      1880 wrong     46 rate 2.447e-02  units     35 wrong     5 share 0.1429
+  longphase segdup      one in  pairs        15 wrong      0 rate 0.000e+00  units     11 wrong     0 share 0.0000
+  longphase segdup      none in pairs      1865 wrong     46 rate 2.466e-02  units     30 wrong     5 share 0.1667
+  longphase segdup    outside/inside per pair inf, per unit 142857142857.14; share of wrong outside 1.000
+  longphase lowmap    inside    pairs      2001 wrong      0 rate 0.000e+00  units    295 wrong     0 share 0.0000
+  longphase lowmap    outside   pairs      1514 wrong    303 rate 2.001e-01  units     70 wrong     3 share 0.0429
+  longphase lowmap      one in  pairs        61 wrong      0 rate 0.000e+00  units     43 wrong     0 share 0.0000
+  longphase lowmap      none in pairs      1453 wrong    303 rate 2.085e-01  units     55 wrong     3 share 0.0545
+  longphase lowmap    outside/inside per pair inf, per unit 42857142857.14; share of wrong outside 1.000
+  longphase tandem    inside    pairs      4776 wrong      5 rate 1.047e-03  units    498 wrong     4 share 0.0080
+  longphase tandem    outside   pairs       997 wrong      4 rate 4.012e-03  units    144 wrong     3 share 0.0208
+  longphase tandem      one in  pairs       215 wrong      1 rate 4.651e-03  units    115 wrong     1 share 0.0087
+  longphase tandem      none in pairs       782 wrong      3 rate 3.836e-03  units     98 wrong     2 share 0.0204
+  longphase tandem    outside/inside per pair 3.83, per unit 2.59; share of wrong outside 0.444
+  longphase difficult inside    pairs      2733 wrong      0 rate 0.000e+00  units    398 wrong     0 share 0.0000
+  longphase difficult outside   pairs        48 wrong      0 rate 0.000e+00  units     24 wrong     0 share 0.0000
+  longphase difficult   one in  pairs        27 wrong      0 rate 0.000e+00  units     22 wrong     0 share 0.0000
+  longphase difficult   none in pairs        21 wrong      0 rate 0.000e+00  units      9 wrong     0 share 0.0000
+  longphase difficult outside/inside per pair inf, per unit 0.00; share of wrong outside 0.000
+  longphase easy      inside    pairs     29589 wrong      0 rate 0.000e+00  units    546 wrong     0 share 0.0000
+  longphase easy      outside   pairs       219 wrong      0 rate 0.000e+00  units     82 wrong     0 share 0.0000
+  longphase easy        one in  pairs        99 wrong      0 rate 0.000e+00  units     66 wrong     0 share 0.0000
+  longphase easy        none in pairs       120 wrong      0 rate 0.000e+00  units     38 wrong     0 share 0.0000
+  longphase easy      outside/inside per pair inf, per unit 0.00; share of wrong outside 0.000
+
+2. Certificates: thresholds from w4_grch38 30x (v5.0q) per group, applied to Q100-scored relations inside and outside; cell = units, wrong trusted units, P(X >= k | n, beta), pairs, trusted, wrong, wrong trusted
+  whatshap  beta 0.0003 inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    17907 trusted        0 wrong    257 wrong trusted     0
+  whatshap  beta 0.0003 inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs      701 trusted        0 wrong      0 wrong trusted     0
+  whatshap  beta 0.0003 inside  lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1994 trusted        0 wrong      3 wrong trusted     0
+  whatshap  beta 0.0003 inside  tandem    threshold none             units      0 wrong    0 p 1.00e+00 pairs     4750 trusted        0 wrong     25 wrong trusted     0
+  whatshap  beta 0.0003 inside  difficult threshold (0.4286, 3)      units    398 wrong    0 p 1.00e+00 pairs     2715 trusted     2710 wrong      0 wrong trusted     0
+  whatshap  beta 0.0003 inside  easy      threshold (0.6667, 8)      units    543 wrong    0 p 1.00e+00 pairs    29356 trusted    29185 wrong      0 wrong trusted     0
+  whatshap  beta 0.0003 outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs     2042 trusted        0 wrong    124 wrong trusted     0
+  whatshap  beta 0.0003 outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs     2446 trusted        0 wrong     71 wrong trusted     0
+  whatshap  beta 0.0003 outside lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1069 trusted        0 wrong    130 wrong trusted     0
+  whatshap  beta 0.0003 outside tandem    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1067 trusted        0 wrong     21 wrong trusted     0
+  whatshap  beta 0.0003 outside difficult threshold (0.4286, 3)      units     24 wrong    0 p 1.00e+00 pairs       47 trusted       46 wrong      0 wrong trusted     0
+  whatshap  beta 0.0003 outside easy      threshold (0.6667, 8)      units     79 wrong    0 p 1.00e+00 pairs      216 trusted      211 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    17907 trusted        0 wrong    257 wrong trusted     0
+  whatshap  beta 0.001  inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs      701 trusted        0 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  inside  lowmap    threshold (0.6667, 8)      units    290 wrong    1 p 2.52e-01 pairs     1994 trusted     1965 wrong      3 wrong trusted     1
+  whatshap  beta 0.001  inside  tandem    threshold (0.8667, 26)     units    418 wrong    0 p 1.00e+00 pairs     4750 trusted     2257 wrong     25 wrong trusted     0
+  whatshap  beta 0.001  inside  difficult threshold (0.0000, 1)      units    399 wrong    0 p 1.00e+00 pairs     2715 trusted     2715 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  inside  easy      threshold (0.5000, 4)      units    546 wrong    0 p 1.00e+00 pairs    29356 trusted    29287 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs     2042 trusted        0 wrong    124 wrong trusted     0
+  whatshap  beta 0.001  outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs     2446 trusted        0 wrong     71 wrong trusted     0
+  whatshap  beta 0.001  outside lowmap    threshold (0.6667, 8)      units     65 wrong    1 p 6.30e-02 pairs     1069 trusted      696 wrong    130 wrong trusted     2
+  whatshap  beta 0.001  outside tandem    threshold (0.8667, 26)     units     65 wrong    0 p 1.00e+00 pairs     1067 trusted      374 wrong     21 wrong trusted     0
+  whatshap  beta 0.001  outside difficult threshold (0.0000, 1)      units     24 wrong    0 p 1.00e+00 pairs       47 trusted       47 wrong      0 wrong trusted     0
+  whatshap  beta 0.001  outside easy      threshold (0.5000, 4)      units     80 wrong    0 p 1.00e+00 pairs      216 trusted      214 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    17907 trusted        0 wrong    257 wrong trusted     0
+  whatshap  beta 0.003  inside  segdup    threshold (0.7682, 21)     units     51 wrong    0 p 1.00e+00 pairs      701 trusted      672 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  inside  lowmap    threshold (0.3333, 2)      units    295 wrong    1 p 5.88e-01 pairs     1994 trusted     1988 wrong      3 wrong trusted     2
+  whatshap  beta 0.003  inside  tandem    threshold (0.8128, 27)     units    475 wrong    1 p 7.60e-01 pairs     4750 trusted     3907 wrong     25 wrong trusted     1
+  whatshap  beta 0.003  inside  difficult threshold (0.0000, 1)      units    399 wrong    0 p 1.00e+00 pairs     2715 trusted     2715 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  inside  easy      threshold (-1.0000, 0)     units    546 wrong    0 p 1.00e+00 pairs    29356 trusted    29356 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs     2042 trusted        0 wrong    124 wrong trusted     0
+  whatshap  beta 0.003  outside segdup    threshold (0.7682, 21)     units     35 wrong    3 p 1.64e-04 pairs     2446 trusted     2049 wrong     71 wrong trusted    27
+  whatshap  beta 0.003  outside lowmap    threshold (0.3333, 2)      units     69 wrong    2 p 1.85e-02 pairs     1069 trusted      831 wrong    130 wrong trusted     5
+  whatshap  beta 0.003  outside tandem    threshold (0.8128, 27)     units    114 wrong    1 p 2.90e-01 pairs     1067 trusted      720 wrong     21 wrong trusted     1
+  whatshap  beta 0.003  outside difficult threshold (0.0000, 1)      units     24 wrong    0 p 1.00e+00 pairs       47 trusted       47 wrong      0 wrong trusted     0
+  whatshap  beta 0.003  outside easy      threshold (-1.0000, 0)     units     81 wrong    0 p 1.00e+00 pairs      216 trusted      216 wrong      0 wrong trusted     0
+  longphase beta 0.0003 inside  indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs    16550 trusted        0 wrong     31 wrong trusted     0
+  longphase beta 0.0003 inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs      695 trusted        0 wrong      0 wrong trusted     0
+  longphase beta 0.0003 inside  lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs     2001 trusted        0 wrong      0 wrong trusted     0
+  longphase beta 0.0003 inside  tandem    threshold (0.7771, 22)     units    481 wrong    0 p 1.00e+00 pairs     4776 trusted     4311 wrong      5 wrong trusted     0
+  longphase beta 0.0003 inside  difficult threshold (0.3333, 2)      units    398 wrong    0 p 1.00e+00 pairs     2733 trusted     2730 wrong      0 wrong trusted     0
+  longphase beta 0.0003 inside  easy      threshold (0.4286, 3)      units    546 wrong    0 p 1.00e+00 pairs    29589 trusted    29529 wrong      0 wrong trusted     0
+  longphase beta 0.0003 outside indel     threshold none             units      0 wrong    0 p 1.00e+00 pairs     1753 trusted        0 wrong     48 wrong trusted     0
+  longphase beta 0.0003 outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1880 trusted        0 wrong     46 wrong trusted     0
+  longphase beta 0.0003 outside lowmap    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1514 trusted        0 wrong    303 wrong trusted     0
+  longphase beta 0.0003 outside tandem    threshold (0.7771, 22)     units    124 wrong    0 p 1.00e+00 pairs      997 trusted      819 wrong      4 wrong trusted     0
+  longphase beta 0.0003 outside difficult threshold (0.3333, 2)      units     24 wrong    0 p 1.00e+00 pairs       48 trusted       48 wrong      0 wrong trusted     0
+  longphase beta 0.0003 outside easy      threshold (0.4286, 3)      units     80 wrong    0 p 1.00e+00 pairs      219 trusted      216 wrong      0 wrong trusted     0
+  longphase beta 0.001  inside  indel     threshold (0.7895, 15)     units    524 wrong    1 p 4.08e-01 pairs    16550 trusted     9759 wrong     31 wrong trusted     1
+  longphase beta 0.001  inside  segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs      695 trusted        0 wrong      0 wrong trusted     0
+  longphase beta 0.001  inside  lowmap    threshold (0.3333, 2)      units    295 wrong    0 p 1.00e+00 pairs     2001 trusted     1999 wrong      0 wrong trusted     0
+  longphase beta 0.001  inside  tandem    threshold (0.4464, 9)      units    492 wrong    0 p 1.00e+00 pairs     4776 trusted     4703 wrong      5 wrong trusted     0
+  longphase beta 0.001  inside  difficult threshold (-1.0000, 0)     units    398 wrong    0 p 1.00e+00 pairs     2733 trusted     2733 wrong      0 wrong trusted     0
+  longphase beta 0.001  inside  easy      threshold (0.4286, 3)      units    546 wrong    0 p 1.00e+00 pairs    29589 trusted    29529 wrong      0 wrong trusted     0
+  longphase beta 0.001  outside indel     threshold (0.7895, 15)     units    142 wrong    2 p 9.12e-03 pairs     1753 trusted      910 wrong     48 wrong trusted     3
+  longphase beta 0.001  outside segdup    threshold none             units      0 wrong    0 p 1.00e+00 pairs     1880 trusted        0 wrong     46 wrong trusted     0
+  longphase beta 0.001  outside lowmap    threshold (0.3333, 2)      units     69 wrong    0 p 1.00e+00 pairs     1514 trusted      789 wrong    303 wrong trusted     0
+  longphase beta 0.001  outside tandem    threshold (0.4464, 9)      units    140 wrong    0 p 1.00e+00 pairs      997 trusted      958 wrong      4 wrong trusted     0
+  longphase beta 0.001  outside difficult threshold (-1.0000, 0)     units     24 wrong    0 p 1.00e+00 pairs       48 trusted       48 wrong      0 wrong trusted     0
+  longphase beta 0.001  outside easy      threshold (0.4286, 3)      units     80 wrong    0 p 1.00e+00 pairs      219 trusted      216 wrong      0 wrong trusted     0
+  longphase beta 0.003  inside  indel     threshold (0.5310, 23)     units    550 wrong    3 p 2.30e-01 pairs    16550 trusted    15835 wrong     31 wrong trusted     4
+  longphase beta 0.003  inside  segdup    threshold (0.7458, 25)     units     50 wrong    0 p 1.00e+00 pairs      695 trusted      674 wrong      0 wrong trusted     0
+  longphase beta 0.003  inside  lowmap    threshold (-1.0000, 0)     units    295 wrong    0 p 1.00e+00 pairs     2001 trusted     2001 wrong      0 wrong trusted     0
+  longphase beta 0.003  inside  tandem    threshold (0.2000, 1)      units    496 wrong    1 p 7.75e-01 pairs     4776 trusted     4756 wrong      5 wrong trusted     2
+  longphase beta 0.003  inside  difficult threshold (-1.0000, 0)     units    398 wrong    0 p 1.00e+00 pairs     2733 trusted     2733 wrong      0 wrong trusted     0
+  longphase beta 0.003  inside  easy      threshold (0.4286, 3)      units    546 wrong    0 p 1.00e+00 pairs    29589 trusted    29529 wrong      0 wrong trusted     0
+  longphase beta 0.003  outside indel     threshold (0.5310, 23)     units    190 wrong    3 p 2.01e-02 pairs     1753 trusted     1493 wrong     48 wrong trusted     9
+  longphase beta 0.003  outside segdup    threshold (0.7458, 25)     units     35 wrong    4 p 3.94e-06 pairs     1880 trusted     1660 wrong     46 wrong trusted    31
+  longphase beta 0.003  outside lowmap    threshold (-1.0000, 0)     units     70 wrong    3 p 1.27e-03 pairs     1514 trusted     1514 wrong    303 wrong trusted   303
+  longphase beta 0.003  outside tandem    threshold (0.2000, 1)      units    141 wrong    0 p 1.00e+00 pairs      997 trusted      974 wrong      4 wrong trusted     0
+  longphase beta 0.003  outside difficult threshold (-1.0000, 0)     units     24 wrong    0 p 1.00e+00 pairs       48 trusted       48 wrong      0 wrong trusted     0
+  longphase beta 0.003  outside easy      threshold (0.4286, 3)      units     80 wrong    0 p 1.00e+00 pairs      219 trusted      216 wrong      0 wrong trusted     0
+  outside cells with a threshold and a unit: 25; violating at 0.05/25 = 2.00e-03: 3; at 0.05: 6
+    whatshap beta 0.003 segdup: 3 of 35 units, p 1.64e-04
+    whatshap beta 0.003 lowmap: 2 of 69 units, p 1.85e-02
+    longphase beta 0.001 indel: 2 of 142 units, p 9.12e-03
+    longphase beta 0.003 indel: 3 of 190 units, p 2.01e-02
+    longphase beta 0.003 segdup: 4 of 35 units, p 3.94e-06
+    longphase beta 0.003 lowmap: 3 of 70 units, p 1.27e-03
+
+3. Causes of wrong relations: none = no read calls both variants (i); data = spanning majority backs the wrong relation or ties, window optimum not right (ii); search = window optimum (cap 15) strictly right (iii); other = majority right, optimum wrong or tied
+  whatshap  inside  all       wrong    285: none 4 (0.014), data 178 (0.625), search 60 (0.211), other 43 (0.151)
+      majority x optimum: none/right 1, none/wrong 3, right/right 34, right/tie 7, right/wrong 36, tie/right 4, tie/tie 3, tie/wrong 14, wrong/right 22, wrong/tie 2, wrong/wrong 159
+  whatshap  inside  indel     wrong    257: none 2 (0.008), data 161 (0.626), search 56 (0.218), other 38 (0.148)
+  whatshap  inside  lowmap    wrong      3: none 0 (0.000), data 2 (0.667), search 0 (0.000), other 1 (0.333)
+  whatshap  inside  tandem    wrong     25: none 2 (0.080), data 15 (0.600), search 4 (0.160), other 4 (0.160)
+  whatshap  outside all       wrong    346: none 0 (0.000), data 241 (0.697), search 73 (0.211), other 32 (0.092)
+      majority x optimum: right/right 33, right/tie 2, right/wrong 30, tie/right 3, tie/tie 1, tie/wrong 6, wrong/right 37, wrong/tie 4, wrong/wrong 230
+  whatshap  outside indel     wrong    124: none 0 (0.000), data 77 (0.621), search 29 (0.234), other 18 (0.145)
+  whatshap  outside segdup    wrong     71: none 0 (0.000), data 40 (0.563), search 30 (0.423), other 1 (0.014)
+  whatshap  outside lowmap    wrong    130: none 0 (0.000), data 112 (0.862), search 11 (0.085), other 7 (0.054)
+  whatshap  outside tandem    wrong     21: none 0 (0.000), data 12 (0.571), search 3 (0.143), other 6 (0.286)
+  longphase inside  all       wrong     36: none 6 (0.167), data 17 (0.472), search 10 (0.278), other 3 (0.083)
+      majority x optimum: none/tie 5, none/wrong 1, right/right 9, right/tie 1, right/wrong 2, tie/tie 1, wrong/right 1, wrong/wrong 16
+  longphase inside  indel     wrong     31: none 3 (0.097), data 15 (0.484), search 10 (0.323), other 3 (0.097)
+  longphase inside  tandem    wrong      5: none 3 (0.600), data 2 (0.400), search 0 (0.000), other 0 (0.000)
+  longphase outside all       wrong    401: none 243 (0.606), data 125 (0.312), search 32 (0.080), other 1 (0.002)
+      majority x optimum: none/tie 243, right/right 9, right/wrong 1, wrong/right 23, wrong/tie 1, wrong/wrong 124
+  longphase outside indel     wrong     48: none 27 (0.562), data 13 (0.271), search 7 (0.146), other 1 (0.021)
+  longphase outside segdup    wrong     46: none 0 (0.000), data 23 (0.500), search 23 (0.500), other 0 (0.000)
+  longphase outside lowmap    wrong    303: none 212 (0.700), data 89 (0.294), search 2 (0.007), other 0 (0.000)
+  longphase outside tandem    wrong      4: none 4 (1.000), data 0 (0.000), search 0 (0.000), other 0 (0.000)
+
+4. Outside-BED wrong relations against v5.0q's VCF (all records, BED ignored): both variants the same heterozygous call in v5.0q, and then whether v5.0q's phase gives the same relation as Q100
+  whatshap  outside wrong 346: genotype differs 0, same genotype, same relation 346, same genotype, other relation 0, same genotype, v5.0q unphased 0
+  longphase outside wrong 401: genotype differs 0, same genotype, same relation 401, same genotype, other relation 0, same genotype, v5.0q unphased 0
+
+whatshap: per pair outside/inside 10.12 (>= 3), share of wrong outside 0.548 (>= 0.2): holds; per unit 0.87 (reported)
+longphase: per pair outside/inside 97.90 (>= 3), share of wrong outside 0.918 (>= 0.2): holds; per unit 1.01 (reported)
+Q3 gate (descriptive chromosomes): finds a gap
+runtime 134 s

@@ -1,0 +1,11 @@
+tool-level test, HG002 ONT full depth, truth GIAB v5.0q, 21 chromosomes (docs/design/tool-run-ont-plan.md)
+         run  switches     pairs  per 10k  N50 kb  hours
+    stock_c3      1022   1964036    5.204     658   0.96
+    stock_c5       239   1967845    1.215    1044   0.99
+   stock_c15        61   1968027    0.310    1044   2.93
+    exact_c3       594   1960829    3.029     442   0.96
+    exact_c5       186   1964486    0.947     685   0.98
+   exact_c15        68   1967210    0.346     961   4.62
+WO1 cap 3: only stock wrong 888, only exact wrong 485, of 1956915 common pairs, p 8.44e-28; stock minus exact per 10k +2.06 [+1.57, +2.56] -> supported (level 0.0167)
+WO2 cap 5: only stock wrong 177, only exact wrong 136, of 1964295 common pairs, p 0.0236; stock minus exact per 10k +0.21 [-0.02, +0.44] -> not supported (level 0.0167)
+WO3 cap 15: only stock wrong 16, only exact wrong 25, of 1967201 common pairs, p 0.211; stock minus exact per 10k -0.05 [-0.13, +0.04] -> not significant (level 0.0167)

@@ -1,0 +1,144 @@
+L3 (development, docs/design/l3-outside-adjudication.md): 30x, whatshap 2.8 and LongPhase 2.0.2 as stored; HG002: platform q3_q100, key Q100 dipcall, inside = both variants in HG002_GRCh38_v5.0q_smvar.benchmark.bed; HG005: platform k3_hg005, key HPRC release 2 dipcall, inside = both variants in HG005_GRCh38_1_22_v4.2.1_benchmark.bed; labels: parents' ONT wf-human-variation sup calls, both flowcell replicates, `agree` filter, paternal allele by w5_called.paternal; pairs = Q3 and K3b cached consecutive pairs the key phases; groups indel first, then GIAB v3.6 stratum; chromosomes chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr21 chr22; p = (f - e)/(1 - 2e), 95% Wilson bounds with e at its own bound; L3-0 a_in >= 0.9; L3-1/L3-2 lower bound of p >= 0.5; reweighting counts groups with < 20 labelled disputes at 0
+  HG005 chr1 done
+  HG005 chr2 done
+  HG005 chr3 done
+  HG005 chr4 done
+  HG002 chr1 done
+  HG005 chr5 done
+  HG005 chr6 done
+  HG002 chr2 done
+  HG005 chr7 done
+  HG005 chr8 done
+  HG002 chr3 done
+  HG005 chr9 done
+  HG005 chr10 done
+  HG002 chr4 done
+  HG005 chr11 done
+  HG005 chr12 done
+  HG002 chr5 done
+  HG005 chr13 done
+  HG005 chr14 done
+  HG005 chr15 done
+  HG005 chr16 done
+  HG002 chr6 done
+  HG005 chr17 done
+  HG005 chr18 done
+  HG005 chr19 done
+  HG005 chr21 done
+  HG002 chr7 done
+  HG005 chr22 done
+  HG002 chr8 done
+  HG002 chr9 done
+  HG002 chr10 done
+  HG002 chr11 done
+  HG002 chr12 done
+  HG002 chr13 done
+  HG002 chr14 done
+  HG002 chr15 done
+  HG002 chr16 done
+  HG002 chr17 done
+  HG002 chr18 done
+  HG002 chr19 done
+  HG002 chr21 done
+  HG002 chr22 done
+
+columns: pairs, disputed (phaser differs from key), labelled share of undisputed / disputed, e = label differs from both where phaser and key agree, verdicts on labelled disputes, corrected phaser-error share p of disputes [95%]
+
+HG002 whatshap inside
+  all       pairs  2556197 disputed  12655 labelled 0.686/0.208 e 3197/1745938 = 1.83e-03 verdicts key  2549 phaser    84 p 0.970 [0.962, 0.976]
+  SNV only  pairs  1761465 disputed   1495 labelled 0.765/0.125 e 286/1346645 = 2.12e-04 verdicts key   164 phaser    23 p 0.877 [0.822, 0.917]
+  indel     pairs   794732 disputed  11160 labelled 0.510/0.219 e 2911/399293 = 7.29e-03 verdicts key  2385 phaser    61 p 0.982 [0.975, 0.988]
+  segdup    pairs    58226 disputed    330 labelled 0.707/0.100 e 14/40934 = 3.42e-04 verdicts key    32 phaser     1 p 0.970 [0.847, 0.995]
+  lowmap    pairs   110175 disputed     60 labelled 0.774/0.100 e 13/85245 = 1.53e-04 verdicts key     5 phaser     1 p 0.833 [0.436, 0.970]
+  tandem    pairs   211261 disputed   1068 labelled 0.705/0.123 e 245/148289 = 1.65e-03 verdicts key   110 phaser    21 p 0.841 [0.768, 0.894]
+  difficult pairs   133835 disputed      5 labelled 0.772/0.800 e 2/103358 = 1.94e-05 verdicts key     4 phaser     0 p 1.000 [0.510, 1.000]
+  easy      pairs  1247968 disputed     32 labelled 0.776/0.406 e 12/968819 = 1.24e-05 verdicts key    13 phaser     0 p 1.000 [0.772, 1.000]
+  reweighted by group, unlabelled groups at 0: 0.962
+
+HG002 whatshap outside
+  all       pairs   192393 disputed  14052 labelled 0.466/0.069 e 602/83176 = 7.24e-03 verdicts key   804 phaser   159 p 0.840 [0.814, 0.863]
+  SNV only  pairs   132287 disputed   8477 labelled 0.500/0.049 e 322/61854 = 5.21e-03 verdicts key   305 phaser   107 p 0.743 [0.698, 0.784]
+  indel     pairs    60106 disputed   5575 labelled 0.391/0.099 e 280/21322 = 1.31e-02 verdicts key   499 phaser    52 p 0.917 [0.887, 0.940]
+  segdup    pairs    58256 disputed   3838 labelled 0.424/0.058 e 118/23060 = 5.12e-03 verdicts key   178 phaser    43 p 0.809 [0.750, 0.857]
+  lowmap    pairs    26988 disputed   3738 labelled 0.390/0.028 e 86/9070 = 9.48e-03 verdicts key    68 phaser    37 p 0.650 [0.553, 0.738]
+  tandem    pairs    25969 disputed    890 labelled 0.565/0.097 e 109/14174 = 7.69e-03 verdicts key    59 phaser    27 p 0.689 [0.583, 0.780]
+  difficult pairs     2502 disputed      0 labelled 0.719/0.000 e 0/1800 = 0.00e+00 verdicts key     0 phaser     0 p nan [0.000, 1.000]
+  easy      pairs    18572 disputed     11 labelled 0.741/0.000 e 9/13750 = 6.55e-04 verdicts key     0 phaser     0 p nan [0.000, 1.000]
+  reweighted by group, unlabelled groups at 0: 0.801
+
+HG002 longphase inside
+  all       pairs  2515697 disputed   1111 labelled 0.698/0.261 e 2935/1754968 = 1.67e-03 verdicts key   277 phaser    13 p 0.957 [0.926, 0.975]
+  SNV only  pairs  1772754 disputed    405 labelled 0.766/0.353 e 291/1356808 = 2.14e-04 verdicts key   138 phaser     5 p 0.965 [0.921, 0.985]
+  indel     pairs   742943 disputed    706 labelled 0.536/0.208 e 2644/398160 = 6.64e-03 verdicts key   139 phaser     8 p 0.952 [0.901, 0.979]
+  segdup    pairs    58455 disputed    187 labelled 0.707/0.176 e 17/41185 = 4.13e-04 verdicts key    33 phaser     0 p 1.000 [0.896, 1.000]
+  lowmap    pairs   110175 disputed     18 labelled 0.775/0.500 e 10/85373 = 1.17e-04 verdicts key     9 phaser     0 p 1.000 [0.701, 1.000]
+  tandem    pairs   212367 disputed    120 labelled 0.709/0.333 e 250/150423 = 1.66e-03 verdicts key    35 phaser     5 p 0.876 [0.740, 0.947]
+  difficult pairs   134882 disputed      9 labelled 0.772/0.778 e 2/104161 = 1.92e-05 verdicts key     7 phaser     0 p 1.000 [0.646, 1.000]
+  easy      pairs  1256875 disputed     71 labelled 0.776/0.761 e 12/975666 = 1.23e-05 verdicts key    54 phaser     0 p 1.000 [0.934, 1.000]
+  reweighted by group, unlabelled groups at 0: 0.932
+
+HG002 longphase outside
+  all       pairs   200420 disputed  16655 labelled 0.451/0.019 e 491/82896 = 5.92e-03 verdicts key   225 phaser    90 p 0.717 [0.664, 0.765]
+  SNV only  pairs   149966 disputed  15048 labelled 0.457/0.016 e 274/61708 = 4.44e-03 verdicts key   169 phaser    67 p 0.718 [0.657, 0.773]
+  indel     pairs    50454 disputed   1607 labelled 0.434/0.049 e 217/21188 = 1.02e-02 verdicts key    56 phaser    23 p 0.713 [0.603, 0.805]
+  segdup    pairs    55808 disputed   2861 labelled 0.431/0.046 e 104/22815 = 4.56e-03 verdicts key   102 phaser    30 p 0.775 [0.696, 0.840]
+  lowmap    pairs    48779 disputed  11801 labelled 0.245/0.006 e 72/9073 = 7.94e-03 verdicts key    50 phaser    25 p 0.669 [0.555, 0.768]
+  tandem    pairs    24654 disputed    382 labelled 0.597/0.073 e 89/14500 = 6.14e-03 verdicts key    16 phaser    12 p 0.572 [0.389, 0.739]
+  difficult pairs     2473 disputed      1 labelled 0.722/1.000 e 0/1786 = 0.00e+00 verdicts key     1 phaser     0 p 1.000 [0.205, 1.000]
+  easy      pairs    18252 disputed      3 labelled 0.742/0.000 e 9/13534 = 6.65e-04 verdicts key     0 phaser     0 p nan [0.000, 1.000]
+  reweighted by group, unlabelled groups at 0: 0.689
+
+HG005 whatshap inside
+  all       pairs  1824535 disputed   1144 labelled 0.759/0.281 e 805/1383057 = 5.82e-04 verdicts key   227 phaser    94 p 0.707 [0.655, 0.755]
+  SNV only  pairs  1458946 disputed    265 labelled 0.771/0.226 e 41/1125169 = 3.64e-05 verdicts key    19 phaser    41 p 0.317 [0.213, 0.442]
+  indel     pairs   365589 disputed    879 labelled 0.707/0.297 e 764/257888 = 2.96e-03 verdicts key   208 phaser    53 p 0.799 [0.745, 0.843]
+  segdup    pairs    55326 disputed     56 labelled 0.738/0.143 e 3/40767 = 7.36e-05 verdicts key     6 phaser     2 p 0.750 [0.409, 0.929]
+  lowmap    pairs    86428 disputed     20 labelled 0.773/0.550 e 3/66834 = 4.49e-05 verdicts key     0 phaser    11 p 0.000 [0.000, 0.259]
+  tandem    pairs   110378 disputed     72 labelled 0.760/0.125 e 31/83802 = 3.70e-04 verdicts key     5 phaser     4 p 0.556 [0.266, 0.812]
+  difficult pairs   116666 disputed     10 labelled 0.778/0.200 e 0/90709 = 0.00e+00 verdicts key     0 phaser     2 p 0.000 [0.000, 0.658]
+  easy      pairs  1090148 disputed    107 labelled 0.773/0.280 e 4/843057 = 4.74e-06 verdicts key     8 phaser    22 p 0.267 [0.142, 0.444]
+  reweighted by group, unlabelled groups at 0: 0.639
+
+HG005 whatshap outside
+  all       pairs   671549 disputed  24818 labelled 0.434/0.145 e 2530/280951 = 9.01e-03 verdicts key  3353 phaser   258 p 0.936 [0.927, 0.945]
+  SNV only  pairs   262107 disputed   7283 labelled 0.627/0.094 e 476/159710 = 2.98e-03 verdicts key   582 phaser   103 p 0.852 [0.823, 0.877]
+  indel     pairs   409442 disputed  17535 labelled 0.309/0.167 e 2054/121241 = 1.69e-02 verdicts key  2771 phaser   155 p 0.963 [0.953, 0.971]
+  segdup    pairs    57094 disputed   2535 labelled 0.503/0.095 e 138/27441 = 5.03e-03 verdicts key   210 phaser    31 p 0.875 [0.826, 0.913]
+  lowmap    pairs    34053 disputed   2802 labelled 0.599/0.066 e 79/18719 = 4.22e-03 verdicts key   160 phaser    25 p 0.868 [0.810, 0.911]
+  tandem    pairs   103021 disputed   1896 labelled 0.620/0.130 e 253/62685 = 4.04e-03 verdicts key   204 phaser    43 p 0.829 [0.776, 0.872]
+  difficult pairs     8128 disputed     10 labelled 0.746/0.400 e 1/6055 = 1.65e-04 verdicts key     3 phaser     1 p 0.750 [0.300, 0.955]
+  easy      pairs    59811 disputed     40 labelled 0.750/0.200 e 5/44810 = 1.12e-04 verdicts key     5 phaser     3 p 0.625 [0.306, 0.863]
+  reweighted by group, unlabelled groups at 0: 0.931
+
+HG005 longphase inside
+  all       pairs  1834584 disputed    401 labelled 0.760/0.501 e 759/1393941 = 5.44e-04 verdicts key   110 phaser    91 p 0.547 [0.478, 0.615]
+  SNV only  pairs  1471271 disputed    209 labelled 0.772/0.555 e 38/1135172 = 3.35e-05 verdicts key    72 phaser    44 p 0.621 [0.530, 0.704]
+  indel     pairs   363313 disputed    192 labelled 0.713/0.443 e 721/258769 = 2.79e-03 verdicts key    38 phaser    47 p 0.447 [0.345, 0.553]
+  segdup    pairs    55593 disputed     35 labelled 0.738/0.257 e 4/41021 = 9.75e-05 verdicts key     7 phaser     2 p 0.778 [0.453, 0.937]
+  lowmap    pairs    86749 disputed     21 labelled 0.773/0.619 e 3/67077 = 4.47e-05 verdicts key     3 phaser    10 p 0.231 [0.082, 0.503]
+  tandem    pairs   111006 disputed     33 labelled 0.763/0.394 e 25/84668 = 2.95e-04 verdicts key     8 phaser     5 p 0.615 [0.355, 0.823]
+  difficult pairs   117772 disputed     11 labelled 0.777/0.455 e 0/91548 = 0.00e+00 verdicts key     3 phaser     2 p 0.600 [0.231, 0.882]
+  easy      pairs  1100151 disputed    109 labelled 0.773/0.697 e 6/850858 = 7.05e-06 verdicts key    51 phaser    25 p 0.671 [0.559, 0.766]
+  reweighted by group, unlabelled groups at 0: 0.396
+
+HG005 longphase outside
+  all       pairs   585410 disputed   6346 labelled 0.488/0.070 e 2093/282442 = 7.41e-03 verdicts key   284 phaser   160 p 0.642 [0.595, 0.686]
+  SNV only  pairs   252974 disputed   4316 labelled 0.655/0.061 e 355/162902 = 2.18e-03 verdicts key   164 phaser   100 p 0.622 [0.562, 0.678]
+  indel     pairs   332436 disputed   2030 labelled 0.362/0.089 e 1738/119540 = 1.45e-02 verdicts key   120 phaser    60 p 0.672 [0.598, 0.739]
+  segdup    pairs    53409 disputed   1489 labelled 0.518/0.050 e 117/26893 = 4.35e-03 verdicts key    56 phaser    18 p 0.759 [0.649, 0.844]
+  lowmap    pairs    31912 disputed   2290 labelled 0.628/0.032 e 43/18613 = 2.31e-03 verdicts key    52 phaser    21 p 0.713 [0.600, 0.805]
+  tandem    pairs    98129 disputed    492 labelled 0.662/0.215 e 191/64603 = 2.96e-03 verdicts key    50 phaser    56 p 0.472 [0.378, 0.567]
+  difficult pairs     8314 disputed     10 labelled 0.755/0.500 e 0/6267 = 0.00e+00 verdicts key     3 phaser     2 p 0.600 [0.230, 0.883]
+  easy      pairs    61210 disputed     35 labelled 0.761/0.171 e 4/46526 = 8.60e-05 verdicts key     3 phaser     3 p 0.500 [0.187, 0.813]
+  reweighted by group, unlabelled groups at 0: 0.687
+
+L3-0 whatshap: a_in 2549/2633 = 0.9681 [0.9607, 0.9742]
+L3-0 longphase: a_in 277/290 = 0.9552 [0.9248, 0.9736]
+L3-0: holds
+L3-1 HG005 whatshap outside: p 0.936 [0.927, 0.945]
+L3-1 HG005 longphase outside: p 0.642 [0.595, 0.686]
+L3-1: supported
+L3-2 HG002 whatshap outside: p 0.840 [0.814, 0.863]
+L3-2 HG002 longphase outside: p 0.717 [0.664, 0.765]
+L3-2: supported
+runtime 412 s

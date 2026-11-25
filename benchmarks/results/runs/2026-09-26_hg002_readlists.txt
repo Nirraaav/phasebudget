@@ -1,0 +1,8 @@
+HG002_chr20_fragments.json.gz cap 10: port 32450, whatshap phase 32450, symmetric difference 0
+HG002_chr20_fragments.json.gz cap 15: port 49291, whatshap phase 49291, symmetric difference 0
+HG002_chr20_fragments.json.gz cap 3: port 9353, whatshap phase 9353, symmetric difference 0
+HG002_chr20_fragments.json.gz cap 5: port 15869, whatshap phase 15869, symmetric difference 0
+HG002_chr20_half_fragments.json.gz cap 10: port 32192, whatshap phase 32192, symmetric difference 0
+HG002_chr20_half_fragments.json.gz cap 15: port 46491, whatshap phase 46491, symmetric difference 0
+HG002_chr20_half_fragments.json.gz cap 3: port 9379, whatshap phase 9379, symmetric difference 0
+HG002_chr20_half_fragments.json.gz cap 5: port 15986, whatshap phase 15986, symmetric difference 0

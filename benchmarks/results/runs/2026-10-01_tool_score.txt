@@ -1,0 +1,13 @@
+tool-level test, HG002 HiFi full depth, truth GIAB v5.0q, 21 chromosomes (docs/design/tool-run-plan.md)
+         run  switches     pairs  per 10k  N50 kb  hours
+    stock_c3       105   1916135    0.548     102   0.75
+    stock_c5        58   1940696    0.299     223   0.82
+   stock_c15        32   1941714    0.165     233   3.38
+    exact_c3        78   1912530    0.408      99   0.73
+    exact_c5        52   1927469    0.270     158   0.71
+   exact_c15        38   1939820    0.196     224   4.94
+     hiphase        10   1941560    0.052     236   3.28
+   longphase        29   1937641    0.150     235   0.42
+W1 cap 3: only stock wrong 66, only exact wrong 46, of 1887110 common pairs, p 0.0721; stock minus exact per 10k +0.11 [-0.04, +0.25] -> not supported (level 0.0167)
+W2 cap 5: only stock wrong 25, only exact wrong 25, of 1926445 common pairs, p 1; stock minus exact per 10k +0.00 [-0.10, +0.10] -> not significant (level 0.0167)
+W2 cap 15: only stock wrong 9, only exact wrong 9, of 1939814 common pairs, p 1; stock minus exact per 10k +0.00 [-0.04, +0.05] -> not significant (level 0.0167)

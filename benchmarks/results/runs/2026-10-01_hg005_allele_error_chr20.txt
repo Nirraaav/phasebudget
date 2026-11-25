@@ -1,0 +1,1 @@
+platform hg005, sample HG005, chr20, depth full, truth transmission: 96040 reads, 1048701 alleles, 119 wrong, e = 0.00011; sites 31594, with error above 0.2 (5 or more reads): 0, holding 0 of the errors

@@ -1,0 +1,11 @@
+chr20 10x: selected 18012 of 22398 reads
+        library: MEC on selected reads 12487.4 (alleles at unphased sites 0); switches 31/44237
+ whatshap phase: MEC on selected reads 12335.5 (alleles at unphased sites 44); switches 15/44198
+ library, tool sites: MEC 12335.5, blocks 203
+      whatshap phase: MEC 12335.5, blocks 203
+library alleles, tool blocks: MEC 12335.5
+switches, library on tool sites: (14, 44198) ; library on tool sites and tool blocks: (14, 44198)
+sites phased by both: 44943
+dropped sites: 21
+support [for, against] at dropped sites: [((1, 1), 20), ((2, 2), 1)]
+kept sites with for <= against: 0 of 44943

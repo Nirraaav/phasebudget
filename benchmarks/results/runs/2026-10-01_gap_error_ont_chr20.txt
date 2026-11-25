@@ -1,0 +1,13 @@
+chr20 ont: reads 100423, e 0.00503
+reads with no error: observed 91434, expected under independence 90334
+worst 5% of reads hold 0.62 of errors
+gap fraction [0.00,0.02): reads  78640, e 0.00346
+gap fraction [0.02,0.05): reads  10983, e 0.00557
+gap fraction [0.05,0.10): reads   7361, e 0.01197
+gap fraction [0.10,0.20): reads   2942, e 0.02455
+gap fraction [0.20,0.40): reads    474, e 0.03578
+gap fraction [0.40,1.01): reads     23, e 0.13889
+calls [3,10): reads  32923, e 0.00549
+calls [10,30): reads  40498, e 0.00520
+calls [30,100): reads  26459, e 0.00487
+calls [100,300): reads    543, e 0.00486

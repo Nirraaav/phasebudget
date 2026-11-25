@@ -1,0 +1,27 @@
+posterior calibration, platform hifi, truth GIAB v5.0q, cap 5 optimal, realign fragments with log-odds weights
+fitted on chr1, chr3, chr5, chr7, chr9, chr11, chr13, chr15, chr17, chr19, chr21 at full depth (981774 boundaries, 37 wrong): T = 0.7464, eps = 4.255e-06
+test full uncorrected: 946117 boundaries, observed 27, predicted 9.8, ratio 2.75 [1.57, 4.40], ECE 0.00002, log-loss 0.000315 -> not calibrated
+    p' in [1e-8, 1e-7) or below:   934709 boundaries, observed    8, predicted      0.00
+    p' in [1e-6, 1e-5):     6778 boundaries, observed    1, predicted      0.01
+    p' in [1e-4, 1e-3):        1 boundaries, observed    0, predicted      0.00
+    p' in [1e-3, 1e-2):     4621 boundaries, observed   12, predicted      5.63
+    p' in [1e-1, 1e0):        8 boundaries, observed    6, predicted      4.17
+test full   corrected: 946117 boundaries, observed 27, predicted 38.9, ratio 0.69 [0.38, 1.06], ECE 0.00002, log-loss 0.000222 -> calibrated
+    p' in [1e-6, 1e-5):   934709 boundaries, observed    8, predicted      3.98
+    p' in [1e-5, 1e-4):     6778 boundaries, observed    1, predicted      0.31
+    p' in [1e-3, 1e-2):     4621 boundaries, observed   12, predicted     30.43
+    p' in [1e-2, 1e-1):        1 boundaries, observed    0, predicted      0.02
+    p' in [1e-1, 1e0):        8 boundaries, observed    6, predicted      4.13
+test 10 uncorrected: 947597 boundaries, observed 35, predicted 27.7, ratio 1.26 [0.84, 1.71], ECE 0.00001, log-loss 0.000244 -> calibrated
+    p' in [1e-8, 1e-7) or below:   921774 boundaries, observed    6, predicted      0.00
+    p' in [1e-7, 1e-6):        5 boundaries, observed    0, predicted      0.00
+    p' in [1e-6, 1e-5):    18405 boundaries, observed    0, predicted      0.03
+    p' in [1e-4, 1e-3):        3 boundaries, observed    0, predicted      0.00
+    p' in [1e-3, 1e-2):     7375 boundaries, observed    7, predicted     10.03
+    p' in [1e-1, 1e0):       35 boundaries, observed   22, predicted     17.67
+test 10   corrected: 947597 boundaries, observed 35, predicted 75.1, ratio 0.47 [0.29, 0.64], ECE 0.00005, log-loss 0.000201 -> not calibrated
+    p' in [1e-6, 1e-5):   921774 boundaries, observed    6, predicted      3.94
+    p' in [1e-5, 1e-4):    18410 boundaries, observed    0, predicted      0.90
+    p' in [1e-3, 1e-2):     7377 boundaries, observed    7, predicted     52.59
+    p' in [1e-2, 1e-1):        1 boundaries, observed    0, predicted      0.01
+    p' in [1e-1, 1e0):       35 boundaries, observed   22, predicted     17.63

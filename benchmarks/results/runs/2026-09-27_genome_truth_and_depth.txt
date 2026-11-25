@@ -1,0 +1,25 @@
+Genome-wide truth and read depth, 27 Sep 2026. Truth: build_trio_truth.py per chromosome on the GIAB v4.2.1 calls (data/giab_wg/split); depth: genome_run.py download task (records x mean aligned length / length, records include secondary and supplementary).
+chrom  child_het_snvs  transmission_phased  hifiasm_compared  hifiasm_discordant  hifi_depth
+chr1   164074   132883   132542   102   34.5
+chr2   164264   133220   132897   357   34.7
+chr3   150430   122261   121696   269   35.4
+chr4   154958   125107   124941   113   38.5
+chr5   145457   114214   114083   38    35.0
+chr6   141655   112214   111361   62    35.2
+chr7   126665   99015    98316    144   34.2
+chr8   122043   99702    99474    38    34.6
+chr9   94409    76522    75970    149   28.8
+chr10  109177   86608    86041    45    35.4
+chr11  100392   78955    78725    25    33.8
+chr12  103189   82748    82386    644   34.5
+chr13  78989    65374    65221    116   30.7
+chr14  70069    55033    54876    50    28.9
+chr15  62768    48816    48758    30    27.7
+chr16  64516    51569    50873    94    32.0
+chr17  54843    44022    43764    23    32.9
+chr18  58121    46866    46808    11    34.2
+chr19  49895    38740    38248    16    29.1
+chr20  46344    36860    36834    13    pilot
+chr21  27258    21405    21389    66    32.0
+chr22  28009    21403    20890    15    28.0
+total  2117525  1693537  1686093  2420  -

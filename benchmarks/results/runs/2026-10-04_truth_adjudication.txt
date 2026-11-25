@@ -1,0 +1,47 @@
+track C, docs/design/truth-adjudication-plan.md: HG001 ONT sup rows of the registered confidence run; truths Platinum 2017 (NA12878.vcf.gz) and Platinum Pedigree (CEPH1463.GRCh38.family-truthset.ov.vcf.gz, NA12878, inside hq_regions_final.bed.gz); outside GIAB = an SNV outside HG001_GRCh38_1_22_v4.2.1_benchmark.bed; C2 level 0.05/36; adjudicable floor 0.3
+  30x whatshap: wrong pairs outside GIAB 3490, adjudicable 365 (0.105); Pedigree agrees with the phaser at 17 of 365 = 0.047, 95% CI 0.027 to 0.074 -> not decidable
+    wrong pairs inside GIAB, adjudicable 59: Pedigree agrees with the phaser at 3
+    C3 inside GIAB: truths disagree at 3 of 1756275 adjudicable pairs
+    C3 outside GIAB: truths disagree at 17 of 218780 adjudicable pairs
+    C2 30x whatshap against Pedigree: 1975055 pairs, 404 wrong; 25082 units, 221 wrong (base rate 8.81e-03)
+        beta 3e-04: trusted 0.9900 of pairs; units wrong 24/24797 = 9.68e-04; P(X >= k) 1.1e-06; wrong trusted pairs 28 of 404; untrusted wrong pairs by stratum segdups 145, lowmap 106, TR+homopol 68, easy 47, total 376
+        beta 1e-03: trusted 0.9968 of pairs; units wrong 74/24941 = 2.97e-03; P(X >= k) 0; wrong trusted pairs 122 of 404; untrusted wrong pairs by stratum segdups 94, lowmap 66, TR+homopol 48, easy 40, total 282
+        beta 3e-03: trusted 1.0000 of pairs; units wrong 221/25082 = 8.81e-03; P(X >= k) 1.45e-11; wrong trusted pairs 404 of 404; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.05, 0.98: 0.09, 0.99: 0.14, 1.00: 2.05
+  30x longphase: wrong pairs outside GIAB 2107, adjudicable 160 (0.076); Pedigree agrees with the phaser at 16 of 160 = 0.100, 95% CI 0.058 to 0.157 -> not decidable
+    wrong pairs inside GIAB, adjudicable 66: Pedigree agrees with the phaser at 3
+    C2 30x longphase against Pedigree: 1966336 pairs, 207 wrong; 25057 units, 137 wrong (base rate 5.47e-03)
+        beta 3e-04: trusted 0.9937 of pairs; units wrong 15/24836 = 6.04e-04; P(X >= k) 0.00971; wrong trusted pairs 23 of 207; untrusted wrong pairs by stratum segdups 72, lowmap 49, TR+homopol 33, easy 35, total 184
+        beta 1e-03: trusted 0.9970 of pairs; units wrong 26/24923 = 1.04e-03; P(X >= k) 0.441; wrong trusted pairs 48 of 207; untrusted wrong pairs by stratum segdups 51, lowmap 33, TR+homopol 29, easy 34, total 159
+        beta 3e-03: trusted 0.9970 of pairs; units wrong 26/24923 = 1.04e-03; P(X >= k) 1; wrong trusted pairs 48 of 207; untrusted wrong pairs by stratum segdups 51, lowmap 33, TR+homopol 29, easy 34, total 159
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.01, 0.98: 0.03, 0.99: 0.08, 1.00: 1.05
+  20x whatshap: wrong pairs outside GIAB 3526, adjudicable 399 (0.113); Pedigree agrees with the phaser at 17 of 399 = 0.043, 95% CI 0.025 to 0.067 -> not decidable
+    wrong pairs inside GIAB, adjudicable 68: Pedigree agrees with the phaser at 3
+    C2 20x whatshap against Pedigree: 1973808 pairs, 447 wrong; 25055 units, 245 wrong (base rate 9.78e-03)
+        beta 3e-04: trusted 0.9759 of pairs; units wrong 25/24646 = 1.01e-03; P(X >= k) 2.89e-07; wrong trusted pairs 29 of 447; untrusted wrong pairs by stratum segdups 146, lowmap 114, TR+homopol 91, easy 55, total 418
+        beta 1e-03: trusted 0.9975 of pairs; units wrong 111/24955 = 4.45e-03; P(X >= k) 0; wrong trusted pairs 195 of 447; untrusted wrong pairs by stratum segdups 71, lowmap 51, TR+homopol 54, easy 39, total 252
+        beta 3e-03: trusted 1.0000 of pairs; units wrong 245/25055 = 9.78e-03; P(X >= k) 6.49e-12; wrong trusted pairs 447 of 447; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.09, 0.98: 0.22, 0.99: 0.32, 1.00: 2.26
+  20x longphase: wrong pairs outside GIAB 2220, adjudicable 167 (0.075); Pedigree agrees with the phaser at 13 of 167 = 0.078, 95% CI 0.042 to 0.129 -> not decidable
+    wrong pairs inside GIAB, adjudicable 75: Pedigree agrees with the phaser at 3
+    C2 20x longphase against Pedigree: 1965912 pairs, 226 wrong; 25025 units, 155 wrong (base rate 6.19e-03)
+        beta 3e-04: trusted 0.9954 of pairs; units wrong 21/24856 = 8.45e-04; P(X >= k) 3.55e-05; wrong trusted pairs 44 of 226; untrusted wrong pairs by stratum segdups 49, lowmap 42, TR+homopol 32, easy 42, total 182
+        beta 1e-03: trusted 0.9977 of pairs; units wrong 31/24926 = 1.24e-03; P(X >= k) 0.133; wrong trusted pairs 57 of 226; untrusted wrong pairs by stratum segdups 40, lowmap 37, TR+homopol 30, easy 40, total 169
+        beta 3e-03: trusted 0.9977 of pairs; units wrong 31/24926 = 1.24e-03; P(X >= k) 1; wrong trusted pairs 57 of 226; untrusted wrong pairs by stratum segdups 40, lowmap 37, TR+homopol 30, easy 40, total 169
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.03, 0.98: 0.12, 0.99: 0.18, 1.00: 1.15
+  10x whatshap: wrong pairs outside GIAB 3526, adjudicable 503 (0.143); Pedigree agrees with the phaser at 13 of 503 = 0.026, 95% CI 0.014 to 0.044 -> not decidable
+    wrong pairs inside GIAB, adjudicable 211: Pedigree agrees with the phaser at 3
+    C2 10x whatshap against Pedigree: 1969016 pairs, 701 wrong; 24995 units, 382 wrong (base rate 1.53e-02)
+        beta 3e-04: trusted 0.8448 of pairs; units wrong 23/24137 = 9.53e-04; P(X >= k) 2.34e-06; wrong trusted pairs 36 of 701; untrusted wrong pairs by stratum segdups 186, lowmap 146, TR+homopol 117, easy 127, total 665
+        beta 1e-03: trusted 0.9870 of pairs; units wrong 115/24821 = 4.63e-03; P(X >= k) 0; wrong trusted pairs 193 of 701; untrusted wrong pairs by stratum segdups 117, lowmap 87, TR+homopol 79, easy 116, total 508
+        beta 3e-03: trusted 0.9898 of pairs; units wrong 152/24830 = 6.12e-03; P(X >= k) 1.24e-11; wrong trusted pairs 266 of 701; untrusted wrong pairs by stratum segdups 92, lowmap 65, TR+homopol 68, easy 113, total 435
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.52, 0.98: 0.95, 0.99: 1.71, 1.00: 3.56
+  10x longphase: wrong pairs outside GIAB 2359, adjudicable 292 (0.124); Pedigree agrees with the phaser at 13 of 292 = 0.045, 95% CI 0.024 to 0.075 -> not decidable
+    wrong pairs inside GIAB, adjudicable 222: Pedigree agrees with the phaser at 3
+    C2 10x longphase against Pedigree: 1956092 pairs, 500 wrong; 24979 units, 347 wrong (base rate 1.39e-02)
+        beta 3e-04: trusted 0.9711 of pairs; units wrong 34/24636 = 1.38e-03; P(X >= k) 9.89e-12; wrong trusted pairs 68 of 500; untrusted wrong pairs by stratum segdups 98, lowmap 58, TR+homopol 43, easy 152, total 432
+        beta 1e-03: trusted 0.9895 of pairs; units wrong 49/24801 = 1.98e-03; P(X >= k) 1.15e-05; wrong trusted pairs 93 of 500; untrusted wrong pairs by stratum segdups 81, lowmap 49, TR+homopol 41, easy 149, total 407
+        beta 3e-03: trusted 0.9895 of pairs; units wrong 49/24801 = 1.98e-03; P(X >= k) 0.999; wrong trusted pairs 93 of 500; untrusted wrong pairs by stratum segdups 81, lowmap 49, TR+homopol 41, easy 149, total 407
+        risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.29, 0.98: 0.38, 0.99: 0.48, 1.00: 2.56
+C1 (whatshap 30x): not decidable
+C2: 12 of 18 HG001 cells violate against the Pedigree truth -> attributed to neither

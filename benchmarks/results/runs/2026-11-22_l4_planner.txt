@@ -1,0 +1,521 @@
+L4 planner check (docs/design/l4-calibration-planner.md), development: both pools seen before. Depth 30x; phasers ('whatshap', 'longphase'); groups ('easy', 'difficult', 'segdup', 'lowmap', 'tandem', 'indel'); betas (0.0003, 0.001, 0.003); delta 0.05; unit 100 kb; K1b pool HG002 + 5 Pedigree HiFi, agreeing pairs; W1b pool HG002 + 20 HPRC, all pairs, consensus truth; bootstrap pools of [1, 2, 3, 4, 5, 6] genomes with replacement, B = 400, seed 20261122; prediction (1) at the full pool's unit rate r and each draw's n; agreement = prediction inside the 95% Wilson interval of the observed frequency; informative = prediction in [0.02, 0.98] or observed strictly in (0, 1); rule: >= 80% of informative cells agree; powers (0.8, 0.95)
+  K1b longphase done
+  K1b whatshap done
+  W1b longphase done
+  W1b whatshap done
+  K1b whatshap: 6 genomes, fast verdicts equal learn_then_test_by_group in 36 of 36 checks
+  K1b longphase: 6 genomes, fast verdicts equal learn_then_test_by_group in 36 of 36 checks
+  W1b whatshap: 21 genomes, fast verdicts equal learn_then_test_by_group in 36 of 36 checks
+  W1b longphase: 21 genomes, fast verdicts equal learn_then_test_by_group in 36 of 36 checks
+
+Planner: pool phaser group beta | genomes, units at t0 (N), wrong units (K), r = K/N, units per genome u, full pool certifies | units for power 0.8 / 0.95 | genomes
+  K1b whatshap  easy      0.0003 |  6  116,403      0 0.00e+00    19,400 cert |       9,985 / 9,985 | 1 / 1
+  K1b whatshap  easy      0.001  |  6  116,403      0 0.00e+00    19,400 cert |       2,995 / 2,995 | 1 / 1
+  K1b whatshap  easy      0.003  |  6  116,403      0 0.00e+00    19,400 cert |           998 / 998 | 1 / 1
+  K1b whatshap  difficult 0.0003 |  6   72,838      0 0.00e+00    12,140 cert |       9,985 / 9,985 | 1 / 1
+  K1b whatshap  difficult 0.001  |  6   72,838      0 0.00e+00    12,140 cert |       2,995 / 2,995 | 1 / 1
+  K1b whatshap  difficult 0.003  |  6   72,838      0 0.00e+00    12,140 cert |           998 / 998 | 1 / 1
+  K1b whatshap  segdup    0.0003 |  6   12,794      2 1.56e-04     2,132 none |    77,890 / 128,010 | 37 / 61
+  K1b whatshap  segdup    0.001  |  6   12,794      2 1.56e-04     2,132 cert |       6,299 / 9,154 | 3 / 5
+  K1b whatshap  segdup    0.003  |  6   12,794      2 1.56e-04     2,132 cert |       1,580 / 1,580 | 1 / 1
+  K1b whatshap  lowmap    0.0003 |  6   53,083      0 0.00e+00     8,847 cert |       9,985 / 9,985 | 2 / 2
+  K1b whatshap  lowmap    0.001  |  6   53,083      0 0.00e+00     8,847 cert |       2,995 / 2,995 | 1 / 1
+  K1b whatshap  lowmap    0.003  |  6   53,083      0 0.00e+00     8,847 cert |           998 / 998 | 1 / 1
+  K1b whatshap  tandem    0.0003 |  6   97,117      0 0.00e+00    16,186 cert |       9,985 / 9,985 | 1 / 1
+  K1b whatshap  tandem    0.001  |  6   97,117      0 0.00e+00    16,186 cert |       2,995 / 2,995 | 1 / 1
+  K1b whatshap  tandem    0.003  |  6   97,117      0 0.00e+00    16,186 cert |           998 / 998 | 1 / 1
+  K1b whatshap  indel     0.0003 |  6  123,214      3 2.43e-05    20,536 cert |     15,815 / 20,984 | 1 / 2
+  K1b whatshap  indel     0.001  |  6  123,214      3 2.43e-05    20,536 cert |       2,995 / 4,742 | 1 / 1
+  K1b whatshap  indel     0.003  |  6  123,214      3 2.43e-05    20,536 cert |           998 / 998 | 1 / 1
+  K1b longphase easy      0.0003 |  6  116,399      0 0.00e+00    19,400 cert |       9,985 / 9,985 | 1 / 1
+  K1b longphase easy      0.001  |  6  116,399      0 0.00e+00    19,400 cert |       2,995 / 2,995 | 1 / 1
+  K1b longphase easy      0.003  |  6  116,399      0 0.00e+00    19,400 cert |           998 / 998 | 1 / 1
+  K1b longphase difficult 0.0003 |  6   72,866      0 0.00e+00    12,144 cert |       9,985 / 9,985 | 1 / 1
+  K1b longphase difficult 0.001  |  6   72,866      0 0.00e+00    12,144 cert |       2,995 / 2,995 | 1 / 1
+  K1b longphase difficult 0.003  |  6   72,866      0 0.00e+00    12,144 cert |           998 / 998 | 1 / 1
+  K1b longphase segdup    0.0003 |  6   12,781      2 1.56e-04     2,130 none |    77,890 / 128,010 | 37 / 61
+  K1b longphase segdup    0.001  |  6   12,781      2 1.56e-04     2,130 cert |       6,299 / 9,154 | 3 / 5
+  K1b longphase segdup    0.003  |  6   12,781      2 1.56e-04     2,130 cert |       1,580 / 1,580 | 1 / 1
+  K1b longphase lowmap    0.0003 |  6   53,034      0 0.00e+00     8,839 cert |       9,985 / 9,985 | 2 / 2
+  K1b longphase lowmap    0.001  |  6   53,034      0 0.00e+00     8,839 cert |       2,995 / 2,995 | 1 / 1
+  K1b longphase lowmap    0.003  |  6   53,034      0 0.00e+00     8,839 cert |           998 / 998 | 1 / 1
+  K1b longphase tandem    0.0003 |  6   97,129      0 0.00e+00    16,188 cert |       9,985 / 9,985 | 1 / 1
+  K1b longphase tandem    0.001  |  6   97,129      0 0.00e+00    16,188 cert |       2,995 / 2,995 | 1 / 1
+  K1b longphase tandem    0.003  |  6   97,129      0 0.00e+00    16,188 cert |           998 / 998 | 1 / 1
+  K1b longphase indel     0.0003 |  6  122,922      2 1.63e-05    20,487 cert |     15,815 / 15,815 | 1 / 1
+  K1b longphase indel     0.001  |  6  122,922      2 1.63e-05    20,487 cert |       2,995 / 4,742 | 1 / 1
+  K1b longphase indel     0.003  |  6  122,922      2 1.63e-05    20,487 cert |           998 / 998 | 1 / 1
+  W1b whatshap  easy      0.0003 | 21  461,251      0 0.00e+00    21,964 cert |       9,985 / 9,985 | 1 / 1
+  W1b whatshap  easy      0.001  | 21  461,251      0 0.00e+00    21,964 cert |       2,995 / 2,995 | 1 / 1
+  W1b whatshap  easy      0.003  | 21  461,251      0 0.00e+00    21,964 cert |           998 / 998 | 1 / 1
+  W1b whatshap  difficult 0.0003 | 21  307,523      0 0.00e+00    14,644 cert |       9,985 / 9,985 | 1 / 1
+  W1b whatshap  difficult 0.001  | 21  307,523      0 0.00e+00    14,644 cert |       2,995 / 2,995 | 1 / 1
+  W1b whatshap  difficult 0.003  | 21  307,523      0 0.00e+00    14,644 cert |           998 / 998 | 1 / 1
+  W1b whatshap  segdup    0.0003 | 21   44,804      4 8.93e-05     2,134 cert |     35,044 / 48,130 | 17 / 23
+  W1b whatshap  segdup    0.001  | 21   44,804      4 8.93e-05     2,134 cert |       4,742 / 6,299 | 3 / 3
+  W1b whatshap  segdup    0.003  | 21   44,804      4 8.93e-05     2,134 cert |         998 / 1,580 | 1 / 1
+  W1b whatshap  lowmap    0.0003 | 21  197,097      8 4.06e-05     9,386 cert |     20,984 / 25,859 | 3 / 3
+  W1b whatshap  lowmap    0.001  | 21  197,097      8 4.06e-05     9,386 cert |       2,995 / 4,742 | 1 / 1
+  W1b whatshap  lowmap    0.003  | 21  197,097      8 4.06e-05     9,386 cert |         998 / 1,580 | 1 / 1
+  W1b whatshap  tandem    0.0003 | 21  368,807     61 1.65e-04    17,562 cert |    89,396 / 144,236 | 6 / 9
+  W1b whatshap  tandem    0.001  | 21  368,807     61 1.65e-04    17,562 cert |       6,299 / 9,154 | 1 / 1
+  W1b whatshap  tandem    0.003  | 21  368,807     61 1.65e-04    17,562 cert |       1,580 / 1,580 | 1 / 1
+  W1b whatshap  indel     0.0003 | 21  471,240   6515 1.38e-02    22,440 none |       never / never | never / never
+  W1b whatshap  indel     0.001  | 21  471,240   6515 1.38e-02    22,440 none |       never / never | never / never
+  W1b whatshap  indel     0.003  | 21  471,240   6515 1.38e-02    22,440 none |       never / never | never / never
+  W1b longphase easy      0.0003 | 21  461,382      0 0.00e+00    21,971 cert |       9,985 / 9,985 | 1 / 1
+  W1b longphase easy      0.001  | 21  461,382      0 0.00e+00    21,971 cert |       2,995 / 2,995 | 1 / 1
+  W1b longphase easy      0.003  | 21  461,382      0 0.00e+00    21,971 cert |           998 / 998 | 1 / 1
+  W1b longphase difficult 0.0003 | 21  308,125      0 0.00e+00    14,673 cert |       9,985 / 9,985 | 1 / 1
+  W1b longphase difficult 0.001  | 21  308,125      0 0.00e+00    14,673 cert |       2,995 / 2,995 | 1 / 1
+  W1b longphase difficult 0.003  | 21  308,125      0 0.00e+00    14,673 cert |           998 / 998 | 1 / 1
+  W1b longphase segdup    0.0003 | 21   44,723      4 8.94e-05     2,130 cert |     35,044 / 48,130 | 17 / 23
+  W1b longphase segdup    0.001  | 21   44,723      4 8.94e-05     2,130 cert |       4,742 / 6,299 | 3 / 3
+  W1b longphase segdup    0.003  | 21   44,723      4 8.94e-05     2,130 cert |         998 / 1,580 | 1 / 1
+  W1b longphase lowmap    0.0003 | 21  197,499      0 0.00e+00     9,405 cert |       9,985 / 9,985 | 2 / 2
+  W1b longphase lowmap    0.001  | 21  197,499      0 0.00e+00     9,405 cert |       2,995 / 2,995 | 1 / 1
+  W1b longphase lowmap    0.003  | 21  197,499      0 0.00e+00     9,405 cert |           998 / 998 | 1 / 1
+  W1b longphase tandem    0.0003 | 21  369,412      5 1.35e-05    17,591 cert |      9,985 / 15,815 | 1 / 1
+  W1b longphase tandem    0.001  | 21  369,412      5 1.35e-05    17,591 cert |       2,995 / 4,742 | 1 / 1
+  W1b longphase tandem    0.003  | 21  369,412      5 1.35e-05    17,591 cert |           998 / 998 | 1 / 1
+  W1b longphase indel     0.0003 | 21  467,674     26 5.56e-05    22,270 cert |     20,984 / 30,520 | 1 / 2
+  W1b longphase indel     0.001  | 21  467,674     26 5.56e-05    22,270 cert |       4,742 / 4,742 | 1 / 1
+  W1b longphase indel     0.003  | 21  467,674     26 5.56e-05    22,270 cert |         998 / 1,580 | 1 / 1
+
+Cells: pool phaser group beta m | observed certifying / B, 95% interval, predicted, agree, informative
+  K1b whatshap  easy      0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  easy      0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  difficult 0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  segdup    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  segdup    0.001  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  segdup    0.003  1 |  400/400 [0.990, 1.000] 0.977 DISAGREE info
+  K1b whatshap  segdup    0.0003 2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  segdup    0.001  2 |  181/400 [0.404, 0.501] 0.515 DISAGREE info
+  K1b whatshap  segdup    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  segdup    0.0003 3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  segdup    0.001  3 |  344/400 [0.823, 0.891] 0.854 agree info
+  K1b whatshap  segdup    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  segdup    0.0003 4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  segdup    0.001  4 |  384/400 [0.936, 0.975] 0.952 agree info
+  K1b whatshap  segdup    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  segdup    0.0003 5 |   57/400 [0.112, 0.180] 0.170 agree info
+  K1b whatshap  segdup    0.001  5 |  395/400 [0.971, 0.995] 0.986 agree info
+  K1b whatshap  segdup    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  segdup    0.0003 6 |   34/400 [0.061, 0.116] 0.138 DISAGREE info
+  K1b whatshap  segdup    0.001  6 |  400/400 [0.990, 1.000] 0.996 agree trivial
+  K1b whatshap  segdup    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b whatshap  lowmap    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  lowmap    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  tandem    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 1 |  400/400 [0.990, 1.000] 0.924 DISAGREE info
+  K1b whatshap  indel     0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b whatshap  indel     0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase easy      0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase difficult 0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase segdup    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase segdup    0.001  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase segdup    0.003  1 |  400/400 [0.990, 1.000] 0.978 DISAGREE info
+  K1b longphase segdup    0.0003 2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase segdup    0.001  2 |  188/400 [0.422, 0.519] 0.516 agree info
+  K1b longphase segdup    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase segdup    0.0003 3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase segdup    0.001  3 |  327/400 [0.777, 0.852] 0.857 DISAGREE info
+  K1b longphase segdup    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase segdup    0.0003 4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase segdup    0.001  4 |  377/400 [0.915, 0.961] 0.952 agree info
+  K1b longphase segdup    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase segdup    0.0003 5 |   50/400 [0.096, 0.161] 0.174 DISAGREE info
+  K1b longphase segdup    0.001  5 |  399/400 [0.986, 1.000] 0.987 agree info
+  K1b longphase segdup    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase segdup    0.0003 6 |   31/400 [0.055, 0.108] 0.135 DISAGREE info
+  K1b longphase segdup    0.001  6 |  400/400 [0.990, 1.000] 0.996 agree trivial
+  K1b longphase segdup    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  K1b longphase lowmap    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase lowmap    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase tandem    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 1 |  400/400 [0.990, 1.000] 0.963 DISAGREE info
+  K1b longphase indel     0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  K1b longphase indel     0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  easy      0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  difficult 0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  segdup    0.001  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  segdup    0.003  1 |  389/400 [0.951, 0.985] 0.993 DISAGREE info
+  W1b whatshap  segdup    0.0003 2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  segdup    0.001  2 |  335/400 [0.798, 0.870] 0.751 DISAGREE info
+  W1b whatshap  segdup    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.0003 3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  segdup    0.001  3 |  369/400 [0.892, 0.945] 0.947 DISAGREE info
+  W1b whatshap  segdup    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.0003 4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  segdup    0.001  4 |  390/400 [0.955, 0.986] 0.991 DISAGREE info
+  W1b whatshap  segdup    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.0003 5 |  160/400 [0.353, 0.449] 0.317 DISAGREE info
+  W1b whatshap  segdup    0.001  5 |  397/400 [0.978, 0.997] 0.999 DISAGREE info
+  W1b whatshap  segdup    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.0003 6 |  159/400 [0.351, 0.446] 0.322 DISAGREE info
+  W1b whatshap  segdup    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  segdup    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 1 |  102/400 [0.215, 0.300] 0.341 DISAGREE info
+  W1b whatshap  lowmap    0.001  1 |  400/400 [0.990, 1.000] 0.999 agree trivial
+  W1b whatshap  lowmap    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 2 |  346/400 [0.828, 0.895] 0.833 agree info
+  W1b whatshap  lowmap    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 3 |  397/400 [0.978, 0.997] 0.967 DISAGREE info
+  W1b whatshap  lowmap    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 4 |  400/400 [0.990, 1.000] 0.995 agree trivial
+  W1b whatshap  lowmap    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 5 |  400/400 [0.990, 1.000] 0.999 agree trivial
+  W1b whatshap  lowmap    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  lowmap    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 1 |  115/400 [0.245, 0.334] 0.164 DISAGREE info
+  W1b whatshap  tandem    0.001  1 |  386/400 [0.942, 0.979] 1.000 DISAGREE info
+  W1b whatshap  tandem    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 2 |  205/400 [0.464, 0.561] 0.390 DISAGREE info
+  W1b whatshap  tandem    0.001  2 |  396/400 [0.975, 0.996] 1.000 DISAGREE info
+  W1b whatshap  tandem    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 3 |  289/400 [0.677, 0.764] 0.575 DISAGREE info
+  W1b whatshap  tandem    0.001  3 |  399/400 [0.986, 1.000] 1.000 DISAGREE info
+  W1b whatshap  tandem    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 4 |  313/400 [0.739, 0.820] 0.711 DISAGREE info
+  W1b whatshap  tandem    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 5 |  307/400 [0.724, 0.806] 0.802 agree info
+  W1b whatshap  tandem    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.0003 6 |  273/400 [0.635, 0.726] 0.873 DISAGREE info
+  W1b whatshap  tandem    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  tandem    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b whatshap  indel     0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.0003 2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.0003 3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.0003 4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.0003 5 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  5 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  5 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.0003 6 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.001  6 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b whatshap  indel     0.003  6 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase easy      0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase easy      0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase difficult 0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.0003 1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase segdup    0.001  1 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase segdup    0.003  1 |  380/400 [0.924, 0.967] 0.993 DISAGREE info
+  W1b longphase segdup    0.0003 2 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase segdup    0.001  2 |  293/400 [0.687, 0.774] 0.742 agree info
+  W1b longphase segdup    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.0003 3 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase segdup    0.001  3 |  341/400 [0.814, 0.884] 0.941 DISAGREE info
+  W1b longphase segdup    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.0003 4 |    0/400 [0.000, 0.010] 0.000 agree trivial
+  W1b longphase segdup    0.001  4 |  388/400 [0.948, 0.983] 0.991 DISAGREE info
+  W1b longphase segdup    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.0003 5 |  152/400 [0.334, 0.428] 0.319 DISAGREE info
+  W1b longphase segdup    0.001  5 |  399/400 [0.986, 1.000] 0.999 agree info
+  W1b longphase segdup    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.0003 6 |  171/400 [0.380, 0.476] 0.318 DISAGREE info
+  W1b longphase segdup    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase segdup    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 1 |  193/400 [0.434, 0.531] 0.482 agree info
+  W1b longphase lowmap    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase lowmap    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 1 |  378/400 [0.918, 0.963] 0.939 agree info
+  W1b longphase tandem    0.001  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.0003 6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase tandem    0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 1 |  380/400 [0.924, 0.967] 0.814 DISAGREE info
+  W1b longphase indel     0.001  1 |  380/400 [0.924, 0.967] 1.000 DISAGREE info
+  W1b longphase indel     0.003  1 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 2 |  369/400 [0.892, 0.945] 0.993 DISAGREE info
+  W1b longphase indel     0.001  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.003  2 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 3 |  343/400 [0.820, 0.888] 1.000 DISAGREE info
+  W1b longphase indel     0.001  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.003  3 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 4 |  354/400 [0.850, 0.913] 1.000 DISAGREE info
+  W1b longphase indel     0.001  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.003  4 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 5 |  386/400 [0.942, 0.979] 1.000 DISAGREE info
+  W1b longphase indel     0.001  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.003  5 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.0003 6 |  390/400 [0.955, 0.986] 1.000 DISAGREE info
+  W1b longphase indel     0.001  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+  W1b longphase indel     0.003  6 |  400/400 [0.990, 1.000] 1.000 agree trivial
+
+cells 432; informative 51; informative agreeing 13 (0.255); trivial 381; worst |observed - predicted| 0.191 at ('W1b', 'whatshap', 'tandem', 0.0003, 6, 0.6825, 0.8731302026370532)
+L4 rule (>= 0.80 of informative cells agree): fails
+runtime 2957 s

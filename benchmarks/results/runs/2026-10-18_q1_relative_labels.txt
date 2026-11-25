@@ -1,0 +1,319 @@
+Q1 (development, docs/design/q1-relative-labels.md): children ('NA12879', 'NA12881', 'NA12882', 'NA12885', 'NA12886') (ONT ped_*), each labelled by the other four as siblings from the Platinum Pedigree truthset (CEPH1463.GRCh38.family-truthset.ov.vcf.gz, phase removed; biallelic records inside hq_regions_final.bed, one per position); HMM states IBD0/1/2, two IBD indicators flipping at 2e-08 per bp, initial (0.25, 0.5, 0.25), emissions over (IBS0, IBS1, both het, both hom alt) fitted per pair over all chromosomes jointly by EM (4 iterations, transitions fixed, start ((0.05, 0.45, 0.25, 0.25), (0.001, 0.5, 0.25, 0.249), (0.001, 0.001, 0.5, 0.498))); runs with P(IBD1) >= 0.99, 100000 bp trimmed from each run end; sibling relations combined when all agree; genotype versions (('exact', 0.0), ('e1e-3', 0.001), ('e1e-2', 0.01)) (seed 17, each genotype replaced by another with that probability); sibling sets all, two (first two of the others in ('NA12879', 'NA12881', 'NA12882', 'NA12885', 'NA12886') order), one (first); calibrate on eligible odd-chromosome pairs against the labels, score even-chromosome pairs against the Pedigree truth, eligible only and all; chromosomes 21 confirmatory; 100 kb units, delta 0.05; betas (0.0003, 0.001, 0.003); depths ('30', '20', '10'); phasers ('whatshap', 'longphase'); groups ('easy', 'difficult', 'lowmap', 'segdup', 'tandem', 'indel'); gate label error <= 0.0001; workers 10; labeller both (amendment 1: the HMM run rule above and, at the same site, no IBS0 site and at least 0.25 IBS1 sites within 250000 bp each side)
+truthset read: 5513831 records (106 s)
+fitted emissions per version and pair (rows IBD0, IBD1, IBD2; columns IBS0, IBS1, both het, both hom alt):
+  exact NA12882-NA12885: 3.74e-01 5.06e-01 3.11e-03 1.16e-01; 1.86e-03 7.35e-01 1.25e-01 1.39e-01; 1.25e-04 3.16e-02 5.54e-01 4.15e-01
+  exact NA12881-NA12882: 3.86e-01 4.98e-01 2.80e-03 1.14e-01; 2.07e-03 7.35e-01 1.23e-01 1.39e-01; 1.84e-04 3.48e-02 5.56e-01 4.09e-01
+  exact NA12879-NA12882: 3.86e-01 4.99e-01 2.97e-03 1.12e-01; 2.07e-03 7.43e-01 1.19e-01 1.36e-01; 2.05e-04 4.07e-02 5.44e-01 4.15e-01
+  exact NA12879-NA12886: 3.73e-01 5.08e-01 3.16e-03 1.16e-01; 1.98e-03 7.38e-01 1.25e-01 1.35e-01; 2.03e-04 3.95e-02 5.43e-01 4.18e-01
+  exact NA12885-NA12886: 3.99e-01 4.95e-01 2.89e-03 1.03e-01; 2.32e-03 7.36e-01 1.22e-01 1.40e-01; 1.24e-04 2.82e-02 5.61e-01 4.10e-01
+  exact NA12881-NA12886: 3.83e-01 5.00e-01 3.70e-03 1.14e-01; 1.25e-03 7.36e-01 1.24e-01 1.39e-01; 1.07e-04 4.24e-02 5.44e-01 4.14e-01
+  exact NA12879-NA12881: 3.88e-01 5.03e-01 3.09e-03 1.05e-01; 2.20e-03 7.42e-01 1.22e-01 1.33e-01; 1.68e-04 3.75e-02 5.40e-01 4.22e-01
+  exact NA12882-NA12886: 3.63e-01 5.29e-01 3.44e-03 1.04e-01; 1.62e-03 7.37e-01 1.26e-01 1.36e-01; 1.46e-04 3.48e-02 5.52e-01 4.13e-01
+  exact NA12879-NA12885: 3.87e-01 4.96e-01 3.17e-03 1.14e-01; 1.92e-03 7.36e-01 1.25e-01 1.37e-01; 1.41e-04 3.02e-02 5.49e-01 4.21e-01
+  exact NA12881-NA12885: 4.05e-01 4.86e-01 2.82e-03 1.06e-01; 2.13e-03 7.43e-01 1.21e-01 1.33e-01; 2.62e-04 5.04e-02 5.28e-01 4.21e-01
+  e1e-3 NA12879-NA12885: 3.94e-01 4.92e-01 3.20e-03 1.11e-01; 2.66e-03 7.36e-01 1.25e-01 1.36e-01; 8.48e-04 3.24e-02 5.47e-01 4.20e-01
+  e1e-3 NA12879-NA12882: 3.91e-01 4.96e-01 3.06e-03 1.11e-01; 2.81e-03 7.44e-01 1.18e-01 1.35e-01; 8.95e-04 4.28e-02 5.42e-01 4.15e-01
+  e1e-3 NA12882-NA12885: 3.80e-01 5.03e-01 3.13e-03 1.14e-01; 2.59e-03 7.35e-01 1.24e-01 1.38e-01; 8.29e-04 3.37e-02 5.52e-01 4.14e-01
+  e1e-3 NA12879-NA12886: 3.79e-01 5.05e-01 3.23e-03 1.13e-01; 2.71e-03 7.38e-01 1.24e-01 1.35e-01; 9.01e-04 4.16e-02 5.41e-01 4.17e-01
+  e1e-3 NA12879-NA12881: 3.93e-01 5.01e-01 3.26e-03 1.02e-01; 2.90e-03 7.43e-01 1.22e-01 1.33e-01; 8.55e-04 3.97e-02 5.38e-01 4.22e-01
+  e1e-3 NA12882-NA12886: 3.68e-01 5.25e-01 3.42e-03 1.03e-01; 2.33e-03 7.37e-01 1.25e-01 1.35e-01; 8.25e-04 3.69e-02 5.50e-01 4.12e-01
+  e1e-3 NA12881-NA12885: 4.10e-01 4.83e-01 2.95e-03 1.04e-01; 2.85e-03 7.43e-01 1.21e-01 1.33e-01; 9.25e-04 5.24e-02 5.26e-01 4.20e-01
+  e1e-3 NA12881-NA12886: 3.89e-01 4.95e-01 3.61e-03 1.12e-01; 1.98e-03 7.37e-01 1.23e-01 1.38e-01; 7.32e-04 4.46e-02 5.42e-01 4.13e-01
+  e1e-3 NA12881-NA12882: 3.91e-01 4.94e-01 2.86e-03 1.12e-01; 2.82e-03 7.36e-01 1.23e-01 1.39e-01; 8.56e-04 3.70e-02 5.54e-01 4.08e-01
+  e1e-3 NA12885-NA12886: 4.05e-01 4.90e-01 3.00e-03 1.02e-01; 3.07e-03 7.36e-01 1.22e-01 1.39e-01; 8.12e-04 3.04e-02 5.59e-01 4.10e-01
+  e1e-2 NA12879-NA12882: 4.07e-01 4.75e-01 4.70e-03 1.13e-01; 8.67e-03 7.42e-01 1.18e-01 1.31e-01; 6.63e-03 6.00e-02 5.28e-01 4.06e-01
+  e1e-2 NA12879-NA12881: 4.07e-01 4.85e-01 4.97e-03 1.03e-01; 8.61e-03 7.42e-01 1.21e-01 1.29e-01; 6.76e-03 5.75e-02 5.23e-01 4.13e-01
+  e1e-2 NA12879-NA12886: 3.92e-01 4.87e-01 4.98e-03 1.16e-01; 8.51e-03 7.38e-01 1.23e-01 1.30e-01; 6.68e-03 5.90e-02 5.26e-01 4.08e-01
+  e1e-2 NA12881-NA12882: 4.06e-01 4.75e-01 4.45e-03 1.15e-01; 8.70e-03 7.35e-01 1.22e-01 1.34e-01; 6.47e-03 5.49e-02 5.39e-01 3.99e-01
+  e1e-2 NA12879-NA12885: 4.09e-01 4.72e-01 4.79e-03 1.14e-01; 8.51e-03 7.37e-01 1.24e-01 1.31e-01; 6.82e-03 5.01e-02 5.32e-01 4.11e-01
+  e1e-2 NA12882-NA12885: 3.95e-01 4.83e-01 4.71e-03 1.18e-01; 8.33e-03 7.35e-01 1.23e-01 1.33e-01; 6.66e-03 5.15e-02 5.37e-01 4.05e-01
+  e1e-2 NA12882-NA12886: 3.84e-01 5.06e-01 5.02e-03 1.05e-01; 8.08e-03 7.37e-01 1.24e-01 1.31e-01; 6.55e-03 5.46e-02 5.35e-01 4.03e-01
+  e1e-2 NA12881-NA12886: 4.05e-01 4.72e-01 5.03e-03 1.18e-01; 7.65e-03 7.35e-01 1.23e-01 1.34e-01; 6.45e-03 6.17e-02 5.27e-01 4.05e-01
+  e1e-2 NA12885-NA12886: 4.22e-01 4.71e-01 4.73e-03 1.03e-01; 8.82e-03 7.37e-01 1.20e-01 1.34e-01; 6.71e-03 4.86e-02 5.44e-01 4.01e-01
+  e1e-2 NA12881-NA12885: 4.24e-01 4.67e-01 4.70e-03 1.04e-01; 8.66e-03 7.41e-01 1.21e-01 1.29e-01; 6.58e-03 6.94e-02 5.12e-01 4.12e-01
+labels done (357 s)
+cells done (773 s)
+
+labelled-pair coverage (share of scored pairs with a label, 30x whatshap), mean [min, max] over sibling choices, exact genotypes
+  NA12879: 1 sibling 0.048 [0.047, 0.049]; 2 siblings 0.082 [0.081, 0.085]; 4 siblings 0.125 [0.125, 0.125]
+  NA12881: 1 sibling 0.053 [0.050, 0.059]; 2 siblings 0.088 [0.086, 0.092]; 4 siblings 0.132 [0.132, 0.132]
+  NA12882: 1 sibling 0.049 [0.047, 0.051]; 2 siblings 0.085 [0.081, 0.088]; 4 siblings 0.135 [0.135, 0.135]
+  NA12885: 1 sibling 0.047 [0.041, 0.049]; 2 siblings 0.082 [0.077, 0.084]; 4 siblings 0.129 [0.129, 0.129]
+  NA12886: 1 sibling 0.051 [0.043, 0.059]; 2 siblings 0.088 [0.078, 0.096]; 4 siblings 0.136 [0.136, 0.136]
+
+label error per pair (wrong labels / labelled pairs) and eligible share, per version and sibling set, per depth and phaser pooled over children; conflicts are pairs where siblings disagree
+  exact  all  30x whatshap   4608/1635078 = 2.82e-03; eligible 0.131; conflicts 0
+  exact  all  30x longphase  4163/1510109 = 2.76e-03; eligible 0.131; conflicts 0
+  exact  all  20x whatshap   4601/1634216 = 2.82e-03; eligible 0.131; conflicts 0
+  exact  all  20x longphase  4181/1510104 = 2.77e-03; eligible 0.131; conflicts 0
+  exact  all  10x whatshap   4571/1629386 = 2.81e-03; eligible 0.131; conflicts 0
+  exact  all  10x longphase  4125/1500665 = 2.75e-03; eligible 0.131; conflicts 0
+  e1e-3  all  30x whatshap   4012/975840 = 4.11e-03; eligible 0.078; conflicts 747
+  e1e-3  all  30x longphase  3654/899363 = 4.06e-03; eligible 0.078; conflicts 693
+  e1e-3  all  20x whatshap   4009/975380 = 4.11e-03; eligible 0.078; conflicts 745
+  e1e-3  all  20x longphase  3671/899395 = 4.08e-03; eligible 0.078; conflicts 696
+  e1e-3  all  10x whatshap   3983/972394 = 4.10e-03; eligible 0.078; conflicts 739
+  e1e-3  all  10x longphase  3621/894631 = 4.05e-03; eligible 0.078; conflicts 687
+  e1e-2  all  30x whatshap   603/26144 = 2.31e-02; eligible 0.002; conflicts 94
+  e1e-2  all  30x longphase  513/23586 = 2.18e-02; eligible 0.002; conflicts 84
+  e1e-2  all  20x whatshap   601/26147 = 2.30e-02; eligible 0.002; conflicts 92
+  e1e-2  all  20x longphase  515/23599 = 2.18e-02; eligible 0.002; conflicts 82
+  e1e-2  all  10x whatshap   596/25992 = 2.29e-02; eligible 0.002; conflicts 94
+  e1e-2  all  10x longphase  516/23510 = 2.19e-02; eligible 0.002; conflicts 81
+  exact  two  30x whatshap   2749/1076972 = 2.55e-03; eligible 0.087; conflicts 0
+  exact  two  30x longphase  2488/994742 = 2.50e-03; eligible 0.086; conflicts 0
+  exact  two  20x whatshap   2744/1076374 = 2.55e-03; eligible 0.087; conflicts 0
+  exact  two  20x longphase  2489/994637 = 2.50e-03; eligible 0.086; conflicts 0
+  exact  two  10x whatshap   2721/1073231 = 2.54e-03; eligible 0.087; conflicts 0
+  exact  two  10x longphase  2457/988039 = 2.49e-03; eligible 0.086; conflicts 0
+  exact  one  30x whatshap   1660/609861 = 2.72e-03; eligible 0.049; conflicts 0
+  exact  one  30x longphase  1501/563132 = 2.67e-03; eligible 0.049; conflicts 0
+  exact  one  20x whatshap   1661/609493 = 2.73e-03; eligible 0.049; conflicts 0
+  exact  one  20x longphase  1497/563068 = 2.66e-03; eligible 0.049; conflicts 0
+  exact  one  10x whatshap   1651/607721 = 2.72e-03; eligible 0.049; conflicts 0
+  exact  one  10x longphase  1482/559821 = 2.65e-03; eligible 0.049; conflicts 0
+
+per child, exact genotypes, all siblings, 30x whatshap: per group eligible share, label errors/labelled
+  NA12879: easy 0.119 317/147798; difficult 0.126 38/16880; lowmap 0.142 63/17257; segdup 0.140 108/16484; tandem 0.124 120/27385; indel 0.133 255/83374
+  NA12881: easy 0.125 336/157554; difficult 0.138 58/18788; lowmap 0.147 81/18038; segdup 0.152 64/17923; tandem 0.132 97/29462; indel 0.139 239/88046
+  NA12882: easy 0.128 323/161939; difficult 0.140 40/19200; lowmap 0.149 67/18327; segdup 0.147 73/17419; tandem 0.134 130/30022; indel 0.142 247/90969
+  NA12885: easy 0.122 387/152358; difficult 0.134 49/18024; lowmap 0.144 65/17375; segdup 0.147 89/17076; tandem 0.127 161/28119; indel 0.137 320/86375
+  NA12886: easy 0.130 387/163867; difficult 0.141 50/19324; lowmap 0.148 34/18088; segdup 0.144 54/17002; tandem 0.135 109/30294; indel 0.142 247/90311
+
+exact genotypes, all siblings, scored on eligible even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact genotypes, all siblings, scored on all even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact all: easy at beta 1e-3 per child, depth, phaser: certified; trusted share of eligible easy pairs; trusted eligible over all easy pairs
+  NA12879: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12881: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12882: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12885: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12886: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+
+e1e-3 genotypes, all siblings, scored on eligible even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+e1e-3 genotypes, all siblings, scored on all even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+e1e-3 all: easy at beta 1e-3 per child, depth, phaser: certified; trusted share of eligible easy pairs; trusted eligible over all easy pairs
+  NA12879: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12881: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12882: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12885: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12886: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+
+e1e-2 genotypes, all siblings, scored on eligible even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+e1e-2 genotypes, all siblings, scored on all even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+e1e-2 all: easy at beta 1e-3 per child, depth, phaser: certified; trusted share of eligible easy pairs; trusted eligible over all easy pairs
+  NA12879: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12881: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12882: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12885: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12886: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+
+exact genotypes, two siblings, scored on eligible even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact genotypes, two siblings, scored on all even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact two: easy at beta 1e-3 per child, depth, phaser: certified; trusted share of eligible easy pairs; trusted eligible over all easy pairs
+  NA12879: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12881: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12882: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12885: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12886: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+
+exact genotypes, one siblings, scored on eligible even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact genotypes, one siblings, scored on all even-chromosome pairs; violation level 9.26e-05 over 540 cells; per beta and group, pooled over children, depths and phasers: cells certifying, violating, min p, trusted share of the scored pairs, wrong units/units
+  0.0003  easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.0003  indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.001   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   easy        0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   difficult   0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   lowmap      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   segdup      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   tandem      0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+  0.003   indel       0 of 30   0  1.00e+00  0.0000  0/0 = 0.00e+00
+
+exact one: easy at beta 1e-3 per child, depth, phaser: certified; trusted share of eligible easy pairs; trusted eligible over all easy pairs
+  NA12879: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12881: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12882: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12885: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+  NA12886: 30x wh no 0.000 0.000; 30x lo no 0.000 0.000; 20x wh no 0.000 0.000; 20x lo no 0.000 0.000; 10x wh no 0.000 0.000; 10x lo no 0.000 0.000
+
+Q1 gate (exact genotypes, all siblings): (a) worst label error over depth and phaser 2.82e-03 FAIL; (b) 0 violating of 540 cells at level 9.26e-05 ok; (c) easy at 1e-3 certifies in 0 of 30 cells FAIL, trusted share of all even-chromosome easy pairs 0.0000; mean eligible share of pairs 0.131
+Q1 gate: not passed

@@ -1,0 +1,2 @@
+posterior calibration, platform ont, truth GIAB v5.0q, cap 5 optimal, realign fragments with log-odds weights
+fitted on chr20 at full depth (44254 boundaries, 5 wrong): T = 0.7264, eps = 6.892e-287

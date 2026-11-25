@@ -1,0 +1,31 @@
+self-check: calibrate on odd, test on even HG002 ONT sup chromosomes (development)
+  ont 30x whatshap: 964126 pairs, 49 wrong; 12191 units, 31 wrong (base rate 2.54e-03)
+    beta 3e-04: trusted 0.9424 of pairs; units wrong 1/11951 = 8.37e-05; P(X >= k) 0.972; wrong trusted pairs 1 of 49; untrusted wrong pairs by stratum segdups 6, lowmap 3, TR+homopol 7, easy 11, total 48
+    beta 1e-03: trusted 0.9978 of pairs; units wrong 5/12153 = 4.11e-04; P(X >= k) 0.993; wrong trusted pairs 8 of 49; untrusted wrong pairs by stratum segdups 5, lowmap 2, TR+homopol 4, easy 11, total 41
+    beta 3e-03: trusted 1.0000 of pairs; units wrong 31/12191 = 2.54e-03; P(X >= k) 0.843; wrong trusted pairs 49 of 49; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.01, 0.98: 0.01, 0.99: 0.01, 1.00: 0.51
+  ont 30x longphase: 961075 pairs, 33 wrong; 12188 units, 32 wrong (base rate 2.63e-03)
+    beta 3e-04: trusted 0.9430 of pairs; units wrong 0/11949 = 0.00e+00; P(X >= k) 1; wrong trusted pairs 0 of 33; untrusted wrong pairs by stratum segdups 3, lowmap 2, TR+homopol 0, easy 18, total 33
+    beta 1e-03: trusted 0.9978 of pairs; units wrong 2/12152 = 1.65e-04; P(X >= k) 1; wrong trusted pairs 3 of 33; untrusted wrong pairs by stratum segdups 1, lowmap 0, TR+homopol 0, easy 18, total 30
+    beta 3e-03: trusted 0.9978 of pairs; units wrong 2/12152 = 1.65e-04; P(X >= k) 1; wrong trusted pairs 3 of 33; untrusted wrong pairs by stratum segdups 1, lowmap 0, TR+homopol 0, easy 18, total 30
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.00, 0.98: 0.00, 0.99: 0.00, 1.00: 0.34
+  ont 20x whatshap: 963633 pairs, 47 wrong; 12179 units, 31 wrong (base rate 2.55e-03)
+    beta 3e-04: trusted 0.9007 of pairs; units wrong 1/11883 = 8.42e-05; P(X >= k) 0.972; wrong trusted pairs 1 of 47; untrusted wrong pairs by stratum segdups 4, lowmap 2, TR+homopol 7, easy 10, total 46
+    beta 1e-03: trusted 0.9982 of pairs; units wrong 9/12155 = 7.40e-04; P(X >= k) 0.855; wrong trusted pairs 13 of 47; untrusted wrong pairs by stratum segdups 2, lowmap 1, TR+homopol 4, easy 10, total 34
+    beta 3e-03: trusted 1.0000 of pairs; units wrong 31/12179 = 2.55e-03; P(X >= k) 0.842; wrong trusted pairs 47 of 47; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 0, total 0
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.01, 0.98: 0.02, 0.99: 0.04, 1.00: 0.49
+  ont 20x longphase: 960581 pairs, 30 wrong; 12174 units, 29 wrong (base rate 2.38e-03)
+    beta 3e-04: trusted 0.9028 of pairs; units wrong 0/11876 = 0.00e+00; P(X >= k) 1; wrong trusted pairs 0 of 30; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 18, total 30
+    beta 1e-03: trusted 0.9982 of pairs; units wrong 1/12151 = 8.23e-05; P(X >= k) 1; wrong trusted pairs 1 of 30; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 18, total 29
+    beta 3e-03: trusted 0.9982 of pairs; units wrong 1/12151 = 8.23e-05; P(X >= k) 1; wrong trusted pairs 1 of 30; untrusted wrong pairs by stratum segdups 0, lowmap 0, TR+homopol 0, easy 18, total 29
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.00, 0.98: 0.00, 0.99: 0.00, 1.00: 0.31
+  ont 10x whatshap: 961461 pairs, 133 wrong; 12159 units, 91 wrong (base rate 7.48e-03)
+    beta 3e-04: trusted 0.8334 of pairs; units wrong 1/11819 = 8.46e-05; P(X >= k) 0.971; wrong trusted pairs 1 of 133; untrusted wrong pairs by stratum segdups 8, lowmap 9, TR+homopol 13, easy 53, total 132
+    beta 1e-03: trusted 0.9657 of pairs; units wrong 5/12047 = 4.15e-04; P(X >= k) 0.993; wrong trusted pairs 7 of 133; untrusted wrong pairs by stratum segdups 6, lowmap 8, TR+homopol 12, easy 53, total 126
+    beta 3e-03: trusted 0.9911 of pairs; units wrong 31/12118 = 2.56e-03; P(X >= k) 0.834; wrong trusted pairs 52 of 133; untrusted wrong pairs by stratum segdups 4, lowmap 3, TR+homopol 7, easy 45, total 81
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.02, 0.98: 0.13, 0.99: 0.41, 1.00: 1.38
+  ont 10x longphase: 954790 pairs, 146 wrong; 12156 units, 112 wrong (base rate 9.21e-03)
+    beta 3e-04: trusted 0.8376 of pairs; units wrong 0/11814 = 0.00e+00; P(X >= k) 1; wrong trusted pairs 0 of 146; untrusted wrong pairs by stratum segdups 3, lowmap 3, TR+homopol 1, easy 89, total 146
+    beta 1e-03: trusted 0.9913 of pairs; units wrong 2/12113 = 1.65e-04; P(X >= k) 1; wrong trusted pairs 3 of 146; untrusted wrong pairs by stratum segdups 1, lowmap 1, TR+homopol 1, easy 89, total 143
+    beta 3e-03: trusted 0.9913 of pairs; units wrong 2/12113 = 1.65e-04; P(X >= k) 1; wrong trusted pairs 3 of 146; untrusted wrong pairs by stratum segdups 1, lowmap 1, TR+homopol 1, easy 89, total 143
+    risk-coverage, error per 10,000 trusted pairs at coverage 0.95: 0.01, 0.98: 0.02, 0.99: 0.02, 1.00: 1.53

@@ -1,0 +1,10 @@
+commit a29afc0; Linux 7.0.0-34-generic x86_64; Python 3.12.3
+2000 variants, depth 30, heterozygosity 0.001, quality spread 2, 32 replicates, seed 8000 + 17 * replicate, signal posterior, fragile rule P(wrong) > 0.05, acceptance stitched with window 50, 4 iterations, boost 2, reads merged by HapCHAT's rule first; simulated data
+profile  cap     exact  adaptive      diff          95% interval    wins
+------------------------------------------------------------------------
+    ont    3   0.00355   0.00132  -0.00224 [-0.00276, -0.00171]  30:2  
+    ont    5   0.00050   0.00016  -0.00034 [-0.00053, -0.00016]  14:0  
+    ont   10   0.00009   0.00000  -0.00009 [-0.00019, -0.00000]   4:0  
+  noisy    3   0.01715   0.00824  -0.00891 [-0.01028, -0.00754]  32:0  
+  noisy    5   0.00343   0.00135  -0.00208 [-0.00256, -0.00160]  29:0  
+  noisy   10   0.00023   0.00006  -0.00017 [-0.00027, -0.00008]  10:0  

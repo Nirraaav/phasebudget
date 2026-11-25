@@ -1,0 +1,166 @@
+# start 2026-10-15T00:29:05+05:30 1199cc7
+W5 part 2 (development): child HG002 (cal_v5); parents' labels from ONT wf-human-variation sup calls (Clair3 1.0.8), PASS only, a missing record read as 0/0; calibrate on labelled odd-chromosome pairs against the labels, score all even-chromosome pairs against v5.0q; 100 kb units, delta 0.05
+
+30x whatshap: 2574590 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.06e-04     1.84e-05
+    difficult           0.775      2.66e-04     6.66e-05
+    lowmap              0.779      6.11e-04     1.15e-04
+    segdup              0.722      2.73e-03     1.05e-03
+    tandem              0.718      4.29e-03     1.88e-03
+    indel               0.575      2.69e-02     2.80e-02
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.81e-04     1.84e-05
+    difficult           0.775      2.47e-04     6.65e-05
+    lowmap              0.779      6.11e-04     1.61e-04
+    segdup              0.716      2.00e-03     9.67e-04
+    tandem              0.718      4.55e-03     1.71e-03
+    indel               0.574      2.67e-02     2.79e-02
+
+30x longphase: 2406339 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.13e-04     8.27e-05
+    difficult           0.776      2.72e-04     8.17e-05
+    lowmap              0.782      4.79e-04     1.67e-04
+    segdup              0.732      2.37e-03     3.80e-04
+    tandem              0.747      3.09e-03     5.11e-04
+    indel               0.699      9.73e-03     4.46e-04
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.80e-04     8.27e-05
+    difficult           0.776      2.54e-04     7.27e-05
+    lowmap              0.782      5.46e-04     1.89e-04
+    segdup              0.725      1.83e-03     4.06e-04
+    tandem              0.747      3.25e-03     5.35e-04
+    indel               0.698      9.65e-03     4.54e-04
+
+20x whatshap: 2572342 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.07e-04     2.96e-05
+    difficult           0.775      2.66e-04     3.80e-05
+    lowmap              0.779      6.34e-04     1.96e-04
+    segdup              0.723      2.76e-03     7.48e-04
+    tandem              0.719      4.31e-03     1.86e-03
+    indel               0.575      2.67e-02     2.82e-02
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.80e-04     3.06e-05
+    difficult           0.775      2.47e-04     3.80e-05
+    lowmap              0.779      6.11e-04     1.85e-04
+    segdup              0.716      1.98e-03     7.79e-04
+    tandem              0.718      4.54e-03     1.78e-03
+    indel               0.575      2.65e-02     2.82e-02
+
+20x longphase: 2408316 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.10e-04     9.93e-05
+    difficult           0.776      2.73e-04     1.36e-04
+    lowmap              0.782      4.91e-04     1.45e-04
+    segdup              0.731      2.04e-03     1.05e-03
+    tandem              0.746      3.10e-03     5.74e-04
+    indel               0.693      1.06e-02     7.37e-04
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.79e-04     9.84e-05
+    difficult           0.776      2.54e-04     1.27e-04
+    lowmap              0.782      5.35e-04     1.67e-04
+    segdup              0.725      1.56e-03     9.06e-04
+    tandem              0.746      3.12e-03     5.92e-04
+    indel               0.692      1.06e-02     7.46e-04
+
+10x whatshap: 2563224 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.06e-04     5.09e-05
+    difficult           0.775      2.66e-04     1.33e-04
+    lowmap              0.779      6.34e-04     2.42e-04
+    segdup              0.724      2.64e-03     1.15e-03
+    tandem              0.720      4.28e-03     2.24e-03
+    indel               0.579      2.61e-02     3.57e-02
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.79e-04     5.19e-05
+    difficult           0.775      2.56e-04     1.42e-04
+    lowmap              0.779      5.88e-04     2.77e-04
+    segdup              0.717      1.79e-03     1.09e-03
+    tandem              0.720      4.47e-03     2.16e-03
+    indel               0.578      2.59e-02     3.56e-02
+
+10x longphase: 2406185 pairs
+  replicate A: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.08e-04     1.09e-04
+    difficult           0.776      2.73e-04     1.28e-04
+    lowmap              0.782      4.59e-04     2.13e-04
+    segdup              0.730      2.32e-03     8.33e-04
+    tandem              0.744      3.21e-03     1.13e-03
+    indel               0.676      1.25e-02     3.88e-03
+  replicate B: group  labelled_share  label_errors  wrong_by_truth_labelled
+    easy                0.779      2.78e-04     1.10e-04
+    difficult           0.775      2.55e-04     1.37e-04
+    lowmap              0.782      4.82e-04     2.46e-04
+    segdup              0.723      1.77e-03     9.09e-04
+    tandem              0.744      3.22e-03     1.11e-03
+    indel               0.676      1.22e-02     3.79e-03
+
+violation level 2.31e-04; per calibration, beta and group, pooled over depths and phasers: cells certifying, violating, trusted share, wrong units/units
+  oracle  0.001   easy       12 of 12   0  0.9973  10/141922 = 7.05e-05
+  oracle  0.001   difficult  12 of 12   0  0.9988  10/110574 = 9.04e-05
+  oracle  0.001   lowmap     10 of 12   0  0.7506  38/67674 = 5.62e-04
+  oracle  0.001   segdup      0 of 12   0  0.0000  0/0 = 0.00e+00
+  oracle  0.001   tandem      6 of 12   0  0.3878  32/59512 = 5.38e-04
+  oracle  0.001   indel       0 of 12   0  0.0000  0/0 = 0.00e+00
+  A       0.0003  easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.0003  difficult   0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.0003  lowmap      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.0003  segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.0003  tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.0003  indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   difficult   0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   lowmap      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.001   indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.003   easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.003   difficult   6 of 6    0  0.9991  8/55327 = 1.45e-04
+  A       0.003   lowmap      6 of 6    0  0.9883  37/43116 = 8.58e-04
+  A       0.003   segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.003   tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  A       0.003   indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  difficult   0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  lowmap      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.0003  indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   difficult   0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   lowmap      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.001   indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.003   easy        0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.003   difficult   6 of 6    0  0.9995  18/55362 = 3.25e-04
+  B       0.003   lowmap      6 of 6    0  0.9025  18/41257 = 4.36e-04
+  B       0.003   segdup      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.003   tandem      0 of 6    0  0.0000  0/0 = 0.00e+00
+  B       0.003   indel       0 of 6    0  0.0000  0/0 = 0.00e+00
+	Command being timed: ".venv/bin/python -u benchmarks/w5_called.py"
+	User time (seconds): 419.76
+	System time (seconds): 11.75
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:17.04
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8294644
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3501728
+	Voluntary context switches: 316
+	Involuntary context switches: 1075
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 64
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+# end 2026-10-15T00:36:22+05:30

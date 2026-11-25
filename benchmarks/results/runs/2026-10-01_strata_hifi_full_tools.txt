@@ -1,0 +1,21 @@
+switch error by GIAB v3.6 GRCh38 stratification, inside the v5.0q benchmark regions (post hoc)
+platform hifi; depth full; cap 15; weights logodds; chromosomes chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr21, chr22; pipelines whatshap phase, whatshap, optimal
+a pair is in a stratum when both its variants are; windows 1 Mb; sign-flip test 20000 resamples, seed 0, exact at <= 20 non-zero windows
+objective / certified optimum, pooled: whatshap phase n/a, whatshap 0.9327, optimal 1.0000
+
+    stratum  v5 sites | whatshap pha    pairs    sw   /10k |     whatshap    pairs    sw   /10k |      optimal    pairs    sw   /10k
+------------------------------------------------------------------------------------------------------------------------------------
+        all   1973512 |               1941714    32   0.16 |               1941720    36   0.19 |               1939899    38   0.20
+    segdups     46887 |                 42822     7   1.63 |                 42824     9   2.10 |                 42778     6   1.40
+     lowmap     99975 |                 63479     5   0.79 |                 63479     5   0.79 |                 63459     5   0.79
+ TR+homopol    108861 |                 17127     9   5.25 |                 17131    10   5.84 |                 17119     9   5.26
+       easy   1634336 |               1438833     2   0.01 |               1438833     2   0.01 |               1437583     5   0.03
+
+paired on common pairs: first = whatshap phase, second = whatshap; first/second = pairs where only that one is wrong
+    stratum    pairs  first second  both    sign p windows    flip p exact
+--------------------------------------------------------------------------
+        all  1941714      0      0    32  1.00e+00       0  1.00e+00   yes
+    segdups    42822      0      0     7  1.00e+00       0  1.00e+00   yes
+     lowmap    63479      0      0     5  1.00e+00       0  1.00e+00   yes
+ TR+homopol    17127      0      0     9  1.00e+00       0  1.00e+00   yes
+       easy  1438833      0      0     2  1.00e+00       0  1.00e+00   yes

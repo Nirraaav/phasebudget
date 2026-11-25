@@ -1,0 +1,6 @@
+wrong-bin clustering, HG002 ont whatshap phase, depth 10, 100 kb bins: 163 wrong bins of 24914; 2,000 uniform placements per chromosome, seed 0
+  wrong-bin pairs within   1 bins: observed 1, expected 1.14, p 0.6912
+  wrong-bin pairs within   2 bins: observed 2, expected 2.27, p 0.6677
+  wrong-bin pairs within   5 bins: observed 5, expected 5.61, p 0.6632
+  wrong-bin pairs within  10 bins: observed 10, expected 11.15, p 0.6787
+  wrong-bin pairs within 100 bins: observed 101, expected 103.91, p 0.6322
