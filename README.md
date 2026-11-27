@@ -20,8 +20,10 @@ Course project for DH607, Koita Centre for Digital Health, IIT Bombay
 
 | | |
 |---|---|
-| Paper, the full account of the project | [`docs/submission/paper.pdf`](docs/submission/paper.pdf) |
-| Registrations | [`docs/design/`](docs/design/): each test's data, thresholds and decision rules, written before its test data were read |
+| **Start here:** report for a general reader, with a primer on DNA and sequencing, figures and a glossary | [`docs/presentation/report.pdf`](docs/presentation/report.pdf) |
+| Paper, the full technical account | [`docs/submission/paper.pdf`](docs/submission/paper.pdf) |
+| Registrations | [`docs/design/`](docs/design/): each test's data, thresholds and decision rules, written before its test data were read; the commit times are in the private development repository (see [History](#history)) |
+| Where each number comes from | [`docs/presentation/numbers.tsv`](docs/presentation/numbers.tsv): 74 of the report's main numbers, each with its run file and line; `python3 scripts/check_report_numbers.py` checks them |
 
 ## Results
 
@@ -30,7 +32,7 @@ HG002 and HG005, HG001's family of seven (Platinum Pedigree), and 39 Human
 Pangenome (HPRC) genomes of African, admixed American and East Asian
 ancestry, with PacBio HiFi and Oxford Nanopore reads at 10 to 30-fold.
 **Registered** means the plan and decision rule were committed before the
-test data were read; **development** means the data had been seen.
+test data were read (by the author's record; see [History](#history)); **development** means the data had been seen.
 
 ### Read selection
 
@@ -155,6 +157,7 @@ benchmarks/results/  run outputs (runs/) behind every number in the paper
 scripts/             data download with md5 checks, read subsampling, run drivers
 docs/design/         problem statement, proofs, metric definitions, and every registration
 docs/literature/     prior-art matrix with verification status, and the novelty gate
+docs/presentation/   the report for a general reader (report.pdf) and numbers.tsv
 docs/submission/     the paper (paper.tex, partA.tex, paper.pdf)
 docs/followup/       the problem statement of the certificates, and the literature gate
 PROPOSAL.md          the course proposal
@@ -171,8 +174,13 @@ Platinum Pedigree reads are streamed from their public buckets by
 `scripts/reproduce_paper.sh` runs the read-selection measurements in order;
 the certificate tests are run per registration, as each design note says.
 `requirements-lock.txt` pins the environment the genome-wide runs used.
-Every run file in `benchmarks/results/runs/` starts with the command,
-parameters and commit that produced it. The large runs took one to four days
+Each run file in `benchmarks/results/runs/` starts with a header describing
+the run and its parameters; about 40 per cent also name the commit that
+produced it. `docs/presentation/numbers.tsv` links the report's main numbers
+to the run file and line they come from, and
+`python3 scripts/check_report_numbers.py` checks that each one is still
+there (70 of 74 point to a run file; the other 4 are sums or ratios of
+numbers that do). The large runs took one to four days
 each on a 96-core server; one hifiasm assembly took up to 67 hours.
 
 ## What is not claimed
@@ -184,6 +192,9 @@ each on a 96-core server; one hifiasm assembly took up to 67 hours.
 - The guarantee assumes independent 100 kb units. In the hard strata wrong
   units cluster (181 of 576 tests); merging units to 200 and 300 kb changed
   no decision (development).
+- Every lower-depth subsample in the read-selection runs used one random
+  seed. Reruns with seeds 1 to 3 (`PHASEBUDGET_SEEDS`,
+  `benchmarks/score_seeds.py`) are in progress.
 - NA12877 and NA12878 are related to calibration genomes in some tests;
   HG005 is the unrelated test genome and has no indel truth. Truth sets have
   their own errors, and outside benchmark regions some counted errors may be
@@ -198,7 +209,11 @@ The development history is kept in a separate repository: the commits whose
 times date each registration (the hashes quoted in `docs/design/`), the lab
 notebook and planning memos that design notes refer to, earlier drafts, and
 notes that served only the development machine. Copies of third-party papers
-are not redistributed.
+are not redistributed, which is why that repository stays private. Readers
+therefore cannot check the registration times themselves: GitHub's push
+times for it are saved in
+`benchmarks/results/runs/2026-10-01_github_push_events.tsv`, but they come
+from the author's account.
 
 ## Citation and licence
 

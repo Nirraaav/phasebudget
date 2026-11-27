@@ -151,9 +151,10 @@ strata~\cite{dwarshuis2024}, which is Vovk's conditional
 construction~\cite{vovk2012} applied to Learn then Test.
 
 Every confirmatory claim below comes from a test registered before its test
-data were read: a design document committed and pushed to a public
+data were read: a design document committed and pushed to the development
 repository, with hypotheses, levels and decision rules; deviations are dated
-amendments. Results marked \emph{post hoc} were found after the data were
+amendments. That repository is not public, so the times are the author's
+record (Section~\ref{sec:design}). Results marked \emph{post hoc} were found after the data were
 seen; results marked \emph{development} come from a gate written before it
 was computed, on data that may have been seen before.
 
@@ -415,8 +416,12 @@ becomes the assumption that the labels are right on eligible pairs.
 \section{Certified phase relations: registered experiments}\label{sec:design}
 
 \paragraph{Registration.} Each test was a design document committed and
-pushed to a public repository before its test reads were drawn; the push
-time is the third-party record. It fixed the score, unit, grid, $\delta=0.05$,
+pushed to the project's development repository on GitHub before its test
+reads were drawn. GitHub's push times are saved in
+\nolinkurl{benchmarks/results/runs/2026-10-01_github_push_events.tsv}, but
+that repository is not public (it holds copies of third-party papers), so
+readers cannot check these times themselves and must rely on the author's
+record. The design document fixed the score, unit, grid, $\delta=0.05$,
 $\beta\in\{3\times10^{-4},10^{-3},3\times10^{-3}\}$, depths, phasers,
 hypotheses, Bonferroni levels and decision rules. Deviations are dated
 amendments stating whether results had been seen; none below was made after

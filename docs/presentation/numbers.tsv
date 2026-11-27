@@ -1,0 +1,75 @@
+section	claim	value_in_report	run_file	line	evidence_substring
+sec:whatshap (Section 5.3 How far from the best)	WhatsHap greedy share of optimum weight, HG002 Nanopore, cap 15	0.963	benchmarks/results/runs/2026-10-01_ont_score.txt	57	0.999    1044     1030  0.9634  0.9627
+sec:whatshap (Section 5.3 How far from the best)	WhatsHap greedy share of optimum weight, HG005 HiFi, cap 15	0.934	benchmarks/results/runs/2026-10-01_hg005_score.txt	106	H5-1 whatshap / certified optimum, full depth, cap 15: pooled 0.9343
+sec:whatshap (Section 5.3 How far from the best)	WhatsHap greedy share of optimum weight, HG002 HiFi, cap 15	0.933	benchmarks/results/runs/2026-10-01_objective_scale.txt	28	 full  15 weight |   0.9327
+sec:whatshap (Section 5.3 How far from the best)	random read choice share of optimum weight, HG002 HiFi, cap 15	0.905 (90.5%)	benchmarks/results/runs/2026-10-01_objective_scale.txt	28	full  15 weight |   0.9327  0.9306  chr6 |   0.9236  0.9215  chr8 | 0.9054
+sec:whatshap (Section 5.3 How far from the best)	my Python port picks the same reads as WhatsHap 2.8 (small inputs)	1,500 of 1,500	NOT FOUND		full 1,500-case count is in the development notes; tests/fixtures/whatshap_readselection.json keeps 160 of the cases and tests/test_whatshap_port.py checks them
+sec:whatshap (Section 5.3 How far from the best)	published (paper) rule picks the same reads as WhatsHap 2.8	178 of 1,500	NOT FOUND		full 1,500-case count is in the development notes; tests/fixtures/whatshap_readselection.json keeps 160 of the cases and tests/test_whatshap_port.py checks them
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: wrong links, stock WhatsHap	1,022 (count not printed; gives 5.20 per 10k)	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	3	stock_c3      1022   1964036
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: wrong links, optimal selection	594 (count not printed; gives 3.03 per 10k)	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	6	exact_c3       594   1960829
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: wrong links per 10k, stock	5.204 (5.20)	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	3	1964036    5.204
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: wrong links per 10k, optimal	3.029 (3.03)	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	6	1960829    3.029
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: errors cut by optimal selection	42 per cent	NOT FOUND		computed: 1 - 3.029/5.204 = 0.418 (tool_score_ont lines 3 and 6)
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: discordant links stock-only / optimal-only	888 / 485	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	9	only stock wrong 888, only exact wrong 485
+sec:result1 (Section 5.7)	Test 1 ONT cap 3: sign test p	8.4e-28	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	9	of 1956915 common pairs, p 8.44e-28
+sec:result1 (Section 5.7)	Test 1 ONT cap 5: discordant links and p	177 / 136, p 0.024	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	10	only stock wrong 177, only exact wrong 136, of 1964295 common pairs, p 0.0236
+sec:result1 (Section 5.7)	Test 1 ONT cap 15: discordant links and p	16 / 25, p 0.21	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	11	only stock wrong 16, only exact wrong 25, of 1967201 common pairs, p 0.211
+sec:result1 (Section 5.7)	HiFi cap 3: discordant links and p	66 / 46, p 0.072	benchmarks/results/runs/2026-10-01_tool_score.txt	11	only stock wrong 66, only exact wrong 46, of 1887110 common pairs, p 0.0721
+sec:result1 (Section 5.7)	ONT cap 3 block N50, stock (kb)	658	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	3	1964036    5.204     658
+sec:result1 (Section 5.7)	ONT cap 3 block N50, optimal (kb)	442	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	6	1960829    3.029     442
+sec:result1 (Section 5.7)	vote model mean error against three baselines	0.61 vs 2.22 to 3.59	benchmarks/results/runs/2026-10-01_ont_prediction_score.txt	21	model: mean absolute error 0.611
+sec:result1 (Section 5.7)	library ONT cap 3 gap before tie fix (per 10k)	8.81	benchmarks/results/runs/2026-10-01_ont_prediction_score.txt	3	cap  3 fullx   +8.81 [+8.06, +9.56]
+sec:result1 (Section 5.7)	tied sites left by greedy / optimal, ONT cap 3	1,640 / 33	benchmarks/results/runs/2026-10-01_tie_rescore_ont.txt	3	1640      33
+sec:result1 (Section 5.7)	gap after leaving ties unphased (per 10k)	1.33	benchmarks/results/runs/2026-10-01_tie_rescore_ont.txt	3	+1.33 [+0.80, +1.85]
+sec:result1 (Section 5.7)	tool-level gap whatshap phase, ONT cap 3 (per 10k)	2.06	benchmarks/results/runs/2026-10-02_tool_score_ont.txt	9	stock minus exact per 10k +2.06
+sec:result1 (Section 5.7)	HiPhase errors per 10k links, HG002 HiFi	0.052	benchmarks/results/runs/2026-10-01_tool_score.txt	9	hiphase        10   1941560    0.052
+sec:result1 (Section 5.7)	LongPhase errors per 10k links, HG002 HiFi	0.150	benchmarks/results/runs/2026-10-01_tool_score.txt	10	longphase        29   1937641    0.150
+sec:result1 (Section 5.7)	stock WhatsHap cap 15 errors per 10k links, HG002 HiFi	0.165	benchmarks/results/runs/2026-10-01_tool_score.txt	5	stock_c15        32   1941714    0.165
+sec:held (Section 7)	Test 2: one genome-wide cutoff broke on every HG001 cell (the 18 HG002 cells held)	18 of 18	benchmarks/results/runs/2026-10-03_confidence_test.txt	62	E1 validity: 18 violations in 36 certified cells of 36
+sec:held (Section 7)	easy-region cells held, Tests 3 to 6	0 of 582	NOT FOUND		sum 126+18+234+90+114 over five run files (rows below plus w1b Pedigree and held-out easy); total stated in docs/submission/paper.tex line 555
+sec:held (Section 7)	Test 3 easy cells (part of 582)	126 cells, 0 broke	benchmarks/results/runs/2026-10-13_stratified_score.txt	744	S1 (easy, all test genomes): 126 cells, level 3.97e-04, violating 0
+sec:held (Section 7)	Test 4 HG001 easy cells (part of 582)	18 cells, 0 broke	benchmarks/results/runs/2026-10-14_third_score.txt	222	V1 (easy): 18 cells with test pairs of 18 registered, 18 certifying, level 2.78e-03, violating 0
+sec:held (Section 7)	Test 5 HPRC easy cells (part of 582)	234 cells, 0 broke	benchmarks/results/runs/2026-10-18_w1_score.txt	4264	A1 (easy): 234 testable cells
+sec:held (Section 7)	hard cells that broke, tuned on one person (Tests 3 to 5); both breaks are in V2, 1,170 = 540+72 (S2,S3) + 90 (V2) + 468 (A2)	2 of 1,170	benchmarks/results/runs/2026-10-14_third_score.txt	223	49 certifying, level 5.56e-04, violating 2
+sec:held (Section 7)	Test 6: family cells broken by 21-person pool (all 163 in the 360 hard cells of 540)	163 of 360	benchmarks/results/runs/2026-10-18_w1b_score.txt	2644	540 cells with test pairs of 540 registered, 475 certifying, level 9.26e-05, violating 163
+sec:floor (Section 8)	label floor: stretches needed at beta 1e-3	2,995	benchmarks/results/runs/2026-11-22_l4_planner.txt	13	K1b whatshap  easy      0.001  |  6  116,403      0 0.00e+00    19,400 cert |       2,995 / 2,995
+sec:floor (Section 8)	segdup stretches, HG002 Nanopore 30x, WhatsHap	2,868	benchmarks/results/runs/2026-11-22_l5_unit_independence.txt	193	cal_r10        30 whatshap  segdup      2868
+sec:floor (Section 8)	segdup stretches, HG002 Nanopore 30x, LongPhase	2,924	benchmarks/results/runs/2026-11-22_l5_unit_independence.txt	199	cal_r10        30 longphase segdup      2924
+sec:assembly (Section 9)	pooled agreeing segdup stretches, six people, WhatsHap	18,667	benchmarks/results/runs/2026-10-26_k1b_score.txt	6	pool agree beta 0.001  indel cert (135110 units), segdup cert (18667 units)
+sec:assembly (Section 9)	NA12877 segdup WhatsHap: links where phaser and assembly agree / wrong (87,000 = 111,422 x 0.7807)	87,000 / 6	benchmarks/results/runs/2026-10-26_k1b_score.txt	15	segdup    pairs   111422 relates 0.7820 agree 0.7807 wrong agreeing     6
+sec:assembly (Section 9)	NA12877 segdup WhatsHap: other links / wrong (24,000 = 111,422 - 87,000)	24,000 / 1,147	benchmarks/results/runs/2026-10-26_k1b_score.txt	15	agree 0.7807 wrong agreeing     6 others  1147
+sec:assembly (Section 9)	Test 7: no test cell broke (62 = cells with a trusted stretch, counted in the development notes)	0 of 62	benchmarks/results/runs/2026-10-26_k1b_score.txt	210	K1b-1 validity: supported
+sec:assembly (Section 9)	Test 7 smallest p, NA12877 WhatsHap segdup	p 0.82, 2 bad of 3,119	benchmarks/results/runs/2026-10-26_k1b_score.txt	34	units   3119 wrong   2 p 8.18e-01
+sec:assembly (Section 9)	Test 7 segdup share trusted at 1e-3, NA12877 WhatsHap / LongPhase	0.78 / 0.77	benchmarks/results/runs/2026-10-26_k1b_score.txt	205	K1b-3 NA12877 segdup: whatshap certifies share 0.7757, longphase certifies share 0.7683
+sec:assembly (Section 9)	Test 7 segdup share trusted at 1e-3, HG005 WhatsHap / LongPhase (0.9647 rounds to 0.96, report says 0.97)	0.96 / 0.97	benchmarks/results/runs/2026-10-26_k1b_score.txt	208	K1b-3 HG005 segdup: whatshap certifies share 0.9634, longphase certifies share 0.9647
+sec:keys (Section 10)	Test 11: cells broken on all links, 19 new HPRC people	1,221 of 2,052	benchmarks/results/runs/2026-11-24_l8_test.txt	4136	all: violating cells 1221
+sec:keys (Section 10)	Test 11: cells broken on key links	0 of 2,052	benchmarks/results/runs/2026-11-24_l8_test.txt	4137	key: violating cells 0
+sec:keys (Section 10)	Test 11: cells broken on random links of the key's share	1,159	benchmarks/results/runs/2026-11-24_l8_test.txt	4138	random: violating cells 1159
+sec:genes (Section 11)	end rule far pairs answered, NA12877 WhatsHap (chain rule 55%)	55 to 90 per cent	benchmarks/results/runs/2026-11-22_l2_end_calls.txt	34	<= 100 kb 0.8955 (K4b 10-100 kb 0.5529)
+sec:genes (Section 11)	end rule far pairs answered, HG005 WhatsHap (chain rule 86%)	86 to 94 per cent	benchmarks/results/runs/2026-11-22_l2_end_calls.txt	54	<= 100 kb 0.9411 (K4b 10-100 kb 0.8621)
+sec:outside (Section 12)	HG002 HiFi WhatsHap inside region: links / wrong	2,556,197 / 12,655	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	46	whatshap  all       inside    pairs   2556197 wrong  12655
+sec:outside (Section 12)	HG002 HiFi WhatsHap outside region: links / wrong	192,393 / 14,052	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	47	whatshap  all       outside   pairs    192393 wrong  14052
+sec:outside (Section 12)	HG002 HiFi LongPhase inside region: links / wrong	2,515,697 / 1,111	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	81	longphase all       inside    pairs   2515697 wrong   1111
+sec:outside (Section 12)	HG002 HiFi LongPhase outside region: links / wrong	200,420 / 16,655	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	82	longphase all       outside   pairs    200420 wrong  16655
+sec:outside (Section 12)	share of WhatsHap errors outside the region	53%	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	50	whatshap  all       outside/inside per pair 14.75, per unit 1.00; share of wrong outside 0.526
+sec:outside (Section 12)	share of LongPhase errors outside the region	94%	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	85	longphase all       outside/inside per pair 188.17, per unit 2.12; share of wrong outside 0.937
+sec:outside (Section 12)	reads support the error, WhatsHap outside	72.6 per cent	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	213	data 10207 (0.726)
+sec:outside (Section 12)	better solver would fix, WhatsHap outside	18.1 per cent	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	213	search 2538 (0.181)
+sec:outside (Section 12)	no read spans the link, LongPhase outside	62.2 per cent	benchmarks/results/runs/2026-10-17_q3_outside_benchmark.txt	228	none 10354 (0.622)
+sec:flags (Section 13)	flags catch wrong tandem links (even chromosomes)	79.5 per cent	benchmarks/results/runs/2026-10-17_q2_hard_flags.txt	628	tandem     (a) recall 0.795
+sec:flags (Section 13)	flags catch confidently wrong tandem links	98.8 per cent of 165	benchmarks/results/runs/2026-10-17_q2_hard_flags.txt	628	confident 0.988 of 165
+sec:flags (Section 13)	flagged cells that broke	0 of 90	benchmarks/results/runs/2026-10-17_q2_hard_flags.txt	625	(b) flagged violating cells 0 of 90
+sec:flags (Section 13)	single-flag recall, tandem: solver cost / allele balance / depth and 31-mers	0.810 / 0.786 / 0.097	benchmarks/results/runs/2026-10-17_q2_hard_flags.txt	10	depth 0.097 0.086, balance 0.786 0.089, mec 0.810 0.086, kmer 0.097
+sec:parents (Section 14)	parent labels, one Clair3 run: label error vs WhatsHap error (easy)	2.06e-4 vs 1.84e-5	benchmarks/results/runs/2026-10-15_w5_noise_rerun.txt	56	all             easy       0.779 2.06e-04 1.84e-05
+sec:parents (Section 14)	parent labels, two runs must agree: labelled share / label error (easy)	77.6% / 1.33e-5	benchmarks/results/runs/2026-10-15_w5_noise_rerun.txt	62	agree           easy       0.776 1.33e-05
+sec:parents (Section 14)	HG002 labelled-links-only: cells broken; easy links trusted	0 of 108; 77.4%	benchmarks/results/runs/2026-10-27_r3_rerun_cal_v5.txt	163	(0 violating of 108); (b) easy at 1e-3 certifies in 6 of 6 cells, trusted share of all easy pairs 0.7740
+sec:parents (Section 14)	Test 9 HG005: cells broken	0 of 90	benchmarks/results/runs/2026-10-27_r3b_score.txt	145	(0 violating of 90)
+sec:parents (Section 14)	Test 9 smallest p	0.44	benchmarks/results/runs/2026-10-27_r3b_score.txt	148	90 agree cells have pairs, min p 4.376e-01
+sec:parents (Section 14)	Test 9 even-chromosome easy links trusted	99.3%	benchmarks/results/runs/2026-10-27_r3b_score.txt	150	trusted share of all even easy pairs 0.9926
+sec:na12878 (Section 15)	Test 12 P1: pooled cutoffs, NA12878 cells broken on all links	31 of 108	benchmarks/results/runs/2026-11-24_l7_score.txt	335	'all': 31
+sec:na12878 (Section 15)	Test 12 P2: cells broken on family-key links / random links	0 of 108 / 20	benchmarks/results/runs/2026-11-24_l7_score.txt	335	violating cells: {'all': 31, 'key': 0, 'random': 20}
+sec:na12878 (Section 15)	Test 12 P3: assembly rule cells broken (36 = rows of the P3 table, level 1.389e-03 = 0.05/36)	0 of 36	benchmarks/results/runs/2026-11-24_l7_score.txt	387	P3: supported
+sec:na12878 (Section 15)	Test 12 P3: segdup links trusted at 1e-3, WhatsHap	78 per cent	benchmarks/results/runs/2026-11-24_l7_score.txt	346	whatshap  0.001  segdup    cert units   3170 wrong   1 p 9.58e-01 share 0.7794
+sec:na12878 (Section 15)	Test 12 P4: far gene pairs answered by end rule, WhatsHap	90 per cent	benchmarks/results/runs/2026-11-24_l7_score.txt	377	10-100 kb share 0.9041
+sec:na12878 (Section 15)	Test 12 P4: far gene pairs answered by end rule, LongPhase	89 per cent	benchmarks/results/runs/2026-11-24_l7_score.txt	379	10-100 kb share 0.8927
+sec:na12878 (Section 15)	Test 12 P5: share of errors outside region, WhatsHap / LongPhase	91 / 85 per cent	benchmarks/results/runs/2026-11-24_l7_score.txt	382	share of wrong outside 0.9135

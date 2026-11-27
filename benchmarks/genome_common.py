@@ -166,6 +166,24 @@ elif PLATFORM == "q3_q100":
     VCF_SAMPLE = "syndip"  # dipcall's sample name
 elif PLATFORM not in ("hifi", "hg005"):
     raise ValueError(f"unknown PHASEBUDGET_PLATFORM {PLATFORM}")
+# `PHASEBUDGET_SEEDS=1,2,3` re-draws the lower depths of the HiFi, ONT or HG005 run with other
+# subsample seeds (the registered run used seed 0). A depth label "20s1" is 20-fold, seed 1;
+# the full slice is downloaded once per chromosome and shared by all draws.
+SEEDS = tuple(int(s) for s in os.environ.get("PHASEBUDGET_SEEDS", "").split(",") if s)
+if SEEDS:
+    if PLATFORM not in ("hifi", "ont", "hg005"):
+        raise ValueError("PHASEBUDGET_SEEDS applies to the hifi, ont and hg005 runs only")
+    DATA = DATA.with_name(DATA.name + "_seeds")
+    DEPTHS = tuple(f"{d}s{s}" for d in DEPTHS if d != "full" for s in SEEDS)
+    MODES = ("realign",)
+
+
+def depth_seed(depth: str) -> tuple[float, int]:
+    """`(target depth, subsample seed)` of a depth label; plain labels use seed 0."""
+    base, _, seed = depth.partition("s")
+    return float(base), int(seed or 0)
+
+
 EXTENSION = (PLATFORM in ("cal_r10", "hg005_ont", "cal_v5", "hg001_v5", "w4_grch38", "w4_chm13",
                           "q3_q100", "k1_hg005", "k3_hg005")
              or PLATFORM.startswith(("ped_", "hprc_", "phifi_")))

@@ -49,9 +49,12 @@ elif common.PLATFORM == "hg005":
     LIBRARY = ("whatshap", "optimal", "two_level", "merge_optimal_1e3", "connected")
     LOOPS = ()
     TOOLS = ("whatshap",)
+if common.SEEDS:
+    # Extra subsample draws are only for the greedy-against-optimal comparison.
+    LIBRARY, LOOPS, TOOLS = ("whatshap", "optimal"), (), ()
 CAPS = (3, 5, 10, 15)
 LOOP_CAPS = (3, 5)
-TARGETS = {d: float(d) for d in common.DEPTHS if d != "full"}
+TARGETS = {d: common.depth_seed(d)[0] for d in common.DEPTHS if d != "full"}
 # Doubling the estimates for ONT's deeper slices stalled the run on 29 September:
 # every job asked for 7 GB plus the reserve, while measured peaks were at most 1.6 GB.
 MEMORY_SCALE = 1.0
@@ -75,8 +78,19 @@ def task_download(chrom: str) -> None:
     os.chdir(d)
     bam = d / "full.bam"
     part = d / "full.part.bam"
-    pysam.view("-b", "--output-fmt-option", "level=1", "-o", str(part), common.BAM_URL, chrom,
-               catch_stdout=False)
+    for attempt in range(1, 7):
+        try:
+            pysam.view("-b", "--output-fmt-option", "level=1", "-o", str(part), common.BAM_URL,
+                       chrom, catch_stdout=False)
+            break
+        except pysam.utils.SamtoolsError as error:
+            # Remote reads drop under load; a cached index from a failed read is not trusted.
+            if attempt == 6:
+                raise
+            print(f"{chrom}: download failed ({error}); retry {attempt} in 120 s", flush=True)
+            for cached in list(d.glob("*.bai")) + list(d.glob("*.csi")):
+                cached.unlink()
+            time.sleep(120)
     part.rename(bam)
     pysam.index(str(bam))
     handle = pysam.AlignmentFile(str(bam))
@@ -115,7 +129,8 @@ def task_subsample(chrom: str, depth: str) -> None:
         return
     part = d / f"{depth}.part.bam"
     pysam.view("-b", "--output-fmt-option", "level=1", "--subsample", f"{fraction:.6f}",
-               "--subsample-seed", "0", "-o", str(part), str(d / "full.bam"), catch_stdout=False)
+               "--subsample-seed", str(common.depth_seed(depth)[1]), "-o", str(part),
+               str(d / "full.bam"), catch_stdout=False)
     part.rename(d / f"{depth}.bam")
     pysam.index(str(d / f"{depth}.bam"))
     print(f"{chrom}: {depth}-fold subsample, fraction {fraction:.4f}")
@@ -277,6 +292,10 @@ def read_growth_gb(starting=()) -> float:
 def run_scheduler(jobs, max_jobs, min_free_gb, max_bam_chromosomes, reserve_gb) -> int:
     (common.DATA / "done").mkdir(parents=True, exist_ok=True)
     (common.DATA / "logs").mkdir(parents=True, exist_ok=True)
+    # No download is running yet, so any partial read file is left from a killed run. Left in
+    # place it counts toward max_bam_chromosomes and stalls every download (27 November).
+    for stale in common.DATA.glob("chr*/full.part.bam"):
+        stale.unlink()
     by_name = {j.name: j for j in jobs}
     done = {j.name for j in jobs if marker(j.name).exists()}
     failed: set = set()
@@ -304,11 +323,12 @@ def run_scheduler(jobs, max_jobs, min_free_gb, max_bam_chromosomes, reserve_gb) 
             if len(running) >= max_jobs:
                 break
             downloads = sum(1 for n in running if by_name[n].kind == "download")
+            max_downloads = int(os.environ.get("PHASEBUDGET_MAX_DOWNLOADS", "2"))
             for job in pending:
                 if not job.deps <= done:
                     continue
                 if job.kind == "download":
-                    if downloads >= 2 or free_disk_gb() < min_free_gb:
+                    if downloads >= max_downloads or free_disk_gb() < min_free_gb:
                         continue
                     if bam_chromosomes() >= max_bam_chromosomes:
                         continue
@@ -452,7 +472,8 @@ def main() -> None:
         dispatch(args)
         return
     common.DATA.mkdir(parents=True, exist_ok=True)
-    jobs = build_jobs(args.chromosomes, include_bq=not args.skip_bq and common.PLATFORM == "hifi")
+    jobs = build_jobs(args.chromosomes, include_bq=not args.skip_bq and common.PLATFORM == "hifi"
+                      and not common.SEEDS)
     print(f"{common.PLATFORM}: {len(jobs)} jobs over {', '.join(args.chromosomes)}", flush=True)
     failures = run_scheduler(jobs, args.jobs, args.min_free_gb, args.max_bam_chromosomes,
                              args.reserve_gb)

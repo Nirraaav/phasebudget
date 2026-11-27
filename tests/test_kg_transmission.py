@@ -34,3 +34,8 @@ def test_alt_count_reads_genotypes_only():
     a = _module()._alt_count
     assert a("0|1") == 1 and a("1/1:30") == 2 and a("0|0") == 0
     assert a("./.") is None and a("1|2") is None and a("1") is None
+
+
+def test_depth_seed_reads_seeded_and_plain_labels():
+    d = _module().depth_seed
+    assert d("20") == (20.0, 0) and d("10s3") == (10.0, 3) and d("30s12") == (30.0, 12)
